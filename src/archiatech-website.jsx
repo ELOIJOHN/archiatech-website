@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Cpu, Zap, Cog, Users, Code, Rocket, CheckCircle, ArrowRight, Menu, Mail, Phone, MapPin, Star, TrendingUp, Shield } from 'lucide-react';
 
 export default function ArchiAtechWebsite() {
@@ -67,13 +67,13 @@ export default function ArchiAtechWebsite() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-red-500/50 transition-all duration-300 flex items-center justify-center">
-                  Demander une démo 
+                <a href="#contact" className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl font-semibold hover:shadow-2xl hover:shadow-red-500/50 transition-all duration-300 flex items-center justify-center">
+                  Demander une démo
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 rounded-xl font-semibold hover:border-red-600 hover:text-red-600 transition">
+                </a>
+                <a href="mailto:jeloi@archiatech.com?subject=Audit%20d%27automatisation%20gratuit&body=Bonjour%20ArchiAtech,%20je%20souhaite%20un%20audit%20gratuit.%20(Indiquez%20votre%20entreprise%2C%20besoin%20et%20disponibilit%C3%A9s)" className="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 rounded-xl font-semibold hover:border-red-600 hover:text-red-600 transition">
                   Audit gratuit
-                </button>
+                </a>
               </div>
             </div>
 
@@ -161,7 +161,7 @@ export default function ArchiAtechWebsite() {
                 </div>
                 <h3 className="relative text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
                 <p className="relative text-gray-600 mb-4 leading-relaxed">{service.description}</p>
-                <a href="#" className="relative text-red-600 font-semibold flex items-center group-hover:gap-2 transition-all">
+                <a href="#services" className="relative text-red-600 font-semibold flex items-center group-hover:gap-2 transition-all">
                   En savoir plus <ArrowRight className="w-4 h-4 ml-1" />
                 </a>
               </div>
@@ -262,21 +262,81 @@ export default function ArchiAtechWebsite() {
         <div className="absolute inset-0 bg-gradient-to-br from-red-600 via-red-700 to-red-900"></div>
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-10"></div>
         
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-5xl font-bold text-white mb-6">Prêt à automatiser vos processus ?</h2>
-          <p className="text-xl text-red-100 mb-10 leading-relaxed">
+        <div className="max-w-4xl mx-auto relative z-10">
+          <h2 className="text-5xl font-bold text-white mb-6 text-center">Prêt à automatiser vos processus ?</h2>
+          <p className="text-xl text-red-100 mb-10 leading-relaxed text-center">
             Contactez-nous pour un audit gratuit et découvrez comment gagner en efficacité
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
-            <input 
-              type="email" 
-              placeholder="Votre email professionnel" 
-              className="flex-1 px-6 py-4 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-xl"
-            />
-            <button className="px-8 py-4 bg-white text-red-700 rounded-xl font-semibold hover:shadow-2xl transition transform hover:scale-105">
-              Demander un audit
-            </button>
-          </div>
+          {(() => {
+            const [fullName, setFullName] = useState('');
+            const [email, setEmail] = useState('');
+            const [company, setCompany] = useState('');
+            const [message, setMessage] = useState('');
+
+            const handleSubmit = (e) => {
+              e.preventDefault();
+              const subject = 'Demande d\'audit – ArchiAtech';
+              const body = `Bonjour ArchiAtech,%0D%0A%0D%0ANom: ${encodeURIComponent(fullName)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0ASociété: ${encodeURIComponent(company)}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0AMerci.`;
+              window.location.href = `mailto:jeloi@archiatech.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+            };
+
+            return (
+              <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/20 shadow-2xl">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm text-red-100 mb-2">Nom complet</label>
+                    <input
+                      type="text"
+                      required
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder="Jane Doe"
+                      className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-red-100 mb-2">Email professionnel</label>
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="jane@entreprise.com"
+                      className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-red-100 mb-2">Société</label>
+                    <input
+                      type="text"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                      placeholder="ArchiAtech"
+                      className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label className="block text-sm text-red-100 mb-2">Message</label>
+                    <textarea
+                      rows="4"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Décrivez brièvement vos besoins..."
+                      className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    />
+                  </div>
+                </div>
+                <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                  <button type="submit" className="px-6 py-3 bg-white text-red-700 rounded-xl font-semibold hover:shadow-2xl transition">
+                    Envoyer la demande
+                  </button>
+                  <a href="mailto:jeloi@archiatech.com" className="px-6 py-3 bg-transparent border border-white/40 text-white rounded-xl font-semibold hover:bg-white/10 transition">
+                    Ou nous écrire directement
+                  </a>
+                </div>
+              </form>
+            );
+          })()}
         </div>
       </section>
 
@@ -295,19 +355,19 @@ export default function ArchiAtechWebsite() {
           <div>
             <h4 className="font-semibold text-white mb-4">Services</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="#" className="hover:text-red-400 transition">Support IT</a></li>
-              <li><a href="#" className="hover:text-red-400 transition">Conseil IA</a></li>
-              <li><a href="#" className="hover:text-red-400 transition">Automatisation</a></li>
-              <li><a href="#" className="hover:text-red-400 transition">No-Code</a></li>
+              <li><a href="#services" className="hover:text-red-400 transition">Support IT</a></li>
+              <li><a href="#services" className="hover:text-red-400 transition">Conseil IA</a></li>
+              <li><a href="#services" className="hover:text-red-400 transition">Automatisation</a></li>
+              <li><a href="#services" className="hover:text-red-400 transition">No-Code</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Entreprise</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="#" className="hover:text-red-400 transition">À propos</a></li>
-              <li><a href="#" className="hover:text-red-400 transition">Blog</a></li>
-              <li><a href="#" className="hover:text-red-400 transition">Carrières</a></li>
-              <li><a href="#" className="hover:text-red-400 transition">Contact</a></li>
+              <li><a href="#approche" className="hover:text-red-400 transition">À propos</a></li>
+              <li><a href="#services" className="hover:text-red-400 transition">Blog</a></li>
+              <li><a href="#approche" className="hover:text-red-400 transition">Carrières</a></li>
+              <li><a href="#contact" className="hover:text-red-400 transition">Contact</a></li>
             </ul>
           </div>
           <div>
@@ -335,3 +395,39 @@ export default function ArchiAtechWebsite() {
     </div>
   );
 }
+/*
+Analyse du programme :
+
+Ce composant React représente la page principale d'un site vitrine premium pour ArchiAtech, une entreprise spécialisée dans l'IA, l'automatisation et le no-code pour PME/startups.
+
+Structure :
+- Navigation fixe en haut avec branding et liens vers les sections principales.
+- Hero section très visuelle, mettant en avant l'offre et les bénéfices (efficacité, sécurité).
+- Sections "Services", "Notre Approche", "Pourquoi nous choisir" : chaque partie utilise des grilles, icônes et textes pour présenter l'expertise, la méthodologie et les avantages.
+- CTA final avec formulaire d'email pour audit gratuit.
+- Footer complet avec informations, liens et contacts.
+
+Points forts :
+- Utilisation de Tailwind CSS pour le style moderne et responsive.
+- Icônes Lucide pour l'aspect graphique.
+- Structure claire, chaque section est bien délimitée et facilement modifiable.
+- Composant unique, facile à intégrer dans une application React.
+
+Axes d'amélioration :
+- Découper en plusieurs composants pour faciliter la maintenance et la réutilisation.
+- Ajouter de la logique (gestion du formulaire, navigation mobile, etc.).
+- Internationalisation si besoin.
+- Optimiser l'accessibilité (labels, aria, etc.).
+
+En résumé : le code est bien organisé pour une landing page premium, prêt à être modularisé et enrichi selon les besoins.
+
+Réponse à ta question :
+Si le site s'affiche "en brut" (sans styles), c'est probablement que Tailwind CSS n'est pas chargé correctement.
+Vérifie que :
+- Tailwind est bien installé et configuré dans ton projet (fichier tailwind.config.js, import dans index.css).
+- Le fichier CSS généré par Tailwind est bien importé dans ton entrypoint (ex: src/index.js ou src/main.jsx).
+- Aucun problème de build ou d'import dans la console du navigateur (erreurs 404 sur le CSS, etc.).
+- Le déploiement sur https://www.archiatech.com inclut bien le CSS généré.
+
+Sans Tailwind, tous les styles utilitaires (className="...") ne s'appliquent pas, d'où l'affichage brut.
+*/

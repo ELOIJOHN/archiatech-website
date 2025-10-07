@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
+// Config unifiée: domaine custom via CNAME => base '/'
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' 
-    ? '/archiatech-website/'  // ⚠️ IMPORTANT : nom de votre repo GitHub
-    : '/',
+  base: '/',
+  build: {
+    outDir: 'dist',
+  },
 })
