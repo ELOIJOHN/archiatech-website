@@ -3,28 +3,40 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:  # Permet de déclencher manuellement
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
       
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
+          
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
           
       - name: Install dependencies
         run: npm ci
           
       - name: Build
         run: npm run build
+        env:
+          NODE_ENV: production
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
