@@ -375,15 +375,15 @@ export default function ArchiAtechWebsite() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-red-400" />
-                contact@archiatech.fr
+                contact@archiatech.com
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-red-400" />
-                +33 1 XX XX XX XX
+                +33 07 83 82 93 10
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-red-400" />
-                Paris, France
+                Roquebrune Cap Martin, France
               </li>
             </ul>
           </div>
