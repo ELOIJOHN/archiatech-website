@@ -42,7 +42,7 @@ export default function ArchiAtechWebsite() {
             <div>
               <div className="inline-flex items-center space-x-2 px-4 py-2 bg-red-50 border border-red-200 text-red-700 rounded-full text-sm font-semibold mb-6">
                 <Rocket className="w-4 h-4" />
-                <span>Lancement Octobre 2025</span>
+                <span> ArchiAtech – Bâtissez l’avenir de votre entreprise avec l’IA.</span>
               </div>
               <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
                 Transformez votre entreprise avec{' '}
@@ -77,31 +77,46 @@ export default function ArchiAtechWebsite() {
               </div>
             </div>
 
-            {/* Hero Illustration */}
+            {/* Hero Illustration avec vidéo */}
             <div className="relative">
               <div className="relative bg-gradient-to-br from-red-600 to-red-900 rounded-3xl p-8 shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl"></div>
-                <div className="bg-white rounded-2xl p-6 space-y-4 relative">
-                  {[
-                    { icon: <Zap className="w-6 h-6 text-red-600" />, color: 'red' },
-                    { icon: <Cpu className="w-6 h-6 text-red-700" />, color: 'red' },
-                    { icon: <Code className="w-6 h-6 text-red-600" />, color: 'red' }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center space-x-4 group">
-                      <div className="w-14 h-14 bg-gradient-to-br from-red-50 to-red-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        {item.icon}
+                <div className="bg-white rounded-2xl p-6 relative overflow-hidden">
+                  {/* Vidéo */}
+                  <div className="relative h-64 rounded-xl overflow-hidden mb-4">
+                    <video 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline
+                      className="w-full h-full object-cover"
+                    >
+                      <source src="/videos/demo-automation.mp4" type="video/mp4" />
+                      <source src="/videos/demo-automation.webm" type="video/webm" />
+                    </video>
+                  </div>
+                  
+                  {/* Liste avec icônes */}
+                  <div className="space-y-3">
+                    {[
+                      { icon: <Zap className="w-6 h-6 text-red-600" />, title: "Automatisation", desc: "Workflows intelligents" },
+                      { icon: <Cpu className="w-6 h-6 text-red-700" />, title: "Intelligence IA", desc: "Solutions sur-mesure" },
+                      { icon: <Code className="w-6 h-6 text-red-600" />, title: "No-Code", desc: "Développement rapide" }
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center space-x-4 group hover:bg-red-50 p-2 rounded-lg transition">
+                        <div className="w-12 h-12 bg-gradient-to-br from-red-50 to-red-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                          {item.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-gray-900 text-sm">{item.title}</h4>
+                          <p className="text-xs text-gray-600">{item.desc}</p>
+                        </div>
                       </div>
-                      <div className="flex-1 space-y-2">
-                        <div className="h-3 bg-gradient-to-r from-gray-200 to-gray-100 rounded-full w-3/4"></div>
-                        <div className="h-2 bg-gray-100 rounded-full w-1/2"></div>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
       </section>
 
       {/* Services Section Premium */}
