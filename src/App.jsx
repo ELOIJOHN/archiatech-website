@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Cpu, Zap, Cog, Users, Code, Rocket, CheckCircle, ArrowRight, Menu, Mail, Phone, MapPin, Star, TrendingUp, Shield } from 'lucide-react';
 
 export default function ArchiAtechWebsite() {
+  const [showHeroImage, setShowHeroImage] = useState(false);
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation Premium */}
@@ -82,18 +83,29 @@ export default function ArchiAtechWebsite() {
               <div className="relative bg-gradient-to-br from-red-600 to-red-900 rounded-3xl p-8 shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl"></div>
                 <div className="bg-white rounded-2xl p-6 relative overflow-hidden">
-                  {/* Vidéo */}
+                  {/* Média principal (vidéo avec fallback image) */}
                   <div className="relative h-64 rounded-xl overflow-hidden mb-4">
-                    <video 
-                      autoPlay 
-                      loop 
-                      muted 
-                      playsInline
-                      className="w-full h-full object-cover"
-                    >
-                      <source src="/videos/demo-automation.mp4" type="video/mp4" />
-                      <source src="/videos/demo-automation.webm" type="video/webm" />
-                    </video>
+                    {showHeroImage ? (
+                      <img
+                        src="https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1600&auto=format&fit=crop"
+                        alt="Démonstration automatisation ArchiAtech"
+                        className="w-full h-full object-cover"
+                        loading="eager"
+                      />
+                    ) : (
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        poster="https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1600&auto=format&fit=crop"
+                        className="w-full h-full object-cover"
+                        onError={() => setShowHeroImage(true)}
+                      >
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+                      </video>
+                    )}
                   </div>
                   
                   {/* Liste avec icônes */}
@@ -117,6 +129,8 @@ export default function ArchiAtechWebsite() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
       </section>
 
       {/* Services Section Premium */}
