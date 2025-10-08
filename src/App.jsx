@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
-import { Cpu, Zap, Cog, Users, Code, Rocket, CheckCircle, ArrowRight, Menu, Mail, Phone, MapPin, Star, TrendingUp, Shield } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Cpu, Zap, Cog, Users, Code, Rocket, CheckCircle, ArrowRight, Menu, Mail, Phone, MapPin, Star, TrendingUp, Shield, Volume2, VolumeX, Youtube } from 'lucide-react';
 
 export default function ArchiAtechWebsite() {
   const [showHeroImage, setShowHeroImage] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [useYouTube, setUseYouTube] = useState(false);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation Premium */}
@@ -83,9 +92,40 @@ export default function ArchiAtechWebsite() {
               <div className="relative bg-gradient-to-br from-red-600 to-red-900 rounded-3xl p-8 shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl"></div>
                 <div className="bg-white rounded-2xl p-6 relative overflow-hidden">
-                  {/* Média principal (vidéo avec fallback image) */}
+                  {/* Média principal (vidéo locale avec mute/unmute) + alternative YouTube nocookie */}
                   <div className="relative h-64 rounded-xl overflow-hidden mb-4">
-                    {showHeroImage ? (
+                    <div className="absolute top-3 right-3 z-10 flex gap-2">
+                      {!useYouTube && (
+                        <button
+                          type="button"
+                          onClick={() => setIsMuted((v) => !v)}
+                          className="px-3 py-2 rounded-lg bg-white/90 backdrop-blur text-gray-900 shadow hover:bg-white transition"
+                          aria-label={isMuted ? 'Activer le son' : 'Couper le son'}
+                        >
+                          {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => setUseYouTube((v) => !v)}
+                        className="px-3 py-2 rounded-lg bg-white/90 backdrop-blur text-gray-900 shadow hover:bg-white transition flex items-center gap-1"
+                        aria-label={useYouTube ? 'Afficher la vidéo locale' : 'Afficher la version YouTube'}
+                      >
+                        {useYouTube ? 'Local' : (<><Youtube className="w-4 h-4" /> YouTube</>)}
+                      </button>
+                    </div>
+
+                    {useYouTube ? (
+                      <iframe
+                        className="w-full h-full object-cover"
+                        src={`https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0&loop=1&playlist=dQw4w9WgXcQ&modestbranding=1&rel=0`}
+                        title="Vidéo YouTube ArchiAtech"
+                        frameBorder="0"
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                      />
+                    ) : showHeroImage ? (
                       <img
                         src="/images/archiatech-hero.jpg"
                         alt="Démonstration automatisation ArchiAtech"
@@ -94,9 +134,10 @@ export default function ArchiAtechWebsite() {
                       />
                     ) : (
                       <video
+                        ref={videoRef}
                         autoPlay
                         loop
-                        muted
+                        muted={isMuted}
                         playsInline
                         poster="/images/archiatech-hero.jpg"
                         className="w-full h-full object-cover"
