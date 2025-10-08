@@ -327,6 +327,37 @@ export default function ArchiAtechWebsite() {
         </div>
       </section>
 
+      {/* Aperçu visuel (captures) */}
+      <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-red-600 font-semibold text-sm uppercase tracking-wider">Aperçu</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3">Visuel de la section héro</h2>
+            <p className="text-gray-600 mt-2">Captures générées automatiquement (desktop & mobile)</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+              <div className="px-5 py-3 bg-gray-50 border-b border-gray-100 flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                <span className="ml-2 text-sm text-gray-500">Desktop 1440x900</span>
+              </div>
+              <img src="/images/hero-desktop.png" alt="Aperçu desktop" className="w-full" />
+            </div>
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+              <div className="px-5 py-3 bg-gray-50 border-b border-gray-100 flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                <span className="ml-2 text-sm text-gray-500">Mobile 390x844</span>
+              </div>
+              <img src="/images/hero-mobile.png" alt="Aperçu mobile" className="w-full" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Final Premium */}
       <section id="contact" className="py-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600 via-red-700 to-red-900"></div>
