@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
-import { Cpu, Zap, Cog, Users, Code, Rocket, CheckCircle, ArrowRight, Menu, Mail, Phone, MapPin, Star, TrendingUp, Shield } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Cpu, Zap, Cog, Users, Code, Rocket, CheckCircle, ArrowRight, Menu, Mail, Phone, MapPin, Star, TrendingUp, Shield, Volume2, VolumeX, Youtube } from 'lucide-react';
 
 export default function ArchiAtechWebsite() {
+  const [showHeroImage, setShowHeroImage] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [useYouTube, setUseYouTube] = useState(false);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation Premium */}
@@ -82,18 +92,61 @@ export default function ArchiAtechWebsite() {
               <div className="relative bg-gradient-to-br from-red-600 to-red-900 rounded-3xl p-8 shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl"></div>
                 <div className="bg-white rounded-2xl p-6 relative overflow-hidden">
-                  {/* Vidéo */}
+                  {/* Média principal (vidéo locale avec mute/unmute) + alternative YouTube nocookie */}
                   <div className="relative h-64 rounded-xl overflow-hidden mb-4">
-                    <video 
-                      autoPlay 
-                      loop 
-                      muted 
-                      playsInline
-                      className="w-full h-full object-cover"
-                    >
-                      <source src="/videos/demo-automation.mp4" type="video/mp4" />
-                      <source src="/videos/demo-automation.webm" type="video/webm" />
-                    </video>
+                    <div className="absolute top-3 right-3 z-10 flex gap-2">
+                      {!useYouTube && (
+                        <button
+                          type="button"
+                          onClick={() => setIsMuted((v) => !v)}
+                          className="px-3 py-2 rounded-lg bg-white/90 backdrop-blur text-gray-900 shadow hover:bg-white transition"
+                          aria-label={isMuted ? 'Activer le son' : 'Couper le son'}
+                        >
+                          {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => setUseYouTube((v) => !v)}
+                        className="px-3 py-2 rounded-lg bg-white/90 backdrop-blur text-gray-900 shadow hover:bg-white transition flex items-center gap-1"
+                        aria-label={useYouTube ? 'Afficher la vidéo locale' : 'Afficher la version YouTube'}
+                      >
+                        {useYouTube ? 'Local' : (<><Youtube className="w-4 h-4" /> YouTube</>)}
+                      </button>
+                    </div>
+
+                    {useYouTube ? (
+                      <iframe
+                        className="w-full h-full object-cover"
+                        src={`https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0&loop=1&playlist=dQw4w9WgXcQ&modestbranding=1&rel=0`}
+                        title="Vidéo YouTube ArchiAtech"
+                        frameBorder="0"
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                      />
+                    ) : showHeroImage ? (
+                      <img
+                        src="/images/archiatech-hero.jpg"
+                        alt="Démonstration automatisation ArchiAtech"
+                        className="w-full h-full object-cover"
+                        loading="eager"
+                      />
+                    ) : (
+                      <video
+                        ref={videoRef}
+                        autoPlay
+                        loop
+                        muted={isMuted}
+                        playsInline
+                        poster="/images/archiatech-hero.jpg"
+                        className="w-full h-full object-cover"
+                        onError={() => setShowHeroImage(true)}
+                      >
+                        <source src="/videos/archiatech-hero.mp4" type="video/mp4" />
+                        <source src="/videos/archiatech-hero.webm" type="video/webm" />
+                      </video>
+                    )}
                   </div>
                   
                   {/* Liste avec icônes */}
@@ -117,6 +170,8 @@ export default function ArchiAtechWebsite() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
       </section>
 
       {/* Services Section Premium */}
@@ -267,6 +322,37 @@ export default function ArchiAtechWebsite() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Aperçu visuel (captures) */}
+      <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-red-600 font-semibold text-sm uppercase tracking-wider">Aperçu</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3">Visuel de la section héro</h2>
+            <p className="text-gray-600 mt-2">Captures générées automatiquement (desktop & mobile)</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+              <div className="px-5 py-3 bg-gray-50 border-b border-gray-100 flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                <span className="ml-2 text-sm text-gray-500">Desktop 1440x900</span>
+              </div>
+              <img src="/images/hero-desktop.png" alt="Aperçu desktop" className="w-full" />
+            </div>
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+              <div className="px-5 py-3 bg-gray-50 border-b border-gray-100 flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                <span className="ml-2 text-sm text-gray-500">Mobile 390x844</span>
+              </div>
+              <img src="/images/hero-mobile.png" alt="Aperçu mobile" className="w-full" />
             </div>
           </div>
         </div>
