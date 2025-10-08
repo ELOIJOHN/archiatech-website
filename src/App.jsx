@@ -87,7 +87,7 @@ export default function ArchiAtechWebsite() {
                   <div className="relative h-64 rounded-xl overflow-hidden mb-4">
                     {showHeroImage ? (
                       <img
-                        src="https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1600&auto=format&fit=crop"
+                        src="/images/archiatech-hero.jpg"
                         alt="Démonstration automatisation ArchiAtech"
                         className="w-full h-full object-cover"
                         loading="eager"
@@ -98,12 +98,12 @@ export default function ArchiAtechWebsite() {
                         loop
                         muted
                         playsInline
-                        poster="https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1600&auto=format&fit=crop"
+                        poster="/images/archiatech-hero.jpg"
                         className="w-full h-full object-cover"
                         onError={() => setShowHeroImage(true)}
                       >
-                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
-                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+                        <source src="/videos/archiatech-hero.mp4" type="video/mp4" />
+                        <source src="/videos/archiatech-hero.webm" type="video/webm" />
                       </video>
                     )}
                   </div>
