@@ -1,17 +1,79 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Cpu, Zap, Cog, Users, Code, Rocket, CheckCircle, ArrowRight, Menu, Mail, Phone, MapPin, Star, TrendingUp, Shield, Volume2, VolumeX, Youtube } from 'lucide-react';
+import React, { useState } from 'react';
+import { Cpu, Zap, Cog, Users, Code, Rocket, CheckCircle, ArrowRight, Menu, Mail, Phone, MapPin, Star, TrendingUp, Shield } from 'lucide-react';
+import HeroVideo from "./components/HeroVideo";
+
+function ContactForm() {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const subject = "Demande d'audit – ArchiAtech";
+    const body = `Bonjour ArchiAtech,%0D%0A%0D%0ANom: ${encodeURIComponent(fullName)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0ASociété: ${encodeURIComponent(company)}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0AMerci.`;
+    window.location.href = `mailto:jeloi@archiatech.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/20 shadow-2xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm text-red-100 mb-2">Nom complet</label>
+          <input
+            type="text"
+            required
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            placeholder="Jane Doe"
+            className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
+          />
+        </div>
+        <div>
+          <label className="block text-sm text-red-100 mb-2">Email professionnel</label>
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="jane@entreprise.com"
+            className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
+          />
+        </div>
+        <div>
+          <label className="block text-sm text-red-100 mb-2">Société</label>
+          <input
+            type="text"
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+            placeholder="ArchiAtech"
+            className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
+          />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="block text-sm text-red-100 mb-2">Message</label>
+          <textarea
+            rows="4"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Décrivez brièvement vos besoins..."
+            className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
+          />
+        </div>
+      </div>
+      <div className="mt-6 flex flex-col sm:flex-row gap-3">
+        <button type="submit" className="px-6 py-3 bg-white text-red-700 rounded-xl font-semibold hover:shadow-2xl transition">
+          Envoyer la demande
+        </button>
+        <a href="mailto:jeloi@archiatech.com" className="px-6 py-3 bg-transparent border border-white/40 text-white rounded-xl font-semibold hover:bg-white/10 transition">
+          Ou nous écrire directement
+        </a>
+      </div>
+    </form>
+  );
+}
 
 export default function ArchiAtechWebsite() {
-  const [showHeroImage, setShowHeroImage] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
-  const [useYouTube, setUseYouTube] = useState(false);
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted;
-    }
-  }, [isMuted]);
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation Premium */}
@@ -52,7 +114,7 @@ export default function ArchiAtechWebsite() {
             <div>
               <div className="inline-flex items-center space-x-2 px-4 py-2 bg-red-50 border border-red-200 text-red-700 rounded-full text-sm font-semibold mb-6">
                 <Rocket className="w-4 h-4" />
-                <span> ArchiAtech – Bâtissez l’avenir de votre entreprise avec l’IA.</span>
+                <span> ArchiAtech – Bâtissez l'avenir de votre entreprise avec l'IA.</span>
               </div>
               <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
                 Transformez votre entreprise avec{' '}
@@ -86,67 +148,14 @@ export default function ArchiAtechWebsite() {
                 </a>
               </div>
             </div>
-
             {/* Hero Illustration avec vidéo */}
             <div className="relative">
               <div className="relative bg-gradient-to-br from-red-600 to-red-900 rounded-3xl p-8 shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl"></div>
                 <div className="bg-white rounded-2xl p-6 relative overflow-hidden">
-                  {/* Média principal (vidéo locale avec mute/unmute) + alternative YouTube nocookie */}
-                  <div className="relative h-64 rounded-xl overflow-hidden mb-4">
-                    <div className="absolute top-3 right-3 z-10 flex gap-2">
-                      {!useYouTube && (
-                        <button
-                          type="button"
-                          onClick={() => setIsMuted((v) => !v)}
-                          className="px-3 py-2 rounded-lg bg-white/90 backdrop-blur text-gray-900 shadow hover:bg-white transition"
-                          aria-label={isMuted ? 'Activer le son' : 'Couper le son'}
-                        >
-                          {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                        </button>
-                      )}
-                      <button
-                        type="button"
-                        onClick={() => setUseYouTube((v) => !v)}
-                        className="px-3 py-2 rounded-lg bg-white/90 backdrop-blur text-gray-900 shadow hover:bg-white transition flex items-center gap-1"
-                        aria-label={useYouTube ? 'Afficher la vidéo locale' : 'Afficher la version YouTube'}
-                      >
-                        {useYouTube ? 'Local' : (<><Youtube className="w-4 h-4" /> YouTube</>)}
-                      </button>
-                    </div>
-
-                    {useYouTube ? (
-                      <iframe
-                        className="w-full h-full object-cover"
-                        src={`https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0&loop=1&playlist=dQw4w9WgXcQ&modestbranding=1&rel=0`}
-                        title="Vidéo YouTube ArchiAtech"
-                        frameBorder="0"
-                        allow="autoplay; encrypted-media; picture-in-picture"
-                        referrerPolicy="no-referrer"
-                        loading="lazy"
-                      />
-                    ) : showHeroImage ? (
-                      <img
-                        src="/images/archiatech-hero.jpg"
-                        alt="Démonstration automatisation ArchiAtech"
-                        className="w-full h-full object-cover"
-                        loading="eager"
-                      />
-                    ) : (
-                      <video
-                        ref={videoRef}
-                        autoPlay
-                        loop
-                        muted={isMuted}
-                        playsInline
-                        poster="/images/archiatech-hero.jpg"
-                        className="w-full h-full object-cover"
-                        onError={() => setShowHeroImage(true)}
-                      >
-                        <source src="/videos/archiatech-hero.mp4" type="video/mp4" />
-                        <source src="/videos/archiatech-hero.webm" type="video/webm" />
-                      </video>
-                    )}
+                  {/* Média principal */}
+                  <div className="mb-4">
+                    <HeroVideo />
                   </div>
                   
                   {/* Liste avec icônes */}
@@ -368,167 +377,9 @@ export default function ArchiAtechWebsite() {
           <p className="text-xl text-red-100 mb-10 leading-relaxed text-center">
             Contactez-nous pour un audit gratuit et découvrez comment gagner en efficacité
           </p>
-          {(() => {
-            const [fullName, setFullName] = useState('');
-            const [email, setEmail] = useState('');
-            const [company, setCompany] = useState('');
-            const [message, setMessage] = useState('');
-
-            const handleSubmit = (e) => {
-              e.preventDefault();
-              const subject = 'Demande d\'audit – ArchiAtech';
-              const body = `Bonjour ArchiAtech,%0D%0A%0D%0ANom: ${encodeURIComponent(fullName)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0ASociété: ${encodeURIComponent(company)}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0AMerci.`;
-              window.location.href = `mailto:jeloi@archiatech.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-            };
-
-            return (
-              <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/20 shadow-2xl">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm text-red-100 mb-2">Nom complet</label>
-                    <input
-                      type="text"
-                      required
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      placeholder="Jane Doe"
-                      className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm text-red-100 mb-2">Email professionnel</label>
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="jane@entreprise.com"
-                      className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm text-red-100 mb-2">Société</label>
-                    <input
-                      type="text"
-                      value={company}
-                      onChange={(e) => setCompany(e.target.value)}
-                      placeholder="ArchiAtech"
-                      className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
-                    />
-                  </div>
-                  <div className="sm:col-span-2">
-                    <label className="block text-sm text-red-100 mb-2">Message</label>
-                    <textarea
-                      rows="4"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Décrivez brièvement vos besoins..."
-                      className="w-full px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
-                    />
-                  </div>
-                </div>
-                <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                  <button type="submit" className="px-6 py-3 bg-white text-red-700 rounded-xl font-semibold hover:shadow-2xl transition">
-                    Envoyer la demande
-                  </button>
-                  <a href="mailto:jeloi@archiatech.com" className="px-6 py-3 bg-transparent border border-white/40 text-white rounded-xl font-semibold hover:bg-white/10 transition">
-                    Ou nous écrire directement
-                  </a>
-                </div>
-              </form>
-            );
-          })()}
+          <ContactForm />
         </div>
       </section>
-
-      {/* Footer Premium */}
-      <footer className="bg-gray-900 text-gray-300 py-16 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
-          <div>
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-800 rounded-xl flex items-center justify-center">
-                <Cpu className="text-white w-6 h-6" />
-              </div>
-              <span className="text-xl font-bold text-white">ArchiAtech</span>
-            </div>
-            <p className="text-sm text-gray-400 leading-relaxed">Solutions digitales innovantes pour PME et startups</p>
-          </div>
-          <div>
-            <h4 className="font-semibold text-white mb-4">Services</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="#services" className="hover:text-red-400 transition">Support IT</a></li>
-              <li><a href="#services" className="hover:text-red-400 transition">Conseil IA</a></li>
-              <li><a href="#services" className="hover:text-red-400 transition">Automatisation</a></li>
-              <li><a href="#services" className="hover:text-red-400 transition">No-Code</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold text-white mb-4">Entreprise</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="#approche" className="hover:text-red-400 transition">À propos</a></li>
-              <li><a href="#services" className="hover:text-red-400 transition">Blog</a></li>
-              <li><a href="#approche" className="hover:text-red-400 transition">Carrières</a></li>
-              <li><a href="#contact" className="hover:text-red-400 transition">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold text-white mb-4">Contact</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-red-400" />
-                contact@archiatech.com
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-red-400" />
-                +33 07 83 82 93 10
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-red-400" />
-                Roquebrune Cap Martin, France
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
-          <p>© 2025 ArchiAtech Digital Solutions. Tous droits réservés.</p>
-        </div>
-      </footer>
     </div>
   );
 }
-/*
-Analyse du programme :
-
-Ce composant React représente la page principale d'un site vitrine premium pour ArchiAtech, une entreprise spécialisée dans l'IA, l'automatisation et le no-code pour PME/startups.
-
-Structure :
-- Navigation fixe en haut avec branding et liens vers les sections principales.
-- Hero section très visuelle, mettant en avant l'offre et les bénéfices (efficacité, sécurité).
-- Sections "Services", "Notre Approche", "Pourquoi nous choisir" : chaque partie utilise des grilles, icônes et textes pour présenter l'expertise, la méthodologie et les avantages.
-- CTA final avec formulaire d'email pour audit gratuit.
-- Footer complet avec informations, liens et contacts.
-
-Points forts :
-- Utilisation de Tailwind CSS pour le style moderne et responsive.
-- Icônes Lucide pour l'aspect graphique.
-- Structure claire, chaque section est bien délimitée et facilement modifiable.
-- Composant unique, facile à intégrer dans une application React.
-
-Axes d'amélioration :
-- Découper en plusieurs composants pour faciliter la maintenance et la réutilisation.
-- Ajouter de la logique (gestion du formulaire, navigation mobile, etc.).
-- Internationalisation si besoin.
-- Optimiser l'accessibilité (labels, aria, etc.).
-
-En résumé : le code est bien organisé pour une landing page premium, prêt à être modularisé et enrichi selon les besoins.
-
-Réponse à ta question :
-Si le site s'affiche "en brut" (sans styles), c'est probablement que Tailwind CSS n'est pas chargé correctement.
-Vérifie que :
-- Tailwind est bien installé et configuré dans ton projet (fichier tailwind.config.js, import dans index.css).
-- Le fichier CSS généré par Tailwind est bien importé dans ton entrypoint (ex: src/index.js ou src/main.jsx).
-- Aucun problème de build ou d'import dans la console du navigateur (erreurs 404 sur le CSS, etc.).
-- Le déploiement sur https://www.archiatech.com inclut bien le CSS généré.
-
-Sans Tailwind, tous les styles utilitaires (className="...") ne s'appliquent pas, d'où l'affichage brut.
-*/
