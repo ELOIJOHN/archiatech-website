@@ -1,0 +1,238 @@
+/* ==============================================
+   UTILITIES - Classes utilitaires
+   ============================================== */
+
+/* Scrollbar personnalisé - Responsive */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(230, 0, 35, 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(230, 0, 35, 0.8);
+}
+
+/* Curseur personnalisé - Désactivé sur mobile */
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .custom-cursor:hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(227, 39, 39, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+  }
+}
+
+/* Touch target helpers */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .touch-target {
+    min-height: 40px;
+    min-width: 40px;
+  }
+}
+
+/* Responsive text sizes */
+.text-responsive-sm {
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+
+.text-responsive-base {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+.text-responsive-lg {
+  font-size: clamp(1rem, 3vw, 1.125rem);
+}
+
+.text-responsive-xl {
+  font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+}
+
+.text-responsive-2xl {
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+}
+
+.text-responsive-3xl {
+  font-size: clamp(1.5rem, 5vw, 1.875rem);
+}
+
+.text-responsive-4xl {
+  font-size: clamp(1.875rem, 6vw, 2.25rem);
+}
+
+.text-responsive-5xl {
+  font-size: clamp(2.25rem, 7vw, 3rem);
+}
+
+/* Responsive spacing */
+.section-padding {
+  padding-top: clamp(3rem, 8vw, 6rem);
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+.container-padding {
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+/* Responsive utilities - Mobile first */
+/* Extra small devices */
+@media (max-width: 474px) {
+  .archi-agent-widget {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    left: 0.75rem;
+    width: auto;
+    max-width: none;
+  }
+
+  .archi-agent-widget.minimized {
+    width: auto;
+    height: 3.5rem;
+  }
+
+  .news-card {
+    margin-bottom: 1rem;
+  }
+
+  .news-filter-button {
+    font-size: 0.8125rem;
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+/* Small devices */
+@media (max-width: 639px) {
+  .archi-agent-widget {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+    max-width: none;
+  }
+
+  .archi-agent-widget.minimized {
+    width: auto;
+    height: 4rem;
+  }
+
+  .nav-dropdown {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .nav-dropdown-item {
+    padding: 0.875rem;
+  }
+
+  .mobile-nav-item {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Medium devices - Tablets */
+@media (min-width: 640px) and (max-width: 767px) {
+  .news-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .news-filter-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-dropdown-item {
+    padding: 1rem;
+  }
+}
+
+/* Landscape mode optimizations */
+@media (orientation: landscape) and (max-height: 600px) {
+  /* Réduire les paddings verticaux en mode paysage */
+  .section-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Hero section plus compact */
+  #hero {
+    min-height: 80vh;
+  }
+
+  /* Navigation plus compacte */
+  nav {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .glass-effect,
+  .glass-card {
+    border-width: 2px;
+    border-color: currentColor;
+  }
+
+  button,
+  a {
+    outline: 2px solid currentColor;
+  }
+}

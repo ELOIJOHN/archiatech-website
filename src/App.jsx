@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Cpu, Zap, Cog, Users, Code, Rocket, CheckCircle, ArrowRight, Menu, Mail, Phone, MapPin, Star, TrendingUp, Shield } from 'lucide-react';
 import HeroVideo from "./components/HeroVideo";
+import MediaGallery from "./components/MediaGallery";
+import BackgroundVideo from "./components/BackgroundVideo";
 
 function ContactForm() {
   const [fullName, setFullName] = useState("");
@@ -285,84 +287,128 @@ export default function ArchiAtechWebsite() {
         </div>
       </section>
 
-      {/* Pourquoi nous choisir Premium */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-red-600 font-semibold text-sm uppercase tracking-wider">Nos avantages</span>
-              <h2 className="text-5xl font-bold text-gray-900 mb-8 mt-3">Pourquoi ArchiAtech ?</h2>
-              <div className="space-y-5">
-                {[
-                  "Expertise pointue en IA et No-Code",
-                  "Accompagnement personnalisé de A à Z",
-                  "ROI mesurable et rapide",
-                  "Support technique continu 7j/7",
-                  "Solutions adaptées aux PME/Startups",
-                  "Innovation technologique permanente"
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start space-x-4 group">
-                    <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <CheckCircle className="w-4 h-4 text-white" />
+      {/* Section avec vidéo d'arrière-plan - Pourquoi nous choisir */}
+      <BackgroundVideo
+        src="/videos/archiatech-hero.mp4"
+        poster="/images/archiatech-hero.jpg"
+        className="min-h-screen"
+        overlay={true}
+        overlayColor="rgb(185, 28, 28)"
+        overlayOpacity={0.8}
+        controls={true}
+      >
+        <section className="py-24 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div>
+                <span className="text-red-200 font-semibold text-sm uppercase tracking-wider">Nos avantages</span>
+                <h2 className="text-5xl font-bold text-white mb-8 mt-3">Pourquoi ArchiAtech ?</h2>
+                <div className="space-y-5">
+                  {[
+                    "Expertise pointue en IA et No-Code",
+                    "Accompagnement personnalisé de A à Z",
+                    "ROI mesurable et rapide",
+                    "Support technique continu 7j/7",
+                    "Solutions adaptées aux PME/Startups",
+                    "Innovation technologique permanente"
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start space-x-4 group">
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
+                        <CheckCircle className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-lg text-white group-hover:text-red-100 transition">{item}</span>
                     </div>
-                    <span className="text-lg text-gray-700 group-hover:text-gray-900 transition">{item}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-            
-            <div className="relative">
-              <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-900 rounded-3xl p-10 text-white shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl"></div>
-                <div className="relative">
-                  <h3 className="text-3xl font-bold mb-6">Gagnez jusqu'à 40% de temps</h3>
-                  <p className="text-red-100 mb-8 text-lg leading-relaxed">
-                    Nos clients constatent en moyenne une réduction de 40% du temps consacré aux tâches répétitives.
-                  </p>
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                      <div className="text-5xl font-bold mb-2">95%</div>
-                      <div className="text-red-100">Satisfaction client</div>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                      <div className="text-5xl font-bold mb-2">150+</div>
-                      <div className="text-red-100">Projets livrés</div>
+              
+              <div className="relative">
+                <div className="bg-white/10 backdrop-blur-2xl rounded-3xl p-10 text-white shadow-2xl border border-white/20">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-3xl"></div>
+                  <div className="relative">
+                    <h3 className="text-3xl font-bold mb-6">Gagnez jusqu'à 40% de temps</h3>
+                    <p className="text-white/90 mb-8 text-lg leading-relaxed">
+                      Nos clients constatent en moyenne une réduction de 40% du temps consacré aux tâches répétitives.
+                    </p>
+                    <div className="grid grid-cols-2 gap-6">
+                      {[
+                        { value: "95%", label: "Satisfaction client", icon: "⭐" },
+                        { value: "150+", label: "Projets livrés", icon: "🚀" },
+                        { value: "40%", label: "Gain de temps", icon: "⚡" },
+                        { value: "24/7", label: "Support disponible", icon: "🛠️" }
+                      ].map((stat, index) => (
+                        <div key={index} className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition group">
+                          <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">{stat.icon}</div>
+                          <div className="text-4xl font-bold mb-2 text-white">{stat.value}</div>
+                          <div className="text-white/80 text-sm">{stat.label}</div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </BackgroundVideo>
 
-      {/* Aperçu visuel (captures) */}
-      <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white">
+      {/* Galerie Média Interactive */}
+      <section className="py-24 px-6 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-red-600 font-semibold text-sm uppercase tracking-wider">Aperçu</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3">Visuel de la section héro</h2>
-            <p className="text-gray-600 mt-2">Captures générées automatiquement (desktop & mobile)</p>
+          <div className="text-center mb-16">
+            <span className="text-red-600 font-semibold text-sm uppercase tracking-wider">Découvrez ArchiAtech</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">Galerie Média Interactive</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Explorez nos solutions d'automatisation et d'IA à travers des démonstrations visuelles
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-              <div className="px-5 py-3 bg-gray-50 border-b border-gray-100 flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                <span className="ml-2 text-sm text-gray-500">Desktop 1440x900</span>
+          
+          <MediaGallery 
+            title="Nos solutions en action"
+            items={[
+              {
+                type: 'video',
+                src: '/videos/archiatech-hero.mp4',
+                poster: '/images/archiatech-hero.jpg',
+                title: 'Démonstration ArchiAtech',
+                description: 'Découvrez comment nos solutions d\'automatisation transforment les processus métiers'
+              },
+              {
+                type: 'image',
+                src: '/images/hero-desktop.png',
+                title: 'Interface Desktop Pro',
+                description: 'Interface utilisateur optimisée pour les professionnels sur desktop'
+              },
+              {
+                type: 'image',
+                src: '/images/hero-mobile.png',
+                title: 'Application Mobile',
+                description: 'Version mobile responsive pour un accès partout, tout le temps'
+              },
+              {
+                type: 'image',
+                src: '/images/archiatech-hero.jpg',
+                title: 'Vision Transformation Digitale',
+                description: 'Notre approche unique pour accélérer votre transformation numérique'
+              }
+            ]}
+            showTitle={false}
+          />
+
+          {/* Stats section enrichie */}
+          <div className="mt-16 grid md:grid-cols-4 gap-8">
+            {[
+              { number: "150+", label: "Projets Automatisés", icon: "🚀" },
+              { number: "40%", label: "Gain de Temps Moyen", icon: "⚡" },
+              { number: "95%", label: "Satisfaction Client", icon: "⭐" },
+              { number: "24/7", label: "Support Disponible", icon: "🛠️" }
+            ].map((stat, index) => (
+              <div key={index} className="text-center bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition group">
+                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">{stat.icon}</div>
+                <div className="text-4xl font-bold text-red-600 mb-2">{stat.number}</div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
               </div>
-              <img src="/images/hero-desktop.png" alt="Aperçu desktop" className="w-full" />
-            </div>
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-              <div className="px-5 py-3 bg-gray-50 border-b border-gray-100 flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                <span className="ml-2 text-sm text-gray-500">Mobile 390x844</span>
-              </div>
-              <img src="/images/hero-mobile.png" alt="Aperçu mobile" className="w-full" />
-            </div>
+            ))}
           </div>
         </div>
       </section>

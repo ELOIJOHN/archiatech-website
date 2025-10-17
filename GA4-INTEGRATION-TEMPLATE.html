@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="apple-touch-icon" href="/images/icon-180x180.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <title>ArchiAtech - Solutions IA & Automatisation | Transformation Digitale</title>
+    <meta name="description" content="ArchiAtech accompagne votre transformation digitale avec des solutions d'intelligence artificielle, automatisation, No-Code et support IT. Audit gratuit disponible." />
+    <meta name="keywords" content="intelligence artificielle, IA, automatisation, transformation digitale, no-code, low-code, RPA, conseil IA, intégration IA, support IT, workflows, ArchiAtech" />
+    <meta name="author" content="ArchiAtech" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="French" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Google Search Console Verification -->
+    <!-- ⚠️ REMPLACER PAR VOTRE CODE DE VÉRIFICATION -->
+    <meta name="google-site-verification" content="VOTRE_CODE_GOOGLE_SEARCH_CONSOLE" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://archiatech.com/" />
+    <meta property="og:title" content="ArchiAtech - Solutions IA & Automatisation" />
+    <meta property="og:description" content="Transformez votre entreprise avec l'intelligence artificielle. Solutions d'automatisation, IA et No-Code pour optimiser vos processus métiers." />
+    <meta property="og:image" content="https://archiatech.com/images/archiatech-hero.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="ArchiAtech" />
+    <meta property="og:locale" content="fr_FR" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://archiatech.com/" />
+    <meta name="twitter:title" content="ArchiAtech - Solutions IA & Automatisation" />
+    <meta name="twitter:description" content="Transformez votre entreprise avec l'intelligence artificielle. Solutions d'automatisation, IA et No-Code." />
+    <meta name="twitter:image" content="https://archiatech.com/images/archiatech-hero.jpg" />
+    <meta name="twitter:creator" content="@ArchiAtech" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://archiatech.com/" />
+    
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="fr" href="https://archiatech.com/" />
+    <link rel="alternate" hreflang="en" href="https://archiatech.com/en/" />
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    
+    <!-- Google Analytics 4 -->
+    <!-- ⚠️ REMPLACER G-XXXXXXXXXX PAR VOTRE ID GOOGLE ANALYTICS 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX', {
+        // Configuration pour la conformité RGPD
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure',
+        'allow_google_signals': false,
+        'allow_ad_personalization_signals': false,
+        
+        // Configuration personnalisée
+        'send_page_view': true,
+        'page_title': document.title,
+        'page_location': window.location.href,
+        
+        // Paramètres de débogage (à retirer en production)
+        'debug_mode': false,
+      });
+
+      // Tracking des erreurs JavaScript
+      window.addEventListener('error', (e) => {
+        gtag('event', 'exception', {
+          'description': e.message,
+          'fatal': false,
+        });
+      });
+    </script>
+
+    <!-- Alternative : Google Tag Manager -->
+    <!-- Décommenter si vous préférez utiliser GTM au lieu de GA4 direct -->
+    <!--
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    -->
+
+    <!-- Microsoft Clarity (Optionnel - Gratuit) -->
+    <!-- ⚠️ REMPLACER PAR VOTRE ID MICROSOFT CLARITY -->
+    <!--
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "VOTRE_ID_CLARITY");
+    </script>
+    -->
+    
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ArchiAtech",
+      "url": "https://archiatech.com",
+      "logo": "https://archiatech.com/images/archiatech-logo.png",
+      "description": "Solutions d'intelligence artificielle, automatisation et transformation digitale pour les entreprises.",
+      "email": "contact@archiatech.com",
+      "telephone": "+33783829310",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "FR",
+        "addressLocality": "France"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/archiatech",
+        "https://twitter.com/archiatech"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+33-7-83-82-93-10",
+        "contactType": "Sales",
+        "email": "contact@archiatech.com",
+        "availableLanguage": ["French", "English"]
+      }
+    }
+    </script>
+    
+    <!-- Services Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "IT Consulting & AI Solutions",
+      "provider": {
+        "@type": "Organization",
+        "name": "ArchiAtech"
+      },
+      "areaServed": "FR",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services ArchiAtech",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Support & Déploiement IT",
+              "description": "Installation, configuration et déploiement de postes de travail en toute sérénité."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Conseil & Intégration IA",
+              "description": "Solutions d'intelligence artificielle appliquées à vos processus métiers."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Automatisation Workflows",
+              "description": "RPA, connecteurs, API pour optimiser vos processus."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Solutions No-Code / Low-Code",
+              "description": "Développement avec Zapier, Make, Airtable, Notion, Bubble."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Formation & Accompagnement",
+              "description": "Support continu et formation de vos équipes."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Transformation Digitale",
+              "description": "Stratégie complète d'innovation et de digitalisation."
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- WebSite Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ArchiAtech",
+      "url": "https://archiatech.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://archiatech.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- BreadcrumbList Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://archiatech.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://archiatech.com#services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contact",
+          "item": "https://archiatech.com#contact"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Theme Color for Mobile -->
+    <meta name="theme-color" content="#E60023" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  </head>
+  <body>
+    <!-- Alternative GTM (noscript) -->
+    <!--
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    -->
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
