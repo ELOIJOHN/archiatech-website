@@ -1,0 +1,181 @@
+/* ==============================================
+   BUTTONS - Système de boutons ArchiAtech
+   ============================================== */
+
+@layer components {
+  .btn-archiatech {
+    @apply px-4 py-2 sm:px-6 sm:py-2.5 md:px-6 md:py-3
+           rounded-lg sm:rounded-xl font-medium text-sm sm:text-base
+           text-white border border-[#E60023]/60 bg-[#E60023]/20
+           backdrop-blur-md transition-all duration-300
+           hover:bg-[#E60023]/40 hover:border-[#E60023]
+           hover:shadow-[0_0_15px_rgba(230,0,35,0.5)]
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E60023]/50
+           min-h-touch min-w-touch;
+  }
+
+  .btn-archiatech-outline {
+    @apply px-4 py-2 sm:px-6 sm:py-2.5 md:px-6 md:py-3
+           rounded-lg sm:rounded-xl font-medium text-sm sm:text-base
+           text-white border border-[#E60023]/40 bg-transparent
+           backdrop-blur-md transition-all duration-300
+           hover:bg-[#E60023]/20 hover:border-[#E60023]
+           hover:shadow-[0_0_10px_rgba(230,0,35,0.3)]
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E60023]/50
+           min-h-touch min-w-touch;
+  }
+
+  .btn-archiatech-ghost {
+    @apply px-4 py-2 sm:px-6 sm:py-2.5 md:px-6 md:py-3
+           rounded-lg sm:rounded-xl font-medium text-sm sm:text-base
+           text-white border border-transparent bg-white/10
+           backdrop-blur-md transition-all duration-300
+           hover:bg-white/20 hover:border-white/30
+           hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50
+           min-h-touch min-w-touch;
+  }
+
+  .btn-archiatech-sm {
+    @apply px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm rounded-md sm:rounded-lg
+           min-h-[36px] min-w-[36px];
+  }
+
+  .btn-archiatech-lg {
+    @apply px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5
+           text-base sm:text-lg md:text-xl rounded-xl sm:rounded-2xl
+           min-h-[48px] sm:min-h-[56px];
+  }
+
+  /* Boutons Contact - Responsive optimisé */
+  .btn-contact-primary {
+    background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: all 0.3s ease;
+    box-shadow:
+      0 4px 15px rgba(229, 57, 53, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 640px) {
+    .btn-contact-primary {
+      padding: 0.875rem 2rem;
+      font-size: 1rem;
+      min-height: 48px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .btn-contact-primary {
+      padding: 1rem 2.25rem;
+      min-height: 52px;
+    }
+  }
+
+  .btn-contact-primary:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 25px rgba(229, 57, 53, 0.4),
+      0 0 20px rgba(229, 57, 53, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  /* Touch devices - désactiver hover et augmenter la zone tactile */
+  @media (hover: none) and (pointer: coarse) {
+    .btn-contact-primary:hover {
+      transform: none;
+    }
+
+    .btn-contact-primary:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .btn-contact-secondary {
+    background: rgba(45, 45, 45, 0.8);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 640px) {
+    .btn-contact-secondary {
+      padding: 0.875rem 2rem;
+      font-size: 1rem;
+      min-height: 48px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .btn-contact-secondary {
+      padding: 1rem 2.25rem;
+      min-height: 52px;
+    }
+  }
+
+  .btn-contact-secondary:hover {
+    background: rgba(55, 55, 55, 0.9);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .btn-contact-secondary:hover {
+      transform: none;
+    }
+
+    .btn-contact-secondary:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .btn-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+  }
+
+  .btn-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @media (min-width: 640px) {
+    .btn-loading::after {
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+    }
+  }
+}
