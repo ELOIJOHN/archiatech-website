@@ -1,0 +1,126 @@
+/* ==============================================
+   NAVIGATION - Barre de navigation et menus
+   ============================================== */
+
+/* Menu dropdown */
+.nav-dropdown {
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(230, 0, 35, 0.1);
+  animation: navDropdownSlideIn 0.3s ease-out;
+}
+
+.nav-dropdown-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(230, 0, 35, 0.2);
+  transform: translateX(4px);
+  box-shadow: 0 4px 15px rgba(230, 0, 35, 0.1);
+}
+
+.nav-dropdown-icon {
+  background: linear-gradient(135deg, rgba(230, 0, 35, 0.15) 0%, rgba(230, 0, 35, 0.25) 100%);
+  transition: all 0.3s ease;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-icon {
+  background: linear-gradient(135deg, rgba(230, 0, 35, 0.25) 0%, rgba(230, 0, 35, 0.35) 100%);
+  transform: scale(1.05);
+}
+
+.nav-dropdown-text {
+  transition: all 0.3s ease;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-text {
+  color: #E60023;
+}
+
+.nav-dropdown-description {
+  transition: all 0.3s ease;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-description {
+  color: rgba(230, 0, 35, 0.8);
+}
+
+.nav-dropdown-arrow {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-dropdown-button:hover .nav-dropdown-arrow {
+  transform: translateY(1px);
+}
+
+.nav-dropdown-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-dropdown-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(230, 0, 35, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-dropdown-button:hover::before {
+  left: 100%;
+}
+
+.nav-dropdown-button:focus {
+  outline: 2px solid rgba(230, 0, 35, 0.5);
+  outline-offset: 2px;
+}
+
+.nav-dropdown-item:focus {
+  outline: 2px solid rgba(230, 0, 35, 0.3);
+  outline-offset: 2px;
+}
+
+/* Menu mobile */
+.mobile-nav-section {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.mobile-nav-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(230, 0, 35, 0.2);
+  transform: translateX(8px);
+}
+
+.mobile-nav-icon {
+  background: rgba(230, 0, 35, 0.15);
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-item:hover .mobile-nav-icon {
+  background: rgba(230, 0, 35, 0.25);
+  transform: scale(1.1);
+}
+
+.mobile-menu-enter {
+  animation: mobileMenuSlideIn 0.4s ease-out;
+}

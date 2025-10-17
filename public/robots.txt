@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.archiatech.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow certain paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /node_modules/
+
+# Allow important pages
+Allow: /
+Allow: /#services
+Allow: /#contact
+Allow: /#approche
+Allow: /#video-showcase
+Allow: /#mobile-showcase
+
+# Host
+Host: https://www.archiatech.com

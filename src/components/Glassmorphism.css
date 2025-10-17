@@ -1,0 +1,337 @@
+/* Animations pour l'effet glassmorphism */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes slide-up-bounce {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 100px);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -10px);
+  }
+  80% {
+    transform: translate(-50%, 5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-slide-up-bounce {
+  animation: slide-up-bounce 1s ease-out forwards;
+}
+
+/* Animations pour le menu déroulant */
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Effet de glow pour les boutons actifs */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(229, 57, 53, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(229, 57, 53, 0.8), 0 0 25px rgba(229, 57, 53, 0.4);
+  }
+}
+
+/* Amélioration du glassmorphism pour mobile */
+@media (max-width: 768px) {
+  .glassmorphism-mobile {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(8px) !important;
+  }
+  
+  .glassmorphism-mobile .text-mobile {
+    font-size: 0.875rem !important;
+  }
+  
+  .glassmorphism-mobile .title-mobile {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Effet de brillance pour les éléments glassmorphism */
+.glassmorphism-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.glassmorphism-shine:hover::before {
+  left: 100%;
+}
+
+/* Amélioration des text-shadows pour une meilleure lisibilité */
+.text-shadow-enhanced {
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 0 10px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Effet de particules flottantes (optionnel) */
+.floating-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-particles::before,
+.floating-particles::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-particles::before {
+  top: 20%;
+  left: 20%;
+  animation-delay: -2s;
+}
+
+.floating-particles::after {
+  top: 60%;
+  right: 20%;
+  animation-delay: -4s;
+}
+
+/* Animations pour la barre de navigation */
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.5s ease-out forwards;
+}
+
+/* Animation pour l'icône fusée */
+@keyframes rocket-shine {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(239, 68, 68, 1));
+  }
+}
+
+.animate-rocket-shine {
+  animation: rocket-shine 5s ease-in-out infinite;
+}
+
+/* Animation de pulsation pour l'effet glow */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Animation pour le dropdown */
+@keyframes dropdown-open {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-dropdown-open {
+  animation: dropdown-open 0.4s ease-out forwards;
+}
+
+/* Animations pour le logo corner */
+@keyframes gentle-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.6), 0 0 25px rgba(239, 68, 68, 0.3);
+  }
+}
+
+.animate-gentle-glow {
+  animation: gentle-glow 4s ease-in-out infinite;
+}
+
+@keyframes soft-shine {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.8));
+  }
+}
+
+.animate-soft-shine {
+  animation: soft-shine 6s ease-in-out infinite;
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+/* Animation pour le bouton Conseil & Intégration IA */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.4);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Animations pour la section Actualités IA */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Styles pour les articles */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hover effects pour les cartes d'actualités */
+.news-card-hover {
+  transition: all 0.3s ease;
+}
+
+.news-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,199 @@
+/* ==============================================
+   ANIMATIONS - Toutes les animations du site
+   ============================================== */
+
+/* Animations Hero Section */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  from {
+    filter: drop-shadow(0 0 25px rgba(227, 39, 39, 0.6));
+  }
+  to {
+    filter: drop-shadow(0 0 35px rgba(227, 39, 39, 0.9));
+  }
+}
+
+@keyframes redGlowPulse {
+  0% {
+    box-shadow:
+      0 0 20px rgba(230, 0, 35, 0.8),
+      0 0 40px rgba(230, 0, 35, 0.4),
+      inset 0 0 20px rgba(230, 0, 35, 0.1);
+  }
+  100% {
+    box-shadow:
+      0 0 30px rgba(230, 0, 35, 1),
+      0 0 60px rgba(230, 0, 35, 0.6),
+      inset 0 0 30px rgba(230, 0, 35, 0.2);
+  }
+}
+
+/* Classes d'animation */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.fade-in-up-delay-1 {
+  animation: fadeInUp 0.8s ease 0.2s forwards;
+  opacity: 0;
+}
+
+.fade-in-up-delay-2 {
+  animation: fadeInUp 0.8s ease 0.4s forwards;
+  opacity: 0;
+}
+
+.glow-pulse {
+  animation: glowPulse 2.5s ease-in-out infinite alternate;
+}
+
+/* Animations Modal */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animations Messages */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes messageFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
+    margin-top: 1rem;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+    margin-top: 0;
+    padding: 0;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ArchiAgent Animations */
+@keyframes archiMessageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes archiTypingPulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes archiNotificationPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(230, 0, 35, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(230, 0, 35, 0.6);
+  }
+}
+
+@keyframes archiTypingDots {
+  0%, 20% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  80%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* News Section Animations */
+@keyframes news-card-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Navigation Animations */
+@keyframes navDropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mobileMenuSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

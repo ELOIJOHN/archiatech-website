@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://www.archiatech.com/</loc>
+    <lastmod>2025-10-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.archiatech.com/images/hero-desktop.png</image:loc>
+      <image:title>ArchiAtech - Solutions IA & Automatisation</image:title>
+      <image:caption>Transformez votre entreprise avec l'intelligence artificielle et l'automatisation</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Section Services -->
+  <url>
+    <loc>https://www.archiatech.com/#services</loc>
+    <lastmod>2025-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Section Approche -->
+  <url>
+    <loc>https://www.archiatech.com/#approche</loc>
+    <lastmod>2025-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Section Contact -->
+  <url>
+    <loc>https://www.archiatech.com/#contact</loc>
+    <lastmod>2025-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Section Vidéos -->
+  <url>
+    <loc>https://www.archiatech.com/#video-showcase</loc>
+    <lastmod>2025-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Section Mobile -->
+  <url>
+    <loc>https://www.archiatech.com/#mobile-showcase</loc>
+    <lastmod>2025-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+</urlset>
