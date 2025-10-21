@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contour Lumineux Rouge - Lecteur Vidéo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: #111;
+            border-radius: 12px;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+            border: 3px solid #E60023;
+            outline: 1px solid rgba(255, 0, 0, 0.3);
+            outline-offset: 2px;
+            animation: glow 3s ease-in-out infinite;
+        }
+        .video-area {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #111 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .video-text {
+            text-align: center;
+            color: #ccc;
+        }
+        .video-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 8px;
+        }
+        .video-subtitle {
+            font-size: 16px;
+            color: #999;
+        }
+        .controls {
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 100%);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 2px solid #E60023;
+        }
+        .control-button {
+            background: #E60023;
+            border: 2px solid #ffffff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            min-width: 80px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(230, 0, 35, 0.4);
+        }
+        .control-button:hover {
+            background: #ff0000;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(230, 0, 35, 0.6);
+        }
+        .control-button.secondary {
+            background: #333;
+            border: 2px solid #666;
+            color: #ccc;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .control-button.secondary:hover {
+            background: #444;
+            border-color: #888;
+        }
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            border: 2px solid #E60023;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #E60023;
+            border-radius: 4px;
+            width: 30%;
+            box-shadow: 0 0 10px rgba(230, 0, 35, 0.5);
+        }
+        .time-display {
+            color: #E60023;
+            font-size: 14px;
+            font-family: monospace;
+            min-width: 80px;
+            text-align: center;
+            font-weight: bold;
+            background: rgba(230, 0, 35, 0.2);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 2px solid #E60023;
+        }
+        .info {
+            margin-top: 2rem;
+            text-align: center;
+            background: rgba(230, 0, 35, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #E60023;
+        }
+        @keyframes glow {
+            0% { 
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+            }
+            50% { 
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(230, 0, 35, 1), 0 0 70px rgba(230, 0, 35, 0.6);
+            }
+            100% { 
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 2rem; color: #E60023; font-size: 2.5rem;">
+            🔴 CONTOUR LUMINEUX ROUGE 🔴
+        </h1>
+        
+        <!-- Lecteur Vidéo avec Contour Lumineux -->
+        <div class="section">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">📺 LECTEUR VIDÉO AVEC CONTOUR LUMINEUX</h2>
+            <div class="video-container">
+                <div class="video-area">
+                    <div class="video-text">
+                        <div class="video-title">Démonstration ArchiAtech</div>
+                        <div class="video-subtitle">Découvrez nos solutions d'automatisation</div>
+                    </div>
+                </div>
+                
+                <!-- Barre de contrôles -->
+                <div class="controls">
+                    <button class="control-button" onclick="alert('⏸️ PAUSE')">
+                        ⏸️ Pause
+                    </button>
+                    
+                    <button class="control-button secondary" onclick="alert('🔄 REPLAY')">
+                        🔄
+                    </button>
+                    
+                    <div class="progress-bar" onclick="alert('📊 PROGRESSION')">
+                        <div class="progress-fill"></div>
+                    </div>
+                    
+                    <div class="time-display">
+                        1:23 / 3:45
+                    </div>
+                    
+                    <button class="control-button secondary" onclick="alert('🔲 PLEIN ÉCRAN')">
+                        🔲
+                    </button>
+                    
+                    <button class="control-button" onclick="alert('🔊 SON')">
+                        🔊 Son
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">✨ EFFET DE CONTOUR LUMINEUX ROUGE :</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; text-align: left;">
+                <div>
+                    <h3 style="color: #E60023;">🔴 Bordure Rouge :</h3>
+                    <ul style="color: #ccc; line-height: 1.8;">
+                        <li>✅ <strong>Épaisseur</strong> - 3px solid #E60023</li>
+                        <li>✅ <strong>Outline</strong> - 1px solid rgba(255, 0, 0, 0.3)</li>
+                        <li>✅ <strong>Offset</strong> - 2px pour effet de profondeur</li>
+                        <li>✅ <strong>Coins arrondis</strong> - 12px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #E60023;">✨ Ombre Lumineuse :</h3>
+                    <ul style="color: #ccc; line-height: 1.8;">
+                        <li>✅ <strong>Ombre principale</strong> - 0 0 30px rgba(230, 0, 35, 0.8)</li>
+                        <li>✅ <strong>Ombre externe</strong> - 0 0 50px rgba(230, 0, 35, 0.4)</li>
+                        <li>✅ <strong>Ombre de base</strong> - 0 10px 30px rgba(0, 0, 0, 0.5)</li>
+                        <li>✅ <strong>Effet 3D</strong> - Profondeur et relief</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #E60023;">🎭 Animation Dynamique :</h3>
+                    <ul style="color: #ccc; line-height: 1.8;">
+                        <li>✅ <strong>Animation</strong> - glow 3s ease-in-out infinite</li>
+                        <li>✅ <strong>Pulsation</strong> - Intensité variable de la lueur</li>
+                        <li>✅ <strong>Fluidité</strong> - Transition douce et continue</li>
+                        <li>✅ <strong>Attraction</strong> - Effet visuel captivant</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 1.2rem; color: #E60023; font-weight: bold;">
+                🎉 CONTOUR LUMINEUX ROUGE DYNAMIQUE CRÉÉ ! 🎉
+            </p>
+        </div>
+    </div>
+</body>
+</html>

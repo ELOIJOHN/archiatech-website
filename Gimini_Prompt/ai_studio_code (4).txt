@@ -1,0 +1,27 @@
+// Fichier: src/sections/ApproachSection.jsx
+
+// Ce composant React gère la section "Notre Approche" et contient le diagramme en 4 étapes.
+// J'ai créé un nouveau composant <ApproachChatbot />.
+// Intègre ce composant <ApproachChatbot /> visuellement sous le diagramme des 4 étapes, dans un conteneur qui lui donne une taille et un positionnement appropriés.
+
+// Voici la structure du composant (à adapter si différent) :
+/*
+import React from 'react';
+import ApproachChatbot from '../components/ApproachChatbot'; // Assure-toi que le chemin est correct
+
+function ApproachSection() {
+  return (
+    <section className="approach-section">
+      <h2>Notre Approche</h2>
+      {/* ... ton code existant pour le diagramme en 4 étapes ... */}
+
+      <div className="chatbot-container">
+        {/* Ici, tu vas intégrer le composant Chatbot */}
+      </div>
+    </section>
+  );
+}
+
+export default ApproachSection;
+*/
+// Fournis le code complet du composant ApproachSection avec l'intégration du <ApproachChatbot /> et un peu de CSS pour le chatbot-container.

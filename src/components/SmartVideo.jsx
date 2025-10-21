@@ -10,14 +10,12 @@ export default function SmartVideo({
   className = "",
   lazyLoad = true,
   autoQuality = true,
-  mobileOptimized = true
 }) {
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showControls, setShowControls] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showSettings, setShowSettings] = useState(false);
   const [videoQuality, setVideoQuality] = useState('auto');
@@ -117,7 +115,7 @@ export default function SmartVideo({
       const handlePause = () => setIsPlaying(false);
       const handleLoadStart = () => setIsLoading(true);
       const handleCanPlay = () => setIsLoading(false);
-      const handleError = (e) => {
+      const handleError = () => {
         setError('Erreur de chargement de la vidéo');
         setIsLoading(false);
       };

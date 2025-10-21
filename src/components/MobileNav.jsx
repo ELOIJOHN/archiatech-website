@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, Briefcase, Target, Mail, Phone, ChevronRight, Zap, Cpu } from 'lucide-react';
 
 export default function MobileNav() {

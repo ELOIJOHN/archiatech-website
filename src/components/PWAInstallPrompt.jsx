@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Download, X, Smartphone, Share, Plus } from 'lucide-react';
 
 export default function PWAInstallPrompt() {

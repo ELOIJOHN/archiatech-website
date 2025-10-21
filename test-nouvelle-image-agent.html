@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Nouvelle Image Agent IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #212529;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .title .highlight {
+            color: #E60023;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Animations pour l'agent IA */
+        @keyframes float {
+          0% { 
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% { 
+            transform: translateY(-3px) rotate(1deg);
+          }
+          100% { 
+            transform: translateY(0px) rotate(0deg);
+          }
+        }
+        
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-4px);
+          }
+          60% {
+            transform: translateY(-2px);
+          }
+        }
+        
+        @keyframes glow-pulse {
+          0% { 
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% { 
+            opacity: 0.6;
+            transform: scale(1.05);
+          }
+          100% { 
+            opacity: 0.3;
+            transform: scale(1);
+          }
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Bouton flottant avec nouvelle image */
+        .agent-button {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 2147483647;
+            background: linear-gradient(135deg, #E60023 0%, #ff0033 100%);
+            color: white;
+            box-shadow: 0 8px 32px rgba(230, 0, 35, 0.8), 0 0 0 3px rgba(255, 255, 255, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .agent-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 4px;
+            filter: brightness(1.1) contrast(1.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            background: #10B981;
+            color: white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+            animation: bounce 1s infinite;
+        }
+        
+        .glow-effect {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            opacity: 0.3;
+            background: radial-gradient(circle, rgba(230, 0, 35, 0.3) 0%, transparent 70%);
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #c3e6cb;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .professional-badge {
+            background: linear-gradient(135deg, #E60023, #ff0000);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            border: 2px solid #e9ecef;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .demo-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 20px;
+        }
+        
+        .demo-description {
+            color: #6c757d;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .agent-preview {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #E60023 0%, #ff0033 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(230, 0, 35, 0.8);
+            animation: pulse 2s infinite;
+        }
+        
+        .agent-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+            filter: brightness(1.1) contrast(1.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #E60023;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .info-title {
+            font-weight: 700;
+            color: #E60023;
+            margin-bottom: 10px;
+        }
+        
+        .info-text {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="professional-badge">🖼️ NOUVELLE IMAGE</div>
+            
+            <h1 class="title">
+                <span class="highlight">Image</span> Agent IA Mise à Jour
+            </h1>
+            
+            <p class="subtitle">
+                Votre nouvelle image PNG a été intégrée avec succès dans le composant ArchiAgent.
+            </p>
+        </div>
+        
+        <div class="success-message">
+            ✅ <strong>IMAGE MISE À JOUR !</strong> - Le composant utilise maintenant archi-agent-futuriste.png !
+        </div>
+        
+        <!-- Démonstration de la nouvelle image -->
+        <div class="demo-section">
+            <h2 class="demo-title">Prévisualisation de la Nouvelle Image</h2>
+            <p class="demo-description">
+                L'agent IA Archi avec votre nouvelle image PNG personnalisée.
+            </p>
+            
+            <div class="agent-preview">
+                <img src="archi-agent-futuriste.png" alt="Archi Agent Futuriste" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none; color: #6c757d; font-size: 0.9rem;">
+                    Image non trouvée - Assurez-vous que le fichier est dans public/images/
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-title">📁 Fichier utilisé :</div>
+                <div class="info-text">public/images/archi-agent-futuriste.png</div>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-title">🔧 Modifications apportées :</div>
+                <div class="info-text">
+                    • Bouton flottant : src changé vers .png<br>
+                    • Header du chat : src changé vers .png<br>
+                    • Animations conservées : float, pulse, bounce<br>
+                    • Filtres appliqués : brightness(1.1) contrast(1.1)
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bouton flottant de démonstration -->
+    <button class="agent-button" onclick="alert('Agent IA Archi - Image mise à jour !')">
+        <img src="archi-agent-futuriste.png" alt="Archi Agent Futuriste" class="agent-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div style="display: none; color: white; font-size: 2rem;">🤖</div>
+        <span class="notification-badge">!</span>
+        <div class="glow-effect"></div>
+    </button>
+</body>
+</html>

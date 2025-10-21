@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deux Lecteurs Vidéo avec Cadre Rouge Lumineux</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: #111;
+            border-radius: 12px;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+            border: 3px solid #E60023;
+            outline: 1px solid rgba(255, 0, 0, 0.3);
+            outline-offset: 2px;
+            animation: glow 3s ease-in-out infinite;
+        }
+        .video-area {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #111 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .video-text {
+            text-align: center;
+            color: #ccc;
+        }
+        .video-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 8px;
+        }
+        .video-subtitle {
+            font-size: 16px;
+            color: #999;
+        }
+        .thumbnail {
+            width: 100%;
+            height: 100px;
+            background: #333;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 0.75rem;
+            background-image: linear-gradient(135deg, #333 0%, #555 100%);
+        }
+        .thumbnail-container {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #E60023;
+            box-shadow: 0 0 10px rgba(230, 0, 35, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .thumbnail-container:hover {
+            background: #2a2a2a;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(230, 0, 35, 0.5);
+        }
+        .thumbnail-container.selected {
+            background: #e34040;
+            border: 2px solid #e34040;
+            box-shadow: 0 0 15px rgba(227, 64, 64, 0.6);
+        }
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .info {
+            margin-top: 2rem;
+            text-align: center;
+            background: rgba(230, 0, 35, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #E60023;
+        }
+        @keyframes glow {
+            0% { 
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+            }
+            50% { 
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(230, 0, 35, 1), 0 0 70px rgba(230, 0, 35, 0.6);
+            }
+            100% { 
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 2rem; color: #E60023; font-size: 2.5rem;">
+            🔴 DEUX LECTEURS VIDÉO AVEC CADRE ROUGE LUMINEUX 🔴
+        </h1>
+        
+        <!-- Premier Lecteur Vidéo (VideoShowcase) -->
+        <div class="section">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">📺 PREMIER LECTEUR - VideoShowcase (VeilleSection)</h2>
+            <div class="video-container">
+                <div class="video-area">
+                    <div class="video-text">
+                        <div class="video-title">Démonstration ArchiAtech</div>
+                        <div class="video-subtitle">Solutions d'automatisation et d'IA</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Miniatures -->
+            <div class="thumbnails-grid">
+                <div class="thumbnail-container selected">
+                    <div class="thumbnail">👨‍💼</div>
+                    <h3 style="font-size: 0.875rem; font-weight: 600; color: #ffffff; margin-bottom: 0.5rem; line-height: 1.3;">
+                        Support IT
+                    </h3>
+                    <div style="font-size: 0.75rem; color: #ffffff; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Support IT
+                    </div>
+                </div>
+                
+                <div class="thumbnail-container">
+                    <div class="thumbnail">👥</div>
+                    <h3 style="font-size: 0.875rem; font-weight: 600; color: #ffffff; margin-bottom: 0.5rem; line-height: 1.3;">
+                        Conseil & Intégration IA
+                    </h3>
+                    <div style="font-size: 0.75rem; color: #b0b0b0; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">
+                        IA
+                    </div>
+                </div>
+                
+                <div class="thumbnail-container">
+                    <div class="thumbnail">👩‍💻</div>
+                    <h3 style="font-size: 0.875rem; font-weight: 600; color: #ffffff; margin-bottom: 0.5rem; line-height: 1.3;">
+                        Automatisation Workflows
+                    </h3>
+                    <div style="font-size: 0.75rem; color: #b0b0b0; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Automatisation
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deuxième Lecteur Vidéo (SimpleVideoPlayer) -->
+        <div class="section">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">📺 DEUXIÈME LECTEUR - SimpleVideoPlayer (VideoSection)</h2>
+            <div class="video-container">
+                <div class="video-area">
+                    <div class="video-text">
+                        <div class="video-title">Démonstration ArchiAtech</div>
+                        <div class="video-subtitle">Découvrez nos solutions d'automatisation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">✅ CADRE ROUGE LUMINEUX SUR LES DEUX LECTEURS :</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; text-align: left;">
+                <div>
+                    <h3 style="color: #E60023;">📺 Premier Lecteur (VideoShowcase) :</h3>
+                    <ul style="color: #ccc; line-height: 1.8;">
+                        <li>✅ <strong>Bordure</strong> - 3px solid #E60023</li>
+                        <li>✅ <strong>Outline</strong> - 1px solid rgba(255, 0, 0, 0.3)</li>
+                        <li>✅ <strong>Animation</strong> - glow 3s ease-in-out infinite</li>
+                        <li>✅ <strong>Ombre lumineuse</strong> - Multi-couches</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #E60023;">📺 Deuxième Lecteur (SimpleVideoPlayer) :</h3>
+                    <ul style="color: #ccc; line-height: 1.8;">
+                        <li>✅ <strong>Bordure</strong> - 3px solid #E60023</li>
+                        <li>✅ <strong>Outline</strong> - 1px solid rgba(255, 0, 0, 0.3)</li>
+                        <li>✅ <strong>Animation</strong> - glow 3s ease-in-out infinite</li>
+                        <li>✅ <strong>Ombre lumineuse</strong> - Multi-couches</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #E60023;">🎭 Effet Visuel :</h3>
+                    <ul style="color: #ccc; line-height: 1.8;">
+                        <li>✅ <strong>Pulsation</strong> - Lueur rouge dynamique</li>
+                        <li>✅ <strong>Profondeur</strong> - Effet 3D avec double bordure</li>
+                        <li>✅ <strong>Cohérence</strong> - Même style sur les deux lecteurs</li>
+                        <li>✅ <strong>Attraction</strong> - Effet visuel captivant</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 1.2rem; color: #E60023; font-weight: bold;">
+                🎉 DEUX LECTEURS VIDÉO AVEC CADRE ROUGE LUMINEUX ! 🎉
+            </p>
+        </div>
+    </div>
+</body>
+</html>

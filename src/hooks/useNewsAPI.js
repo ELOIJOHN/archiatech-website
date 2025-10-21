@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY || 'demo-key';
+const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY || 'demo-key';
 const NEWS_API_URL = 'https://newsapi.org/v2/everything';
 
 // Configuration des sources et mots-clés pour ArchiAtech
@@ -213,7 +213,7 @@ export const useNewsAPI = (category = 'all') => {
 
   useEffect(() => {
     fetchNews(category);
-  }, [category]);
+  }, [category, fetchNews]);
 
   return {
     articles,

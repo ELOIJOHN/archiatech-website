@@ -1,0 +1,159 @@
+{
+  "channel": {
+    "id": "UCtwJ6pMNI5QndQGeJWwkvYA",
+    "name": "ArchiatechMedia",
+    "url": "https://www.youtube.com/@ArchiatechMedia",
+    "description": "Solutions d'IA et d'automatisation pour entreprises",
+    "customUrl": "@ArchiatechMedia",
+    "lastUpdated": "2024-01-20T10:00:00Z"
+  },
+  "videos": [
+    {
+      "id": "Dg3tAcyw0Us",
+      "title": "ArchiAtech - Solutions IA & Automatisation",
+      "description": "Découvrez nos solutions d'intelligence artificielle pour votre entreprise",
+      "category": "Présentation",
+      "tags": ["IA", "Automatisation", "Solutions", "Entreprise"],
+      "thumbnail": "https://img.youtube.com/vi/Dg3tAcyw0Us/maxresdefault.jpg",
+      "publishedAt": "2024-01-15T14:30:00Z",
+      "duration": "3:32",
+      "viewCount": 1200,
+      "likeCount": 45,
+      "commentCount": 12,
+      "status": "published",
+      "featured": true,
+      "priority": 1
+    },
+    {
+      "id": "EOxdOEoFRZI",
+      "title": "Automatisation No-Code avec ArchiAtech",
+      "description": "Automatisez vos processus métier sans coder une seule ligne",
+      "category": "Tutoriel",
+      "tags": ["No-Code", "Automatisation", "Tutoriel", "Processus"],
+      "thumbnail": "https://img.youtube.com/vi/EOxdOEoFRZI/maxresdefault.jpg",
+      "publishedAt": "2024-01-10T16:45:00Z",
+      "duration": "4:15",
+      "viewCount": 856,
+      "likeCount": 32,
+      "commentCount": 8,
+      "status": "published",
+      "featured": true,
+      "priority": 2
+    },
+    {
+      "id": "lO2FsJ6q8qk",
+      "title": "Témoignages Clients - ROI IA",
+      "description": "Nos clients témoignent de leurs résultats avec nos solutions IA",
+      "category": "Témoignage",
+      "tags": ["Témoignage", "Client", "ROI", "IA", "Résultats"],
+      "thumbnail": "https://img.youtube.com/vi/lO2FsJ6q8qk/maxresdefault.jpg",
+      "publishedAt": "2024-01-05T11:20:00Z",
+      "duration": "2:48",
+      "viewCount": 1500,
+      "likeCount": 67,
+      "commentCount": 15,
+      "status": "published",
+      "featured": true,
+      "priority": 3
+    },
+    {
+      "id": "abc123def456",
+      "title": "Formation IA pour Entreprises",
+      "description": "Programme de formation complet sur l'intelligence artificielle",
+      "category": "Formation",
+      "tags": ["Formation", "IA", "Entreprise", "Apprentissage"],
+      "thumbnail": "https://img.youtube.com/vi/abc123def456/maxresdefault.jpg",
+      "publishedAt": "2024-01-01T09:15:00Z",
+      "duration": "5:20",
+      "viewCount": 2100,
+      "likeCount": 89,
+      "commentCount": 23,
+      "status": "published",
+      "featured": false,
+      "priority": 4
+    },
+    {
+      "id": "xyz789uvw012",
+      "title": "Déploiement Solutions IT",
+      "description": "Guide complet pour le déploiement de solutions informatiques",
+      "category": "Guide",
+      "tags": ["IT", "Déploiement", "Solutions", "Guide"],
+      "thumbnail": "https://img.youtube.com/vi/xyz789uvw012/maxresdefault.jpg",
+      "publishedAt": "2023-12-28T13:30:00Z",
+      "duration": "6:45",
+      "viewCount": 1800,
+      "likeCount": 54,
+      "commentCount": 18,
+      "status": "published",
+      "featured": false,
+      "priority": 5
+    },
+    {
+      "id": "def456ghi789",
+      "title": "Transformation Digitale - Cas d'Usage",
+      "description": "Exemples concrets de transformation digitale réussie",
+      "category": "Cas d'Usage",
+      "tags": ["Transformation", "Digitale", "Cas d'Usage", "Exemples"],
+      "thumbnail": "https://img.youtube.com/vi/def456ghi789/maxresdefault.jpg",
+      "publishedAt": "2023-12-25T10:00:00Z",
+      "duration": "4:30",
+      "viewCount": 3200,
+      "likeCount": 156,
+      "commentCount": 42,
+      "status": "published",
+      "featured": false,
+      "priority": 6
+    }
+  ],
+  "categories": [
+    {
+      "id": "presentation",
+      "name": "Présentation",
+      "description": "Vidéos de présentation des services et solutions",
+      "color": "#E60023",
+      "icon": "🎯"
+    },
+    {
+      "id": "tutoriel",
+      "name": "Tutoriel",
+      "description": "Guides pratiques et tutoriels",
+      "color": "#2563EB",
+      "icon": "📚"
+    },
+    {
+      "id": "temoignage",
+      "name": "Témoignage",
+      "description": "Témoignages clients et retours d'expérience",
+      "color": "#059669",
+      "icon": "💬"
+    },
+    {
+      "id": "formation",
+      "name": "Formation",
+      "description": "Contenu de formation et d'apprentissage",
+      "color": "#7C3AED",
+      "icon": "🎓"
+    },
+    {
+      "id": "guide",
+      "name": "Guide",
+      "description": "Guides techniques et méthodologiques",
+      "color": "#DC2626",
+      "icon": "📖"
+    },
+    {
+      "id": "cas-usage",
+      "name": "Cas d'Usage",
+      "description": "Exemples concrets et cas d'usage",
+      "color": "#EA580C",
+      "icon": "💡"
+    }
+  ],
+  "settings": {
+    "autoSync": true,
+    "syncInterval": 3600000,
+    "maxVideos": 50,
+    "defaultThumbnail": "https://via.placeholder.com/400x225/E60023/FFFFFF?text=ArchiaTech",
+    "apiKey": "AIzaSyBca6tC9Vt4xD-M1Wu9SsdLfiMf4SSqIz8"
+  }
+}

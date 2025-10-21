@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeau Rouge avec Contour Lumineux - ArchiAtech</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .bandeau {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(230, 0, 35, 0.2);
+            border: 2px solid #E60023;
+            color: #E60023;
+            border-radius: 9999px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 15px rgba(230, 0, 35, 0.4);
+            transition: all 0.3s ease;
+        }
+        .bandeau:hover {
+            box-shadow: 0 0 20px rgba(230, 0, 35, 0.6);
+            transform: translateY(-2px);
+        }
+        .bandeau-mobile {
+            font-size: 1rem;
+        }
+        .rocket-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.1);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .before, .after {
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .before {
+            background: #f8f9fa;
+            border: 2px solid #e5e7eb;
+        }
+        .after {
+            background: linear-gradient(135deg, #fff 0%, #fef2f2 100%);
+            border: 2px solid #E60023;
+            box-shadow: 0 0 15px rgba(230, 0, 35, 0.2);
+        }
+        .bandeau-old {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(230, 0, 35, 0.2);
+            border: 1px solid rgba(230, 0, 35, 0.4);
+            color: #E60023;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .info {
+            margin-top: 2rem;
+            text-align: center;
+            background: rgba(230, 0, 35, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #E60023;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 2rem; color: #E60023; font-size: 2.5rem;">
+            🔴 BANDEAU ROUGE AMÉLIORÉ 🔴
+        </h1>
+        
+        <!-- Bandeau Principal -->
+        <div class="section">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">📢 BANDEAU PRINCIPAL</h2>
+            <div style="text-align: center;">
+                <div class="bandeau">
+                    <div class="rocket-icon">🚀</div>
+                    <span>ArchiAtech – Bâtissez l'avenir de votre entreprise avec l'IA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Version Mobile -->
+        <div class="section">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">📱 VERSION MOBILE</h2>
+            <div style="text-align: center;">
+                <div class="bandeau bandeau-mobile">
+                    <div class="rocket-icon">🚀</div>
+                    <span>ArchiAtech – IA & Automatisation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparaison Avant/Après -->
+        <div class="section">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">📊 COMPARAISON AVANT/APRÈS</h2>
+            <div class="comparison">
+                <div class="before">
+                    <h3 style="color: #666; margin-bottom: 1rem;">❌ AVANT</h3>
+                    <div class="bandeau-old">
+                        <div style="width: 1rem; height: 1rem;">🚀</div>
+                        <span>ArchiAtech – Bâtissez l'avenir de votre entreprise avec l'IA</span>
+                    </div>
+                    <ul style="text-align: left; color: #666; font-size: 0.875rem; line-height: 1.6;">
+                        <li>• Texte petit (0.875rem)</li>
+                        <li>• Bordure fine (1px)</li>
+                        <li>• Pas d'ombre lumineuse</li>
+                        <li>• Icône petite (1rem)</li>
+                    </ul>
+                </div>
+                
+                <div class="after">
+                    <h3 style="color: #E60023; margin-bottom: 1rem;">✅ APRÈS</h3>
+                    <div class="bandeau">
+                        <div class="rocket-icon">🚀</div>
+                        <span>ArchiAtech – Bâtissez l'avenir de votre entreprise avec l'IA</span>
+                    </div>
+                    <ul style="text-align: left; color: #E60023; font-size: 0.875rem; line-height: 1.6;">
+                        <li>• Texte agrandi (1.125rem)</li>
+                        <li>• Bordure épaisse (2px)</li>
+                        <li>• Ombre rouge lumineuse</li>
+                        <li>• Icône agrandie (1.5rem)</li>
+                        <li>• Effet hover interactif</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">✅ AMÉLIORATIONS APPORTÉES :</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; text-align: left;">
+                <div>
+                    <h3 style="color: #E60023;">📏 Taille du Texte :</h3>
+                    <ul style="color: #333; line-height: 1.8;">
+                        <li>✅ <strong>Mobile</strong> - 0.875rem → 1rem</li>
+                        <li>✅ <strong>XS</strong> - 1rem → 1.125rem</li>
+                        <li>✅ <strong>SM+</strong> - 1.125rem → 1.25rem</li>
+                        <li>✅ <strong>Meilleure lisibilité</strong></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #E60023;">🔴 Contour Lumineux :</h3>
+                    <ul style="color: #333; line-height: 1.8;">
+                        <li>✅ <strong>Bordure</strong> - 1px → 2px solid #E60023</li>
+                        <li>✅ <strong>Ombre</strong> - 0 0 15px rgba(230,0,35,0.4)</li>
+                        <li>✅ <strong>Hover</strong> - 0 0 20px rgba(230,0,35,0.6)</li>
+                        <li>✅ <strong>Transition</strong> - 300ms fluide</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #E60023;">🚀 Icône Fusée :</h3>
+                    <ul style="color: #333; line-height: 1.8;">
+                        <li>✅ <strong>Mobile</strong> - 1rem → 1.5rem</li>
+                        <li>✅ <strong>XS</strong> - 1.25rem → 1.5rem</li>
+                        <li>✅ <strong>SM+</strong> - 1.25rem → 1.5rem</li>
+                        <li>✅ <strong>Proportionnel</strong> au texte</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 1.2rem; color: #E60023; font-weight: bold;">
+                🎉 BANDEAU ROUGE AVEC CONTOUR LUMINEUX ET TEXTE AGRANDI ! 🎉
+            </p>
+        </div>
+    </div>
+</body>
+</html>

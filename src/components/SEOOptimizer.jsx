@@ -1,3 +1,4 @@
+/* global gtag */
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
@@ -81,7 +82,7 @@ const SEOOptimizer = () => {
         }
       },
       {
-        "@type": "Question",
+        "@type": "Question", 
         "name": "Proposez-vous une garantie sur vos solutions ?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -125,7 +126,7 @@ const SEOOptimizer = () => {
       const scripts = document.querySelectorAll('[id^="structured-data-"]');
       scripts.forEach(script => script.remove());
     };
-  }, []);
+  }, [faqData, structuredData]);
 
   return (
     <Helmet>

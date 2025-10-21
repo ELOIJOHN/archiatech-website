@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Formulaire ArchiAtech</title>
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid rgba(229, 57, 53, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #E53935;
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .btn {
+            background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(229, 57, 53, 0.4);
+        }
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .message {
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            animation: messageSlideIn 0.3s ease-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .success {
+            background: rgba(76, 175, 80, 0.15);
+            border: 1px solid rgba(76, 175, 80, 0.4);
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+        .error {
+            background: rgba(229, 57, 53, 0.15);
+            border: 1px solid rgba(229, 57, 53, 0.4);
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+        .message-content {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        .message-icon {
+            font-size: 1.2rem;
+            margin-right: 0.75rem;
+        }
+        .message-text {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .message-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+        .message-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+            transform: scale(1.1);
+        }
+        .success .message-close:hover {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: rgba(76, 175, 80, 0.6);
+        }
+        .error .message-close:hover {
+            background: rgba(229, 57, 53, 0.3);
+            border-color: rgba(229, 57, 53, 0.6);
+        }
+        .message.fade-out {
+            animation: messageFadeOut 0.3s ease-in forwards;
+        }
+        @keyframes messageSlideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes messageFadeOut {
+            from { opacity: 1; transform: translateY(0); max-height: 100px; margin-top: 1rem; }
+            to { opacity: 0; transform: translateY(-10px); max-height: 0; margin-top: 0; padding: 0; }
+        }
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #E53935;">🚀 Test Formulaire ArchiAtech</h2>
+        
+        <form id="contactForm">
+            <!-- Honeypot -->
+            <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+            
+            <div class="form-group">
+                <label for="fullName">Nom complet *</label>
+                <input type="text" id="fullName" name="fullName" required placeholder="Jane Doe">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email professionnel *</label>
+                <input type="email" id="email" name="email" required placeholder="jane@entreprise.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="company">Société</label>
+                <input type="text" id="company" name="company" placeholder="ArchiAtech">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" rows="4" required placeholder="Décrivez brièvement vos besoins..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn" id="submitBtn">Envoyer la demande</button>
+        </form>
+        
+        <div id="messageContainer"></div>
+    </div>
+
+    <script>
+        // Fonction pour créer et gérer un message avec fermeture
+        function showMessage(type, text) {
+            const messageContainer = document.getElementById('messageContainer');
+            
+            // Supprimer tout message existant
+            messageContainer.innerHTML = '';
+            
+            const icon = type === 'success' ? '✅' : '❌';
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <span class="message-icon">${icon}</span>
+                    <span class="message-text">${text}</span>
+                </div>
+                <button class="message-close" onclick="closeMessage(this)" aria-label="Fermer le message">✖</button>
+            `;
+            
+            messageContainer.appendChild(messageDiv);
+            
+            // Disparition automatique après 5 secondes
+            setTimeout(() => {
+                closeMessage(messageDiv.querySelector('.message-close'), false); // false = fermeture automatique
+            }, 5000);
+        }
+        
+        // Fonction pour fermer un message avec animation
+        function closeMessage(closeButton, isManualClose = true) {
+            const messageDiv = closeButton.closest('.message');
+            const messageType = messageDiv.classList.contains('error') ? 'error' : 'success';
+            
+            messageDiv.classList.add('fade-out');
+            
+            setTimeout(() => {
+                messageDiv.remove();
+                
+                // Si fermeture manuelle d'un message d'erreur, réinitialiser le formulaire
+                if (isManualClose && messageType === 'error') {
+                    document.getElementById('contactForm').reset();
+                }
+            }, 300); // Durée de l'animation
+        }
+        
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const messageContainer = document.getElementById('messageContainer');
+            
+            // Supprimer tout message existant
+            messageContainer.innerHTML = '';
+            
+            // Désactiver le bouton et afficher le chargement
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
+            
+            try {
+                const formData = new FormData(this);
+                
+                const response = await fetch('/send-mail.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showMessage('success', result.message);
+                    this.reset(); // Réinitialiser le formulaire
+                } else {
+                    showMessage('error', result.message);
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                showMessage('error', 'Une erreur est survenue, veuillez réessayer.');
+            } finally {
+                // Réactiver le bouton
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer la demande';
+            }
+        });
+    </script>
+</body>
+</html>

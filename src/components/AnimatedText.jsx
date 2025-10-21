@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const AnimatedText = ({ 
   text, 
@@ -11,7 +11,7 @@ const AnimatedText = ({
 }) => {
   const container = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
+    visible: () => ({
       opacity: 1,
       transition: { 
         staggerChildren: stagger,
@@ -47,37 +47,37 @@ const AnimatedText = ({
     switch (type) {
       case 'letters':
         return text.split('').map((char, index) => (
-          <motion.span
+          <Motion.span
             key={index}
             variants={child}
             className="inline-block"
             style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
           >
             {char}
-          </motion.span>
+          </Motion.span>
         ));
       case 'lines':
         return text.split('\n').map((line, index) => (
-          <motion.div key={index} variants={child}>
+          <Motion.div key={index} variants={child}>
             {line}
-          </motion.div>
+          </Motion.div>
         ));
       case 'words':
       default:
         return text.split(' ').map((word, index) => (
-          <motion.span
+          <Motion.span
             key={index}
             variants={child}
             className="inline-block mr-2"
           >
             {word}
-          </motion.span>
+          </Motion.span>
         ));
     }
   };
 
   return (
-    <motion.div
+    <Motion.div
       className={className}
       variants={container}
       initial="hidden"
@@ -85,7 +85,7 @@ const AnimatedText = ({
       viewport={{ once: true, margin: "-100px" }}
     >
       {splitText()}
-    </motion.div>
+    </Motion.div>
   );
 };
 

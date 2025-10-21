@@ -17,9 +17,9 @@ export default function ScrollVideo({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showSettings, setShowSettings] = useState(false);
-  const [isInView, setIsInView] = useState(false);
   const [videoQuality, setVideoQuality] = useState(quality);
   
   const videoRef = useRef(null);

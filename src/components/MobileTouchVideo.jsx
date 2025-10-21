@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX, Maximize, RotateCcw, Loader, X } from 'lucide-react';
 
 export default function MobileTouchVideo({
@@ -26,10 +25,7 @@ export default function MobileTouchVideo({
   const touchStartRef = useRef({ x: 0, y: 0, time: 0 });
 
   // Valeurs pour les gestures
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const scale = useMotionValue(1);
-  const rotate = useTransform(x, [-100, 100], [-5, 5]);
+
 
   // Gestion des événements vidéo
   useEffect(() => {

@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, X, ChevronLeft, ChevronRight, Eye, Clock, Heart, Share2, Download } from 'lucide-react';
 
 const InteractiveVideoGallery = ({ 

@@ -268,7 +268,6 @@ export const RippleButton = ({
 export const GlitchText = ({ 
   text, 
   className = "",
-  glitchIntensity = 0.1
 }) => {
   const [isGlitching, setIsGlitching] = useState(false);
 

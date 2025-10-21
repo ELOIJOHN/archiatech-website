@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Agent IA Futuriste</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #212529;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .title .highlight {
+            color: #E60023;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Animations pour l'agent IA futuriste */
+        @keyframes float {
+          0% { 
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% { 
+            transform: translateY(-3px) rotate(1deg);
+          }
+          100% { 
+            transform: translateY(0px) rotate(0deg);
+          }
+        }
+        
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-4px);
+          }
+          60% {
+            transform: translateY(-2px);
+          }
+        }
+        
+        @keyframes glow-pulse {
+          0% { 
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% { 
+            opacity: 0.6;
+            transform: scale(1.05);
+          }
+          100% { 
+            opacity: 0.3;
+            transform: scale(1);
+          }
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Bouton flottant avec image futuriste */
+        .agent-button {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 2147483647;
+            background: linear-gradient(135deg, #E60023 0%, #ff0033 100%);
+            color: white;
+            box-shadow: 0 8px 32px rgba(230, 0, 35, 0.8), 0 0 0 3px rgba(255, 255, 255, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .agent-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 4px;
+            filter: brightness(1.1) contrast(1.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            background: #10B981;
+            color: white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+            animation: bounce 1s infinite;
+        }
+        
+        .glow-effect {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            opacity: 0.3;
+            background: radial-gradient(circle, rgba(230, 0, 35, 0.3) 0%, transparent 70%);
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #c3e6cb;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .professional-badge {
+            background: linear-gradient(135deg, #E60023, #ff0000);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-box {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px solid #e9ecef;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #E60023;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #E60023;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            border: 2px solid #e9ecef;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .demo-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 20px;
+        }
+        
+        .demo-description {
+            color: #6c757d;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .agent-preview {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #E60023 0%, #ff0033 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(230, 0, 35, 0.8);
+            animation: pulse 2s infinite;
+        }
+        
+        .agent-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+            filter: brightness(1.1) contrast(1.1);
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="professional-badge">🤖 AGENT IA FUTURISTE</div>
+            
+            <h1 class="title">
+                <span class="highlight">Archi</span> - Agent IA Futuriste
+            </h1>
+            
+            <p class="subtitle">
+                Un agent IA avec une apparence futuriste et technologique, vêtu d'un costume professionnel et tenant un hologramme de visage humain.
+            </p>
+        </div>
+        
+        <div class="success-message">
+            ✅ <strong>AGENT IA FUTURISTE CRÉÉ !</strong> - Image futuriste intégrée avec animations et effets visuels !
+        </div>
+        
+        <!-- Démonstration de l'agent -->
+        <div class="demo-section">
+            <h2 class="demo-title">Prévisualisation de l'Agent Archi</h2>
+            <p class="demo-description">
+                L'agent IA Archi avec son apparence futuriste, son costume professionnel et son hologramme de visage humain.
+            </p>
+            
+            <div class="agent-preview">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImJhY2tncm91bmRHcmFkaWVudCIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwMDAwMDtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWExYTFhO3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icm9ib3RHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmZmZmZmY7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2YwZjBmMDtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InN1aXRHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmZmZmZmY7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2Y4ZjhmODtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJlZEFjY2VudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNFNjAwMjM7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2ZmMDAzMztzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImhvbG9ncmFtR3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDBiZmZmO3N0b3Atb3BhY2l0eTowLjgiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA4MGZmO3N0b3Atb3BhY2l0eTowLjYiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwNjZjYztzdG9wLW9wYWNpdHk6MC40IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9Imdsb3ciIHg9Ii01MCUiIHk9Ii01MCUiIHdpZHRoPSIyMDAlIiBoZWlnaHQ9IjIwMCUiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIzIiByZXN1bHQ9ImNvbG9yZWRCbHVyIi8+CiAgICAgIDxmZU1lcmdlPiAKICAgICAgICA8ZmVNZXJnZU5vZGUgaW49ImNvbG9yZWRCbHVyIi8+CiAgICAgICAgPGZlTWVyZ2VOb2RlIGluPSJTb3VyY2VHcmFwaGljIi8+CiAgICAgIDwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogICAgPGZpbHRlciBpZD0icGFydGljbGVHbG93IiB4PSItMTAwJSIgeT0iLTEwMCUiIHdpZHRoPSIzMDAlIiBoZWlnaHQ9IjMwMCUiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIyIiByZXN1bHQ9ImNvbG9yZWRCbHVyIi8+CiAgICAgIDxmZU1lcmdlPiAKICAgICAgICA8ZmVNZXJnZU5vZGUgaW49ImNvbG9yZWRCbHVyIi8+CiAgICAgICAgPGZlTWVyZ2VOb2RlIGluPSJTb3VyY2VHcmFwaGljIi8+CiAgICAgIDwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8IS0tIEFycmnDqHJlLXBsYW4gYXZlYyBwYXJ0aWN1bGVzIGx1bWluZXVzZXMgLS0+CiAgPHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjYmFja2dyb3VuZEdyYWRpZW50KSIvPgogIDwhLS0gUGFydGljdWxlcyByb3VnZXMgZW4gc3BpcmFsZSAtLT4KICA8ZyBmaWx0ZXI9InVybCgjcGFydGljbGVHbG93KSI+CiAgICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEiIGZpbGw9IiNFNjAwMjMiIG9wYWNpdHk9IjAuOCI+CiAgICAgIDxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0icm90YXRlIiB2YWx1ZXM9IjAgMTAwIDEwMDszNjAgMTAwIDEwMCIgZHVyPSI4cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxIiBmaWxsPSIjZmYwMDMzIiBvcGFjaXR5PSIwLjYiPgogICAgICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgdmFsdWVzPSIwIDEwMCAxMDA7MzYwIDEwMCAxMDAiIGR1cj0iNnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2NpcmNsZT4KICAgIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iMSIgZmlsbD0iI0U2MDAyMyIgb3BhY2l0eT0iMC40Ij4KICAgICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHZhbHVlcz0iMCAxMDAgMTAwOzM2MCAxMDAgMTAwIiBkdXI9IjEwcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxIiBmaWxsPSIjZmYwMDMzIiBvcGFjaXR5PSIwLjUiPgogICAgICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgdmFsdWVzPSIwIDEwMCAxMDA7MzYwIDEwMCAxMDAiIGR1cj0iN3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2NpcmNsZT4KICA8L2c+CiAgPCEtLSBQYXJ0aWN1bGVzIGRpc3BlcnPDqWVzIC0tPgogIDxnIG9wYWNpdHk9IjAuNyI+CiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIwLjUiIGZpbGw9IiNFNjAwMjMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjAuMzszOzAuMyIgZHVyPSIycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMTUwIiBjeT0iODAiIHI9IjAuNSIgZmlsbD0iI2ZmMDAzMyI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMC4zOzE7MC4zIiBkdXI9IjIuNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2NpcmNsZT4KICAgIDxjaXJjbGUgY3g9IjgwIiBjeT0iMTUwIiByPSIwLjUiIGZpbGw9IiNFNjAwMjMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjAuMzszOzAuMyIgZHVyPSIxLjhzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9jaXJjbGU+CiAgICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI0MCIgcj0iMC41IiBmaWxsPSIjZmYwMDMzIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIwLjM7MzswLjMiIGR1cj0iM3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2NpcmNsZT4KICA8L2c+CiAgPCEtLSBDb3JwcyBkdSByb2JvdCAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDAsIDEwMCkiPgogICAgPCEtLSBUw6p0ZSAtLT4KICAgIDxlbGxpcHNlIGN4PSIwIiBjeT0iLTMwIiByeD0iMjUiIHJ5PSIzMCIgZmlsbD0idXJsKCNyb2JvdEdyYWRpZW50KSIgc3Ryb2tlPSIjRTYwMDIzIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDwhLS0gw6ljb3V0ZXVycy9jYXB0ZXVycyAtLT4KICAgIDxlbGxpcHNlIGN4PSItMjAiIGN5PSItMjUiIHJ4PSI4IiByeT0iMTIiIGZpbGw9IiMwMDAwMDAiIG9wYWNpdHk9IjAuOCIvPgogICAgPGVsbGlwc2UgY3g9IjIwIiBjeT0iLTI1IiByeD0iOCIgcnk9IjEyIiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjgiLz4KICAgIDwhLS0gQ29ycHMgcHJpbmNpcGFsIC0tPgogICAgPHJlY3QgeD0iLTIwIiB5PSItNSIgd2lkdGg9IjQwIiBoZWlnaHQ9IjYwIiByeD0iNSIgZmlsbD0idXJsKCNzdWl0R3JhZGllbnQpIiBzdHJva2U9IiNFNjAwMjMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPCEtLSBDb2wgZXQgcmV2ZXJzIHJvdWdlcyAtLT4KICAgIDxyZWN0IHg9Ii0xOCIgeT0iLTUiIHdpZHRoPSIzNiIgaGVpZ2h0PSI4IiBmaWxsPSJ1cmwoI3JlZEFjY2VudCkiLz4KICAgIDxyZWN0IHg9Ii0yMCIgeT0iLTMiIHdpZHRoPSI4IiBoZWlnaHQ9IjEyIiBmaWxsPSJ1cmwoI3JlZEFjY2VudCkiLz4KICAgIDxyZWN0IHg9IjEyIiB5PSItMyIgd2lkdGg9IjgiIGhlaWdodD0iMTIiIGZpbGw9InVybCgjcmVkQWNjZW50KSIvPgogICAgPCEtLSBDcmF2YXRlIC0tPgogICAgPHJlY3QgeD0iLTMiIHk9Ii01IiB3aWR0aD0iNiIgaGVpZ2h0PSIyNSIgZmlsbD0idXJsKCNyZWRBY2NlbnQpIi8+CiAgICA8cG9seWdvbiBwb2ludHM9Ii0zLC01IDMsLTUgMCwwIiBmaWxsPSJ1cmwoI3JlZEFjY2VudCkiLz4KICAgIDwhLS0gUG9jaGV0dGUgLS0+CiAgICA8cmVjdCB4PSI4IiB5PSI1IiB3aWR0aD0iOCIgaGVpZ2h0PSIxMiIgZmlsbD0idXJsKCNyZWRBY2NlbnQpIi8+CiAgICA8IS0tIEJvdXRvbnMgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMTAiIHI9IjIiIGZpbGw9IiNmZmZmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjAiIGN5PSIyMCIgcj0iMiIgZmlsbD0iI2ZmZmZmZiIvPgogICAgPGNpcmNsZSBjeD0iMCIgY3k9IjMwIiByPSIyIiBmaWxsPSIjZmZmZmZmIi8+CiAgICA8IS0tIEJyYXMgZ2F1Y2hlICh0ZW5kdSkgLS0+CiAgICA8ZWxsaXBzZSBjeD0iLTM1IiBjeT0iNSIgcng9IjgiIHJ5PSIxNSIgZmlsbD0idXJsKCNyb2JvdEdyYWRpZW50KSIgc3Ryb2tlPSIjRTYwMDIzIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxlbGxpcHNlIGN4PSItNDUiIGN5PSI1IiByeD0iNiIgcnk9IjEyIiBmaWxsPSJ1cmwoI3JvYm90R3JhZGllbnQpIiBzdHJva2U9IiNFNjAwMjMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPCEtLSBNYWluIGdhdWNoZSBhdmVjIGhvbG9ncmFtbWUgLS0+CiAgICA8ZWxsaXBzZSBjeD0iLTUwIiBjeT0iNSIgcng9IjgiIHJ5PSI2IiBmaWxsPSJ1cmwoI3JvYm90R3JhZGllbnQpIiBzdHJva2U9IiNFNjAwMjMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPCEtLSBIb2xvZ3JhbW1lIGR1IHZpc2FnZSAtLT4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01MCwgNSkiPgogICAgICA8ZWxsaXBzZSBjeD0iMCIgY3k9IjAiIHJ4PSIxMiIgcnk9IjE1IiBmaWxsPSJ1cmwoI2hvbG9ncmFtR3JhZGllbnQpIiBvcGFjaXR5PSIwLjciIGZpbHRlcj0idXJsKCNnbG93KSIvPgogICAgICA8ZWxsaXBzZSBjeD0iLTMiIGN5PSItMyIgcng9IjIiIHJ5PSIzIiBmaWxsPSIjMDBiZmZmIiBvcGFjaXR5PSIwLjkiLz4KICAgICAgPGVsbGlwc2UgY3g9IjMiIGN5PSItMyIgcng9IjIiIHJ5PSIzIiBmaWxsPSIjMDBiZmZmIiBvcGFjaXR5PSIwLjkiLz4KICAgICAgPHBhdGggZD0iTSAtMiwyIFEgMCw0IDIsMiIgc3Ryb2tlPSIjMDBiZmZmIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuOSIvPgogICAgICA8IS0tIMOpbMOpbWVudHMgZ3JhcGhpcXVlcyBhdXRvdXIgZHUgdmlzYWdlIC0tPgogICAgICA8cmVjdCB4PSItOCIgeT0iLTgiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMGJmZmYiIG9wYWNpdHk9IjAuNiIvPgogICAgICA8cmVjdCB4PSI2IiB5PSItOCIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iIzAwYmZmZiIgb3BhY2l0eT0iMC42Ii8+CiAgICAgIDxyZWN0IHg9Ii04IiB5PSI2IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSIjMDBiZmZmIiBvcGFjaXR5PSIwLjYiLz4KICAgICAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iIzAwYmZmZiIgb3BhY2l0eT0iMC42Ii8+CiAgICAgIDwhLS0gTGlnbmVzIGRlIGRvbm7DqWVzIC0tPgogICAgICA8bGluZSB4MT0iLTYiIHkxPSItNiIgeDI9IjYiIHkyPSItNiIgc3Ryb2tlPSIjMDBiZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC41Ii8+CiAgICAgIDxsaW5lIHgxPSItNiIgeTE9IjYiIHgyPSI2IiB5Mj0iNiIgc3Ryb2tlPSIjMDBiZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC41Ii8+CiAgICA8L2c+CiAgICA8IS0tIEJyYXMgZHJvaXQgLS0+CiAgICA8ZWxsaXBzZSBjeD0iMzUiIGN5PSI1IiByeD0iOCIgcnk9IjE1IiBmaWxsPSJ1cmwoI3JvYm90R3JhZGllbnQpIiBzdHJva2U9IiNFNjAwMjMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPGVsbGlwc2UgY3g9IjQ1IiBjeT0iNSIgcng9IjYiIHJ5PSIxMiIgZmlsbD0idXJsKCNyb2JvdEdyYWRpZW50KSIgc3Ryb2tlPSIjRTYwMDIzIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxlbGxpcHNlIGN4PSI1MCIgY3k9IjUiIHJ4PSI4IiByeT0iNiIgZmlsbD0idXJsKCNyb2JvdEdyYWRpZW50KSIgc3Ryb2tlPSIjRTYwMDIzIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDwhLS0gSmFtYmVzIC0tPgogICAgPHJlY3QgeD0iLTE1IiB5PSI1NSIgd2lkdGg9IjEyIiBoZWlnaHQ9IjI1IiByeD0iNiIgZmlsbD0idXJsKCNyb2JvdEdyYWRpZW50KSIgc3Ryb2tlPSIjRTYwMDIzIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxyZWN0IHg9IjMiIHk9IjU1IiB3aWR0aD0iMTIiIGhlaWdodD0iMjUiIHJ4PSI2IiBmaWxsPSJ1cmwoI3JvYm90R3JhZGllbnQpIiBzdHJva2U9IiNFNjAwMjMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPCEtLSBQaWVkcyAtLT4KICAgIDxlbGxpcHNlIGN4PSItOSIgY3k9Ijg1IiByeD0iOCIgcnk9IjUiIGZpbGw9InVybCgjcm9ib3RHcmFkaWVudCkiIHN0cm9rZT0iI0U2MDAyMyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8ZWxsaXBzZSBjeD0iOSIgY3k9Ijg1IiByeD0iOCIgcnk9IjUiIGZpbGw9InVybCgjcm9ib3RHcmFkaWVudCkiIHN0cm9rZT0iI0U2MDAyMyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPC9nPgogIDwhLS0gTHVldXIgYmxldWUgZGVycsOocmUgbCdob2xvZ3JhbW1lIC0tPgogIDxlbGxpcHNlIGN4PSI1MCIgY3k9IjEwNSIgcng9IjIwIiByeT0iMjUiIGZpbGw9IiMwMGJmZmYiIG9wYWNpdHk9IjAuMiIgZmlsdGVyPSJ1cmwoI2dsb3cpIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMC4xOzAuMzswLjEiIGR1cj0iM3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgPC9lbGxpcHNlPgogIDwhLS0gQ2FkcmUgY2lyY3VsYWlyZSBibGFuYyAtLT4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9Ijk1IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iNCIgb3BhY2l0eT0iMC45Ii8+Cjwvc3ZnPgo=" alt="Archi Agent Futuriste">
+            </div>
+            
+            <p style="color: #6c757d; font-size: 1rem;">
+                <strong>Caractéristiques :</strong> Robot humanoïde blanc, costume professionnel rouge et blanc, hologramme de visage humain, particules lumineuses animées
+            </p>
+        </div>
+        
+        <!-- Fonctionnalités -->
+        <div class="features">
+            <div class="feature-box">
+                <div class="feature-icon">🤖</div>
+                <h3 class="feature-title">Design Futuriste</h3>
+                <p class="feature-description">
+                    Apparence humanoïde avec surface blanche lisse, écouteurs/capteurs noirs, et design technologique avancé.
+                </p>
+            </div>
+            
+            <div class="feature-box">
+                <div class="feature-icon">👔</div>
+                <h3 class="feature-title">Costume Professionnel</h3>
+                <p class="feature-description">
+                    Costume deux pièces blanc avec col et revers rouges, cravate rouge, pochette rouge, et boutons blancs.
+                </p>
+            </div>
+            
+            <div class="feature-box">
+                <div class="feature-icon">👁️</div>
+                <h3 class="feature-title">Hologramme Interactif</h3>
+                <p class="feature-description">
+                    Projection holographique d'un visage humain dans la paume, avec éléments graphiques et lueur bleue.
+                </p>
+            </div>
+            
+            <div class="feature-box">
+                <div class="feature-icon">✨</div>
+                <h3 class="feature-title">Effets Visuels</h3>
+                <p class="feature-description">
+                    Particules rouges lumineuses en spirale, animations fluides, et effets de lueur pour une ambiance futuriste.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bouton flottant de démonstration -->
+    <button class="agent-button" onclick="alert('Agent IA Archi - Prêt à vous aider !')">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImJhY2tncm91bmRHcmFkaWVudCIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwMDAwMDtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWExYTFhO3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0icm9ib3RHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmZmZmZmY7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2YwZjBmMDtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InN1aXRHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmZmZmZmY7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2Y4ZjhmODtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJlZEFjY2VudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNFNjAwMjM7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2ZmMDAzMztzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImhvbG9ncmFtR3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDBiZmZmO3N0b3Atb3BhY2l0eTowLjgiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA4MGZmO3N0b3Atb3BhY2l0eTowLjYiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzAwNjZjYztzdG9wLW9wYWNpdHk6MC40IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9Imdsb3ciIHg9Ii01MCUiIHk9Ii01MCUiIHdpZHRoPSIyMDAlIiBoZWlnaHQ9IjIwMCUiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIzIiByZXN1bHQ9ImNvbG9yZWRCbHVyIi8+CiAgICAgIDxmZU1lcmdlPiAKICAgICAgICA8ZmVNZXJnZU5vZGUgaW49ImNvbG9yZWRCbHVyIi8+CiAgICAgICAgPGZlTWVyZ2VOb2RlIGluPSJTb3VyY2VHcmFwaGljIi8+CiAgICAgIDwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogICAgPGZpbHRlciBpZD0icGFydGljbGVHbG93IiB4PSItMTAwJSIgeT0iLTEwMCUiIHdpZHRoPSIzMDAlIiBoZWlnaHQ9IjMwMCUiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIyIiByZXN1bHQ9ImNvbG9yZWRCbHVyIi8+CiAgICAgIDxmZU1lcmdlPiAKICAgICAgICA8ZmVNZXJnZU5vZGUgaW49ImNvbG9yZWRCbHVyIi8+CiAgICAgICAgPGZlTWVyZ2VOb2RlIGluPSJTb3VyY2VHcmFwaGljIi8+CiAgICAgIDwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8IS0tIEFycmnDqHJlLXBsYW4gYXZlYyBwYXJ0aWN1bGVzIGx1bWluZXVzZXMgLS0+CiAgPHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjYmFja2dyb3VuZEdyYWRpZW50KSIvPgogIDwhLS0gUGFydGljdWxlcyByb3VnZXMgZW4gc3BpcmFsZSAtLT4KICA8ZyBmaWx0ZXI9InVybCgjcGFydGljbGVHbG93KSI+CiAgICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEiIGZpbGw9IiNFNjAwMjMiIG9wYWNpdHk9IjAuOCI+CiAgICAgIDxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0icm90YXRlIiB2YWx1ZXM9IjAgMTAwIDEwMDszNjAgMTAwIDEwMCIgZHVyPSI4cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxIiBmaWxsPSIjZmYwMDMzIiBvcGFjaXR5PSIwLjYiPgogICAgICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgdmFsdWVzPSIwIDEwMCAxMDA7MzYwIDEwMCAxMDAiIGR1cj0iNnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2NpcmNsZT4KICAgIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iMSIgZmlsbD0iI0U2MDAyMyIgb3BhY2l0eT0iMC40Ij4KICAgICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHZhbHVlcz0iMCAxMDAgMTAwOzM2MCAxMDAgMTAwIiBkdXI9IjEwcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxIiBmaWxsPSIjZmYwMDMzIiBvcGFjaXR5PSIwLjUiPgogICAgICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgdmFsdWVzPSIwIDEwMCAxMDA7MzYwIDEwMCAxMDAiIGR1cj0iN3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2NpcmNsZT4KICA8L2c+CiAgPCEtLSBQYXJ0aWN1bGVzIGRpc3BlcnPDqWVzIC0tPgogIDxnIG9wYWNpdHk9IjAuNyI+CiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIwLjUiIGZpbGw9IiNFNjAwMjMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjAuMzszOzAuMyIgZHVyPSIycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMTUwIiBjeT0iODAiIHI9IjAuNSIgZmlsbD0iI2ZmMDAzMyI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMC4zOzE7MC4zIiBkdXI9IjIuNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2NpcmNsZT4KICAgIDxjaXJjbGUgY3g9IjgwIiBjeT0iMTUwIiByPSIwLjUiIGZpbGw9IiNFNjAwMjMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjAuMzszOzAuMyIgZHVyPSIxLjhzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9jaXJjbGU+CiAgICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI0MCIgcj0iMC41IiBmaWxsPSIjZmYwMDMzIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIwLjM7MzswLjMiIGR1cj0iM3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2NpcmNsZT4KICA8L2c+CiAgPCEtLSBDb3JwcyBkdSByb2JvdCAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDAsIDEwMCkiPgogICAgPCEtLSBUw6p0ZSAtLT4KICAgIDxlbGxpcHNlIGN4PSIwIiBjeT0iLTMwIiByeD0iMjUiIHJ5PSIzMCIgZmlsbD0idXJsKCNyb2JvdEdyYWRpZW50KSIgc3Ryb2tlPSIjRTYwMDIzIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDwhLS0gw6ljb3V0ZXVycy9jYXB0ZXVycyAtLT4KICAgIDxlbGxpcHNlIGN4PSItMjAiIGN5PSItMjUiIHJ4PSI4IiByeT0iMTIiIGZpbGw9IiMwMDAwMDAiIG9wYWNpdHk9IjAuOCIvPgogICAgPGVsbGlwc2UgY3g9IjIwIiBjeT0iLTI1IiByeD0iOCIgcnk9IjEyIiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjgiLz4KICAgIDwhLS0gQ29ycHMgcHJpbmNpcGFsIC0tPgogICAgPHJlY3QgeD0iLTIwIiB5PSItNSIgd2lkdGg9IjQwIiBoZWlnaHQ9IjYwIiByeD0iNSIgZmlsbD0idXJsKCNzdWl0R3JhZGllbnQpIiBzdHJva2U9IiNFNjAwMjMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPCEtLSBDb2wgZXQgcmV2ZXJzIHJvdWdlcyAtLT4KICAgIDxyZWN0IHg9Ii0xOCIgeT0iLTUiIHdpZHRoPSIzNiIgaGVpZ2h0PSI4IiBmaWxsPSJ1cmwoI3JlZEFjY2VudCkiLz4KICAgIDxyZWN0IHg9Ii0yMCIgeT0iLTMiIHdpZHRoPSI4IiBoZWlnaHQ9IjEyIiBmaWxsPSJ1cmwoI3JlZEFjY2VudCkiLz4KICAgIDxyZWN0IHg9IjEyIiB5PSItMyIgd2lkdGg9IjgiIGhlaWdodD0iMTIiIGZpbGw9InVybCgjcmVkQWNjZW50KSIvPgogICAgPCEtLSBDcmF2YXRlIC0tPgogICAgPHJlY3QgeD0iLTMiIHk9Ii01IiB3aWR0aD0iNiIgaGVpZ2h0PSIyNSIgZmlsbD0idXJsKCNyZWRBY2NlbnQpIi8+CiAgICA8cG9seWdvbiBwb2ludHM9Ii0zLC01IDMsLTUgMCwwIiBmaWxsPSJ1cmwoI3JlZEFjY2VudCkiLz4KICAgIDwhLS0gUG9jaGV0dGUgLS0+CiAgICA8cmVjdCB4PSI4IiB5PSI1IiB3aWR0aD0iOCIgaGVpZ2h0PSIxMiIgZmlsbD0idXJsKCNyZWRBY2NlbnQpIi8+CiAgICA8IS0tIEJvdXRvbnMgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMTAiIHI9IjIiIGZpbGw9IiNmZmZmZmYiLz4KICAgIDxjaXJjbGUgY3g9IjAiIGN5PSIyMCIgcj0iMiIgZmlsbD0iI2ZmZmZmZiIvPgogICAgPGNpcmNsZSBjeD0iMCIgY3k9IjMwIiByPSIyIiBmaWxsPSIjZmZmZmZmIi8+CiAgICA8IS0tIEJyYXMgZ2F1Y2hlICh0ZW5kdSkgLS0+CiAgICA8ZWxsaXBzZSBjeD0iLTM1IiBjeT0iNSIgcng9IjgiIHJ5PSIxNSIgZmlsbD0idXJsKCNyb2JvdEdyYWRpZW50KSIgc3Ryb2tlPSIjRTYwMDIzIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxlbGxpcHNlIGN4PSItNDUiIGN5PSI1IiByeD0iNiIgcnk9IjEyIiBmaWxsPSJ1cmwoI3JvYm90R3JhZGllbnQpIiBzdHJva2U9IiNFNjAwMjMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPCEtLSBNYWluIGdhdWNoZSBhdmVjIGhvbG9ncmFtbWUgLS0+CiAgICA8ZWxsaXBzZSBjeD0iLTUwIiBjeT0iNSIgcng9IjgiIHJ5PSI2IiBmaWxsPSJ1cmwoI3JvYm90R3JhZGllbnQpIiBzdHJva2U9IiNFNjAwMjMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPCEtLSBIb2xvZ3JhbW1lIGR1IHZpc2FnZSAtLT4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC01MCwgNSkiPgogICAgICA8ZWxsaXBzZSBjeD0iMCIgY3k9IjAiIHJ4PSIxMiIgcnk9IjE1IiBmaWxsPSJ1cmwoI2hvbG9ncmFtR3JhZGllbnQpIiBvcGFjaXR5PSIwLjciIGZpbHRlcj0idXJsKCNnbG93KSIvPgogICAgICA8ZWxsaXBzZSBjeD0iLTMiIGN5PSItMyIgcng9IjIiIHJ5PSIzIiBmaWxsPSIjMDBiZmZmIiBvcGFjaXR5PSIwLjkiLz4KICAgICAgPGVsbGlwc2UgY3g9IjMiIGN5PSItMyIgcng9IjIiIHJ5PSIzIiBmaWxsPSIjMDBiZmZmIiBvcGFjaXR5PSIwLjkiLz4KICAgICAgPHBhdGggZD0iTSAtMiwyIFEgMCw0IDIsMiIgc3Ryb2tlPSIjMDBiZmZmIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuOSIvPgogICAgICA8IS0tIMOpbMOpbWVudHMgZ3JhcGhpcXVlcyBhdXRvdXIgZHUgdmlzYWdlIC0tPgogICAgICA8cmVjdCB4PSItOCIgeT0iLTgiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMGJmZmYiIG9wYWNpdHk9IjAuNiIvPgogICAgICA8cmVjdCB4PSI2IiB5PSItOCIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iIzAwYmZmZiIgb3BhY2l0eT0iMC42Ii8+CiAgICAgIDxyZWN0IHg9Ii04IiB5PSI2IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSIjMDBiZmZmIiBvcGFjaXR5PSIwLjYiLz4KICAgICAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iIzAwYmZmZiIgb3BhY2l0eT0iMC42Ii8+CiAgICAgIDwhLS0gTGlnbmVzIGRlIGRvbm7DqWVzIC0tPgogICAgICA8bGluZSB4MT0iLTYiIHkxPSItNiIgeDI9IjYiIHkyPSItNiIgc3Ryb2tlPSIjMDBiZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC41Ii8+CiAgICAgIDxsaW5lIHgxPSItNiIgeTE9IjYiIHgyPSI2IiB5Mj0iNiIgc3Ryb2tlPSIjMDBiZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC41Ii8+CiAgICA8L2c+CiAgICA8IS0tIEJyYXMgZHJvaXQgLS0+CiAgICA8ZWxsaXBzZSBjeD0iMzUiIGN5PSI1IiByeD0iOCIgcnk9IjE1IiBmaWxsPSJ1cmwoI3JvYm90R3JhZGllbnQpIiBzdHJva2U9IiNFNjAwMjMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPGVsbGlwc2UgY3g9IjQ1IiBjeT0iNSIgcng9IjYiIHJ5PSIxMiIgZmlsbD0idXJsKCNyb2JvdEdyYWRpZW50KSIgc3Ryb2tlPSIjRTYwMDIzIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxlbGxpcHNlIGN4PSI1MCIgY3k9IjUiIHJ4PSI4IiByeT0iNiIgZmlsbD0idXJsKCNyb2JvdEdyYWRpZW50KSIgc3Ryb2tlPSIjRTYwMDIzIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDwhLS0gSmFtYmVzIC0tPgogICAgPHJlY3QgeD0iLTE1IiB5PSI1NSIgd2lkdGg9IjEyIiBoZWlnaHQ9IjI1IiByeD0iNiIgZmlsbD0idXJsKCNyb2JvdEdyYWRpZW50KSIgc3Ryb2tlPSIjRTYwMDIzIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxyZWN0IHg9IjMiIHk9IjU1IiB3aWR0aD0iMTIiIGhlaWdodD0iMjUiIHJ4PSI2IiBmaWxsPSJ1cmwoI3JvYm90R3JhZGllbnQpIiBzdHJva2U9IiNFNjAwMjMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPCEtLSBQaWVkcyAtLT4KICAgIDxlbGxpcHNlIGN4PSItOSIgY3k9Ijg1IiByeD0iOCIgcnk9IjUiIGZpbGw9InVybCgjcm9ib3RHcmFkaWVudCkiIHN0cm9rZT0iI0U2MDAyMyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8ZWxsaXBzZSBjeD0iOSIgY3k9Ijg1IiByeD0iOCIgcnk9IjUiIGZpbGw9InVybCgjcm9ib3RHcmFkaWVudCkiIHN0cm9rZT0iI0U2MDAyMyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPC9nPgogIDwhLS0gTHVldXIgYmxldWUgZGVycsOocmUgbCdob2xvZ3JhbW1lIC0tPgogIDxlbGxpcHNlIGN4PSI1MCIgY3k9IjEwNSIgcng9IjIwIiByeT0iMjUiIGZpbGw9IiMwMGJmZmYiIG9wYWNpdHk9IjAuMiIgZmlsdGVyPSJ1cmwoI2dsb3cpIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMC4xOzAuMzswLjEiIGR1cj0iM3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgPC9lbGxpcHNlPgogIDwhLS0gQ2FkcmUgY2lyY3VsYWlyZSBibGFuYyAtLT4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9Ijk1IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iNCIgb3BhY2l0eT0iMC45Ii8+Cjwvc3ZnPgo=" alt="Archi Agent Futuriste" class="agent-image">
+        <span class="notification-badge">!</span>
+        <div class="glow-effect"></div>
+    </button>
+</body>
+</html>

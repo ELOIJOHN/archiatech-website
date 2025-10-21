@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Navigation Agrandie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation Bar Agrandie */
+        .nav-bar {
+            background: #E60023;
+            width: 100%;
+            padding: 20px 0 25px 0; /* py-4 xs:py-5 sm:py-6 md:py-7 */
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #E60023, #8B0000);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-text {
+            font-size: 2rem; /* text-xl xs:text-2xl sm:text-3xl md:text-4xl */
+            font-weight: 800;
+            color: white;
+            white-space: nowrap;
+        }
+        
+        .logo-text .highlight {
+            color: #E60023;
+        }
+        
+        .nav-items {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-item {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.125rem; /* text-base lg:text-lg xl:text-xl */
+            white-space: nowrap;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-item:hover {
+            color: #E60023;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            background: none;
+            border: none;
+            font-weight: 600;
+            font-size: 1.125rem; /* text-base lg:text-lg xl:text-xl */
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-arrow {
+            width: 20px;
+            height: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .content {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #212529;
+            margin-bottom: 20px;
+        }
+        
+        .title .highlight {
+            color: #E60023;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .description {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            border: 2px solid rgba(230, 0, 35, 0.2);
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #c3e6cb;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-items {
+                display: none;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar Agrandie -->
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M9 3v18h6V3H9zm2 2h2v14h-2V5zM3 7v10h2V7H3zm14 0v10h2V7h-2z"/>
+                    </svg>
+                </div>
+                <span class="logo-text">
+                    Archi<span class="highlight">Atech</span>
+                </span>
+            </div>
+            
+            <!-- Navigation Items -->
+            <div class="nav-items">
+                <button class="dropdown-button">
+                    ArchiAtech
+                    <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="white">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </button>
+                <a href="#" class="nav-item">Actualités IA</a>
+                <a href="#" class="nav-item">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Content -->
+    <div class="content">
+        <div class="success-message">
+            ✅ <strong>NAVIGATION AGRANDIE !</strong> - Le bandeau rouge supérieur a été agrandi avec une écriture plus grande !
+        </div>
+        
+        <h1 class="title">
+            Test <span class="highlight">Navigation Agrandie</span>
+        </h1>
+        
+        <p class="subtitle">
+            Le bandeau de navigation a été agrandi avec une hauteur plus importante et une taille d'écriture augmentée.
+        </p>
+        
+        <div class="description">
+            <p><strong>🔧 Modifications Appliquées :</strong></p>
+            <p>• <strong>Hauteur du bandeau :</strong> Augmentée de py-2.5 à py-4 xs:py-5 sm:py-6 md:py-7</p>
+            <p>• <strong>Taille du logo :</strong> De text-lg à text-xl xs:text-2xl sm:text-3xl md:text-4xl</p>
+            <p>• <strong>Taille de l'icône :</strong> De w-7 h-7 à w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-14 md:h-14</p>
+            <p>• <strong>Taille de navigation :</strong> De text-sm à text-base lg:text-lg xl:text-xl</p>
+            <p>• <strong>Padding des éléments :</strong> Augmenté pour plus d'espace</p>
+            <p>• <strong>Résultat :</strong> Navigation plus imposante et lisible !</p>
+        </div>
+    </div>
+</body>
+</html>

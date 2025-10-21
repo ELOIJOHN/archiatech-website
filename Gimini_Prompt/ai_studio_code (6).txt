@@ -1,0 +1,31 @@
+// Fichier: src/sections/WhyArchiATechSection.jsx
+
+// Ce composant React gère la section "Pourquoi ArchiATech ?" et liste les avantages.
+// J'ai créé un nouveau composant <BenefitSimulator />.
+// Intègre ce composant <BenefitSimulator /> dans le côté droit de cette section, là où se trouvait précédemment la citation générique.
+// Assure-toi qu'il s'intègre bien avec la liste des avantages sur la gauche.
+
+// Voici la structure du composant (à adapter si différent) :
+/*
+import React from 'react';
+import BenefitSimulator from '../components/BenefitSimulator'; // Assure-toi que le chemin est correct
+
+function WhyArchiATechSection() {
+  return (
+    <section className="why-archiatech-section">
+      <div className="why-archiatech-content">
+        <div className="advantages-list">
+          <h2>Pourquoi ArchiATech ?</h2>
+          {/* ... ta liste d'avantages existante ... */}
+        </div>
+        <div className="simulator-container">
+          {/* Ici, tu vas intégrer le composant Simulateur */}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default WhyArchiATechSection;
+*/
+// Fournis le code complet du composant WhyArchiATechSection avec l'intégration du <BenefitSimulator /> et un peu de CSS pour le simulator-container.

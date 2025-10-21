@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Hybride Mail - ArchiAtech</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .test-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(227, 64, 64, 0.12);
+            border: 2px solid #e34040;
+        }
+        
+        .test-title {
+            color: #e34040;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .test-button {
+            background: #e34040;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            width: 100%;
+        }
+        
+        .test-button:hover {
+            background: #c73636;
+            transform: translateY(-2px);
+        }
+        
+        .test-button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .result-success {
+            background: #d1fae5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+        
+        .result-error {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+        
+        .result-info {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+        
+        .result-warning {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+        
+        .instructions {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .instructions h3 {
+            color: #92400e;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .instructions p {
+            color: #92400e;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .form-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .steps {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .steps h4 {
+            color: #0c4a6e;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .steps ol {
+            color: #0c4a6e;
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .steps li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-success { background: #10b981; }
+        .status-error { background: #ef4444; }
+        .status-warning { background: #f59e0b; }
+        .status-info { background: #3b82f6; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">🔄 Test Hybride Mail - ArchiAtech</h1>
+        
+        <div class="instructions">
+            <h3>🎯 Approche Hybride</h3>
+            <p>Cette méthode essaie d'abord d'ouvrir votre application mail. Si ça ne fonctionne pas, elle copie automatiquement le message dans le presse-papiers.</p>
+        </div>
+        
+        <div class="form-section">
+            <h3>📝 Formulaire de Test</h3>
+            <form id="testForm">
+                <div class="form-group">
+                    <label>Nom complet :</label>
+                    <input type="text" id="fullName" value="Johnny ELOI" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email :</label>
+                    <input type="email" id="email" value="j.eloi@me.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Société :</label>
+                    <input type="text" id="company" value="Test Company">
+                </div>
+                
+                <div class="form-group">
+                    <label>Message :</label>
+                    <textarea id="message" required>Test de l'approche hybride : essayer d'ouvrir l'app mail, sinon copier le message.</textarea>
+                </div>
+                
+                <button type="submit" class="test-button">🔄 Tester l'approche hybride</button>
+            </form>
+            
+            <div id="result" class="result-box" style="display: none;"></div>
+        </div>
+        
+        <div class="form-section">
+            <h3>🔧 Tests Individuels</h3>
+            <button class="test-button" onclick="testMailtoOnly()">Test 1: mailto uniquement</button>
+            <button class="test-button" onclick="testCopyOnly()">Test 2: Copie uniquement</button>
+            <button class="test-button" onclick="testHybrid()">Test 3: Approche hybride</button>
+            <div id="quickResult" class="result-box" style="display: none;"></div>
+        </div>
+        
+        <div class="steps">
+            <h4>📧 Comment ça marche :</h4>
+            <ol>
+                <li><span class="status-indicator status-info"></span>Essaie d'ouvrir votre application mail</li>
+                <li><span class="status-indicator status-warning"></span>Attend 2 secondes pour voir si ça fonctionne</li>
+                <li><span class="status-indicator status-success"></span>Si l'app mail ne s'ouvre pas, copie le message</li>
+                <li><span class="status-indicator status-success"></span>Vous pouvez alors coller le message dans votre app mail</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function showResult(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = `result-box result-${type}`;
+            element.textContent = message;
+        }
+        
+        function testMailtoOnly() {
+            showResult('quickResult', 'Test mailto uniquement...', 'info');
+            
+            try {
+                const mailtoLink = 'mailto:contact@archiatech.com?subject=Test%20Mailto&body=Test%20mailto%20uniquement';
+                
+                const tempLink = document.createElement('a');
+                tempLink.href = mailtoLink;
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+                
+                setTimeout(() => {
+                    showResult('quickResult', '✅ Test mailto exécuté. Vérifiez si votre application mail s\'est ouverte.', 'success');
+                }, 1000);
+            } catch (error) {
+                showResult('quickResult', `❌ Erreur mailto: ${error.message}`, 'error');
+            }
+        }
+        
+        function testCopyOnly() {
+            showResult('quickResult', 'Test copie uniquement...', 'info');
+            
+            try {
+                const message = 'Test de copie uniquement - ArchiAtech';
+                
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(message).then(() => {
+                        showResult('quickResult', '✅ Test copie réussi ! Le message est dans votre presse-papiers.', 'success');
+                    }).catch(err => {
+                        showResult('quickResult', `❌ Erreur lors de la copie: ${err.message}`, 'error');
+                    });
+                } else {
+                    showResult('quickResult', '❌ Votre navigateur ne supporte pas la copie automatique.', 'error');
+                }
+            } catch (error) {
+                showResult('quickResult', `❌ Erreur: ${error.message}`, 'error');
+            }
+        }
+        
+        async function testHybrid() {
+            showResult('quickResult', 'Test approche hybride...', 'info');
+            
+            try {
+                const mailtoLink = 'mailto:contact@archiatech.com?subject=Test%20Hybride&body=Test%20approche%20hybride';
+                const message = 'Test approche hybride - ArchiAtech';
+                
+                let mailOpened = false;
+                
+                // Essayer d'abord mailto
+                try {
+                    const tempLink = document.createElement('a');
+                    tempLink.href = mailtoLink;
+                    tempLink.style.display = 'none';
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    document.body.removeChild(tempLink);
+                    
+                    mailOpened = true;
+                    
+                    setTimeout(() => {
+                        if (!mailOpened) {
+                            // Si mailto n'a pas fonctionné, copier
+                            copyMessage(message);
+                        } else {
+                            showResult('quickResult', '✅ Test hybride : mailto exécuté. Vérifiez si votre app mail s\'est ouverte.', 'success');
+                        }
+                    }, 2000);
+                    
+                } catch (mailError) {
+                    console.log('Erreur mailto, passage à la copie:', mailError);
+                    await copyMessage(message);
+                }
+                
+            } catch (error) {
+                showResult('quickResult', `❌ Erreur: ${error.message}`, 'error');
+            }
+        }
+        
+        async function copyMessage(message) {
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(message);
+                    showResult('quickResult', '✅ Test hybride : mailto a échoué, message copié dans le presse-papiers.', 'warning');
+                } else {
+                    showResult('quickResult', '❌ Test hybride : mailto a échoué et la copie n\'est pas supportée.', 'error');
+                }
+            } catch (clipboardError) {
+                showResult('quickResult', `❌ Test hybride : mailto et copie ont échoué. Erreur: ${clipboardError.message}`, 'error');
+            }
+        }
+        
+        // Gestion du formulaire
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const message = document.getElementById('message').value;
+            
+            const emailSubject = `[TEST Hybride ArchiAtech] Demande de contact - ${fullName}`;
+            const emailBody = `Bonjour,
+
+Ceci est un TEST de l'approche hybride ArchiAtech.
+
+═══════════════════════════════════════
+📋 INFORMATIONS DU CONTACT
+═══════════════════════════════════════
+
+👤 Nom complet : ${fullName}
+📧 Email : ${email}
+🏢 Société : ${company || 'Non renseignée'}
+
+═══════════════════════════════════════
+💬 MESSAGE
+═══════════════════════════════════════
+
+${message}
+
+═══════════════════════════════════════
+📅 Date du test : ${new Date().toLocaleString('fr-FR')}
+🌐 Envoyé depuis : Site web ArchiAtech (TEST HYBRIDE)
+═══════════════════════════════════════
+
+---
+Pour répondre, utilisez directement l'adresse : ${email}`;
+            
+            const mailtoLink = `mailto:contact@archiatech.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            const fullMessage = `${emailSubject}
+
+${emailBody}
+
+---
+📧 Pour envoyer ce message :
+1. Copiez tout le texte ci-dessus
+2. Ouvrez votre application mail (Mail, Outlook, Thunderbird, etc.)
+3. Créez un nouveau message
+4. Collez le texte copié
+5. Envoyez à : contact@archiatech.com`;
+            
+            showResult('result', 'Test de l\'approche hybride...', 'info');
+            
+            try {
+                let mailOpened = false;
+                
+                // Essayer d'abord d'ouvrir l'application mail
+                try {
+                    const tempLink = document.createElement('a');
+                    tempLink.href = mailtoLink;
+                    tempLink.style.display = 'none';
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    document.body.removeChild(tempLink);
+                    
+                    mailOpened = true;
+                    
+                    showResult('result', '✅ Tentative d\'ouverture de votre application mail... Si elle ne s\'ouvre pas, le message sera copié automatiquement.', 'info');
+                    
+                    // Attendre 2 secondes puis vérifier
+                    setTimeout(async () => {
+                        if (!mailOpened) {
+                            await copyToClipboard(fullMessage);
+                        }
+                    }, 2000);
+                    
+                } catch (mailError) {
+                    console.log('Erreur mailto, passage à la copie:', mailError);
+                    await copyToClipboard(fullMessage);
+                }
+                
+            } catch (error) {
+                showResult('result', `❌ Erreur lors du test hybride: ${error.message}`, 'error');
+            }
+        });
+        
+        async function copyToClipboard(message) {
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(message);
+                    
+                    showResult('result', '✅ Message copié dans le presse-papiers ! Ouvrez votre application mail et collez le message.', 'success');
+                    
+                    setTimeout(() => {
+                        showResult('result', `📋 Message copié ! Voici le contenu :
+
+${message}
+
+---
+💡 Le message est dans votre presse-papiers. Ouvrez votre application mail et collez-le (Ctrl+V ou Cmd+V).`, 'success');
+                    }, 2000);
+                } else {
+                    showResult('result', `❌ Votre navigateur ne supporte pas la copie automatique. Voici le message :
+
+${message}`, 'error');
+                }
+            } catch (clipboardError) {
+                showResult('result', `❌ Erreur lors de la copie: ${clipboardError.message}
+
+Voici le message :
+
+${message}`, 'error');
+            }
+        }
+    </script>
+</body>
+</html>

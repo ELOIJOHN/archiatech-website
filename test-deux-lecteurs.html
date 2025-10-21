@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Deux Lecteurs Vidéo avec Boutons</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: #111;
+            border-radius: 12px;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .video-area {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #111 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: #000;
+            font-size: 14px;
+            z-index: 10;
+        }
+        .red-indicator {
+            position: absolute;
+            top: 20px;
+            right: '20px';
+            width: 12px;
+            height: 12px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            z-index: 20;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.1);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+        }
+        .volume-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 20;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        .volume-button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+        }
+        .title {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 10;
+        }
+        .info {
+            margin-top: 2rem;
+            text-align: center;
+            background: rgba(227, 64, 64, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #e34040;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 2rem; color: #e34040; font-size: 2.5rem;">
+            🎬 TEST - DEUX LECTEURS VIDÉO 🎬
+        </h1>
+        
+        <!-- Lecteur 1 - SimpleVideoPlayer -->
+        <div class="section">
+            <h2 style="color: #e34040; margin-bottom: 1rem;">📺 LECTEUR 1 - SimpleVideoPlayer</h2>
+            <div class="video-container">
+                <div class="video-area">
+                    <!-- Logo Sora -->
+                    <div class="logo">Sora</div>
+                    
+                    <!-- Icône Rouge - Indicateur d'état -->
+                    <div class="red-indicator"></div>
+                    
+                    <!-- Bouton Son - Coin inférieur droit -->
+                    <button class="volume-button" onclick="alert('🔊 BOUTON SON LECTEUR 1 CLIQUÉ ! 🔊')">
+                        🔊
+                    </button>
+                    
+                    <!-- Titre -->
+                    <div class="title">Support IT</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lecteur 2 - VideoShowcase -->
+        <div class="section">
+            <h2 style="color: #e34040; margin-bottom: 1rem;">📺 LECTEUR 2 - VideoShowcase</h2>
+            <div class="video-container">
+                <div class="video-area">
+                    <!-- Icône Rouge - Indicateur d'état -->
+                    <div class="red-indicator"></div>
+                    
+                    <!-- Bouton Son - Coin inférieur droit -->
+                    <button class="volume-button" onclick="alert('🔊 BOUTON SON LECTEUR 2 CLIQUÉ ! 🔊')">
+                        🔊
+                    </button>
+                    
+                    <!-- Titre -->
+                    <div class="title">Support IT</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <h2 style="color: #e34040; margin-bottom: 1rem;">✅ ÉLÉMENTS UI AJOUTÉS AUX DEUX LECTEURS :</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; text-align: left;">
+                <div>
+                    <h3 style="color: #e34040;">🔴 Icône Rouge :</h3>
+                    <ul style="color: #ccc; line-height: 1.8;">
+                        <li>✅ <strong>Position</strong> - Coin supérieur droit</li>
+                        <li>✅ <strong>Couleur</strong> - Rouge vif (#ff0000)</li>
+                        <li>✅ <strong>Taille</strong> - 12px x 12px (discrète)</li>
+                        <li>✅ <strong>Animation</strong> - Effet pulse continu</li>
+                        <li>✅ <strong>Z-index</strong> - 20 (au-dessus de tout)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #e34040;">🔊 Bouton Son :</h3>
+                    <ul style="color: #ccc; line-height: 1.8;">
+                        <li>✅ <strong>Position</strong> - Coin inférieur droit</li>
+                        <li>✅ <strong>Style</strong> - Circulaire, fond noir semi-transparent</li>
+                        <li>✅ <strong>Bordure</strong> - Blanche, 2px</li>
+                        <li>✅ <strong>Taille</strong> - 50px x 50px</li>
+                        <li>✅ <strong>Z-index</strong> - 20 (au-dessus de tout)</li>
+                        <li>✅ <strong>Interactivité</strong> - Clic pour mute/unmute</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 1.2rem; color: #e34040; font-weight: bold;">
+                🎉 DEUX LECTEURS VIDÉO AVEC BOUTONS SON ET ICÔNE ROUGE ! 🎉
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+import { motion as Motion, useInView, useAnimation } from 'framer-motion';
 
 const AnimatedSection = ({ 
   children, 
@@ -49,7 +49,7 @@ const AnimatedSection = ({
   };
 
   return (
-    <motion.div
+    <Motion.div
       ref={ref}
       variants={variants}
       initial="hidden"
@@ -57,7 +57,7 @@ const AnimatedSection = ({
       className={className}
     >
       {children}
-    </motion.div>
+    </Motion.div>
   );
 };
 

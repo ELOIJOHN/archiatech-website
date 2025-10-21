@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Slogan Double Taille Centré</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #212529;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .title .highlight {
+            color: #E60023;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Simulation de la navigation */
+        .nav-bar {
+            background: #E60023;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        /* Animation pour le slogan lumineux */
+        @keyframes slogan-glow {
+          0% { 
+            box-shadow: 
+              0 0 40px rgba(230, 0, 35, 0.7),
+              0 0 80px rgba(230, 0, 35, 0.5),
+              0 0 120px rgba(230, 0, 35, 0.3);
+          }
+          50% { 
+            box-shadow: 
+              0 0 60px rgba(230, 0, 35, 0.9),
+              0 0 120px rgba(230, 0, 35, 0.7),
+              0 0 180px rgba(230, 0, 35, 0.5);
+          }
+          100% { 
+            box-shadow: 
+              0 0 40px rgba(230, 0, 35, 0.7),
+              0 0 80px rgba(230, 0, 35, 0.5),
+              0 0 120px rgba(230, 0, 35, 0.3);
+          }
+        }
+        
+        /* Classe pour le slogan professionnel - DOUBLE TAILLE */
+        .slogan-professionnel {
+          animation: slogan-glow 3s ease-in-out infinite;
+          position: relative;
+          overflow: hidden;
+          display: inline-flex;
+          align-items: center;
+          gap: 32px;
+          padding: 48px 80px;
+          background: linear-gradient(135deg, rgba(230, 0, 35, 0.3), rgba(230, 0, 35, 0.4), rgba(230, 0, 35, 0.3));
+          border: 4px solid #E60023;
+          color: white;
+          border-radius: 3rem;
+          font-size: 4rem;
+          font-weight: 800;
+          margin: 40px 0;
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          transition: all 0.5s ease;
+          cursor: pointer;
+        }
+        
+        .slogan-professionnel::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(45deg, #E60023, #ff0000, #E60023, #ff0000);
+          border-radius: inherit;
+          z-index: -1;
+          opacity: 0.7;
+          filter: blur(1px);
+          animation: slogan-glow 3s ease-in-out infinite;
+        }
+        
+        .slogan-professionnel::after {
+          content: '';
+          position: absolute;
+          top: -4px;
+          left: -4px;
+          right: -4px;
+          bottom: -4px;
+          background: linear-gradient(45deg, #E60023, #ff0000, #E60023, #ff0000);
+          border-radius: inherit;
+          z-index: -2;
+          opacity: 0.3;
+          filter: blur(2px);
+          animation: slogan-glow 3s ease-in-out infinite;
+        }
+        
+        .slogan-professionnel:hover {
+          transform: scale(1.05);
+          box-shadow: 
+            0 0 60px rgba(230, 0, 35, 0.9),
+            0 0 120px rgba(230, 0, 35, 0.7),
+            0 0 180px rgba(230, 0, 35, 0.5);
+        }
+        
+        .rocket-icon {
+            width: 80px;
+            height: 80px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .slogan-text {
+            background: linear-gradient(135deg, white, #ffcccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+        }
+        
+        /* Titre principal */
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #212529;
+            margin: 60px 0 20px 0;
+            line-height: 1.1;
+        }
+        
+        .main-title .highlight {
+            background: linear-gradient(135deg, #E60023, #ff0000, #E60023);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .description {
+            text-align: center;
+            margin-top: 40px;
+            color: #6c757d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px solid rgba(230, 0, 35, 0.2);
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #c3e6cb;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .professional-badge {
+            background: linear-gradient(135deg, #E60023, #ff0000);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .size-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .size-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .size-box h3 {
+            color: #E60023;
+            margin-bottom: 15px;
+        }
+        
+        .size-details {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Bar Simulation -->
+        <div class="nav-bar">
+            🚀 ArchiAtech - Navigation Bar
+        </div>
+        
+        <!-- Header Section -->
+        <div class="header">
+            <div class="professional-badge">📏 SLOGAN DOUBLE TAILLE</div>
+            
+            <h1 class="title">
+                <span class="highlight">Slogan</span> Double Taille Centré
+            </h1>
+            
+            <p class="subtitle">
+                Le slogan agrandi au double de sa taille et parfaitement centré entre la navigation et le titre principal.
+            </p>
+        </div>
+        
+        <div class="success-message">
+            ✅ <strong>SLOGAN DOUBLE TAILLE CRÉÉ !</strong> - Taille doublée et centrage parfait entre navigation et titre principal !
+        </div>
+        
+        <!-- Slogan Professionnel DOUBLE TAILLE -->
+        <div class="slogan-professionnel">
+            <svg class="rocket-icon" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+            </svg>
+            <span class="slogan-text">
+                ArchiAtech – Bâtissez l'avenir de votre entreprise avec l'IA
+            </span>
+        </div>
+        
+        <!-- Titre Principal -->
+        <h1 class="main-title">
+            Transformez votre entreprise avec <span class="highlight">l'IA</span>
+        </h1>
+        
+        <!-- Comparaison des tailles -->
+        <div class="size-comparison">
+            <div class="size-box">
+                <h3>📏 Taille Avant</h3>
+                <div class="size-details">
+                    <p><strong>Texte :</strong> text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl</p>
+                    <p><strong>Padding :</strong> px-6 xs:px-8 sm:px-10 md:px-12 py-4 xs:py-5 sm:py-6 md:py-7</p>
+                    <p><strong>Icône :</strong> w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12</p>
+                    <p><strong>Bordure :</strong> border-3</p>
+                </div>
+            </div>
+            
+            <div class="size-box">
+                <h3>📏 Taille Après (DOUBLE)</h3>
+                <div class="size-details">
+                    <p><strong>Texte :</strong> text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl</p>
+                    <p><strong>Padding :</strong> px-8 xs:px-10 sm:px-12 md:px-16 lg:px-20 py-6 xs:py-7 sm:py-8 md:py-10 lg:py-12</p>
+                    <p><strong>Icône :</strong> w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24</p>
+                    <p><strong>Bordure :</strong> border-4</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="description">
+            <p><strong>🎯 Slogan Double Taille Centré :</strong></p>
+            <p>• <strong>Taille doublée :</strong> De text-lg à text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl</p>
+            <p>• <strong>Padding doublé :</strong> De px-6 à px-8 xs:px-10 sm:px-12 md:px-16 lg:px-20</p>
+            <p>• <strong>Icône doublée :</strong> De w-6 h-6 à w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24</p>
+            <p>• <strong>Centrage parfait :</strong> Entre la navigation et le titre principal</p>
+            <p>• <strong>Espacement optimisé :</strong> mb-8 xs:mb-10 sm:mb-12 md:mb-16 lg:mb-20</p>
+            <p>• <strong>Résultat :</strong> Slogan imposant et parfaitement centré !</p>
+        </div>
+    </div>
+</body>
+</html>

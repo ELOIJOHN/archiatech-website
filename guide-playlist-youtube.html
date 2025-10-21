@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide - Ajouter Votre Playlist YouTube</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #212529;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .title .highlight {
+            color: #E60023;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .step-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e9ecef;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #E60023, #ff0000);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .step-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 20px;
+        }
+        
+        .step-description {
+            color: #6c757d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-left: 4px solid #E60023;
+        }
+        
+        .highlight {
+            background: #E60023;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .url-example {
+            background: #f8f9fa;
+            border: 2px solid #E60023;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #E60023;
+            font-weight: bold;
+        }
+        
+        .id-example {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #155724;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .warning-box h4 {
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .warning-box p {
+            color: #856404;
+            margin: 0;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .success-box h4 {
+            color: #155724;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .success-box p {
+            color: #155724;
+            margin: 0;
+        }
+        
+        .action-button {
+            background: linear-gradient(135deg, #E60023, #ff0000);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 10px 10px 0;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 0, 35, 0.4);
+        }
+        
+        .secondary-button {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 10px 10px 0;
+        }
+        
+        .secondary-button:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+        
+        .professional-badge {
+            background: linear-gradient(135deg, #E60023, #ff0000);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .instructions-list {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #E60023;
+            margin: 20px 0;
+        }
+        
+        .instructions-list h4 {
+            font-weight: 700;
+            color: #E60023;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .instructions-list ol {
+            margin-left: 20px;
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .instructions-list li {
+            margin-bottom: 8px;
+        }
+        
+        .copy-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .copy-button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="professional-badge">📺 GUIDE PLAYLIST YOUTUBE</div>
+            
+            <h1 class="title">
+                <span class="highlight">Ajouter</span> Votre Playlist YouTube
+            </h1>
+            
+            <p class="subtitle">
+                Guide étape par étape pour intégrer votre playlist YouTube sur votre site ArchiAtech.
+            </p>
+        </div>
+        
+        <!-- Étape 1 -->
+        <div class="step-container">
+            <div class="step-number">1</div>
+            <h2 class="step-title">Créer votre Playlist YouTube</h2>
+            <p class="step-description">
+                Commencez par créer une playlist sur YouTube avec vos vidéos ArchiAtech.
+            </p>
+            
+            <div class="instructions-list">
+                <h4>📋 Instructions détaillées :</h4>
+                <ol>
+                    <li>Allez sur <strong>youtube.com</strong> et connectez-vous</li>
+                    <li>Cliquez sur <strong>"Bibliothèque"</strong> dans le menu de gauche</li>
+                    <li>Cliquez sur <strong>"Créer une playlist"</strong></li>
+                    <li>Donnez un nom à votre playlist (ex: "ArchiAtech - Solutions IA")</li>
+                    <li>Ajoutez vos vidéos dans l'ordre souhaité</li>
+                </ol>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Important :</h4>
+                <p>Assurez-vous que vos vidéos sont publiques ou non listées pour qu'elles soient visibles sur votre site.</p>
+            </div>
+            
+            <button class="action-button" onclick="window.open('https://youtube.com', '_blank')">
+                🎬 Ouvrir YouTube
+            </button>
+        </div>
+        
+        <!-- Étape 2 -->
+        <div class="step-container">
+            <div class="step-number">2</div>
+            <h2 class="step-title">Obtenir l'ID de votre Playlist</h2>
+            <p class="step-description">
+                Une fois votre playlist créée, vous devez récupérer son ID unique.
+            </p>
+            
+            <div class="instructions-list">
+                <h4>🔍 Comment trouver l'ID :</h4>
+                <ol>
+                    <li>Ouvrez votre playlist sur YouTube</li>
+                    <li>Regardez l'URL dans la barre d'adresse</li>
+                    <li>L'ID se trouve après <span class="highlight">list=</span></li>
+                    <li>Copiez tout l'ID (commence par PL)</li>
+                </ol>
+            </div>
+            
+            <div class="url-example">
+                https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxxxxxxxx
+            </div>
+            
+            <div class="id-example">
+                ID à copier : PLxxxxxxxxxxxxxxxxxxxxx
+            </div>
+            
+            <div class="success-box">
+                <h4>✅ Exemple concret :</h4>
+                <p>Si votre URL est : <code>https://www.youtube.com/playlist?list=PLrAXtmRdnEQy6nuLMOV8g4n4QjKJ4Cz1</code><br>
+                Votre ID est : <strong>PLrAXtmRdnEQy6nuLMOV8g4n4QjKJ4Cz1</strong></p>
+            </div>
+        </div>
+        
+        <!-- Étape 3 -->
+        <div class="step-container">
+            <div class="step-number">3</div>
+            <h2 class="step-title">Modifier le Code</h2>
+            <p class="step-description">
+                Remplacez l'ID de playlist dans le composant YouTubePlaylist.jsx
+            </p>
+            
+            <div class="instructions-list">
+                <h4>📝 Modifications à faire :</h4>
+                <ol>
+                    <li>Ouvrez le fichier <code>src/components/YouTubePlaylist.jsx</code></li>
+                    <li>Trouvez la ligne : <code>playlistId: 'PLYOUR_PLAYLIST_ID_HERE'</code></li>
+                    <li>Remplacez <code>PLYOUR_PLAYLIST_ID_HERE</code> par votre vrai ID</li>
+                    <li>Sauvegardez le fichier</li>
+                </ol>
+            </div>
+            
+            <div class="code-block">
+// Dans src/components/YouTubePlaylist.jsx
+const playlistConfig = {
+  // Remplacez par votre ID de playlist YouTube
+  playlistId: 'PLYOUR_PLAYLIST_ID_HERE', // 👈 REMPLACEZ ICI
+  videos: [
+    // Vos vidéos seront chargées automatiquement depuis YouTube
+  ]
+};
+            </div>
+            
+            <div class="code-block">
+// Exemple avec un vrai ID :
+const playlistConfig = {
+  playlistId: 'PLrAXtmRdnEQy6nuLMOV8g4n4QjKJ4Cz1', // 👈 Votre ID ici
+  videos: [
+    // Les vidéos seront automatiquement chargées
+  ]
+};
+            </div>
+            
+            <button class="action-button" onclick="copyToClipboard('playlistId: \'PLYOUR_PLAYLIST_ID_HERE\',')">
+                📋 Copier le Code
+            </button>
+        </div>
+        
+        <!-- Étape 4 -->
+        <div class="step-container">
+            <div class="step-number">4</div>
+            <h2 class="step-title">Tester votre Playlist</h2>
+            <p class="step-description">
+                Vérifiez que votre playlist s'affiche correctement sur votre site.
+            </p>
+            
+            <div class="instructions-list">
+                <h4>🧪 Tests à effectuer :</h4>
+                <ol>
+                    <li>Lancez votre site avec <code>npm run dev</code></li>
+                    <li>Allez sur la page d'accueil</li>
+                    <li>Vérifiez que votre playlist s'affiche</li>
+                    <li>Testez la navigation entre les vidéos</li>
+                    <li>Vérifiez la lecture en boucle</li>
+                </ol>
+            </div>
+            
+            <div class="success-box">
+                <h4>🎉 Félicitations !</h4>
+                <p>Votre playlist YouTube est maintenant intégrée sur votre site ArchiAtech avec toutes les fonctionnalités avancées !</p>
+            </div>
+            
+            <button class="action-button" onclick="alert('Votre playlist est prête ! 🎵')">
+                🚀 Tester le Site
+            </button>
+        </div>
+        
+        <!-- Aide supplémentaire -->
+        <div class="step-container">
+            <h2 class="step-title">🆘 Besoin d'Aide ?</h2>
+            <p class="step-description">
+                Si vous rencontrez des difficultés, voici quelques solutions courantes.
+            </p>
+            
+            <div class="warning-box">
+                <h4>❌ Problème : Playlist ne s'affiche pas</h4>
+                <p><strong>Solution :</strong> Vérifiez que l'ID de playlist est correct et que les vidéos sont publiques.</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>❌ Problème : Vidéos ne se chargent pas</h4>
+                <p><strong>Solution :</strong> Assurez-vous que les vidéos ne sont pas privées ou supprimées.</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>❌ Problème : Erreur dans la console</h4>
+                <p><strong>Solution :</strong> Vérifiez la syntaxe du code et que l'ID commence bien par "PL".</p>
+            </div>
+            
+            <button class="secondary-button" onclick="alert('Contactez le support si le problème persiste ! 📞')">
+                📞 Contacter le Support
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Code copié dans le presse-papiers ! 📋');
+            });
+        }
+    </script>
+</body>
+</html>

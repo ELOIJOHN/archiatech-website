@@ -1,0 +1,57 @@
+// Fichier: src/components/ContactForm.jsx
+
+// Ce composant React est le formulaire de contact existant.
+// Son objectif est d'envoyer les données à un backend API.
+
+// Modifie le composant pour :
+// 1. Utiliser `useState` pour gérer les valeurs de tous les champs du formulaire.
+// 2. Implémenter une fonction `handleSubmit(event)` qui :
+//    - Empêche le comportement par défaut du formulaire (`event.preventDefault()`).
+//    - Effectue une validation de base (ex: champs non vides, format email).
+//    - Collecte toutes les données du formulaire dans un objet.
+//    - Envoie cet objet via une requête `fetch` (ou `axios`) de type POST à un endpoint backend `/api/contact` (ce backend sera créé séparément).
+//    - Gère les états de chargement (`isLoading`) et d'erreur (`error`) ou de succès (`successMessage`).
+//    - Réinitialise le formulaire après un succès.
+// 3. Afficher un message de succès ou d'erreur à l'utilisateur après l'envoi.
+
+// Voici la structure du composant (à adapter si différent) :
+/*
+import React, { useState } from 'react';
+
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    company: '',
+    needs: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // ... ta logique existante ou le nouveau code d'envoi ...
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="contact-form">
+      {/* ... tes champs de formulaire existants avec `value={formData.fieldName}` et `onChange={handleChange}` ... */}
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? 'Envoi en cours...' : 'Envoyer la demande'}
+      </button>
+      {successMessage && <p className="success-message">{successMessage}</p>}
+      {error && <p className="error-message">{error}</p>}
+    </form>
+  );
+}
+
+export default ContactForm;
+*/
+// Fournis le code complet du composant ContactForm avec la logique d'envoi à l'API.

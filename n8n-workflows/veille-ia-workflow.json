@@ -1,0 +1,273 @@
+{
+  "name": "Veille IA ArchiaTech",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      },
+      "id": "cron-trigger",
+      "name": "Déclencheur 6h",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://mcp.archiatech.com:8000/mcp",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "method",
+              "value": "get_ai_news"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "mcp-call",
+      "name": "Appel MCP Server",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "success-condition",
+              "leftValue": "={{ $json.success }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equal"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-success",
+      "name": "Vérifier succès",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Formatage des données pour l'affichage\nconst articles = $input.first().json.result.articles;\nconst totalCount = $input.first().json.result.total_count;\nconst lastUpdated = $input.first().json.result.last_updated;\n\n// Création du HTML pour l'affichage\nlet htmlContent = `\n<div class=\"ai-news-container\">\n  <h2>🤖 Veille IA ArchiaTech</h2>\n  <p class=\"meta-info\">📊 ${totalCount} articles • ⏰ ${new Date(lastUpdated).toLocaleString('fr-FR')}</p>\n  <div class=\"articles-grid\">\n`;\n\narticles.forEach((article, index) => {\n  const imageHtml = article.image_url ? \n    `<img src=\"${article.image_url}\" alt=\"${article.title}\" class=\"article-image\" onerror=\"this.style.display='none'\">` : \n    `<div class=\"no-image\">📰</div>`;\n    \n  htmlContent += `\n    <article class=\"news-card\" data-index=\"${index}\">\n      <div class=\"article-header\">\n        ${imageHtml}\n        <div class=\"article-meta\">\n          <span class=\"source\">${article.source}</span>\n          <span class=\"category\">${article.category}</span>\n        </div>\n      </div>\n      <div class=\"article-content\">\n        <h3 class=\"article-title\">${article.title}</h3>\n        <p class=\"article-description\">${article.description || 'Aucune description disponible.'}</p>\n        <div class=\"article-footer\">\n          <a href=\"${article.url}\" target=\"_blank\" class=\"read-more\">\n            Lire l'article →\n          </a>\n          ${article.published_at ? `<span class=\"publish-date\">${new Date(article.published_at).toLocaleDateString('fr-FR')}</span>` : ''}\n        </div>\n      </div>\n    </article>\n  `;\n});\n\nhtmlContent += `\n  </div>\n  <div class=\"footer\">\n    <p>🔄 Actualisé automatiquement par ArchiaTech</p>\n  </div>\n</div>\n\n<style>\n.ai-news-container {\n  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 20px;\n  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);\n}\n\n.ai-news-container h2 {\n  color: #e60023;\n  text-align: center;\n  margin-bottom: 10px;\n  font-size: 2.5rem;\n}\n\n.meta-info {\n  text-align: center;\n  color: #64748b;\n  margin-bottom: 30px;\n}\n\n.articles-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));\n  gap: 20px;\n}\n\n.news-card {\n  background: white;\n  border-radius: 12px;\n  overflow: hidden;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  transition: transform 0.2s, box-shadow 0.2s;\n}\n\n.news-card:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);\n}\n\n.article-header {\n  position: relative;\n  height: 200px;\n  overflow: hidden;\n}\n\n.article-image {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n\n.no-image {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: linear-gradient(135deg, #e60023, #ff1744);\n  color: white;\n  font-size: 3rem;\n}\n\n.article-meta {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  display: flex;\n  gap: 8px;\n}\n\n.source, .category {\n  background: rgba(0, 0, 0, 0.7);\n  color: white;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-size: 0.8rem;\n}\n\n.category {\n  background: #e60023;\n}\n\n.article-content {\n  padding: 20px;\n}\n\n.article-title {\n  font-size: 1.2rem;\n  font-weight: 700;\n  color: #1e293b;\n  margin-bottom: 10px;\n  line-height: 1.4;\n}\n\n.article-description {\n  color: #64748b;\n  line-height: 1.6;\n  margin-bottom: 15px;\n}\n\n.article-footer {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.read-more {\n  color: #e60023;\n  text-decoration: none;\n  font-weight: 600;\n  transition: color 0.2s;\n}\n\n.read-more:hover {\n  color: #ff1744;\n}\n\n.publish-date {\n  color: #94a3b8;\n  font-size: 0.9rem;\n}\n\n.footer {\n  text-align: center;\n  margin-top: 40px;\n  padding: 20px;\n  color: #64748b;\n  border-top: 1px solid #e2e8f0;\n}\n\n@media (max-width: 768px) {\n  .articles-grid {\n    grid-template-columns: 1fr;\n  }\n  \n  .ai-news-container h2 {\n    font-size: 2rem;\n  }\n}\n</style>\n`;\n\n// Création du JSON pour API\nconst jsonResponse = {\n  success: true,\n  timestamp: new Date().toISOString(),\n  source: \"ArchiaTech MCP Server\",\n  data: {\n    total_count: totalCount,\n    last_updated: lastUpdated,\n    articles: articles.map(article => ({\n      id: `article_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,\n      title: article.title,\n      description: article.description,\n      url: article.url,\n      image_url: article.image_url,\n      source: article.source,\n      category: article.category,\n      published_at: article.published_at\n    }))\n  }\n};\n\nreturn {\n  html: htmlContent,\n  json: jsonResponse,\n  total_articles: totalCount,\n  last_updated: lastUpdated\n};"
+      },
+      "id": "format-data",
+      "name": "Formater données",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 200]
+    },
+    {
+      "parameters": {
+        "url": "http://api.archiatech.com/news",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $vars.ARCHIATECH_API_KEY }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "json",
+              "value": "={{ $json.json }}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "send-to-api",
+      "name": "Envoyer vers API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": {
+        "url": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "text",
+              "value": "🤖 Veille IA ArchiaTech - {{ $json.total_articles }} nouveaux articles"
+            },
+            {
+              "name": "blocks",
+              "value": "=[{\"type\": \"section\", \"text\": {\"type\": \"mrkdwn\", \"text\": \"🤖 *Veille IA ArchiaTech*\\n📊 {{ $json.total_articles }} articles trouvés\\n⏰ {{ $json.last_updated }}\"}}]"
+            }
+          ]
+        }
+      },
+      "id": "slack-notification",
+      "name": "Notification Slack",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1120, 400]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "resource": "file",
+        "name": "={{ `veille-ia-${new Date().toISOString().split('T')[0]}.html` }}",
+        "content": "={{ $json.html }}",
+        "options": {
+          "parents": {
+            "value": "1Bv7ySgKjH8F2nM9pQrT3wXzA6bC4dE7fG"
+          }
+        }
+      },
+      "id": "save-html",
+      "name": "Sauvegarder HTML",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "message": "❌ Erreur lors de la récupération des actualités IA: {{ $json.error }}",
+        "additionalFields": {}
+      },
+      "id": "error-notification",
+      "name": "Notification erreur",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [900, 500]
+    }
+  ],
+  "connections": {
+    "Déclencheur 6h": {
+      "main": [
+        [
+          {
+            "node": "Appel MCP Server",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Appel MCP Server": {
+      "main": [
+        [
+          {
+            "node": "Vérifier succès",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vérifier succès": {
+      "main": [
+        [
+          {
+            "node": "Formater données",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Notification erreur",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formater données": {
+      "main": [
+        [
+          {
+            "node": "Envoyer vers API",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notification Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envoyer vers API": {
+      "main": [
+        [
+          {
+            "node": "Sauvegarder HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "archiatech-ia",
+      "name": "ArchiaTech IA"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-01T00:00:00.000Z",
+  "versionId": "1"
+}

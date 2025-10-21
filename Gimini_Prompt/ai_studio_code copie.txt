@@ -1,0 +1,23 @@
+// Fichier: src/components/MainVideoPlayer.jsx
+
+// Ce composant React est le lecteur vidéo principal.
+// Il doit accepter une prop `videoUrl`.
+// Lorsque `videoUrl` change, le lecteur doit mettre à jour la source de la vidéo.
+// Utilise une balise `iframe` pour intégrer des vidéos YouTube, en assumant que `videoUrl` est l'URL d'intégration YouTube (ex: "https://www.youtube.com/embed/VID_ID").
+
+// Voici la structure du composant (à adapter si différent) :
+/*
+import React from 'react';
+
+function MainVideoPlayer({ videoUrl }) {
+  return (
+    <div className="main-video-player-container">
+      {/* Ton code existant pour le lecteur vidéo, potentiellement une iframe */}
+      {/* Assure-toi que l'iframe a un attribut `src` lié à la prop `videoUrl` */}
+    </div>
+  );
+}
+
+export default MainVideoPlayer;
+*/
+// Fournis le code complet du composant MainVideoPlayer.

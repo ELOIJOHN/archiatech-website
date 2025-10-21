@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Mail - ArchiAtech</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .diagnostic-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(227, 64, 64, 0.12);
+            border: 2px solid #e34040;
+        }
+        
+        .diagnostic-title {
+            color: #e34040;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .test-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+        
+        .test-button {
+            background: #e34040;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .test-button:hover {
+            background: #c73636;
+            transform: translateY(-2px);
+        }
+        
+        .test-button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .result-success {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+        }
+        
+        .result-error {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+        }
+        
+        .result-info {
+            background: #dbeafe;
+            border: 2px solid #3b82f6;
+            color: #1e40af;
+        }
+        
+        .instructions {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .instructions h3 {
+            color: #92400e;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .instructions p {
+            color: #92400e;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="diagnostic-container">
+        <h1 class="diagnostic-title">🔧 Diagnostic Mail - ArchiAtech</h1>
+        
+        <div class="instructions">
+            <h3>📋 Instructions de Diagnostic</h3>
+            <p>Ce diagnostic va tester différentes méthodes pour ouvrir votre application mail. Cliquez sur chaque bouton pour tester une méthode différente.</p>
+        </div>
+        
+        <div class="test-section">
+            <h3>🧪 Test 1: Lien mailto simple</h3>
+            <p>Teste l'ouverture d'un lien mailto basique</p>
+            <button class="test-button" onclick="testMethod1()">Test 1: mailto simple</button>
+            <div id="result1" class="result-box" style="display: none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🧪 Test 2: Lien temporaire</h3>
+            <p>Crée un lien temporaire et le clique programmatiquement</p>
+            <button class="test-button" onclick="testMethod2()">Test 2: Lien temporaire</button>
+            <div id="result2" class="result-box" style="display: none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🧪 Test 3: window.open</h3>
+            <p>Utilise window.open pour ouvrir le lien mailto</p>
+            <button class="test-button" onclick="testMethod3()">Test 3: window.open</button>
+            <div id="result3" class="result-box" style="display: none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🧪 Test 4: window.location</h3>
+            <p>Utilise window.location.href pour ouvrir le lien mailto</p>
+            <button class="test-button" onclick="testMethod4()">Test 4: window.location</button>
+            <div id="result4" class="result-box" style="display: none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🧪 Test 5: Toutes les méthodes</h3>
+            <p>Teste toutes les méthodes en séquence</p>
+            <button class="test-button" onclick="testAllMethods()">Test 5: Toutes les méthodes</button>
+            <div id="result5" class="result-box" style="display: none;"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>📋 Informations Système</h3>
+            <button class="test-button" onclick="showSystemInfo()">Afficher les infos système</button>
+            <div id="systemInfo" class="result-box" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        const mailtoLink = 'mailto:contact@archiatech.com?subject=Test%20Diagnostic&body=Ceci%20est%20un%20test%20de%20diagnostic%20du%20système%20mail.';
+        
+        function showResult(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = `result-box result-${type}`;
+            element.textContent = message;
+        }
+        
+        function testMethod1() {
+            showResult('result1', 'Tentative d\'ouverture avec un lien mailto simple...', 'info');
+            
+            try {
+                window.location.href = mailtoLink;
+                setTimeout(() => {
+                    showResult('result1', '✅ Méthode 1 exécutée. Vérifiez si votre application mail s\'est ouverte.', 'success');
+                }, 1000);
+            } catch (error) {
+                showResult('result1', `❌ Erreur avec la méthode 1: ${error.message}`, 'error');
+            }
+        }
+        
+        function testMethod2() {
+            showResult('result2', 'Création d\'un lien temporaire...', 'info');
+            
+            try {
+                const tempLink = document.createElement('a');
+                tempLink.href = mailtoLink;
+                tempLink.style.display = 'none';
+                tempLink.target = '_blank';
+                tempLink.rel = 'noopener noreferrer';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+                
+                setTimeout(() => {
+                    showResult('result2', '✅ Méthode 2 exécutée. Vérifiez si votre application mail s\'est ouverte.', 'success');
+                }, 1000);
+            } catch (error) {
+                showResult('result2', `❌ Erreur avec la méthode 2: ${error.message}`, 'error');
+            }
+        }
+        
+        function testMethod3() {
+            showResult('result3', 'Tentative avec window.open...', 'info');
+            
+            try {
+                const result = window.open(mailtoLink, '_blank');
+                setTimeout(() => {
+                    if (result) {
+                        showResult('result3', '✅ Méthode 3 exécutée. Vérifiez si votre application mail s\'est ouverte.', 'success');
+                    } else {
+                        showResult('result3', '⚠️ window.open a retourné null. Votre navigateur bloque peut-être les popups.', 'error');
+                    }
+                }, 1000);
+            } catch (error) {
+                showResult('result3', `❌ Erreur avec la méthode 3: ${error.message}`, 'error');
+            }
+        }
+        
+        function testMethod4() {
+            showResult('result4', 'Tentative avec window.location.href...', 'info');
+            
+            try {
+                window.location.href = mailtoLink;
+                setTimeout(() => {
+                    showResult('result4', '✅ Méthode 4 exécutée. Vérifiez si votre application mail s\'est ouverte.', 'success');
+                }, 1000);
+            } catch (error) {
+                showResult('result4', `❌ Erreur avec la méthode 4: ${error.message}`, 'error');
+            }
+        }
+        
+        function testAllMethods() {
+            showResult('result5', 'Test de toutes les méthodes en séquence...', 'info');
+            
+            let results = [];
+            let methodCount = 0;
+            
+            // Méthode 1
+            setTimeout(() => {
+                try {
+                    window.location.href = mailtoLink;
+                    results.push('✅ Méthode 1: window.location.href - Exécutée');
+                } catch (error) {
+                    results.push(`❌ Méthode 1: ${error.message}`);
+                }
+                methodCount++;
+                if (methodCount === 4) showFinalResults();
+            }, 100);
+            
+            // Méthode 2
+            setTimeout(() => {
+                try {
+                    const tempLink = document.createElement('a');
+                    tempLink.href = mailtoLink;
+                    tempLink.style.display = 'none';
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    document.body.removeChild(tempLink);
+                    results.push('✅ Méthode 2: Lien temporaire - Exécutée');
+                } catch (error) {
+                    results.push(`❌ Méthode 2: ${error.message}`);
+                }
+                methodCount++;
+                if (methodCount === 4) showFinalResults();
+            }, 200);
+            
+            // Méthode 3
+            setTimeout(() => {
+                try {
+                    const result = window.open(mailtoLink, '_blank');
+                    if (result) {
+                        results.push('✅ Méthode 3: window.open - Exécutée');
+                    } else {
+                        results.push('⚠️ Méthode 3: window.open bloqué');
+                    }
+                } catch (error) {
+                    results.push(`❌ Méthode 3: ${error.message}`);
+                }
+                methodCount++;
+                if (methodCount === 4) showFinalResults();
+            }, 300);
+            
+            // Méthode 4
+            setTimeout(() => {
+                try {
+                    window.location.href = mailtoLink;
+                    results.push('✅ Méthode 4: window.location.href (2ème) - Exécutée');
+                } catch (error) {
+                    results.push(`❌ Méthode 4: ${error.message}`);
+                }
+                methodCount++;
+                if (methodCount === 4) showFinalResults();
+            }, 400);
+            
+            function showFinalResults() {
+                setTimeout(() => {
+                    const finalMessage = `Résultats du test complet:\n\n${results.join('\n')}\n\n💡 Si aucune méthode n'a ouvert votre application mail, le problème vient de votre configuration système.`;
+                    showResult('result5', finalMessage, 'info');
+                }, 1000);
+            }
+        }
+        
+        function showSystemInfo() {
+            const info = `Informations Système:
+
+Navigateur: ${navigator.userAgent}
+Plateforme: ${navigator.platform}
+Langue: ${navigator.language}
+Cookies activés: ${navigator.cookieEnabled ? 'Oui' : 'Non'}
+Java activé: ${navigator.javaEnabled ? 'Oui' : 'Non'}
+Online: ${navigator.onLine ? 'Oui' : 'Non'}
+
+URL actuelle: ${window.location.href}
+Protocole: ${window.location.protocol}
+Host: ${window.location.host}
+
+💡 Ces informations peuvent aider à diagnostiquer pourquoi mailto: ne fonctionne pas.`;
+            
+            showResult('systemInfo', info, 'info');
+        }
+    </script>
+</body>
+</html>

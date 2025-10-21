@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ExternalLink, Calendar, Globe, TrendingUp, RefreshCw } from 'lucide-react';
 import { useAINews } from '../hooks/useAINews';
 
@@ -13,72 +13,12 @@ const AINewsSection = () => {
     loading,
     error,
     lastUpdate,
-    refresh,
-    computedStats
+    refresh
   } = useAINews({
     limit: 5,
     language: 'all',
     autoRefresh: false
   });
-
-  // Données d'exemple (fallback)
-  const mockNews = [
-    {
-      id: 1,
-      title: "OpenAI lance GPT-4 Turbo avec capacités multimodales améliorées",
-      summary: "La nouvelle version offre des performances 3x plus rapides et une meilleure compréhension contextuelle.",
-      source: "OpenAI Blog",
-      url: "https://openai.com/blog/gpt-4-turbo",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
-      publishedAt: "2024-01-15T10:30:00Z",
-      category: "Releases",
-      language: "en"
-    },
-    {
-      id: 2,
-      title: "Microsoft Copilot intègre l'IA générative dans Office 365",
-      summary: "Les utilisateurs peuvent désormais créer des documents, présentations et analyses automatiquement.",
-      source: "Microsoft News",
-      url: "https://news.microsoft.com/copilot-office365",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
-      publishedAt: "2024-01-14T14:20:00Z",
-      category: "Product",
-      language: "fr"
-    },
-    {
-      id: 3,
-      title: "Hugging Face publie un nouveau modèle de traduction multilingue",
-      summary: "Le modèle supporte 200+ langues avec une précision inégalée pour les traductions techniques.",
-      source: "Hugging Face",
-      url: "https://huggingface.co/blog/multilingual-translation",
-      image: "https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=400&h=300&fit=crop",
-      publishedAt: "2024-01-13T09:15:00Z",
-      category: "Research",
-      language: "en"
-    },
-    {
-      id: 4,
-      title: "L'IA générative transforme l'industrie du développement logiciel",
-      summary: "Les développeurs rapportent 40% d'augmentation de productivité avec les outils d'IA.",
-      source: "TechCrunch",
-      url: "https://techcrunch.com/ai-software-development",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop",
-      publishedAt: "2024-01-12T16:45:00Z",
-      category: "Industry",
-      language: "en"
-    },
-    {
-      id: 5,
-      title: "Nouvelle réglementation européenne sur l'IA : ce qu'il faut savoir",
-      summary: "L'UE finalise son cadre réglementaire pour l'intelligence artificielle responsable.",
-      source: "Euronews",
-      url: "https://euronews.com/eu-ai-regulation",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop",
-      publishedAt: "2024-01-11T11:30:00Z",
-      category: "Regulation",
-      language: "fr"
-    }
-  ];
 
   // Fonction pour gérer l'actualisation
   const handleRefresh = async () => {

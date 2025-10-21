@@ -18,10 +18,10 @@ export const trackEvent = (eventName, eventParams = {}) => {
     });
     
     // Log en développement
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.MODE === 'development') {
       console.log('📊 GA4 Event:', eventName, eventParams);
     }
-  } else if (process.env.NODE_ENV === 'development') {
+  } else if (import.meta.env.MODE === 'development') {
     console.warn('⚠️ Google Analytics non disponible');
   }
 };
@@ -320,7 +320,7 @@ export const initAnalytics = () => {
     trackScrollDepth();
     
     // Log en développement
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.MODE === 'development') {
       console.log('📊 Google Analytics initialized');
     }
   }

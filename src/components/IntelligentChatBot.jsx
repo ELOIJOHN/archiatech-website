@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
   MessageCircle, 
   X, 
@@ -35,43 +34,7 @@ const IntelligentChatBot = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
-
-  // Base de connaissances ArchiAtech
-  const knowledgeBase = {
-    services: {
-      automation: {
-        name: "Automatisation des Workflows",
-        description: "RPA, connecteurs API, et solutions no-code pour optimiser vos processus métiers",
-        benefits: ["Réduction des coûts", "Élimination des erreurs", "Gain de temps", "Scalabilité"],
-        price: "À partir de 2000€/mois",
-        duration: "2-4 semaines"
-      },
-      ai_integration: {
-        name: "Conseil & Intégration IA",
-        description: "Solutions d'intelligence artificielle sur mesure pour votre entreprise",
-        benefits: ["Analyse prédictive", "Automatisation intelligente", "Décisions data-driven", "ROI optimisé"],
-        price: "À partir de 3500€/mois",
-        duration: "4-8 semaines"
-      },
-      it_support: {
-        name: "Support & Déploiement IT",
-        description: "Installation, configuration et déploiement de postes de travail",
-        benefits: ["Déploiement rapide", "Support 24/7", "Maintenance proactive", "Sécurité renforcée"],
-        price: "À partir de 150€/poste/mois",
-        duration: "1-2 semaines"
-      }
-    },
-    company: {
-      name: "ArchiAtech",
-      mission: "Transformer votre entreprise avec l'IA et l'automatisation",
-      contact: {
-        email: "contact@archiatech.com",
-        phone: "+33 7 83 82 93 10",
-        website: "www.archiatech.com"
-      }
-    }
-  };
+  }, [messages, messages.length]);
 
   // Analyse de l'intention utilisateur avec IA simulée
   const analyzeUserIntent = (message) => {
@@ -104,7 +67,7 @@ const IntelligentChatBot = () => {
   };
 
   // Génération de réponse intelligente
-  const generateIntelligentResponse = (userMessage, intent, context) => {
+  const generateIntelligentResponse = (userMessage, intent) => {
     const responses = {
       greeting: [
         "Bonjour ! Je suis l'assistant IA d'ArchiAtech. 🤖 Comment puis-je vous aider à transformer votre entreprise aujourd'hui ?",

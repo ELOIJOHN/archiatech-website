@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Contact - ArchiAtech</title>
+    <style>
+        /* Import de la police Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        /* Reset et base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #ffffff;
+        }
+        
+        /* Section principale avec fond sombre et effets de lueur */
+        .dark-contact-section {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Effets de lueur en arrière-plan */
+        .dark-contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 100, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(100, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 69, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        /* Container principal */
+        .dark-contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* En-tête */
+        .dark-contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .dark-contact-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dark-contact-subtitle {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.125rem;
+            color: #b0b0b0;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .highlight-text {
+            color: #e34040;
+            font-weight: 600;
+        }
+        
+        /* Formulaire principal */
+        .dark-contact-form {
+            background: #1e1e1e;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Grille des champs */
+        .dark-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .dark-form-field-full {
+            grid-column: 1 / -1;
+        }
+        
+        /* Champs de formulaire */
+        .dark-form-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dark-form-label {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .required-asterisk {
+            color: #e34040;
+            font-weight: 600;
+        }
+        
+        .dark-form-input,
+        .dark-form-textarea {
+            background: #2a2a2a;
+            border: 1px solid #404040;
+            border-radius: 8px;
+            padding: 0.875rem 1rem;
+            color: #ffffff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        
+        .dark-form-input::placeholder,
+        .dark-form-textarea::placeholder {
+            color: #666666;
+        }
+        
+        .dark-form-input:hover,
+        .dark-form-textarea:hover {
+            border-color: #555555;
+            background: #333333;
+        }
+        
+        .dark-form-input:focus,
+        .dark-form-textarea:focus {
+            border-color: #e34040;
+            background: #333333;
+            box-shadow: 0 0 0 3px rgba(227, 64, 64, 0.1);
+        }
+        
+        .dark-form-input.error,
+        .dark-form-textarea.error {
+            border-color: #e34040;
+            background: #2a1a1a;
+        }
+        
+        .dark-form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Messages d'erreur */
+        .dark-form-error {
+            color: #e34040;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+        
+        /* Boutons */
+        .dark-form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .dark-btn-primary,
+        .dark-btn-secondary {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dark-btn-primary {
+            background: #e34040;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(227, 64, 64, 0.3);
+        }
+        
+        .dark-btn-primary:hover {
+            background: #c73636;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(227, 64, 64, 0.4);
+        }
+        
+        .dark-btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .dark-btn-primary:disabled {
+            background: #666666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .dark-btn-secondary {
+            background: #2a2a2a;
+            color: #ffffff;
+            border: 1px solid #404040;
+        }
+        
+        .dark-btn-secondary:hover {
+            background: #333333;
+            border-color: #555555;
+            transform: translateY(-2px);
+        }
+        
+        .dark-btn-secondary:active {
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dark-contact-container {
+                padding: 0 1rem;
+            }
+            
+            .dark-contact-title {
+                font-size: 2rem;
+            }
+            
+            .dark-contact-subtitle {
+                font-size: 1rem;
+            }
+            
+            .dark-contact-form {
+                padding: 1.5rem;
+            }
+            
+            .dark-form-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .dark-form-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .dark-btn-primary,
+            .dark-btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .dark-contact-section {
+                padding: 2rem 0;
+            }
+            
+            .dark-contact-title {
+                font-size: 1.75rem;
+            }
+            
+            .dark-contact-form {
+                padding: 1rem;
+            }
+        }
+        
+        /* Icône de chat flottante */
+        .chat-icon {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e34040 0%, #c73636 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(227, 64, 64, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .chat-icon:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(227, 64, 64, 0.5);
+        }
+        
+        .chat-icon::before {
+            content: '💬';
+            font-size: 24px;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+        }
+        
+        .chat-icon::after {
+            content: '!';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .chat-icon {
+                bottom: 1rem;
+                right: 1rem;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .chat-icon::before {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="dark-contact-section">
+        <div class="dark-contact-container">
+            <!-- En-tête -->
+            <div class="dark-contact-header">
+                <h2 class="dark-contact-title">
+                    Prêt à automatiser vos processus ?
+                </h2>
+                <p class="dark-contact-subtitle">
+                    Contactez-nous pour un <span class="highlight-text">audit gratuit</span> et découvrez comment gagner en efficacité
+                </p>
+            </div>
+
+            <!-- Formulaire -->
+            <form class="dark-contact-form" id="contactForm">
+                <div class="dark-form-grid">
+                    <div class="dark-form-field">
+                        <label for="fullName" class="dark-form-label">
+                            Nom complet <span class="required-asterisk">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            required
+                            placeholder="Jane Doe"
+                            class="dark-form-input"
+                        />
+                    </div>
+                    
+                    <div class="dark-form-field">
+                        <label for="email" class="dark-form-label">
+                            Email professionnel <span class="required-asterisk">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="jane@entreprise.com"
+                            class="dark-form-input"
+                        />
+                    </div>
+                    
+                    <div class="dark-form-field">
+                        <label for="company" class="dark-form-label">
+                            Société
+                        </label>
+                        <input
+                            type="text"
+                            id="company"
+                            name="company"
+                            placeholder="ArchiAtech"
+                            class="dark-form-input"
+                        />
+                    </div>
+                    
+                    <div class="dark-form-field dark-form-field-full">
+                        <label for="message" class="dark-form-label">
+                            Message <span class="required-asterisk">*</span>
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            required
+                            placeholder="Décrivez brièvement vos besoins..."
+                            class="dark-form-textarea"
+                        ></textarea>
+                    </div>
+                </div>
+                
+                <div class="dark-form-buttons">
+                    <button type="submit" class="dark-btn-primary">
+                        Envoyer la demande
+                    </button>
+                    <button type="button" class="dark-btn-secondary" onclick="alert('Ouverture du modal de contact direct')">
+                        Ou nous écrire directement
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Icône de chat flottante -->
+        <div class="chat-icon" onclick="alert('Ouverture du chat avec Archi')"></div>
+    </section>
+
+    <script>
+        // Validation du formulaire
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Validation basique
+            if (!fullName) {
+                alert('Le nom complet est obligatoire');
+                return;
+            }
+            
+            if (!email) {
+                alert('L\'email est obligatoire');
+                return;
+            }
+            
+            if (!email.includes('@')) {
+                alert('L\'email n\'est pas valide');
+                return;
+            }
+            
+            if (!message) {
+                alert('Le message est obligatoire');
+                return;
+            }
+            
+            // Simulation d'envoi
+            alert('Formulaire envoyé avec succès !');
+        });
+        
+        // Effets visuels sur les champs
+        document.querySelectorAll('.dark-form-input, .dark-form-textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('focused');
+            });
+        });
+    </script>
+</body>
+</html>

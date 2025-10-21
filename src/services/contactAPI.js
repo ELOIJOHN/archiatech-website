@@ -6,7 +6,7 @@
 // Configuration API
 const API_CONFIG = {
   // URL de votre API backend (à remplacer par votre vraie URL)
-  baseURL: process.env.NODE_ENV === 'production' 
+  baseURL: import.meta.env.MODE === 'production' 
     ? 'https://api.archiatech.com' 
     : 'http://localhost:3001',
   

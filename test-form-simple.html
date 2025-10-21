@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Formulaire Simple</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <section
+      id="contact"
+      style="
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+        min-height: 100vh;
+        padding: 4rem 0;
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <div style="
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 1;
+      ">
+        <!-- En-tête -->
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <h2 style="
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.02em;
+          ">
+            Prêt à automatiser vos processus ?
+          </h2>
+          <p style="
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.125rem;
+            color: #b0b0b0;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+          ">
+            Contactez-nous pour un <span style="color: #e34040; font-weight: 600;">audit gratuit</span> et découvrez comment gagner en efficacité
+          </p>
+        </div>
+
+        <!-- Formulaire -->
+        <form style="
+          background: #1e1e1e;
+          border-radius: 16px;
+          padding: 2.5rem;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          position: relative;
+          backdrop-filter: blur(10px);
+        ">
+          <div style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+          ">
+            <!-- Nom complet -->
+            <div style="display: flex; flex-direction: column;">
+              <label style="
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: #ffffff;
+                margin-bottom: 0.5rem;
+                display: block;
+              ">
+                Nom complet <span style="color: #e34040; font-weight: 600;">*</span>
+              </label>
+              <input
+                type="text"
+                required
+                placeholder="Jane Doe"
+                style="
+                  background: #2a2a2a;
+                  border: 1px solid #404040;
+                  border-radius: 8px;
+                  padding: 0.875rem 1rem;
+                  color: #ffffff;
+                  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                  font-size: 1rem;
+                  transition: all 0.3s ease;
+                  outline: none;
+                  width: 100%;
+                "
+              />
+            </div>
+
+            <!-- Email -->
+            <div style="display: flex; flex-direction: column;">
+              <label style="
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: #ffffff;
+                margin-bottom: 0.5rem;
+                display: block;
+              ">
+                Email professionnel <span style="color: #e34040; font-weight: 600;">*</span>
+              </label>
+              <input
+                type="email"
+                required
+                placeholder="jane@entreprise.com"
+                style="
+                  background: #2a2a2a;
+                  border: 1px solid #404040;
+                  border-radius: 8px;
+                  padding: 0.875rem 1rem;
+                  color: #ffffff;
+                  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                  font-size: 1rem;
+                  transition: all 0.3s ease;
+                  outline: none;
+                  width: 100%;
+                "
+              />
+            </div>
+
+            <!-- Société -->
+            <div style="display: flex; flex-direction: column;">
+              <label style="
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: #ffffff;
+                margin-bottom: 0.5rem;
+                display: block;
+              ">
+                Société
+              </label>
+              <input
+                type="text"
+                placeholder="ArchiAtech"
+                style="
+                  background: #2a2a2a;
+                  border: 1px solid #404040;
+                  border-radius: 8px;
+                  padding: 0.875rem 1rem;
+                  color: #ffffff;
+                  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                  font-size: 1rem;
+                  transition: all 0.3s ease;
+                  outline: none;
+                  width: 100%;
+                "
+              />
+            </div>
+
+            <!-- Message -->
+            <div style="display: flex; flex-direction: column; grid-column: 1 / -1;">
+              <label style="
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: #ffffff;
+                margin-bottom: 0.5rem;
+                display: block;
+              ">
+                Message <span style="color: #e34040; font-weight: 600;">*</span>
+              </label>
+              <textarea
+                required
+                rows="4"
+                placeholder="Décrivez brièvement vos besoins..."
+                style="
+                  background: #2a2a2a;
+                  border: 1px solid #404040;
+                  border-radius: 8px;
+                  padding: 0.875rem 1rem;
+                  color: #ffffff;
+                  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                  font-size: 1rem;
+                  transition: all 0.3s ease;
+                  outline: none;
+                  width: 100%;
+                  min-height: 120px;
+                  resize: vertical;
+                "
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Boutons -->
+          <div style="
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+          ">
+            <button
+              type="submit"
+              style="
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 1rem;
+                font-weight: 600;
+                padding: 0.875rem 2rem;
+                border-radius: 8px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                min-width: 200px;
+                background: #e34040;
+                color: #ffffff;
+                box-shadow: 0 4px 15px rgba(227, 64, 64, 0.3);
+              "
+            >
+              Envoyer la demande
+            </button>
+            <button
+              type="button"
+              onclick="alert('Ouverture du modal de contact direct')"
+              style="
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-size: 1rem;
+                font-weight: 600;
+                padding: 0.875rem 2rem;
+                border-radius: 8px;
+                border: 1px solid #404040;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                min-width: 200px;
+                background: #2a2a2a;
+                color: #ffffff;
+              "
+            >
+              Ou nous écrire directement
+            </button>
+          </div>
+        </form>
+
+        <!-- Icône de chat flottante -->
+        <div 
+          onclick="alert('Ouverture du chat avec Archi')"
+          style="
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e34040 0%, #c73636 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(227, 64, 64, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 24px;
+          "
+        >
+          💬
+        </div>
+      </div>
+    </section>
+</body>
+</html>

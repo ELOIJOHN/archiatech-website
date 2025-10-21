@@ -1,0 +1,25 @@
+// Fichier: src/components/ServiceCard.jsx
+
+// Ce composant React représente une seule carte de service dans la section "Services Premium".
+// Il doit accepter une prop `onServiceClick` (la fonction passée depuis le parent) et une prop `service` (qui contient les détails du service, y compris `service.videoUrl`).
+// Lorsque l'utilisateur clique sur le bouton "En savoir plus", il doit appeler `onServiceClick` en lui passant l'URL de la vidéo spécifique à ce service.
+
+// Voici la structure du composant (à adapter si différent) :
+/*
+import React from 'react';
+
+function ServiceCard({ service, onServiceClick }) {
+  // service pourrait être un objet comme : { title: "Support IT", description: "...", videoUrl: "URL_VIDEO_YOUTUBE_DU_SERVICE" }
+
+  return (
+    <div className="service-card">
+      <h3>{service.title}</h3>
+      <p>{service.description}</p>
+      <button onClick={() => onServiceClick(service.videoUrl)}>En savoir plus</button>
+    </div>
+  );
+}
+
+export default ServiceCard;
+*/
+// Fournis le code complet du composant ServiceCard avec le gestionnaire de clic.

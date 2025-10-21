@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contours Rouges Lumineux - Démonstrations Vidéos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: #111;
+            border-radius: 12px;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(230, 0, 35, 0.5);
+            border: 2px solid #E60023;
+        }
+        .video-area {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #111 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .thumbnail {
+            width: 100%;
+            height: 100px;
+            background: #333;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 0.75rem;
+            background-image: linear-gradient(135deg, #333 0%, #555 100%);
+        }
+        .thumbnail-container {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #E60023;
+            box-shadow: 0 0 10px rgba(230, 0, 35, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .thumbnail-container:hover {
+            background: #2a2a2a;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(230, 0, 35, 0.5);
+        }
+        .thumbnail-container.selected {
+            background: #e34040;
+            border: 2px solid #e34040;
+            box-shadow: 0 0 15px rgba(227, 64, 64, 0.6);
+        }
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .info {
+            margin-top: 2rem;
+            text-align: center;
+            background: rgba(230, 0, 35, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #E60023;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 2rem; color: #E60023; font-size: 2.5rem;">
+            🔴 CONTOURS ROUGES LUMINEUX 🔴
+        </h1>
+        
+        <!-- Lecteur Principal avec Contour Rouge -->
+        <div class="section">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">📺 LECTEUR PRINCIPAL</h2>
+            <div class="video-container">
+                <div class="video-area">
+                    <div style="text-align: center; color: #ccc;">
+                        <div style="font-size: 80px; margin-bottom: 1rem;">🎬</div>
+                        Vidéo de démonstration ArchiAtech
+                        <div style="font-size: 18px; margin-top: 0.5rem; color: #999;">
+                            Contour rouge lumineux autour du carré noir
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Miniatures avec Contours Rouges -->
+        <div class="section">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">🖼️ MINIATURES VIDÉO</h2>
+            <div class="thumbnails-grid">
+                <div class="thumbnail-container selected">
+                    <div class="thumbnail">👨‍💼</div>
+                    <h3 style="font-size: 0.875rem; font-weight: 600; color: #ffffff; margin-bottom: 0.5rem; line-height: 1.3;">
+                        Support IT
+                    </h3>
+                    <div style="font-size: 0.75rem; color: #ffffff; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Support IT
+                    </div>
+                </div>
+                
+                <div class="thumbnail-container">
+                    <div class="thumbnail">👥</div>
+                    <h3 style="font-size: 0.875rem; font-weight: 600; color: #ffffff; margin-bottom: 0.5rem; line-height: 1.3;">
+                        Conseil & Intégration IA
+                    </h3>
+                    <div style="font-size: 0.75rem; color: #b0b0b0; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">
+                        IA
+                    </div>
+                </div>
+                
+                <div class="thumbnail-container">
+                    <div class="thumbnail">👩‍💻</div>
+                    <h3 style="font-size: 0.875rem; font-weight: 600; color: #ffffff; margin-bottom: 0.5rem; line-height: 1.3;">
+                        Automatisation Workflows
+                    </h3>
+                    <div style="font-size: 0.75rem; color: #b0b0b0; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Automatisation
+                    </div>
+                </div>
+                
+                <div class="thumbnail-container">
+                    <div class="thumbnail">👨‍💻</div>
+                    <h3 style="font-size: 0.875rem; font-weight: 600; color: #ffffff; margin-bottom: 0.5rem; line-height: 1.3;">
+                        No Code / Low Code
+                    </h3>
+                    <div style="font-size: 0.75rem; color: #b0b0b0; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">
+                        No Code
+                    </div>
+                </div>
+                
+                <div class="thumbnail-container">
+                    <div class="thumbnail">👩‍🏫</div>
+                    <h3 style="font-size: 0.875rem; font-weight: 600; color: #ffffff; margin-bottom: 0.5rem; line-height: 1.3;">
+                        Formation & Accompagnement
+                    </h3>
+                    <div style="font-size: 0.75rem; color: #b0b0b0; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Formation
+                    </div>
+                </div>
+                
+                <div class="thumbnail-container">
+                    <div class="thumbnail">🔵</div>
+                    <h3 style="font-size: 0.875rem; font-weight: 600; color: #ffffff; margin-bottom: 0.5rem; line-height: 1.3;">
+                        Transformation Digitale
+                    </h3>
+                    <div style="font-size: 0.75rem; color: #b0b0b0; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Digital
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <h2 style="color: #E60023; margin-bottom: 1rem;">✅ CONTOURS ROUGES LUMINEUX AJOUTÉS :</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; text-align: left;">
+                <div>
+                    <h3 style="color: #E60023;">📺 Lecteur Principal :</h3>
+                    <ul style="color: #ccc; line-height: 1.8;">
+                        <li>✅ <strong>Bordure</strong> - 2px solid #E60023</li>
+                        <li>✅ <strong>Ombre lumineuse</strong> - 0 0 20px rgba(230, 0, 35, 0.5)</li>
+                        <li>✅ <strong>Effet</strong> - Contour rouge brillant</li>
+                        <li>✅ <strong>Style</strong> - Moderne et attractif</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: #E60023;">🖼️ Miniatures :</h3>
+                    <ul style="color: #ccc; line-height: 1.8;">
+                        <li>✅ <strong>Bordure</strong> - 2px solid #E60023</li>
+                        <li>✅ <strong>Ombre</strong> - 0 0 10px rgba(230, 0, 35, 0.3)</li>
+                        <li>✅ <strong>Hover</strong> - Ombre plus intense</li>
+                        <li>✅ <strong>Sélection</strong> - Rouge plus vif (#e34040)</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 1.2rem; color: #E60023; font-weight: bold;">
+                🎉 CONTOURS ROUGES LUMINEUX AUTOUR DES CARRÉS NOIRS ! 🎉
+            </p>
+        </div>
+    </div>
+</body>
+</html>

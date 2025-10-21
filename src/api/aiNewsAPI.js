@@ -3,7 +3,7 @@
  * Connecté au serveur MCP et workflow n8n
  */
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 /**
  * Récupère les dernières actualités IA

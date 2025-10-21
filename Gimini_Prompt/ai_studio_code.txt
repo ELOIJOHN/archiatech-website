@@ -1,0 +1,32 @@
+// Fichier: src/App.jsx (ou HomePage.jsx)
+
+// Tu as un composant React (App ou HomePage) qui affiche un lecteur vidéo principal et une section de services.
+// Je veux que le lecteur vidéo principal (MainVideoPlayer) puisse changer sa source vidéo lorsque je clique sur un bouton "En savoir plus" dans une carte de service (ServiceCard).
+
+// 1. Déclare un état React (`useState`) pour `currentVideoUrl` qui commencera avec l'URL de la vidéo de présentation générale d'ArchiATech.
+// 2. Crée une fonction `handleServiceVideoChange(newVideoUrl)` qui mettra à jour cet état.
+// 3. Passe `currentVideoUrl` comme prop au composant `MainVideoPlayer`.
+// 4. Passe la fonction `handleServiceVideoChange` comme prop à la `ServicesSection` (qui la transmettra aux `ServiceCard`).
+
+// Voici la structure actuelle des imports et de la fonction App (à adapter si différent) :
+/*
+import React, { useState } from 'react';
+import MainVideoPlayer from './components/MainVideoPlayer';
+import ServicesSection from './components/ServicesSection';
+// ... autres imports
+
+function App() {
+  // ... ton code existant
+
+  return (
+    <div>
+      <MainVideoPlayer videoUrl={currentVideoUrl} />
+      <ServicesSection onServiceClick={handleServiceVideoChange} />
+      {/* ... reste de la page * /}
+    </div>
+  );
+}
+
+export default App;
+*/
+// Fournis le code complet de la fonction App() avec les modifications.

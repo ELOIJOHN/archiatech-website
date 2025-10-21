@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion as Motion } from "framer-motion";
 import { MessageCircle, Send, Sparkles, Workflow, X } from "lucide-react";
 
 const API_URL = "https://n8n.archiatech.com/webhook/archibot";
@@ -86,7 +86,7 @@ export default function ChatBotWidget() {
         () => setHighlightedId(null),
         700
       );
-    } catch (error) {
+    } catch {
       const errorMessage = {
         id: createId(),
         role: "assistant",
@@ -111,7 +111,7 @@ export default function ChatBotWidget() {
       <AnimatePresence>
         {isOpen && (
           <>
-            <motion.div
+            <Motion.div
               className="fixed inset-0 bg-black/30 backdrop-blur-[2px] z-40"
               onClick={toggleWidget}
               initial={{ opacity: 0 }}
@@ -119,7 +119,7 @@ export default function ChatBotWidget() {
               exit={{ opacity: 0 }}
             />
 
-            <motion.div
+            <Motion.div
               className="fixed bottom-24 right-6 w-full max-w-sm z-50"
               initial={{ opacity: 0, y: 60, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -191,7 +191,7 @@ export default function ChatBotWidget() {
                         const isAssistant = message.role === "assistant";
                         const isHighlighted = highlightedId === message.id;
                         return (
-                          <motion.div
+                          <Motion.div
                             key={message.id}
                             variants={messageVariants}
                             initial="initial"
@@ -210,12 +210,12 @@ export default function ChatBotWidget() {
                             >
                               {message.content}
                             </div>
-                          </motion.div>
+                          </Motion.div>
                         );
                       })}
                     </AnimatePresence>
                     {isLoading && (
-                      <motion.div
+                      <Motion.div
                         className="flex justify-start"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -224,7 +224,7 @@ export default function ChatBotWidget() {
                         <div className="px-4 py-3 rounded-2xl bg-white border border-red-100 text-sm text-gray-500 shadow-md">
                           Le copilote réfléchit...
                         </div>
-                      </motion.div>
+                      </Motion.div>
                     )}
                   </div>
 
@@ -257,7 +257,7 @@ export default function ChatBotWidget() {
                         rows={2}
                         className="flex-1 resize-none rounded-2xl border border-red-100 bg-red-50 px-3 py-2 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-100"
                       />
-                      <motion.button
+                      <Motion.button
                         type="submit"
                         disabled={isLoading || !inputValue.trim()}
                         whileHover={{ scale: isLoading ? 1 : 1.05 }}
@@ -266,7 +266,7 @@ export default function ChatBotWidget() {
                         aria-label="Envoyer le message"
                       >
                         <Send className="w-4 h-4" />
-                      </motion.button>
+                      </Motion.button>
                     </div>
                     <p className="text-[10px] text-gray-400">
                       Enter pour envoyer · Shift + Enter pour une nouvelle ligne
@@ -274,12 +274,12 @@ export default function ChatBotWidget() {
                   </form>
                 </div>
               </div>
-            </motion.div>
+            </Motion.div>
           </>
         )}
       </AnimatePresence>
 
-      <motion.button
+      <Motion.button
         onClick={toggleWidget}
         className="fixed bottom-6 right-6 z-50 rounded-full p-5 shadow-[0_18px_50px_-20px_rgba(220,38,38,0.8)] bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white border-4 border-white"
         initial={false}
@@ -295,16 +295,16 @@ export default function ChatBotWidget() {
         <div className="relative">
           <MessageCircle className="w-7 h-7" />
           {!isOpen && (
-            <motion.span
+            <Motion.span
               className="absolute -top-2 -right-2 inline-flex items-center justify-center text-[10px] font-semibold bg-white text-red-600 rounded-full px-2 py-1 shadow-lg"
               initial={{ scale: 0.6, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
             >
               Bot
-            </motion.span>
+            </Motion.span>
           )}
         </div>
-      </motion.button>
+      </Motion.button>
     </>
   );
 }
@@ -345,13 +345,6 @@ async function fetchResponse(message, mode = "orchestrator", apiKey = "") {
     return "🚧 Oups, impossible de contacter le serveur n8n. Vérifie ta connexion ou la config MCP.";
   }
 }
-
-function delay(duration) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, duration);
-  });
-}
-
 function createId() {
   return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 }

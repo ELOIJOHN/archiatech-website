@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const MediaGallery = ({ title = "Galerie Média ArchiAtech", showTitle = true, items = [] }) => {

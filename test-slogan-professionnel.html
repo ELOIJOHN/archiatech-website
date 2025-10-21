@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Slogan Professionnel avec Effet Lumineux</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #212529;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .title .highlight {
+            color: #E60023;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Animation pour le slogan lumineux */
+        @keyframes slogan-glow {
+          0% { 
+            box-shadow: 
+              0 0 30px rgba(230, 0, 35, 0.6),
+              0 0 60px rgba(230, 0, 35, 0.4),
+              0 0 90px rgba(230, 0, 35, 0.2);
+          }
+          50% { 
+            box-shadow: 
+              0 0 40px rgba(230, 0, 35, 0.8),
+              0 0 80px rgba(230, 0, 35, 0.6),
+              0 0 120px rgba(230, 0, 35, 0.4);
+          }
+          100% { 
+            box-shadow: 
+              0 0 30px rgba(230, 0, 35, 0.6),
+              0 0 60px rgba(230, 0, 35, 0.4),
+              0 0 90px rgba(230, 0, 35, 0.2);
+          }
+        }
+        
+        /* Classe pour le slogan professionnel */
+        .slogan-professionnel {
+          animation: slogan-glow 3s ease-in-out infinite;
+          position: relative;
+          overflow: hidden;
+          display: inline-flex;
+          align-items: center;
+          gap: 20px;
+          padding: 24px 48px;
+          background: linear-gradient(135deg, rgba(230, 0, 35, 0.3), rgba(230, 0, 35, 0.4), rgba(230, 0, 35, 0.3));
+          border: 3px solid #E60023;
+          color: white;
+          border-radius: 2rem;
+          font-size: 2rem;
+          font-weight: 800;
+          margin: 40px 0;
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          transition: all 0.5s ease;
+          cursor: pointer;
+        }
+        
+        .slogan-professionnel::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(45deg, #E60023, #ff0000, #E60023, #ff0000);
+          border-radius: inherit;
+          z-index: -1;
+          opacity: 0.7;
+          filter: blur(1px);
+          animation: slogan-glow 3s ease-in-out infinite;
+        }
+        
+        .slogan-professionnel::after {
+          content: '';
+          position: absolute;
+          top: -4px;
+          left: -4px;
+          right: -4px;
+          bottom: -4px;
+          background: linear-gradient(45deg, #E60023, #ff0000, #E60023, #ff0000);
+          border-radius: inherit;
+          z-index: -2;
+          opacity: 0.3;
+          filter: blur(2px);
+          animation: slogan-glow 3s ease-in-out infinite;
+        }
+        
+        .slogan-professionnel:hover {
+          transform: scale(1.05);
+          box-shadow: 
+            0 0 40px rgba(230, 0, 35, 0.8),
+            0 0 80px rgba(230, 0, 35, 0.6),
+            0 0 120px rgba(230, 0, 35, 0.4);
+        }
+        
+        .rocket-icon {
+            width: 48px;
+            height: 48px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .slogan-text {
+            background: linear-gradient(135deg, white, #ffcccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+        }
+        
+        .description {
+            text-align: center;
+            margin-top: 40px;
+            color: #6c757d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px solid rgba(230, 0, 35, 0.2);
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #c3e6cb;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .professional-badge {
+            background: linear-gradient(135deg, #E60023, #ff0000);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="professional-badge">🏢 SLOGAN PROFESSIONNEL</div>
+            
+            <h1 class="title">
+                <span class="highlight">Slogan</span> avec Effet Lumineux
+            </h1>
+            
+            <p class="subtitle">
+                Le slogan d'entreprise transformé en élément visuel professionnel et imposant.
+            </p>
+        </div>
+        
+        <div class="success-message">
+            ✅ <strong>SLOGAN PROFESSIONNEL CRÉÉ !</strong> - Texte agrandi avec effet de contour lumineux spectaculaire !
+        </div>
+        
+        <!-- Slogan Professionnel avec Effet Lumineux -->
+        <div class="slogan-professionnel">
+            <svg class="rocket-icon" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+            </svg>
+            <span class="slogan-text">
+                ArchiAtech – Bâtissez l'avenir de votre entreprise avec l'IA
+            </span>
+        </div>
+        
+        <div class="description">
+            <p><strong>🎨 Slogan Professionnel avec Effet Lumineux :</strong></p>
+            <p>• <strong>Taille agrandie :</strong> De text-sm à text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl</p>
+            <p>• <strong>Padding augmenté :</strong> px-6 xs:px-8 sm:px-10 md:px-12 py-4 xs:py-5 sm:py-6 md:py-7</p>
+            <p>• <strong>Effet de contour lumineux :</strong> Animation slogan-glow avec 3 couches d'effets</p>
+            <p>• <strong>Gradient de texte :</strong> Blanc vers rouge pour un effet premium</p>
+            <p>• <strong>Animation pulsante :</strong> 3s avec variation d'intensité lumineuse</p>
+            <p>• <strong>Effet hover :</strong> Scale et intensification de la lueur</p>
+            <p>• <strong>Résultat :</strong> Slogan d'entreprise professionnel et imposant !</p>
+        </div>
+    </div>
+</body>
+</html>

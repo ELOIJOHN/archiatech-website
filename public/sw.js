@@ -1,3 +1,5 @@
+/* global clients */
+
 const CACHE_NAME = 'archiatech-v1.0.0';
 const STATIC_CACHE = 'archiatech-static-v1.0.0';
 const DYNAMIC_CACHE = 'archiatech-dynamic-v1.0.0';

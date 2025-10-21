@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic - Connexion YouTube @ArchiatechMedia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #212529;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .title .highlight {
+            color: #E60023;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .diagnostic-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e9ecef;
+        }
+        
+        .problem-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .problem-box h4 {
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .problem-box p {
+            color: #856404;
+            margin: 0;
+        }
+        
+        .solution-box {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .solution-box h4 {
+            color: #155724;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .solution-box p {
+            color: #155724;
+            margin: 0;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-left: 4px solid #E60023;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #E60023, #ff0000);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .step-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 15px;
+        }
+        
+        .instructions-list {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #E60023;
+            margin: 20px 0;
+        }
+        
+        .instructions-list h4 {
+            font-weight: 700;
+            color: #E60023;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .instructions-list ol {
+            margin-left: 20px;
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .instructions-list li {
+            margin-bottom: 8px;
+        }
+        
+        .action-button {
+            background: linear-gradient(135deg, #E60023, #ff0000);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 10px 10px 0;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 0, 35, 0.4);
+        }
+        
+        .url-example {
+            background: #f8f9fa;
+            border: 2px solid #E60023;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #E60023;
+            font-weight: bold;
+        }
+        
+        .professional-badge {
+            background: linear-gradient(135deg, #E60023, #ff0000);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="professional-badge">🔧 DIAGNOSTIC CONNEXION</div>
+            
+            <h1 class="title">
+                <span class="highlight">Problème</span> de Connexion YouTube
+            </h1>
+            
+            <p class="subtitle">
+                Diagnostic et solutions pour connecter votre chaîne @ArchiatechMedia à votre site.
+            </p>
+        </div>
+        
+        <!-- Problèmes identifiés -->
+        <div class="diagnostic-container">
+            <div class="step-number">🔍</div>
+            <h2 class="step-title">Problèmes Identifiés</h2>
+            
+            <div class="problem-box">
+                <h4>❌ Problème 1 : ID de chaîne manquant</h4>
+                <p>Le composant utilise actuellement un ID de chaîne générique au lieu de votre vrai ID de chaîne YouTube.</p>
+            </div>
+            
+            <div class="problem-box">
+                <h4>❌ Problème 2 : Configuration incorrecte</h4>
+                <p>La fonction buildYouTubeUrl n'est pas correctement configurée pour intégrer une chaîne YouTube.</p>
+            </div>
+            
+            <div class="problem-box">
+                <h4>❌ Problème 3 : URL d'intégration</h4>
+                <p>L'URL d'intégration ne suit pas le format correct pour afficher toutes les vidéos d'une chaîne.</p>
+            </div>
+        </div>
+        
+        <!-- Solutions -->
+        <div class="diagnostic-container">
+            <div class="step-number">1</div>
+            <h2 class="step-title">Solution 1 : Obtenir votre ID de chaîne</h2>
+            
+            <div class="instructions-list">
+                <h4>📋 Étapes pour obtenir l'ID de votre chaîne :</h4>
+                <ol>
+                    <li>Allez sur votre chaîne : <strong>https://www.youtube.com/@ArchiatechMedia</strong></li>
+                    <li>Cliquez sur l'onglet <strong>"À propos"</strong></li>
+                    <li>Faites défiler jusqu'à <strong>"Statistiques"</strong></li>
+                    <li>Cliquez sur <strong>"Voir les statistiques détaillées"</strong></li>
+                    <li>L'URL contiendra votre ID de chaîne : <code>UCxxxxxxxxxxxxxxxxxxxxxx</code></li>
+                </ol>
+            </div>
+            
+            <div class="url-example">
+                Exemple d'URL avec ID : https://www.youtube.com/channel/UCxxxxxxxxxxxxxxxxxxxxxx
+            </div>
+            
+            <button class="action-button" onclick="window.open('https://www.youtube.com/@ArchiatechMedia/about', '_blank')">
+                🔗 Ouvrir votre chaîne YouTube
+            </button>
+        </div>
+        
+        <div class="diagnostic-container">
+            <div class="step-number">2</div>
+            <h2 class="step-title">Solution 2 : Configuration automatique</h2>
+            
+            <div class="solution-box">
+                <h4>✅ Configuration corrigée</h4>
+                <p>J'ai déjà corrigé la fonction buildYouTubeUrl pour supporter l'intégration de chaînes YouTube.</p>
+            </div>
+            
+            <div class="code-block">
+// Nouvelle configuration pour votre chaîne
+const playlistConfig = {
+  channelHandle: '@ArchiatechMedia',
+  channelId: 'UC_VOTRE_ID_ICI', // 👈 Remplacez par votre vrai ID
+  listType: 'user_uploads',
+  // ... autres paramètres
+};
+            </div>
+            
+            <div class="solution-box">
+                <h4>🎯 URL d'intégration correcte</h4>
+                <p>L'URL sera maintenant : <code>https://www.youtube.com/embed?listType=user_uploads&list=UC_VOTRE_ID</code></p>
+            </div>
+        </div>
+        
+        <div class="diagnostic-container">
+            <div class="step-number">3</div>
+            <h2 class="step-title">Solution 3 : Test de connexion</h2>
+            
+            <div class="instructions-list">
+                <h4>🧪 Tests à effectuer :</h4>
+                <ol>
+                    <li>Vérifiez que votre chaîne est publique</li>
+                    <li>Assurez-vous que vos vidéos sont publiques ou non listées</li>
+                    <li>Testez l'URL d'intégration directement dans un navigateur</li>
+                    <li>Vérifiez la console du navigateur pour les erreurs</li>
+                </ol>
+            </div>
+            
+            <div class="code-block">
+// Test direct de l'URL d'intégration
+https://www.youtube.com/embed?listType=user_uploads&list=UC_VOTRE_ID_ICI
+            </div>
+        </div>
+        
+        <!-- Actions rapides -->
+        <div class="diagnostic-container">
+            <h2 class="step-title">🚀 Actions Rapides</h2>
+            
+            <div class="solution-box">
+                <h4>💡 Solution immédiate</h4>
+                <p>Donnez-moi votre ID de chaîne YouTube et je corrige immédiatement la configuration !</p>
+            </div>
+            
+            <div class="instructions-list">
+                <h4>📝 Ce que je vais faire :</h4>
+                <ol>
+                    <li>Remplacer l'ID générique par votre vrai ID</li>
+                    <li>Tester la connexion avec votre chaîne</li>
+                    <li>Vérifier que les vidéos s'affichent correctement</li>
+                    <li>Optimiser les paramètres de lecture</li>
+                </ol>
+            </div>
+            
+            <button class="action-button" onclick="alert('Envoyez-moi votre ID de chaîne YouTube ! 📺')">
+                📺 Donner mon ID de chaîne
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Code copié dans le presse-papiers ! 📋');
+            });
+        }
+    </script>
+</body>
+</html>

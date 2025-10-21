@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test ArchiAtech - Diagnostic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            margin: 0;
+            padding: 50px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .title {
+            color: #E60023;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #c3e6cb;
+            margin: 20px 0;
+        }
+        
+        .info {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #2196f3;
+            margin: 20px 0;
+        }
+        
+        .test-box {
+            background: #E60023;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .diagnostic {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #E60023;
+            margin: 20px 0;
+        }
+        
+        .step {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🔧 Diagnostic ArchiAtech</h1>
+        
+        <div class="success">
+            <h3>✅ Test HTML Fonctionnel</h3>
+            <p>Si vous voyez cette page, le serveur fonctionne correctement !</p>
+        </div>
+        
+        <div class="info">
+            <h3>📊 Informations Serveur</h3>
+            <p><strong>URL actuelle :</strong> http://localhost:5173</p>
+            <p><strong>Statut :</strong> Serveur Vite actif</p>
+            <p><strong>Problème :</strong> Page React blanche</p>
+        </div>
+        
+        <div class="test-box">
+            <h2>🎯 Test de Fonctionnement</h2>
+            <p>Cette page HTML simple fonctionne parfaitement !</p>
+            <p>Le problème vient du JavaScript React.</p>
+        </div>
+        
+        <div class="diagnostic">
+            <h3>🔍 Étapes de Diagnostic</h3>
+            <div class="step">
+                <strong>1. Vérifier la console :</strong> Appuyez sur F12 et regardez les erreurs
+            </div>
+            <div class="step">
+                <strong>2. Vider le cache :</strong> Ctrl+F5 ou Cmd+Shift+R
+            </div>
+            <div class="step">
+                <strong>3. Tester autre navigateur :</strong> Chrome, Firefox, Safari
+            </div>
+            <div class="step">
+                <strong>4. Mode privé :</strong> Testez en navigation privée
+            </div>
+        </div>
+        
+        <div class="info">
+            <h3>🚀 Prochaines Actions</h3>
+            <p>1. Retournez à <a href="http://localhost:5173" style="color: #E60023; font-weight: bold;">http://localhost:5173</a></p>
+            <p>2. Ouvrez la console développeur (F12)</p>
+            <p>3. Regardez s'il y a des erreurs en rouge</p>
+            <p>4. Partagez-moi les erreurs trouvées</p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('✅ Test HTML chargé avec succès');
+        console.log('🔍 Vérifiez maintenant http://localhost:5173');
+    </script>
+</body>
+</html>

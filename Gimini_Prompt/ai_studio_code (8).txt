@@ -1,0 +1,18 @@
+// Fichier: worker.js (pour un Cloudflare Worker)
+
+// Crée un Cloudflare Worker qui servira de backend pour deux endpoints :
+// 1. `/api/contact` (méthode POST) : Pour recevoir les soumissions du formulaire de contact et les enregistrer.
+//    - Simule l'enregistrement en base de données pour l'instant (console.log).
+//    - Retourne une réponse JSON { success: true, message: "Formulaire reçu." }.
+// 2. `/api/chat` (méthode POST) : Pour interagir avec l'API Gemini.
+//    - Reçoit un message utilisateur du frontend.
+//    - Fait un appel à l'API Gemini (utilise l'URL de l'API de génération de contenu Gemini et ta clé API qui sera dans les secrets du Worker).
+//    - Retourne la réponse textuelle de Gemini au frontend.
+
+// Le Worker doit :
+// - Gérer les requêtes POST.
+// - Analyser le corps JSON des requêtes entrantes.
+// - Implémenter une gestion CORS appropriée pour permettre à votre site React d'appeler ces endpoints.
+
+// Fournis le code complet du worker.js. Assume que process.env.GEMINI_API_KEY et process.env.DB_API_ENDPOINT sont disponibles comme variables d'environnement Worker.
+// Tu peux utiliser la bibliothèque @google/generative-ai/server pour l'interaction avec Gemini si tu veux ou faire des requêtes fetch directes à l'API REST de Gemini.

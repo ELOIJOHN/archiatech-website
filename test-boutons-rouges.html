@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutons Vidéo ROUGES - ArchiAtech</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: white;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .video-area {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #111 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: #000;
+            font-size: 14px;
+            z-index: 10;
+        }
+        .play-button {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            background: #e34040;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(227, 64, 64, 0.8), 0 0 0 4px rgba(255, 255, 255, 0.3);
+            z-index: 20;
+            position: relative;
+        }
+        .play-button:hover {
+            transform: scale(1.1);
+            background: #ff0000;
+            box-shadow: 0 10px 40px rgba(227, 64, 64, 1), 0 0 0 6px rgba(255, 255, 255, 0.5);
+        }
+        .subtitle {
+            position: absolute;
+            bottom: 80px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            line-height: 1.4;
+            z-index: 10;
+        }
+        .support-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 10;
+        }
+        .controls {
+            background: #000000;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-top: 3px solid #e34040;
+        }
+        .control-button {
+            background: #e34040;
+            border: 3px solid #ffffff;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(227, 64, 64, 0.6);
+        }
+        .control-button:hover {
+            background: #ff0000;
+            transform: scale(1.05);
+        }
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            border: 2px solid #e34040;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #e34040;
+            border-radius: 4px;
+            width: 30%;
+            box-shadow: 0 0 10px rgba(227, 64, 64, 0.5);
+        }
+        .time-display {
+            color: #e34040;
+            font-size: 16px;
+            font-family: monospace;
+            min-width: 100px;
+            text-align: center;
+            font-weight: bold;
+            background: rgba(227, 64, 64, 0.2);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 2px solid #e34040;
+        }
+        .volume-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .volume-button {
+            background: #e34040;
+            border: 3px solid #ffffff;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(227, 64, 64, 0.6);
+        }
+        .volume-button:hover {
+            background: #ff0000;
+            transform: scale(1.05);
+        }
+        .volume-slider {
+            width: 100px;
+            height: 8px;
+            background: #333;
+            outline: none;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid #e34040;
+        }
+        .info {
+            margin-top: 2rem;
+            text-align: center;
+            background: rgba(227, 64, 64, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #e34040;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin-bottom: 2rem; color: #e34040; font-size: 2.5rem;">
+        🔴 BOUTONS VIDÉO ROUGES 🔴
+    </h1>
+    
+    <div class="video-container">
+        <!-- Zone vidéo -->
+        <div class="video-area">
+            <!-- Logo Sora -->
+            <div class="logo">Sora</div>
+            
+            <!-- Bouton Play central -->
+            <button class="play-button" onclick="alert('🔴 BOUTON PLAY ROUGE CLIQUÉ ! 🔴')">
+                ▶️
+            </button>
+            
+            <!-- Sous-titres -->
+            <div class="subtitle">
+                Grâce à ArchiAtech, notre IT est fluide. Nos équipes peuvent enfin travailler sereinement.
+            </div>
+            
+            <!-- Label Support IT -->
+            <div class="support-label">Support IT</div>
+        </div>
+        
+        <!-- Barre de contrôles -->
+        <div class="controls">
+            <!-- Bouton Play/Pause -->
+            <button class="control-button" onclick="alert('🔴 BOUTON PLAY/PAUSE ROUGE CLIQUÉ ! 🔴')">
+                ▶️
+            </button>
+            
+            <!-- Barre de progression -->
+            <div class="progress-bar" onclick="alert('🔴 BARRE DE PROGRESSION ROUGE CLIQUÉE ! 🔴')">
+                <div class="progress-fill"></div>
+            </div>
+            
+            <!-- Temps -->
+            <div class="time-display">
+                1:23 / 3:45
+            </div>
+            
+            <!-- Contrôles du volume -->
+            <div class="volume-controls">
+                <button class="volume-button" onclick="alert('🔴 BOUTON VOLUME ROUGE CLIQUÉ ! 🔴')">
+                    🔊
+                </button>
+                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="0.7">
+            </div>
+        </div>
+    </div>
+    
+    <div class="info">
+        <h2 style="color: #e34040; margin-bottom: 1rem;">🔴 TOUS LES BOUTONS SONT ROUGES :</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; text-align: left;">
+            <div>
+                <h3 style="color: #e34040;">🔴 Boutons Rouges :</h3>
+                <ul style="color: #ccc; line-height: 1.8;">
+                    <li>🔴 <strong>Bouton Play Central</strong> - Rouge vif (#e34040)</li>
+                    <li>🔴 <strong>Bouton Play/Pause</strong> - Rouge avec bordure blanche</li>
+                    <li>🔴 <strong>Bouton Volume</strong> - Rouge avec texte blanc</li>
+                    <li>🔴 <strong>Barre de progression</strong> - Rouge vif</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #e34040;">🔴 Éléments Rouges :</h3>
+                <ul style="color: #ccc; line-height: 1.8;">
+                    <li>🔴 <strong>Affichage du temps</strong> - Texte rouge, bordure rouge</li>
+                    <li>🔴 <strong>Slider de volume</strong> - Bordure rouge</li>
+                    <li>🔴 <strong>Barre de progression</strong> - Fond rouge</li>
+                    <li>🔴 <strong>Bordure supérieure</strong> - Rouge</li>
+                </ul>
+            </div>
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 1.2rem; color: #e34040; font-weight: bold;">
+            🔴 TOUS LES BOUTONS SONT MAINTENANT ROUGES ! 🔴
+        </p>
+    </div>
+</body>
+</html>

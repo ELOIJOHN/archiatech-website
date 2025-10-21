@@ -14,21 +14,19 @@ const OptimizedImage = ({
   className = '',
   width,
   height,
-  priority = false,
   objectFit = 'cover',
-  quality = 85,
   placeholder = 'blur',
   onLoad,
   ...props
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(priority);
+  const [isInView, setIsInView] = useState(false);
   const [hasError, setHasError] = useState(false);
   const imgRef = useRef(null);
 
   // Intersection Observer pour lazy loading avancé
   useEffect(() => {
-    if (priority || isInView) return;
+    if (isInView) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -45,16 +43,17 @@ const OptimizedImage = ({
       }
     );
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
+    const currentImgRef = imgRef.current;
+    if (currentImgRef) {
+      observer.observe(currentImgRef);
     }
 
     return () => {
-      if (imgRef.current) {
-        observer.unobserve(imgRef.current);
+      if (currentImgRef) {
+        observer.unobserve(currentImgRef);
       }
     };
-  }, [priority, isInView]);
+  }, [isInView]);
 
   // Gestion du chargement
   const handleLoad = (e) => {
@@ -97,7 +96,7 @@ const OptimizedImage = ({
   `.trim();
 
   // Si l'image n'est pas encore visible, afficher un placeholder
-  if (!isInView && !priority) {
+  if (!isInView) {
     return (
       <div
         ref={imgRef}
@@ -143,7 +142,7 @@ const OptimizedImage = ({
         alt={alt}
         width={width}
         height={height}
-        loading={priority ? 'eager' : 'lazy'}
+        loading={'lazy'}
         decoding="async"
         className={imageClasses}
         style={{
@@ -162,77 +161,3 @@ const OptimizedImage = ({
 };
 
 export default OptimizedImage;
-
-/**
- * Hook personnalisé pour preloader les images critiques
- */
-export const useImagePreload = (imageSources) => {
-  useEffect(() => {
-    if (!imageSources || imageSources.length === 0) return;
-
-    const preloadImages = imageSources.map((src) => {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = resolve;
-        img.onerror = reject;
-        img.src = src;
-      });
-    });
-
-    Promise.allSettled(preloadImages).then((results) => {
-      results.forEach((result, index) => {
-        if (result.status === 'rejected') {
-          console.warn(`Échec du preload de l'image: ${imageSources[index]}`);
-        }
-      });
-    });
-  }, [imageSources]);
-};
-
-/**
- * Composant pour images de fond optimisées
- */
-export const OptimizedBackgroundImage = ({
-  src,
-  children,
-  className = '',
-  overlay = false,
-  overlayOpacity = 0.5,
-  priority = false,
-  ...props
-}) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [backgroundUrl, setBackgroundUrl] = useState('');
-
-  useEffect(() => {
-    if (!src) return;
-
-    const img = new Image();
-    img.onload = () => {
-      setBackgroundUrl(src);
-      setIsLoaded(true);
-    };
-    img.src = src;
-  }, [src]);
-
-  return (
-    <div
-      className={`relative ${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}
-      style={{
-        backgroundImage: backgroundUrl ? `url(${backgroundUrl})` : 'none',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-      {...props}
-    >
-      {overlay && (
-        <div
-          className="absolute inset-0 bg-black"
-          style={{ opacity: overlayOpacity }}
-        />
-      )}
-      {children}
-    </div>
-  );
-};

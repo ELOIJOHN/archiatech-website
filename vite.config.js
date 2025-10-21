@@ -5,4 +5,13 @@ export default defineConfig({
   plugins: [react()],
   // Use '/' for custom domain (www.archiatech.com)
   base: '/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'framer-motion': ['framer-motion'],
+        },
+      },
+    },
+  },
 })

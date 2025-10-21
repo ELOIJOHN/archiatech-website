@@ -1,0 +1,18 @@
+// Fichier: src/components/BenefitSimulator.jsx
+
+// Crée un composant React pour un "Simulateur de Bénéfices IA" interactif.
+// Le simulateur doit permettre à l'utilisateur de saisir quelques informations et afficher des gains estimés.
+
+// Le composant doit :
+// 1. Gérer l'état (`useState`) pour les champs de saisie (ex: `numEmployees`, `processToOptimize`).
+// 2. Avoir un formulaire avec :
+//    - Un champ pour le "Nombre d'employés" (input type="number").
+//    - Un champ pour le "Processus à optimiser" (select ou input type="text").
+//    - Un bouton "Lancer la simulation".
+// 3. Gérer l'état pour les résultats du calcul (`estimatedTimeSaved`, `estimatedCostReduced`, `estimatedEfficiencyGain`).
+// 4. Une fonction `handleCalculate` qui, lors de la soumission du formulaire :
+//    - Effectue un calcul simple (par exemple, `tempsGagne = numEmployees * 5` heures/mois, `coutReduit = tempsGagne * 50` euros/heure, `efficacite = 10%`).
+//    - Met à jour l'état des résultats.
+// 5. Afficher les résultats de manière claire et visuelle sous le formulaire après le calcul.
+
+// Fournis le code complet du composant BenefitSimulator avec un style CSS inline ou des classes simples pour le formulaire et les résultats.

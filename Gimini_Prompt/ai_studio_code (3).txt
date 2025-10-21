@@ -1,0 +1,18 @@
+// Fichier: src/components/ApproachChatbot.jsx
+
+// Crée un composant React pour un chatbot conversationnel simple.
+// Ce chatbot affichera les messages (utilisateur et IA) et aura un champ de saisie pour l'utilisateur.
+// Pour l'instant, les réponses de l'IA seront des messages statiques ou simulés.
+// L'IA réelle (Gemini) sera intégrée via un appel API à un backend plus tard.
+
+// Le composant doit :
+// 1. Gérer un état pour la liste des messages (`messages`). Chaque message est un objet { text: string, sender: 'user' | 'ia' }.
+// 2. Gérer un état pour le texte de saisie de l'utilisateur (`inputMessage`).
+// 3. Avoir une fonction `handleSendMessage` qui, lorsqu'un message est envoyé :
+//    - Ajoute le message de l'utilisateur à la liste des messages.
+//    - Efface le champ de saisie.
+//    - Simule une réponse de l'IA (par exemple, "Merci pour votre question ! Je suis un agent IA d'ArchiATech.") après un court délai.
+// 4. Afficher la liste des messages dans une zone de défilement.
+// 5. Inclure un champ `input` et un bouton `Envoyer` pour la saisie de l'utilisateur.
+
+// Fournis le code complet du composant ApproachChatbot avec un style CSS inline de base ou des classes simples pour le conteneur, les messages et la zone de saisie.

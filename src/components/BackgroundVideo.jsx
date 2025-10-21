@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { Volume2, VolumeX, Play, Pause } from 'lucide-react';
 
 const BackgroundVideo = ({ 
@@ -55,7 +55,7 @@ const BackgroundVideo = ({
 
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      {/* Vidéo d'arrière-plan */}
+      {/* Vidéo d’arrière-plan */}
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
@@ -83,7 +83,7 @@ const BackgroundVideo = ({
 
       {/* Contrôles personnalisés */}
       {controls && (
-        <motion.div
+        <Motion.div
           className="absolute bottom-4 right-4 flex gap-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: showControls ? 1 : 0 }}
@@ -104,7 +104,7 @@ const BackgroundVideo = ({
             {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
             <span>{isMuted ? 'Son' : 'Muet'}</span>
           </button>
-        </motion.div>
+        </Motion.div>
       )}
 
       {/* Contenu par-dessus la vidéo */}

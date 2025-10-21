@@ -17,7 +17,6 @@ const LazySection = ({
   ...props 
 }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -36,13 +35,14 @@ const LazySection = ({
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [threshold, rootMargin]);
@@ -102,7 +102,7 @@ const useLazyComponent = (importFn, deps = []) => {
           setLoading(false);
         });
     }
-  }, [Component, loading, ...deps]);
+  }, [Component, loading, importFn, deps]);
 
   return { Component, loading, error };
 };

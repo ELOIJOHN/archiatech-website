@@ -57,13 +57,14 @@ const LazyVideo = ({
       }
     );
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    const currentVideoRef = videoRef.current;
+    if (currentVideoRef) {
+      observer.observe(currentVideoRef);
     }
 
     return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
+      if (currentVideoRef) {
+        observer.unobserve(currentVideoRef);
       }
     };
   }, [priority, autoPlay, isLoaded]);
@@ -94,21 +95,6 @@ const LazyVideo = ({
       Votre navigateur ne supporte pas la vidéo HTML5.
     </video>
   );
-};
-
-/**
- * Hook pour preloader des vidéos critiques
- */
-export const useVideoPreload = (videoSources) => {
-  useEffect(() => {
-    if (!videoSources || videoSources.length === 0) return;
-
-    videoSources.forEach((src) => {
-      const video = document.createElement('video');
-      video.preload = 'metadata';
-      video.src = src;
-    });
-  }, [videoSources]);
 };
 
 export default LazyVideo;

@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Play, Pause, Volume2, VolumeX, Maximize, RotateCcw } from "lucide-react";
 
 export default function HeroVideo({ 
@@ -15,7 +14,6 @@ export default function HeroVideo({
   const [showControls, setShowControls] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const videoRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -73,10 +71,8 @@ export default function HeroVideo({
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
       containerRef.current?.requestFullscreen();
-      setIsFullscreen(true);
     } else {
       document.exitFullscreen();
-      setIsFullscreen(false);
     }
   };
 
