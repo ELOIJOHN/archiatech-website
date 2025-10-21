@@ -9,9 +9,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -21,66 +21,69 @@
 }
 
 .contact-modal {
-  background: rgba(255, 255, 255, 0.05);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(229, 57, 53, 0.3);
+  background: white;
+  border: 1px solid rgba(230, 0, 35, 0.1);
   border-radius: 24px;
-  padding: 2rem;
-  max-width: 500px;
+  padding: 2.5rem;
+  max-width: 540px;
   width: 100%;
   position: relative;
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(229, 57, 53, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  animation: modalSlideIn 0.4s ease-out;
+    0 24px 80px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(230, 0, 35, 0.05);
+  animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 640px) {
+  .contact-modal {
+    padding: 1.75rem;
+  }
 }
 
 .contact-modal-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(229, 57, 53, 0.2);
-  border: 1px solid rgba(229, 57, 53, 0.4);
-  border-radius: 50%;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 10px;
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 1.2rem;
+  color: #6b7280;
+  font-size: 1.125rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
 }
 
 .contact-modal-close:hover {
-  background: rgba(229, 57, 53, 0.4);
-  border-color: rgba(229, 57, 53, 0.6);
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(229, 57, 53, 0.5);
+  background: #E60023;
+  color: white;
+  transform: scale(1.05);
 }
 
 .contact-modal-header {
   text-align: center;
   margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #f3f4f6;
 }
 
 .contact-modal-title {
-  color: white;
-  font-size: 1.75rem;
+  color: #111827;
+  font-size: 1.875rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #E60023 0%, #C4001D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .contact-modal-subtitle {
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7280;
   font-size: 1rem;
   font-weight: 500;
 }
@@ -94,31 +97,32 @@
 .contact-info-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  gap: 1.125rem;
+  padding: 1.25rem;
+  background: #f9fafb;
+  border-radius: 16px;
+  border: 2px solid #f3f4f6;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .contact-info-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(229, 57, 53, 0.3);
+  background: white;
+  border-color: rgba(230, 0, 35, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(230, 0, 35, 0.08);
 }
 
 .contact-info-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
-  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #E60023 0%, #C4001D 100%);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  color: white;
-  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
+  font-size: 1.375rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(230, 0, 35, 0.2);
 }
 
 .contact-info-text {
@@ -126,27 +130,48 @@
 }
 
 .contact-info-label {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
+  color: #6b7280;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-bottom: 0.375rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .contact-info-value {
-  color: white;
-  font-size: 1rem;
+  color: #111827;
+  font-size: 0.9375rem;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .contact-info-value a {
-  color: white;
+  color: #111827;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .contact-info-value a:hover {
-  color: #E53935;
+  color: #E60023;
+}
+
+/* Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

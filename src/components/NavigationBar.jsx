@@ -65,22 +65,22 @@ export default function NavigationBar() {
   return (
     <nav className={`fixed top-0 w-full z-navigation transition-all duration-300 ${
       isScrolled
-        ? 'bg-black/80 backdrop-blur-xl border-b border-[#E60023]/20'
-        : 'bg-transparent'
+        ? 'bg-[#E60023]/90 backdrop-blur-xl border-b border-white/20'
+        : 'bg-[#E60023]'
     }`}>
-      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 py-2.5 xs:py-3 sm:py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex justify-between items-center">
           {/* Logo ArchiAtech - Optimisé responsive */}
           <div className="flex items-center space-x-1.5 xs:space-x-2 sm:space-x-3">
-            <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10
+            <div className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
                             bg-gradient-to-br from-[#E60023] to-red-800
                             rounded-md xs:rounded-lg sm:rounded-xl
                             flex items-center justify-center
                             touch-target">
-              <Cpu className="text-white w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />
+              <Cpu className="text-white w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
             </div>
-            <span className="text-lg xs:text-xl sm:text-2xl font-bold text-white whitespace-nowrap">
-              Archi<span className="text-[#E60023]">Atech</span>
+            <span className="text-lg sm:text-xl md:text-2xl font-bold text-white whitespace-nowrap">
+              Archi<span className="text-white">Atech</span>
             </span>
           </div>
 
@@ -92,54 +92,68 @@ export default function NavigationBar() {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 onMouseEnter={() => setIsDropdownOpen(true)}
                 className="nav-dropdown-button flex items-center space-x-1.5 lg:space-x-2
-                          text-white/80 hover:text-[#E60023] transition-colors duration-200
-                          font-medium group touch-target
-                          text-sm lg:text-base"
+                          text-white hover:text-white transition-all duration-300
+                          font-semibold group touch-target
+                          text-base lg:text-lg xl:text-xl
+                          px-4 py-3 rounded-lg
+                          hover:bg-white/10"
               >
                 <span>ArchiAtech</span>
-                <ChevronDown className={`nav-dropdown-arrow w-3.5 h-3.5 lg:w-4 lg:h-4
-                                        transition-transform duration-200
-                                        ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`nav-dropdown-arrow w-4 h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6
+                                        transition-all duration-300
+                                        ${isDropdownOpen ? 'rotate-180' : 'group-hover:translate-y-0.5'}`} />
               </button>
 
               {/* Dropdown Menu - Z-index augmenté */}
               {isDropdownOpen && (
                 <div
-                  className="nav-dropdown absolute top-full left-0 mt-2
-                            w-64 md:w-72 lg:w-80
-                            rounded-xl lg:rounded-2xl shadow-2xl overflow-hidden
-                            z-dropdown"
+                  className="nav-dropdown absolute top-full left-0 mt-3
+                            w-72 md:w-80 lg:w-[340px]
+                            rounded-2xl overflow-hidden
+                            z-dropdown
+                            bg-gradient-to-br from-[#E60023]/75 via-[#E60023]/70 to-[#C4001D]/75
+                            backdrop-blur-2xl border border-white/20
+                            shadow-[0_8px_32px_rgba(230,0,35,0.3),0_0_0_1px_rgba(255,255,255,0.1)]"
                   onMouseLeave={() => setIsDropdownOpen(false)}
                 >
-                  <div className="p-1.5 md:p-2">
+                  <div className="p-2.5 md:p-3">
                     {archiSubmenu.map((item, index) => {
                       const IconComponent = item.icon;
                       return (
                         <a
                           key={index}
                           href={item.href}
-                          className="nav-dropdown-item flex items-start
-                                    space-x-2.5 md:space-x-3
-                                    p-2.5 md:p-3
-                                    rounded-lg md:rounded-xl
-                                    transition-all duration-200 group
-                                    touch-target"
+                          className="nav-dropdown-item flex items-center
+                                    gap-3.5 md:gap-4
+                                    p-3.5 md:p-4
+                                    rounded-xl
+                                    transition-all duration-300 group
+                                    touch-target
+                                    hover:bg-white/20 bg-white/0
+                                    hover:shadow-lg hover:shadow-black/10
+                                    hover:-translate-y-0.5
+                                    border border-white/0 hover:border-white/20"
                           onClick={() => setIsDropdownOpen(false)}
                         >
                           <div className="nav-dropdown-icon flex-shrink-0
-                                        w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10
-                                        rounded-md md:rounded-lg
-                                        flex items-center justify-center">
-                            <IconComponent className="w-4 h-4 md:w-4.5 md:h-4.5 lg:w-5 lg:h-5 text-[#E60023]" />
+                                        w-11 h-11 md:w-12 md:h-12
+                                        rounded-xl
+                                        flex items-center justify-center
+                                        bg-white shadow-lg shadow-black/10
+                                        group-hover:scale-110 group-hover:rotate-3
+                                        transition-all duration-300">
+                            <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-[#E60023]" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <div className="nav-dropdown-text text-white font-medium
-                                          text-xs md:text-sm transition-colors">
+                            <div className="nav-dropdown-text text-white font-semibold
+                                          text-sm md:text-base transition-colors
+                                          group-hover:text-white/95 mb-0.5">
                               {item.label}
                             </div>
-                            <div className="nav-dropdown-description text-white/60
-                                          text-[0.65rem] md:text-xs mt-0.5 md:mt-1
-                                          leading-tight">
+                            <div className="nav-dropdown-description text-white/70
+                                          text-xs md:text-[0.8125rem]
+                                          leading-relaxed
+                                          group-hover:text-white/80 transition-colors">
                               {item.description}
                             </div>
               </div>
@@ -157,7 +171,8 @@ export default function NavigationBar() {
                 key={index}
                 href={item.href}
                 className="text-white/80 hover:text-[#E60023] transition-colors duration-200
-                          font-medium touch-target text-sm lg:text-base whitespace-nowrap"
+                          font-medium touch-target text-base lg:text-lg xl:text-xl whitespace-nowrap
+                          px-3 py-2 rounded-lg hover:bg-white/10"
               >
                 {item.label}
               </a>

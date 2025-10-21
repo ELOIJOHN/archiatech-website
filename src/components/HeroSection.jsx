@@ -1,74 +1,125 @@
 import React from 'react';
 import { Rocket } from 'lucide-react';
-import HeroVideo from './HeroVideo';
+import YouTubePlayerSimple from './YouTubePlayerSimple';
 
 export default function HeroSection() {
   return (
     <section
       id="hero"
       className="min-h-[70vh] xs:min-h-[75vh] sm:min-h-[80vh] md:min-h-[85vh]
-                 flex items-center justify-center relative overflow-hidden
-                 bg-gradient-to-br from-gray-900 via-black to-gray-900
-                 landscape:min-h-[90vh]"
+                 relative overflow-hidden
+                 bg-gradient-to-br from-white via-gray-50 to-blue-50
+                 flex flex-col justify-center items-center
+                 px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20
+                 pt-20 pb-8 xs:pt-24 xs:pb-10 sm:pt-28 sm:pb-12 md:pt-32 md:pb-16 lg:pt-36 lg:pb-20"
     >
-      {/* Background Elements - Optimisés pour différents écrans */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#E60023]/10 via-transparent to-[#E60023]/5"></div>
-      <div className="absolute top-8 xs:top-10 sm:top-16 md:top-20
-                      right-4 xs:right-5 sm:right-8 md:right-10
-                      w-32 h-32 xs:w-40 xs:h-40 sm:w-56 sm:h-56 md:w-72 md:h-72
-                      bg-[#E60023]/20 rounded-full mix-blend-multiply
-                      filter blur-3xl opacity-30 animate-pulse"></div>
-      <div className="absolute bottom-8 xs:bottom-10 sm:bottom-16 md:bottom-20
-                      left-4 xs:left-5 sm:left-8 md:left-10
-                      w-32 h-32 xs:w-40 xs:h-40 sm:w-56 sm:h-56 md:w-72 md:h-72
-                      bg-[#E60023]/20 rounded-full mix-blend-multiply
-                      filter blur-3xl opacity-20 animate-pulse delay-700"></div>
+      {/* Éléments décoratifs d'arrière-plan */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Cercles flottants */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-red-200 rounded-full opacity-20 animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-16 h-16 bg-blue-200 rounded-full opacity-30 animate-bounce"></div>
+        <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-green-200 rounded-full opacity-25 animate-pulse"></div>
+        
+        {/* Lignes géométriques */}
+        <div className="absolute top-1/3 right-1/4 w-32 h-1 bg-gradient-to-r from-transparent via-red-300 to-transparent opacity-30"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-24 h-1 bg-gradient-to-r from-transparent via-blue-300 to-transparent opacity-30"></div>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8
-                      relative z-10 pt-14 xs:pt-16 sm:pt-20 md:pt-24 w-full">
-        {/* Titre principal centré avec animations */}
-        <div className="text-center mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16 fade-in-up">
-          <div className="inline-flex items-center space-x-1.5 xs:space-x-2
-                          px-2.5 xs:px-3 sm:px-4 py-1.5 xs:py-2
-                          bg-[#E60023]/20 border border-[#E60023]/40 text-[#E60023]
-                          rounded-full text-[0.7rem] xs:text-xs sm:text-sm
-                          font-semibold mb-3 xs:mb-4 sm:mb-6 backdrop-blur-md
-                          touch-target">
-            <Rocket className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 glow-pulse flex-shrink-0" />
-            <span className="hidden sm:inline whitespace-nowrap">ArchiAtech – Bâtissez l'avenir de votre entreprise avec l'IA</span>
-            <span className="sm:hidden whitespace-nowrap">ArchiAtech – IA & Automatisation</span>
-          </div>
-
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
-                         font-bold hero-text mb-3 xs:mb-4 sm:mb-6
-                         leading-tight px-2 xs:px-3 sm:px-4">
-            Transformez votre entreprise avec{' '}
-            <span className="bg-gradient-to-r from-[#E60023] via-red-600 to-[#E60023]
-                           bg-clip-text text-transparent glow-pulse">
-              l'IA
+      <div className="relative z-10 w-full max-w-7xl mx-auto text-center">
+        {/* Slogan professionnel avec effet lumineux */}
+        <div className="mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <div className="slogan-professionnel
+                          inline-flex items-center space-x-2 xs:space-x-3 sm:space-x-4 md:space-x-5 lg:space-x-6
+                          px-6 xs:px-8 sm:px-10 md:px-12 lg:px-16
+                          py-4 xs:py-5 sm:py-6 md:py-7 lg:py-8
+                          text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl
+                          font-black text-white
+                          bg-gradient-to-r from-[#E60023] via-red-600 to-[#E60023]
+                          border-3 border-[#E60023]
+                          rounded-2xl
+                          shadow-[0_0_20px_rgba(230,0,35,0.6),0_0_40px_rgba(230,0,35,0.4),0_0_60px_rgba(230,0,35,0.2)]
+                          drop-shadow-lg
+                          mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16
+                          animate-slogan-glow">
+            <Rocket className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14" />
+            <span className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent drop-shadow-lg">
+              ArchiAtech – Bâtissez l'avenir de votre entreprise avec l'IA
             </span>
-          </h1>
-
-          <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl
-                        hero-text-light mb-5 xs:mb-6 sm:mb-8
-                        leading-relaxed max-w-3xl mx-auto px-3 xs:px-4 sm:px-6">
-            Gagnez en efficacité et réduisez vos coûts grâce à nos solutions d'intelligence artificielle et d'automatisation no-code.
-          </p>
+          </div>
         </div>
 
-        {/* Section vidéo centrée avec dimensions ajustées */}
+        {/* Titre principal */}
+        <div className="mb-4 xs:mb-6 sm:mb-8 md:mb-10 lg:mb-12">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
+                         font-black text-gray-900
+                         leading-tight
+                         mb-3 xs:mb-4 sm:mb-5 md:mb-6 lg:mb-7">
+            <span className="block bg-gradient-to-r from-[#E60023] via-red-600 to-[#E60023] 
+                             bg-clip-text text-transparent
+                             drop-shadow-lg font-black text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">ARCHIATECH</span>
+            <span className="block text-gray-900 font-semibold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">accompagne</span>
+            <span className="block text-gray-900 font-semibold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">votre entreprise</span>
+          </h1>
+        </div>
+
+        {/* Sous-titre avec style moderne */}
+        <div className="mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <div className="inline-block px-8 xs:px-10 sm:px-12 md:px-16 lg:px-20 py-4 xs:py-5 sm:py-6 md:py-7 lg:py-8
+                          bg-gradient-to-r from-[#E60023] via-red-600 to-[#E60023]
+                          rounded-2xl shadow-[0_0_30px_rgba(230,0,35,0.6),0_0_60px_rgba(230,0,35,0.4)]
+                          transform hover:scale-105 transition-all duration-300">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl
+                           font-black text-white uppercase tracking-wider
+                           drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]
+                           animate-pulse">
+              INNOVEZ, ÉVOLUEZ, EXCELLEZ
+            </h2>
+          </div>
+        </div>
+
+        {/* Sous-titre élégant avec défilement sur 3 niveaux */}
+        <div className="mb-8 xs:mb-10 sm:mb-12 md:mb-16 lg:mb-20 overflow-hidden">
+          {/* Premier niveau */}
+          <div className="animate-scroll-level-1 whitespace-nowrap mb-4">
+            <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl
+                          font-light text-gray-600
+                          leading-relaxed px-3 xs:px-4 sm:px-6
+                          tracking-wide inline-block">
+              Votre avenir commence ici
+            </p>
+          </div>
+          
+          {/* Deuxième niveau */}
+          <div className="animate-scroll-level-2 whitespace-nowrap mb-4">
+            <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl
+                          font-light text-gray-600
+                          leading-relaxed px-3 xs:px-4 sm:px-6
+                          tracking-wide inline-block">
+              Accélérez votre transformation numérique et libérez du temps pour ce qui compte vraiment.
+            </p>
+          </div>
+          
+          {/* Troisième niveau */}
+          <div className="animate-scroll-level-3 whitespace-nowrap">
+            <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl
+                          font-light text-gray-600
+                          leading-relaxed px-3 xs:px-4 sm:px-6
+                          tracking-wide inline-block">
+              Concentrez-vous sur votre cœur de métier pendant que l'IA automatise vos tâches chronophages.
+            </p>
+          </div>
+        </div>
+
+        {/* Section playlist YouTube avec cadre lumineux */}
         <div className="flex justify-center px-2 xs:px-0">
-          <div className="w-full max-w-6xl glass-effect
+          <div className="w-full max-w-6xl video-container-spectacular
                           p-1.5 xs:p-2 sm:p-3 md:p-4
                           flex flex-col justify-center mx-auto fade-in-up-delay-1
                           rounded-lg xs:rounded-xl sm:rounded-2xl">
             <div className="video-gradient video-red-glow
                             rounded-md xs:rounded-lg sm:rounded-xl md:rounded-2xl
-                            overflow-hidden aspect-video">
-              <HeroVideo
-                src={`${import.meta.env.BASE_URL}videos/archiatech-hero.mp4`}
-                poster={`${import.meta.env.BASE_URL}images/archiatech-hero.jpg`}
-              />
+                            overflow-hidden p-4 bg-white">
+              <YouTubePlayerSimple />
             </div>
           </div>
         </div>

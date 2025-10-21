@@ -3,11 +3,11 @@
  * Supporte OpenAI GPT et Anthropic Claude
  */
 
-// Configuration - À remplacer par vos clés API
+// Configuration - Lecture depuis les variables d'environnement
 const LLM_CONFIG = {
-  provider: 'openai', // 'openai' ou 'anthropic' ou 'local'
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY || '',
-  model: 'gpt-4', // ou 'gpt-3.5-turbo' pour OpenAI, 'claude-3-sonnet-20240229' pour Anthropic
+  provider: import.meta.env.VITE_LLM_PROVIDER || 'local', // 'openai' ou 'anthropic' ou 'local'
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY || import.meta.env.VITE_ANTHROPIC_API_KEY || '',
+  model: import.meta.env.VITE_LLM_MODEL || 'gpt-3.5-turbo',
   temperature: 0.7,
   maxTokens: 500
 };

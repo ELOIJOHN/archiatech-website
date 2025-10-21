@@ -79,6 +79,7 @@ export default {
 
       // Z-index organisé
       zIndex: {
+        'chatbot': '2147483647',  // Chatbot toujours au-dessus (max z-index)
         'modal': '1000',
         'dropdown': '100',
         'navigation': '50',

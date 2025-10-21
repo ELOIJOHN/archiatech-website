@@ -5,7 +5,7 @@ import ServicesSection from './components/ServicesSection';
 import ApprocheSection from './components/ApprocheSection';
 import Avantages from './components/Avantages';
 import VeilleSection from './components/VeilleSection';
-import ContactSection from './components/ContactSection';
+import ContactSection from './components/ContactSectionSimple';
 import ArchiAgent from './components/ArchiAgent';
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
       <NavigationBar />
 
       {/* Layout global avec scroll fluide */}
-      <main className="flex flex-col overflow-y-auto scroll-smooth bg-black text-white">
+      <main className="flex flex-col overflow-y-auto scroll-smooth bg-white text-gray-900">
         {/* Hero - Page d'accueil */}
         <HeroSection />
 

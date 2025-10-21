@@ -47,108 +47,98 @@
            min-h-[48px] sm:min-h-[56px];
   }
 
-  /* Boutons Contact - Responsive optimisé */
-  .btn-contact-primary {
-    background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+  /* Bouton de soumission principal - Rouge vif */
+  .btn-submit {
+    background: #FF4500;
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 12px;
+    padding: 1rem 3rem;
+    border-radius: 8px;
     font-weight: 600;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
-    box-shadow:
-      0 4px 15px rgba(229, 57, 53, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
     position: relative;
     overflow: hidden;
-    min-height: 44px;
+    min-height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+  }
+
+  .btn-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-submit:hover::before {
+    opacity: 1;
   }
 
   @media (min-width: 640px) {
-    .btn-contact-primary {
-      padding: 0.875rem 2rem;
-      font-size: 1rem;
-      min-height: 48px;
+    .btn-submit {
+      padding: 1.125rem 3.5rem;
+      font-size: 1.0625rem;
+      min-height: 56px;
     }
   }
 
-  @media (min-width: 768px) {
-    .btn-contact-primary {
-      padding: 1rem 2.25rem;
-      min-height: 52px;
-    }
-  }
-
-  .btn-contact-primary:hover {
+  .btn-submit:hover {
+    background: #E63E00;
     transform: translateY(-2px);
-    box-shadow:
-      0 8px 25px rgba(229, 57, 53, 0.4),
-      0 0 20px rgba(229, 57, 53, 0.6),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 20px rgba(255, 69, 0, 0.4);
+  }
+
+  .btn-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(255, 69, 0, 0.3);
+  }
+
+  .btn-submit:disabled {
+    background: #CCCCCC;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
   }
 
   /* Touch devices - désactiver hover et augmenter la zone tactile */
   @media (hover: none) and (pointer: coarse) {
-    .btn-contact-primary:hover {
+    .btn-submit:hover {
       transform: none;
     }
 
-    .btn-contact-primary:active {
+    .btn-submit:active {
       transform: scale(0.98);
     }
   }
 
-  .btn-contact-secondary {
-    background: rgba(45, 45, 45, 0.8);
-    color: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0.75rem 1.5rem;
-    border-radius: 12px;
-    font-weight: 500;
-    font-size: 0.9375rem;
+  /* Lien de contact direct - Style discret */
+  .btn-contact-link {
+    background: none;
+    color: #666;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: 400;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: transparent;
   }
 
-  @media (min-width: 640px) {
-    .btn-contact-secondary {
-      padding: 0.875rem 2rem;
-      font-size: 1rem;
-      min-height: 48px;
-    }
+  .btn-contact-link:hover {
+    color: #FF4500;
+    text-decoration-color: #FF4500;
   }
 
-  @media (min-width: 768px) {
-    .btn-contact-secondary {
-      padding: 1rem 2.25rem;
-      min-height: 52px;
-    }
-  }
-
-  .btn-contact-secondary:hover {
-    background: rgba(55, 55, 55, 0.9);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-1px);
-  }
-
-  /* Touch devices */
-  @media (hover: none) and (pointer: coarse) {
-    .btn-contact-secondary:hover {
-      transform: none;
-    }
-
-    .btn-contact-secondary:active {
-      transform: scale(0.98);
-    }
+  .btn-contact-link:active {
+    transform: scale(0.98);
   }
 
   .btn-loading {

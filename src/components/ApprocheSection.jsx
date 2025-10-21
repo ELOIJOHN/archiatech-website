@@ -30,30 +30,54 @@ export default function ApprocheSection() {
   ];
 
   return (
-    <section id="approche" className="py-12 sm:py-16 md:py-24 bg-gradient-to-b from-gray-900 to-black">
+    <section 
+      id="approche" 
+      className="py-16 sm:py-20 md:py-24"
+      style={{
+        background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #0d0d0d 70%, #000000 100%)'
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <span className="text-[#E60023] font-semibold text-xs sm:text-sm uppercase tracking-wider">Méthodologie</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4 mt-2 sm:mt-3">Notre Approche</h2>
-          <p className="text-base sm:text-lg md:text-xl text-white/70 px-4">Un accompagnement sur mesure en 4 étapes</p>
+        {/* En-tête centré */}
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <span className="text-[#E60023] font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 block">MÉTHODOLOGIE</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
+            Notre <span className="text-[#E60023]">Approche</span>
+          </h2>
+          <p className="text-lg sm:text-xl md:text-2xl text-[#a8b2d1] max-w-4xl mx-auto leading-relaxed">
+            Un accompagnement sur mesure en 4 étapes
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+        {/* Grille des 4 cartes */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
           {steps.map((item, index) => (
             <div key={index} className="relative group">
-              <div className="bg-gray-900/50 backdrop-blur-md p-6 sm:p-8 rounded-xl sm:rounded-2xl border border-gray-800 hover:border-[#E60023]/40 hover:shadow-xl hover:shadow-[#E60023]/20 transition-all duration-300">
-                <div className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-br from-[#E60023]/20 to-[#E60023]/10 bg-clip-text text-transparent mb-3 sm:mb-4">
+              <div 
+                className="p-8 sm:p-10 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:shadow-[#E60023]/20 hover:scale-105"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  backdropFilter: 'blur(15px)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  boxShadow: '0 12px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3)'
+                }}
+              >
+                {/* Numéro de l'étape - Rouge vif */}
+                <div className="text-6xl sm:text-7xl md:text-8xl font-bold mb-6 text-[#E60023]">
                   {item.step}
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#E60023] to-red-700 rounded-lg sm:rounded-xl flex items-center justify-center text-white mb-3 sm:mb-4">
+                
+                {/* Icône dans carré rouge */}
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#E60023] rounded-xl flex items-center justify-center text-white mb-6 mx-auto">
                   {item.icon}
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-sm sm:text-base text-white/70 leading-relaxed">{item.desc}</p>
+                
+                {/* Titre de l'étape */}
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 text-center">{item.title}</h3>
+                
+                {/* Description */}
+                <p className="text-base sm:text-lg text-[#a8b2d1] leading-relaxed text-center">{item.desc}</p>
               </div>
-              {index < 3 && (
-                <div className="hidden lg:block absolute top-16 -right-4 w-8 h-0.5 bg-gradient-to-r from-[#E60023]/40 to-transparent"></div>
-              )}
             </div>
           ))}
         </div>

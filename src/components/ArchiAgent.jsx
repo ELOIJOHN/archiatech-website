@@ -202,66 +202,88 @@ const ArchiAgent = () => {
 
   return (
     <>
-      {/* Bouton flottant - TEST FORCÉ VISIBLE */}
+      {/* Bouton flottant avec image futuriste - TOUJOURS AU-DESSUS */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-14 h-14 sm:w-16 sm:h-16 rounded-full border-0 cursor-pointer flex items-center justify-center"
+        className="z-chatbot w-16 h-16 sm:w-20 sm:h-20 rounded-full border-0 cursor-pointer flex items-center justify-center overflow-hidden"
         style={{
-          zIndex: 2147483647, // Max z-index possible
+          position: 'fixed',
+          bottom: '1.5rem',
+          right: '1.5rem',
           background: 'linear-gradient(135deg, #E60023 0%, #ff0033 100%)',
           color: 'white',
-          boxShadow: '0 8px 32px rgba(230, 0, 35, 0.8)',
+          boxShadow: '0 8px 32px rgba(230, 0, 35, 0.8), 0 0 0 3px rgba(255, 255, 255, 0.2)',
           display: isOpen ? 'none' : 'flex',
-          animation: 'pulse 2s infinite'
+          animation: 'pulse 2s infinite',
+          zIndex: 2147483647
         }}
         aria-label="Ouvrir le chat avec Archi"
       >
-        <svg
-          className="w-7 h-7 sm:w-8 sm:h-8"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-        </svg>
+        {/* Image futuriste de l'agent IA */}
+        <img
+          src={`${import.meta.env.BASE_URL}images/archi-agent-futuriste.png`}
+          alt="Archi - Agent IA Futuriste"
+          className="w-full h-full object-contain p-1"
+          style={{
+            filter: 'brightness(1.1) contrast(1.1)',
+            animation: 'float 3s ease-in-out infinite'
+          }}
+        />
+        
+        {/* Badge de notification */}
         <span
           className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold"
           style={{
             background: '#10B981',
-            color: 'white'
+            color: 'white',
+            boxShadow: '0 2px 8px rgba(16, 185, 129, 0.4)',
+            animation: 'bounce 1s infinite'
           }}
         >
           !
         </span>
+        
+        {/* Effet de lueur externe */}
+        <div
+          className="absolute inset-0 rounded-full opacity-30"
+          style={{
+            background: 'radial-gradient(circle, rgba(230, 0, 35, 0.3) 0%, transparent 70%)',
+            animation: 'glow-pulse 2s ease-in-out infinite'
+          }}
+        />
       </button>
 
-      {/* Widget de chat */}
+      {/* Widget de chat - TOUJOURS AU-DESSUS */}
       {isOpen && (
         <div
-          className={`fixed bg-white rounded-xl sm:rounded-2xl shadow-2xl transition-all duration-300 ${
-            isMinimized
-              ? 'w-[calc(100vw-2rem)] sm:w-80 h-16 bottom-4 right-4 sm:bottom-6 sm:right-6'
-              : 'w-[calc(100vw-2rem)] sm:w-96 h-[70vh] sm:h-[500px] bottom-4 right-4 sm:bottom-6 sm:right-6'
+          className={`bg-white rounded-xl sm:rounded-2xl shadow-2xl transition-all duration-300 z-chatbot ${
+            isMinimized ? 'w-[calc(100vw-2rem)] sm:w-80 h-16' : 'w-[calc(100vw-2rem)] sm:w-96 h-[70vh] sm:h-[500px]'
           }`}
           style={{
-            zIndex: 999999,
+            position: 'fixed',
+            bottom: '1.5rem',
+            right: '1.5rem',
             boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.1)',
-            maxWidth: isMinimized ? '320px' : '384px'
+            maxWidth: isMinimized ? '320px' : '384px',
+            zIndex: 2147483647
           }}
         >
           {/* Header */}
           <div className="bg-gradient-to-r from-[#E60023] to-red-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <Bot className="w-5 h-5" />
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
+                <img
+                  src={`${import.meta.env.BASE_URL}images/archi-agent-futuriste.png`}
+                  alt="Archi - Agent IA Futuriste"
+                  className="w-full h-full object-contain p-1"
+                  style={{
+                    filter: 'brightness(1.2) contrast(1.1)'
+                  }}
+                />
               </div>
               <div>
                 <h3 className="font-semibold">Archi</h3>
-                <p className="text-xs text-white/80">Expert IA • En ligne</p>
+                <p className="text-xs text-white/80">Agent IA Futuriste • En ligne</p>
               </div>
             </div>
             <div className="flex items-center space-x-2">

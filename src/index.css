@@ -5,10 +5,376 @@
 /* Styles personnalisés optionnels */
 html {
   scroll-behavior: smooth;
+  position: relative;
+}
+
+body {
+  position: relative;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Chatbot toujours visible - Force le positionnement */
+.z-chatbot {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  pointer-events: auto !important;
+}
+
+/* Animation pour l'icône rouge qui pulse */
+@keyframes pulse {
+  0% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.1);
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+/* Animation pour l'effet de lueur rouge */
+@keyframes glow {
+  0% { 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+  }
+  50% { 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(230, 0, 35, 1), 0 0 70px rgba(230, 0, 35, 0.6);
+  }
+  100% { 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+  }
+}
+
+/* Animation pour l'effet de cadre lumineux spectaculaire */
+@keyframes glow-pulse {
+  0% { 
+    box-shadow: 
+      0 0 20px rgba(230, 0, 35, 0.7),
+      0 0 40px rgba(230, 0, 35, 0.5),
+      0 0 80px rgba(230, 0, 35, 0.3),
+      0 15px 50px rgba(0, 0, 0, 0.4);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 30px rgba(230, 0, 35, 1.2),
+      0 0 60px rgba(230, 0, 35, 0.8),
+      0 0 120px rgba(230, 0, 35, 0.5),
+      0 15px 50px rgba(0, 0, 0, 0.6);
+    transform: scale(1.02);
+  }
+  100% { 
+    box-shadow: 
+      0 0 20px rgba(230, 0, 35, 0.7),
+      0 0 40px rgba(230, 0, 35, 0.5),
+      0 0 80px rgba(230, 0, 35, 0.3),
+      0 15px 50px rgba(0, 0, 0, 0.4);
+    transform: scale(1);
+  }
+}
+
+/* Classe pour le cadre lumineux spectaculaire */
+.video-container-spectacular {
+  border: 4px solid #E60023;
+  border-radius: 16px;
+  position: relative;
+  overflow: visible;
+  z-index: 10;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  transition: all 0.3s ease;
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+.video-container-spectacular::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px solid rgba(255, 0, 0, 0.6);
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.video-container-spectacular::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 24px;
+  z-index: -2;
+}
+
+.video-container-spectacular:hover {
+  transform: scale(1.02);
+  box-shadow: 
+    0 0 30px rgba(230, 0, 35, 1.2),
+    0 0 60px rgba(230, 0, 35, 0.8),
+    0 0 120px rgba(230, 0, 35, 0.5),
+    0 15px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Animations pour l'agent IA futuriste */
+@keyframes float {
+  0% { 
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% { 
+    transform: translateY(-3px) rotate(1deg);
+  }
+  100% { 
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-4px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes glow-pulse {
+  0% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+  100% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+
+/* Animation pour le slogan lumineux */
+@keyframes slogan-glow {
+  0% { 
+    box-shadow: 
+      0 0 30px rgba(230, 0, 35, 0.6),
+      0 0 60px rgba(230, 0, 35, 0.4),
+      0 0 90px rgba(230, 0, 35, 0.2);
+  }
+  50% { 
+    box-shadow: 
+      0 0 40px rgba(230, 0, 35, 0.8),
+      0 0 80px rgba(230, 0, 35, 0.6),
+      0 0 120px rgba(230, 0, 35, 0.4);
+  }
+  100% { 
+    box-shadow: 
+      0 0 30px rgba(230, 0, 35, 0.6),
+      0 0 60px rgba(230, 0, 35, 0.4),
+      0 0 90px rgba(230, 0, 35, 0.2);
+  }
+}
+
+/* Classe pour le slogan professionnel */
+.slogan-professionnel {
+  animation: slogan-glow 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.slogan-professionnel::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #E60023, #ff0000, #E60023, #ff0000);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.7;
+  filter: blur(1px);
+  animation: slogan-glow 3s ease-in-out infinite;
+}
+
+.slogan-professionnel::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(45deg, #E60023, #ff0000, #E60023, #ff0000);
+  border-radius: inherit;
+  z-index: -2;
+  opacity: 0.3;
+  filter: blur(2px);
+  animation: slogan-glow 3s ease-in-out infinite;
+}
+
+/* Styles pour la grille YouTube */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Animation pour les cartes vidéo */
+@keyframes card-hover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-4px);
+  }
+}
+
+.video-card {
+  transition: all 0.3s ease;
+}
+
+.video-card:hover {
+  animation: card-hover 0.3s ease forwards;
+}
+
+/* Animation pour le défilement sur 3 niveaux avec clignotement rouge - Messages permanents */
+@keyframes scroll-level-1 {
+  0% {
+    transform: translateX(100%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  10% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  20% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  23% {
+    transform: translateX(0%);
+    color: #E60023; /* rouge clignotement */
+  }
+  26% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  29% {
+    transform: translateX(0%);
+    color: #E60023; /* rouge clignotement */
+  }
+  32% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  100% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 - RESTE VISIBLE */
+  }
+}
+
+@keyframes scroll-level-2 {
+  0% {
+    transform: translateX(100%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  33% {
+    transform: translateX(100%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  40% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  53% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  56% {
+    transform: translateX(0%);
+    color: #E60023; /* rouge clignotement */
+  }
+  59% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  62% {
+    transform: translateX(0%);
+    color: #E60023; /* rouge clignotement */
+  }
+  65% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  100% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 - RESTE VISIBLE */
+  }
+}
+
+@keyframes scroll-level-3 {
+  0% {
+    transform: translateX(100%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  66% {
+    transform: translateX(100%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  73% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  86% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  89% {
+    transform: translateX(0%);
+    color: #E60023; /* rouge clignotement */
+  }
+  92% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  95% {
+    transform: translateX(0%);
+    color: #E60023; /* rouge clignotement */
+  }
+  98% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 */
+  }
+  100% {
+    transform: translateX(0%);
+    color: rgb(75 85 99); /* gray-600 - RESTE VISIBLE */
+  }
+}
+
+.animate-scroll-level-1 {
+  animation: scroll-level-1 30s ease-in-out infinite;
+}
+
+.animate-scroll-level-2 {
+  animation: scroll-level-2 30s ease-in-out infinite;
+}
+
+.animate-scroll-level-3 {
+  animation: scroll-level-3 30s ease-in-out infinite;
 }

@@ -1,0 +1,1119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles personnalisés optionnels */
+html {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  height: auto;
+}
+
+body, html {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Boutons ArchiAtech - Classes utilitaires universelles */
+@layer components {
+  .btn-archiatech {
+    @apply px-6 py-2 rounded-xl font-medium text-white border border-[#E60023]/60 bg-[#E60023]/20
+           backdrop-blur-md transition-all duration-300 hover:bg-[#E60023]/40 hover:border-[#E60023]
+           hover:shadow-[0_0_15px_rgba(230,0,35,0.5)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E60023]/50;
+  }
+
+  .btn-archiatech-outline {
+    @apply px-6 py-2 rounded-xl font-medium text-white border border-[#E60023]/40 bg-transparent
+           backdrop-blur-md transition-all duration-300 hover:bg-[#E60023]/20 hover:border-[#E60023]
+           hover:shadow-[0_0_10px_rgba(230,0,35,0.3)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E60023]/50;
+  }
+
+  .btn-archiatech-ghost {
+    @apply px-6 py-2 rounded-xl font-medium text-white border border-transparent bg-white/10
+           backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:border-white/30
+           hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50;
+  }
+
+  .btn-archiatech-sm {
+    @apply px-4 py-2 text-sm rounded-lg;
+  }
+
+  .btn-archiatech-lg {
+    @apply px-8 py-4 text-lg rounded-xl;
+  }
+
+  /* Effet de verre dépoli pour la Hero Section */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .glass-text {
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-text-light {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Effet de verre dépoli pour les cartes de services */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(230, 0, 35, 0.4);
+    box-shadow: 0 12px 40px rgba(230, 0, 35, 0.2);
+  }
+
+  /* Harmonisation Hero Section */
+  .hero-block {
+    width: 420px;
+    height: 420px;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .hero-block-mobile {
+    width: 100%;
+    height: auto;
+    min-height: 320px;
+  }
+
+  /* Typographie harmonisée */
+  .hero-text {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-text-light {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Boutons harmonisés Hero Section */
+  .hero-btn {
+    width: 100%;
+    height: 3rem; /* h-12 */
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.75rem; /* py-3 */
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .hero-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Indicateur de scroll animé */
+  .scroll-indicator {
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-indicator:hover {
+    color: rgba(255, 255, 255, 1);
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  /* Assurer que le scroll fonctionne sur tous les éléments */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  /* Scroll personnalisé pour webkit */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(230, 0, 35, 0.6);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(230, 0, 35, 0.8);
+  }
+
+  /* Animations Hero Section */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glowPulse {
+    from {
+      filter: drop-shadow(0 0 25px rgba(227, 39, 39, 0.6));
+    }
+    to {
+      filter: drop-shadow(0 0 35px rgba(227, 39, 39, 0.9));
+    }
+  }
+
+  /* Classes d'animation */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  .fade-in-up-delay-1 {
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+    opacity: 0;
+  }
+
+  .fade-in-up-delay-2 {
+    animation: fadeInUp 0.8s ease 0.4s forwards;
+    opacity: 0;
+  }
+
+  .glow-pulse {
+    animation: glowPulse 2.5s ease-in-out infinite alternate;
+  }
+
+  /* Effets vidéo */
+  .video-gradient {
+    background: radial-gradient(circle at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.7) 100%);
+  }
+
+  /* Boutons avec effets améliorés */
+  .hero-btn-enhanced {
+    transition: all 0.3s ease-out;
+  }
+
+  .hero-btn-enhanced:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Curseur personnalisé */
+  .custom-cursor {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .custom-cursor:hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(227, 39, 39, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+  }
+}
+
+/* Bordure rouge lumineuse pour vidéo */
+.video-red-glow {
+  border: 2px solid #E60023;
+  box-shadow: 
+    0 0 20px rgba(230, 0, 35, 0.8),
+    0 0 40px rgba(230, 0, 35, 0.4),
+    inset 0 0 20px rgba(230, 0, 35, 0.1);
+  animation: redGlowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes redGlowPulse {
+  0% {
+    box-shadow: 
+      0 0 20px rgba(230, 0, 35, 0.8),
+      0 0 40px rgba(230, 0, 35, 0.4),
+      inset 0 0 20px rgba(230, 0, 35, 0.1);
+  }
+  100% {
+    box-shadow: 
+      0 0 30px rgba(230, 0, 35, 1),
+      0 0 60px rgba(230, 0, 35, 0.6),
+      inset 0 0 30px rgba(230, 0, 35, 0.2);
+  }
+}
+
+/* Formulaire de contact moderne */
+.contact-form-modern {
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+}
+
+.contact-form-modern .form-field {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form-modern label {
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.025em;
+}
+
+.contact-form-modern input,
+.contact-form-modern textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.contact-form-modern input::placeholder,
+.contact-form-modern textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-form-modern input:focus,
+.contact-form-modern textarea:focus {
+  outline: none;
+  border-color: #E53935;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 0 0 3px rgba(229, 57, 53, 0.1),
+    0 0 20px rgba(229, 57, 53, 0.2);
+}
+
+.contact-form-modern textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.btn-contact-primary {
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 15px rgba(229, 57, 53, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-contact-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(229, 57, 53, 0.4),
+    0 0 20px rgba(229, 57, 53, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-contact-secondary {
+  background: rgba(45, 45, 45, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.875rem 2rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.btn-contact-secondary:hover {
+  background: rgba(55, 55, 55, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Modal de contact ArchiAtech */
+.contact-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.contact-modal {
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(229, 57, 53, 0.3);
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(229, 57, 53, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+.contact-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(229, 57, 53, 0.2);
+  border: 1px solid rgba(229, 57, 53, 0.4);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.contact-modal-close:hover {
+  background: rgba(229, 57, 53, 0.4);
+  border-color: rgba(229, 57, 53, 0.6);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(229, 57, 53, 0.5);
+}
+
+.contact-modal-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-modal-title {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.contact-modal-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.contact-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contact-info-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(229, 57, 53, 0.3);
+  transform: translateY(-2px);
+}
+
+.contact-info-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
+}
+
+.contact-info-text {
+  flex: 1;
+}
+
+.contact-info-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contact-info-value {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.contact-info-value a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info-value a:hover {
+  color: #E53935;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Messages de statut et animations de chargement */
+.form-message {
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  animation: messageSlideIn 0.3s ease-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.form-message.success {
+  background: rgba(76, 175, 80, 0.15);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.form-message.error {
+  background: rgba(229, 57, 53, 0.15);
+  border: 1px solid rgba(229, 57, 53, 0.4);
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.form-message-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.form-message-icon {
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+}
+
+.form-message-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.form-message-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+
+.form-message-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  transform: scale(1.1);
+}
+
+.form-message.success .form-message-close:hover {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: rgba(76, 175, 80, 0.6);
+}
+
+.form-message.error .form-message-close:hover {
+  background: rgba(229, 57, 53, 0.3);
+  border-color: rgba(229, 57, 53, 0.6);
+}
+
+/* Animation de disparition */
+.form-message.fade-out {
+  animation: messageFadeOut 0.3s ease-in forwards;
+}
+
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes messageFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
+    margin-top: 1rem;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+    margin-top: 0;
+    padding: 0;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Honeypot pour la protection anti-spam */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* Styles pour l'Agent IA Archi */
+.archi-agent-widget {
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.archi-agent-message {
+  animation: archiMessageSlideIn 0.3s ease-out;
+}
+
+@keyframes archiMessageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.archi-agent-typing {
+  animation: archiTypingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes archiTypingPulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.archi-agent-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.archi-agent-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(230, 0, 35, 0.3);
+}
+
+.archi-agent-button:active {
+  transform: translateY(0);
+}
+
+/* Animation de notification pour le bouton flottant */
+.archi-agent-notification {
+  animation: archiNotificationPulse 2s ease-in-out infinite;
+}
+
+@keyframes archiNotificationPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(230, 0, 35, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(230, 0, 35, 0.6);
+  }
+}
+
+/* Styles pour les bulles de chat */
+.archi-agent-bubble-user {
+  background: linear-gradient(135deg, #E60023 0%, #C62828 100%);
+  box-shadow: 0 2px 10px rgba(230, 0, 35, 0.3);
+}
+
+.archi-agent-bubble-bot {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Animation de frappe */
+.archi-agent-typing-dots {
+  animation: archiTypingDots 1.4s ease-in-out infinite;
+}
+
+@keyframes archiTypingDots {
+  0%, 20% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  80%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* Responsive pour mobile */
+@media (max-width: 640px) {
+  .archi-agent-widget {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+    max-width: none;
+  }
+  
+  .archi-agent-widget.minimized {
+    width: auto;
+    height: 4rem;
+  }
+}
+
+/* Styles pour la section Actualités */
+.news-section {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+}
+
+.news-card {
+  background: rgba(255, 255, 255, 0.03);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.news-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(230, 0, 35, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(230, 0, 35, 0.1);
+}
+
+.news-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.news-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(230, 0, 35, 0.1) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.news-card:hover .news-image::before {
+  opacity: 1;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-category-badge {
+  background: linear-gradient(135deg, #E60023 0%, #C62828 100%);
+  box-shadow: 0 4px 15px rgba(230, 0, 35, 0.3);
+}
+
+.news-loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.news-refresh-button {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.news-refresh-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(230, 0, 35, 0.3);
+  box-shadow: 0 0 20px rgba(230, 0, 35, 0.2);
+}
+
+.news-filter-button {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.news-filter-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.news-filter-button.active {
+  background: linear-gradient(135deg, #E60023 0%, #C62828 100%);
+  border-color: #E60023;
+  box-shadow: 
+    0 8px 25px rgba(230, 0, 35, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Animation pour les cartes d'actualités */
+.news-card-enter {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  animation: news-card-enter 0.6s ease-out forwards;
+}
+
+@keyframes news-card-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive pour la section actualités */
+@media (max-width: 768px) {
+  .news-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .news-filter-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Styles pour la navigation avec menu déroulant */
+.nav-dropdown {
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(230, 0, 35, 0.1);
+  animation: navDropdownSlideIn 0.3s ease-out;
+}
+
+@keyframes navDropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.nav-dropdown-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(230, 0, 35, 0.2);
+  transform: translateX(4px);
+  box-shadow: 0 4px 15px rgba(230, 0, 35, 0.1);
+}
+
+.nav-dropdown-icon {
+  background: linear-gradient(135deg, rgba(230, 0, 35, 0.15) 0%, rgba(230, 0, 35, 0.25) 100%);
+  transition: all 0.3s ease;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-icon {
+  background: linear-gradient(135deg, rgba(230, 0, 35, 0.25) 0%, rgba(230, 0, 35, 0.35) 100%);
+  transform: scale(1.05);
+}
+
+.nav-dropdown-text {
+  transition: all 0.3s ease;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-text {
+  color: #E60023;
+}
+
+.nav-dropdown-description {
+  transition: all 0.3s ease;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-description {
+  color: rgba(230, 0, 35, 0.8);
+}
+
+/* Animation pour la flèche du dropdown */
+.nav-dropdown-arrow {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-dropdown-button:hover .nav-dropdown-arrow {
+  transform: translateY(1px);
+}
+
+/* Styles pour le menu mobile */
+.mobile-nav-section {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.mobile-nav-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(230, 0, 35, 0.2);
+  transform: translateX(8px);
+}
+
+.mobile-nav-icon {
+  background: rgba(230, 0, 35, 0.15);
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-item:hover .mobile-nav-icon {
+  background: rgba(230, 0, 35, 0.25);
+  transform: scale(1.1);
+}
+
+/* Animation d'entrée pour le menu mobile */
+.mobile-menu-enter {
+  animation: mobileMenuSlideIn 0.4s ease-out;
+}
+
+@keyframes mobileMenuSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Effet de glow pour le bouton dropdown */
+.nav-dropdown-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-dropdown-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(230, 0, 35, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-dropdown-button:hover::before {
+  left: 100%;
+}
+
+/* Responsive pour la navigation */
+@media (max-width: 768px) {
+  .nav-dropdown {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  .nav-dropdown-item {
+    padding: 1rem;
+  }
+  
+  .mobile-nav-item {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Amélioration de l'accessibilité */
+.nav-dropdown-button:focus {
+  outline: 2px solid rgba(230, 0, 35, 0.5);
+  outline-offset: 2px;
+}
+
+.nav-dropdown-item:focus {
+  outline: 2px solid rgba(230, 0, 35, 0.3);
+  outline-offset: 2px;
+}

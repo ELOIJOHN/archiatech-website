@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles de base */
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Boutons ArchiAtech - Classes utilitaires universelles */
+@layer components {
+  .btn-archiatech {
+    @apply px-6 py-2 rounded-xl font-medium text-white border border-[#E60023]/60 bg-[#E60023]/20
+           backdrop-blur-md transition-all duration-300 hover:bg-[#E60023]/40 hover:border-[#E60023]
+           hover:shadow-[0_0_15px_rgba(230,0,35,0.5)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E60023]/50;
+  }
+
+  .btn-archiatech-outline {
+    @apply px-6 py-2 rounded-xl font-medium text-white border border-[#E60023]/40 bg-transparent
+           backdrop-blur-md transition-all duration-300 hover:bg-[#E60023]/20 hover:border-[#E60023]
+           hover:shadow-[0_0_10px_rgba(230,0,35,0.3)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E60023]/50;
+  }
+
+  .btn-archiatech-ghost {
+    @apply px-6 py-2 rounded-xl font-medium text-white border border-transparent bg-white/10
+           backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:border-white/30
+           hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50;
+  }
+
+  .btn-archiatech-sm {
+    @apply px-4 py-2 text-sm rounded-lg;
+  }
+
+  .btn-archiatech-lg {
+    @apply px-8 py-3 text-lg rounded-xl;
+  }
+}

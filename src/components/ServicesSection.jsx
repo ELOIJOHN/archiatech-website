@@ -45,7 +45,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24 bg-black
+      className="py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24 bg-white
                 landscape:py-8"
     >
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
@@ -56,13 +56,13 @@ export default function ServicesSection() {
             Nos expertises
           </span>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl
-                       font-bold text-white
+                       font-bold text-gray-900
                        mb-2 xs:mb-3 sm:mb-4
                        mt-1.5 xs:mt-2 sm:mt-3">
             Services Premium
           </h2>
           <p className="text-sm xs:text-base sm:text-lg md:text-xl
-                      text-white/70 max-w-3xl mx-auto
+                      text-gray-600 max-w-3xl mx-auto
                       px-3 xs:px-4 leading-relaxed">
             Des solutions complètes pour digitaliser et automatiser vos processus métiers
           </p>

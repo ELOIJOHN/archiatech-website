@@ -2,95 +2,264 @@
    FORMS - Formulaires de contact
    ============================================== */
 
-/* Formulaire moderne */
-.contact-form-modern {
-  background: rgba(255, 255, 255, 0.05);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.3),
+/* ==============================================
+   DARK CONTACT FORM - Design sombre moderne (Intégré)
+   ============================================== */
+
+/* Section principale avec fond sombre et effets de lueur */
+.contact-section-dark {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  min-height: 100vh;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effets de lueur en arrière-plan */
+.contact-section-dark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 0, 100, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(100, 0, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 69, 0, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  animation: glowPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Container principal */
+.contact-container-dark {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* En-tête */
+.contact-header-dark {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contact-title-dark {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+}
+
+.contact-subtitle-dark {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.125rem;
+  color: #b0b0b0;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.highlight-text-dark {
+  color: #e34040;
+  font-weight: 600;
+}
+
+/* Formulaire principal */
+.contact-form-dark {
+  background: #1e1e1e;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-}
-
-.contact-form-modern .form-field {
-  margin-bottom: 1.5rem;
-}
-
-.contact-form-modern label {
-  display: block;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.025em;
-}
-
-.contact-form-modern input,
-.contact-form-modern textarea {
-  width: 100%;
-  padding: 0.875rem 1rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  color: white;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
-.contact-form-modern input::placeholder,
-.contact-form-modern textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+/* Grille des champs */
+.form-grid-dark {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.contact-form-modern input:focus,
-.contact-form-modern textarea:focus {
+.form-field-full-dark {
+  grid-column: 1 / -1;
+}
+
+/* Champs de formulaire */
+.form-field-dark {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label-dark {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.required-asterisk-dark {
+  color: #e34040;
+  font-weight: 600;
+}
+
+.form-input-dark,
+.form-textarea-dark {
+  background: #2a2a2a;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
   outline: none;
-  border-color: #E53935;
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 0 0 3px rgba(229, 57, 53, 0.1),
-    0 0 20px rgba(229, 57, 53, 0.2);
+  width: 100%;
 }
 
-.contact-form-modern textarea {
+.form-input-dark::placeholder,
+.form-textarea-dark::placeholder {
+  color: #666666;
+  font-weight: 400;
+}
+
+.form-input-dark:hover,
+.form-textarea-dark:hover {
+  border-color: #555555;
+  background: #333333;
+}
+
+.form-input-dark:focus,
+.form-textarea-dark:focus {
+  border-color: #e34040;
+  background: #333333;
+  box-shadow: 0 0 0 3px rgba(227, 64, 64, 0.1);
+}
+
+.form-input-dark.error,
+.form-textarea-dark.error {
+  border-color: #e34040;
+  background: #2a1a1a;
+}
+
+.form-textarea-dark {
   min-height: 120px;
   resize: vertical;
-  font-family: inherit;
+}
+
+/* Messages d'erreur */
+.form-error-dark {
+  color: #e34040;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* Boutons */
+.form-buttons-dark {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-primary-dark,
+.btn-secondary-dark {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-dark {
+  background: #e34040;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(227, 64, 64, 0.3);
+}
+
+.btn-primary-dark:hover {
+  background: #c73636;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(227, 64, 64, 0.4);
+}
+
+.btn-primary-dark:active {
+  transform: translateY(0);
+}
+
+.btn-primary-dark:disabled {
+  background: #666666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary-dark {
+  background: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #404040;
+}
+
+.btn-secondary-dark:hover {
+  background: #333333;
+  border-color: #555555;
+  transform: translateY(-2px);
+}
+
+.btn-secondary-dark:active {
+  transform: translateY(0);
 }
 
 /* Messages de statut */
 .form-message {
-  padding: 1rem;
-  border-radius: 12px;
-  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  animation: messageSlideIn 0.3s ease-out;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  animation: messageSlideIn 0.4s ease-out;
 }
 
 .form-message.success {
-  background: rgba(76, 175, 80, 0.15);
-  border: 1px solid rgba(76, 175, 80, 0.4);
-  color: white;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
 }
 
 .form-message.error {
-  background: rgba(229, 57, 53, 0.15);
-  border: 1px solid rgba(229, 57, 53, 0.4);
-  color: white;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  background: rgba(227, 64, 64, 0.1);
+  border: 1px solid rgba(227, 64, 64, 0.3);
+  color: #e34040;
 }
 
 .form-message-content {
@@ -110,41 +279,734 @@
 }
 
 .form-message-close {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 6px;
   width: 28px;
   height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  color: currentColor;
+  opacity: 0.7;
+  font-size: 0.875rem;
   margin-left: 1rem;
   flex-shrink: 0;
 }
 
 .form-message-close:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-  color: white;
-  transform: scale(1.1);
-}
-
-.form-message.success .form-message-close:hover {
-  background: rgba(76, 175, 80, 0.3);
-  border-color: rgba(76, 175, 80, 0.6);
-}
-
-.form-message.error .form-message-close:hover {
-  background: rgba(229, 57, 53, 0.3);
-  border-color: rgba(229, 57, 53, 0.6);
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 .form-message.fade-out {
   animation: messageFadeOut 0.3s ease-in forwards;
+}
+
+/* Icône de chat flottante */
+.chat-icon-dark {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #e34040 0%, #c73636 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(227, 64, 64, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-icon-dark:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 25px rgba(227, 64, 64, 0.5);
+}
+
+.chat-icon-dark::before {
+  content: '💬';
+  font-size: 24px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.chat-icon-dark::after {
+  content: '!';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-container-dark {
+    padding: 0 1rem;
+  }
+  
+  .contact-title-dark {
+    font-size: 2rem;
+  }
+  
+  .contact-subtitle-dark {
+    font-size: 1rem;
+  }
+  
+  .contact-form-dark {
+    padding: 1.5rem;
+  }
+  
+  .form-grid-dark {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .form-buttons-dark {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-primary-dark,
+  .btn-secondary-dark {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .chat-icon-dark {
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .chat-icon-dark::before {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section-dark {
+    padding: 2rem 0;
+  }
+  
+  .contact-title-dark {
+    font-size: 1.75rem;
+  }
+  
+  .contact-form-dark {
+    padding: 1rem;
+  }
+}
+
+/* ==============================================
+   ANCIEN STYLE DARK CONTACT FORM (à conserver pour compatibilité)
+   ============================================== */
+
+/* Section principale avec fond sombre et effets de lueur */
+.dark-contact-section {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  min-height: 100vh;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effets de lueur en arrière-plan */
+.dark-contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 0, 100, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(100, 0, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 69, 0, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Container principal */
+.dark-contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* En-tête */
+.dark-contact-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.dark-contact-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark-contact-subtitle {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.125rem;
+  color: #b0b0b0;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.highlight-text {
+  color: #e34040;
+  font-weight: 600;
+}
+
+/* Formulaire principal */
+.dark-contact-form {
+  background: #1e1e1e;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Grille des champs */
+.dark-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dark-form-field-full {
+  grid-column: 1 / -1;
+}
+
+/* Champs de formulaire */
+.dark-form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.dark-form-label {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.required-asterisk {
+  color: #e34040;
+  font-weight: 600;
+}
+
+.dark-form-input,
+.dark-form-textarea {
+  background: #2a2a2a;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.dark-form-input::placeholder,
+.dark-form-textarea::placeholder {
+  color: #666666;
+}
+
+.dark-form-input:hover,
+.dark-form-textarea:hover {
+  border-color: #555555;
+  background: #333333;
+}
+
+.dark-form-input:focus,
+.dark-form-textarea:focus {
+  border-color: #e34040;
+  background: #333333;
+  box-shadow: 0 0 0 3px rgba(227, 64, 64, 0.1);
+}
+
+.dark-form-input.error,
+.dark-form-textarea.error {
+  border-color: #e34040;
+  background: #2a1a1a;
+}
+
+.dark-form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Messages d'erreur */
+.dark-form-error {
+  color: #e34040;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* Boutons */
+.dark-form-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.dark-btn-primary,
+.dark-btn-secondary {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-btn-primary {
+  background: #e34040;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(227, 64, 64, 0.3);
+}
+
+.dark-btn-primary:hover {
+  background: #c73636;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(227, 64, 64, 0.4);
+}
+
+.dark-btn-primary:active {
+  transform: translateY(0);
+}
+
+.dark-btn-primary:disabled {
+  background: #666666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.dark-btn-secondary {
+  background: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #404040;
+}
+
+.dark-btn-secondary:hover {
+  background: #333333;
+  border-color: #555555;
+  transform: translateY(-2px);
+}
+
+.dark-btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Messages de statut */
+.dark-form-message {
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  animation: messageSlideIn 0.4s ease-out;
+}
+
+.dark-form-message.success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+}
+
+.dark-form-message.error {
+  background: rgba(227, 64, 64, 0.1);
+  border: 1px solid rgba(227, 64, 64, 0.3);
+  color: #e34040;
+}
+
+.dark-form-message-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.dark-form-message-icon {
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+}
+
+.dark-form-message-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.dark-form-message-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: currentColor;
+  opacity: 0.7;
+  font-size: 0.875rem;
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+
+.dark-form-message-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.dark-form-message.fade-out {
+  animation: messageFadeOut 0.3s ease-in forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dark-contact-container {
+    padding: 0 1rem;
+  }
+  
+  .dark-contact-title {
+    font-size: 2rem;
+  }
+  
+  .dark-contact-subtitle {
+    font-size: 1rem;
+  }
+  
+  .dark-contact-form {
+    padding: 1.5rem;
+  }
+  
+  .dark-form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .dark-form-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dark-btn-primary,
+  .dark-btn-secondary {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dark-contact-section {
+    padding: 2rem 0;
+  }
+  
+  .dark-contact-title {
+    font-size: 1.75rem;
+  }
+  
+  .dark-contact-form {
+    padding: 1rem;
+  }
+}
+
+/* Icône de chat flottante */
+.chat-icon {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #e34040 0%, #c73636 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(227, 64, 64, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-icon:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 25px rgba(227, 64, 64, 0.5);
+}
+
+.chat-icon::before {
+  content: '💬';
+  font-size: 24px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.chat-icon::after {
+  content: '!';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .chat-icon {
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .chat-icon::before {
+    font-size: 20px;
+  }
+}
+
+/* ==============================================
+   ANCIEN STYLE (à conserver pour compatibilité)
+   ============================================== */
+
+/* Formulaire moderne */
+.contact-form-modern {
+  background: white;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .contact-form-modern {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+}
+
+.contact-form-modern .form-field {
+  margin-bottom: 1.5rem;
+}
+
+/* Styles pour les inputs avec labels comme placeholders */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: #F8F8F8;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  color: #333;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-weight: 400;
+  font-family: inherit;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #666;
+  font-weight: 400;
+}
+
+.form-input:hover,
+.form-textarea:hover {
+  border-color: #D1D5DB;
+  background: #F5F5F5;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #FF4500;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.1);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* Styles pour les erreurs */
+.form-input.border-red-500,
+.form-textarea.border-red-500 {
+  border-color: #EF4444;
+  background: #FEF2F2;
+}
+
+.form-input.border-red-500:focus,
+.form-textarea.border-red-500:focus {
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Messages de statut */
+.form-message {
+  padding: 1.125rem 1.25rem;
+  border-radius: 14px;
+  margin-top: 1.25rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  animation: messageSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.form-message.success {
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+  color: #166534;
+}
+
+.form-message.error {
+  background: #fef2f2;
+  border: 2px solid #fca5a5;
+  color: #991b1b;
+}
+
+.form-message-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.form-message-icon {
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+}
+
+.form-message-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.form-message-close {
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: currentColor;
+  opacity: 0.6;
+  font-size: 0.875rem;
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+
+.form-message-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.form-message.success .form-message-close:hover {
+  background: #bbf7d0;
+}
+
+.form-message.error .form-message-close:hover {
+  background: #fecaca;
+}
+
+.form-message.fade-out {
+  animation: messageFadeOut 0.3s ease-in forwards;
+}
+
+/* Animations */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes messageFadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
 /* Honeypot anti-spam */

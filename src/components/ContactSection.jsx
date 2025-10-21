@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MapPin, Mail, Phone, X } from 'lucide-react';
 import Button from './Button';
 
 // Composant pour gérer les messages avec fermeture manuelle et automatique
@@ -199,60 +200,113 @@ function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="contact-form-modern">
+    <form onSubmit={handleSubmit} className="contact-form-dark" style={{
+      background: '#1e1e1e',
+      borderRadius: '16px',
+      padding: '2.5rem',
+      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+      border: '1px solid rgba(255, 255, 255, 0.1)',
+      position: 'relative',
+      backdropFilter: 'blur(10px)'
+    }}>
       {/* Honeypot pour la protection anti-spam */}
       <input type="text" name="website" className="honeypot" tabIndex="-1" autoComplete="off" />
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div className="form-field">
-          <label>Nom complet *</label>
+      <div className="form-grid-dark" style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '1.5rem',
+        marginBottom: '2rem'
+      }}>
+        <div className="form-field-dark" style={{ display: 'flex', flexDirection: 'column' }}>
+          <label htmlFor="fullName" className="form-label-dark" style={{
+            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            fontSize: '0.875rem',
+            fontWeight: 500,
+            color: '#ffffff',
+            marginBottom: '0.5rem',
+            display: 'block'
+          }}>
+            Nom complet <span className="required-asterisk-dark" style={{ color: '#e34040', fontWeight: 600 }}>*</span>
+          </label>
           <input
             type="text"
+            id="fullName"
             required
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             placeholder="Jane Doe"
-            className={errors.fullName ? 'border-red-500' : ''}
+            className={`form-input-dark ${errors.fullName ? 'error' : ''}`}
+            style={{
+              background: '#2a2a2a',
+              border: '1px solid #404040',
+              borderRadius: '8px',
+              padding: '0.875rem 1rem',
+              color: '#ffffff',
+              fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: '1rem',
+              transition: 'all 0.3s ease',
+              outline: 'none',
+              width: '100%'
+            }}
           />
           {errors.fullName && (
-            <div className="text-red-400 text-sm mt-1">{errors.fullName}</div>
+            <div className="form-error-dark" style={{
+              color: '#e34040',
+              fontSize: '0.75rem',
+              marginTop: '0.25rem',
+              fontWeight: 500
+            }}>{errors.fullName}</div>
           )}
         </div>
-        <div className="form-field">
-          <label>Email professionnel *</label>
+        
+        <div className="form-field-dark">
+          <label htmlFor="email" className="form-label-dark">
+            Email professionnel <span className="required-asterisk-dark">*</span>
+          </label>
           <input
             type="email"
+            id="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="jane@entreprise.com"
-            className={errors.email ? 'border-red-500' : ''}
+            className={`form-input-dark ${errors.email ? 'error' : ''}`}
           />
           {errors.email && (
-            <div className="text-red-400 text-sm mt-1">{errors.email}</div>
+            <div className="form-error-dark">{errors.email}</div>
           )}
         </div>
-        <div className="form-field">
-          <label>Société</label>
+        
+        <div className="form-field-dark">
+          <label htmlFor="company" className="form-label-dark">
+            Société
+          </label>
           <input
             type="text"
+            id="company"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
             placeholder="ArchiAtech"
+            className="form-input-dark"
           />
         </div>
-        <div className="form-field sm:col-span-2">
-          <label>Message *</label>
+        
+        <div className="form-field-dark form-field-full-dark">
+          <label htmlFor="message" className="form-label-dark">
+            Message <span className="required-asterisk-dark">*</span>
+          </label>
           <textarea
+            id="message"
             rows="4"
             required
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Décrivez brièvement vos besoins..."
-            className={errors.message ? 'border-red-500' : ''}
+            className={`form-textarea-dark ${errors.message ? 'error' : ''}`}
           />
           {errors.message && (
-            <div className="text-red-400 text-sm mt-1">{errors.message}</div>
+            <div className="form-error-dark">{errors.message}</div>
           )}
         </div>
       </div>
@@ -264,18 +318,18 @@ function ContactForm() {
         onFormReset={handleFormReset}
       />
       
-      <div className="flex flex-col sm:flex-row gap-4 mt-8">
+      <div className="form-buttons-dark">
         <button 
           type="submit"
           disabled={isLoading}
-          className={`btn-contact-primary flex-1 ${isLoading ? 'btn-loading' : ''}`}
+          className={`btn-primary-dark ${isLoading ? 'loading' : ''}`}
         >
           {isLoading ? 'Envoi en cours...' : 'Envoyer la demande'}
         </button>
         <button 
           type="button"
           onClick={() => setIsModalOpen(true)}
-          className="btn-contact-secondary flex-1 text-center"
+          className="btn-secondary-dark"
         >
           Ou nous écrire directement
         </button>
@@ -293,31 +347,74 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24
-                bg-gradient-to-b from-black via-gray-900 to-red-900/20
-                relative overflow-hidden
-                landscape:py-8"
+      className="contact-section-dark"
+      style={{
+        background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)',
+        minHeight: '100vh',
+        padding: '4rem 0',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#E53935]/15 via-transparent to-[#E53935]/10"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-
-      <div className="max-w-5xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl
-                       font-bold text-white
-                       mb-3 xs:mb-4 sm:mb-6 font-sans
-                       leading-tight px-2">
+      <div className="contact-container-dark" style={{
+        maxWidth: '800px',
+        margin: '0 auto',
+        padding: '0 2rem',
+        position: 'relative',
+        zIndex: 1
+      }}>
+        {/* En-tête */}
+        <div className="contact-header-dark" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <h2 className="contact-title-dark" style={{
+            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            fontSize: '2.5rem',
+            fontWeight: 700,
+            color: '#ffffff',
+            marginBottom: '1rem',
+            lineHeight: 1.2,
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+            letterSpacing: '-0.02em'
+          }}>
             Prêt à automatiser vos processus ?
           </h2>
-          <p className="text-sm xs:text-base sm:text-lg md:text-xl
-                      text-white/80
-                      mb-4 xs:mb-6 sm:mb-8 md:mb-10
-                      leading-relaxed max-w-3xl mx-auto
-                      px-3 xs:px-4">
-            Contactez-nous pour un audit gratuit et découvrez comment gagner en efficacité
+          <p className="contact-subtitle-dark" style={{
+            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            fontSize: '1.125rem',
+            color: '#b0b0b0',
+            lineHeight: 1.6,
+            maxWidth: '600px',
+            margin: '0 auto'
+          }}>
+            Contactez-nous pour un <span className="highlight-text-dark" style={{ color: '#e34040', fontWeight: 600 }}>audit gratuit</span> et découvrez comment gagner en efficacité
           </p>
         </div>
+
         <ContactForm />
+        
+        {/* Icône de chat flottante */}
+        <div 
+          className="chat-icon-dark" 
+          onClick={() => alert('Ouverture du chat avec Archi')}
+          style={{
+            position: 'fixed',
+            bottom: '2rem',
+            right: '2rem',
+            width: '60px',
+            height: '60px',
+            background: 'linear-gradient(135deg, #e34040 0%, #c73636 100%)',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            boxShadow: '0 4px 20px rgba(227, 64, 64, 0.4)',
+            transition: 'all 0.3s ease',
+            zIndex: 1000,
+            border: '2px solid rgba(255, 255, 255, 0.1)'
+          }}
+        >
+          💬
+        </div>
       </div>
     </section>
   );

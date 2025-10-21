@@ -19,14 +19,14 @@
   /* Typographie */
   .hero-text {
     font-family: system-ui, -apple-system, sans-serif;
-    color: white;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    color: #1f2937;
+    text-shadow: none;
   }
 
   .hero-text-light {
     font-family: system-ui, -apple-system, sans-serif;
-    color: rgba(255, 255, 255, 0.8);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    color: #4b5563;
+    text-shadow: none;
   }
 
   /* Boutons Hero */
