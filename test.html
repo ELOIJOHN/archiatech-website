@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchiAtech - Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero {
+            background: linear-gradient(135deg, #E60023, #ff4757);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0 0 20px 0;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .service {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #E60023;
+        }
+        .service h3 {
+            color: #E60023;
+            margin-top: 0;
+        }
+        .cta {
+            background: #E60023;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .cta button {
+            background: white;
+            color: #E60023;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>ArchiAtech</h1>
+            <p>Solutions IA & Automatisation</p>
+        </div>
+
+        <!-- Services Section -->
+        <div class="section">
+            <h2>Nos Services</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Support IT</h3>
+                    <p>Installation et déploiement de postes de travail en toute sérénité</p>
+                </div>
+                <div class="service">
+                    <h3>Intelligence Artificielle</h3>
+                    <p>Solutions d'IA appliquées à vos processus métiers</p>
+                </div>
+                <div class="service">
+                    <h3>Automatisation</h3>
+                    <p>RPA, connecteurs, API pour optimiser vos processus</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Videos Section -->
+        <div class="section">
+            <h2>Démonstrations Vidéos</h2>
+            <p>Découvrez nos solutions à travers des démonstrations détaillées</p>
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; text-align: center;">
+                <p>Vidéos de démonstration disponibles</p>
+                <p><strong>Support IT</strong> | <strong>IA</strong> | <strong>Automatisation</strong> | <strong>No-Code</strong></p>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="cta">
+            <h2>Prêt à transformer votre entreprise ?</h2>
+            <p>Contactez ArchiAtech pour vos solutions d'IA et d'automatisation</p>
+            <button onclick="alert('Contactez-nous !')">Contactez-nous</button>
+        </div>
+    </div>
+
+    <script>
+        console.log('ArchiAtech - Site de test fonctionnel !');
+        console.log('Toutes les sections sont disponibles :');
+        console.log('- Hero Section ✅');
+        console.log('- Services Section ✅');
+        console.log('- Videos Section ✅');
+        console.log('- Contact Section ✅');
+    </script>
+</body>
+</html>
