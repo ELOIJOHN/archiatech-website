@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Copie Message - ArchiAtech</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .test-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(227, 64, 64, 0.12);
+            border: 2px solid #e34040;
+        }
+        
+        .test-title {
+            color: #e34040;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .test-button {
+            background: #e34040;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            width: 100%;
+        }
+        
+        .test-button:hover {
+            background: #c73636;
+            transform: translateY(-2px);
+        }
+        
+        .test-button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .result-success {
+            background: #d1fae5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+        
+        .result-error {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+        
+        .result-info {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+        
+        .instructions {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .instructions h3 {
+            color: #92400e;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .instructions p {
+            color: #92400e;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .form-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .steps {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .steps h4 {
+            color: #0c4a6e;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .steps ol {
+            color: #0c4a6e;
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .steps li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">📋 Test Copie Message - ArchiAtech</h1>
+        
+        <div class="instructions">
+            <h3>🎯 Solution Sans Onglets Google</h3>
+            <p>Cette méthode copie directement le message dans votre presse-papiers, évitant complètement les problèmes d'onglets Google.</p>
+        </div>
+        
+        <div class="form-section">
+            <h3>📝 Formulaire de Test</h3>
+            <form id="testForm">
+                <div class="form-group">
+                    <label>Nom complet :</label>
+                    <input type="text" id="fullName" value="Jean Dupont" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email :</label>
+                    <input type="email" id="email" value="jean.dupont@test.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Société :</label>
+                    <input type="text" id="company" value="Test Company">
+                </div>
+                
+                <div class="form-group">
+                    <label>Message :</label>
+                    <textarea id="message" required>Ceci est un test du nouveau système de copie de message qui évite les onglets Google.</textarea>
+                </div>
+                
+                <button type="submit" class="test-button">📋 Copier le message dans le presse-papiers</button>
+            </form>
+            
+            <div id="result" class="result-box" style="display: none;"></div>
+        </div>
+        
+        <div class="form-section">
+            <h3>🔧 Tests Rapides</h3>
+            <button class="test-button" onclick="testCopySimple()">Test 1: Copie simple</button>
+            <button class="test-button" onclick="testCopyComplete()">Test 2: Copie complète</button>
+            <button class="test-button" onclick="checkClipboardSupport()">Test 3: Support presse-papiers</button>
+            <div id="quickResult" class="result-box" style="display: none;"></div>
+        </div>
+        
+        <div class="steps">
+            <h4>📧 Comment envoyer le message copié :</h4>
+            <ol>
+                <li>Le message est automatiquement copié dans votre presse-papiers</li>
+                <li>Ouvrez votre application mail (Mail, Outlook, Thunderbird, etc.)</li>
+                <li>Créez un nouveau message</li>
+                <li>Collez le contenu (Ctrl+V ou Cmd+V)</li>
+                <li>Envoyez à : contact@archiatech.com</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function showResult(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = `result-box result-${type}`;
+            element.textContent = message;
+        }
+        
+        function testCopySimple() {
+            showResult('quickResult', 'Test de copie simple...', 'info');
+            
+            try {
+                const simpleMessage = 'Test de copie simple - ArchiAtech';
+                
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(simpleMessage).then(() => {
+                        showResult('quickResult', '✅ Test simple réussi ! Le message "Test de copie simple - ArchiAtech" est dans votre presse-papiers.', 'success');
+                    }).catch(err => {
+                        showResult('quickResult', `❌ Erreur lors de la copie: ${err.message}`, 'error');
+                    });
+                } else {
+                    showResult('quickResult', '❌ Votre navigateur ne supporte pas la copie automatique.', 'error');
+                }
+            } catch (error) {
+                showResult('quickResult', `❌ Erreur: ${error.message}`, 'error');
+            }
+        }
+        
+        function testCopyComplete() {
+            showResult('quickResult', 'Test de copie complète...', 'info');
+            
+            try {
+                const completeMessage = `[TEST ArchiAtech] Demande de contact - Jean Dupont
+
+Bonjour,
+
+Ceci est un TEST du système de contact ArchiAtech.
+
+═══════════════════════════════════════
+📋 INFORMATIONS DU CONTACT
+═══════════════════════════════════════
+
+👤 Nom complet : Jean Dupont
+📧 Email : jean.dupont@test.com
+🏢 Société : Test Company
+
+═══════════════════════════════════════
+💬 MESSAGE
+═══════════════════════════════════════
+
+Ceci est un test du nouveau système de copie de message qui évite les onglets Google.
+
+═══════════════════════════════════════
+📅 Date du test : ${new Date().toLocaleString('fr-FR')}
+🌐 Envoyé depuis : Site web ArchiAtech (TEST)
+═══════════════════════════════════════
+
+---
+Pour répondre, utilisez directement l'adresse : jean.dupont@test.com
+
+---
+📧 Pour envoyer ce message :
+1. Copiez tout le texte ci-dessus
+2. Ouvrez votre application mail (Mail, Outlook, Thunderbird, etc.)
+3. Créez un nouveau message
+4. Collez le texte copié
+5. Envoyez à : contact@archiatech.com`;
+                
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(completeMessage).then(() => {
+                        showResult('quickResult', '✅ Test complet réussi ! Le message complet est dans votre presse-papiers.', 'success');
+                    }).catch(err => {
+                        showResult('quickResult', `❌ Erreur lors de la copie: ${err.message}`, 'error');
+                    });
+                } else {
+                    showResult('quickResult', '❌ Votre navigateur ne supporte pas la copie automatique.', 'error');
+                }
+            } catch (error) {
+                showResult('quickResult', `❌ Erreur: ${error.message}`, 'error');
+            }
+        }
+        
+        function checkClipboardSupport() {
+            const support = {
+                clipboard: !!navigator.clipboard,
+                writeText: !!(navigator.clipboard && navigator.clipboard.writeText),
+                readText: !!(navigator.clipboard && navigator.clipboard.readText),
+                userAgent: navigator.userAgent,
+                platform: navigator.platform
+            };
+            
+            const message = `Support du presse-papiers :
+
+✅ Clipboard API : ${support.clipboard ? 'Disponible' : 'Non disponible'}
+✅ writeText : ${support.writeText ? 'Disponible' : 'Non disponible'}
+✅ readText : ${support.readText ? 'Disponible' : 'Non disponible'}
+
+Navigateur : ${support.userAgent}
+Plateforme : ${support.platform}
+
+${support.writeText ? '🎉 Votre navigateur supporte la copie automatique !' : '❌ Votre navigateur ne supporte pas la copie automatique.'}`;
+            
+            showResult('quickResult', message, support.writeText ? 'success' : 'error');
+        }
+        
+        // Gestion du formulaire
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const message = document.getElementById('message').value;
+            
+            const emailSubject = `[TEST ArchiAtech] Demande de contact - ${fullName}`;
+            const emailBody = `Bonjour,
+
+Ceci est un TEST du système de contact ArchiAtech.
+
+═══════════════════════════════════════
+📋 INFORMATIONS DU CONTACT
+═══════════════════════════════════════
+
+👤 Nom complet : ${fullName}
+📧 Email : ${email}
+🏢 Société : ${company || 'Non renseignée'}
+
+═══════════════════════════════════════
+💬 MESSAGE
+═══════════════════════════════════════
+
+${message}
+
+═══════════════════════════════════════
+📅 Date du test : ${new Date().toLocaleString('fr-FR')}
+🌐 Envoyé depuis : Site web ArchiAtech (TEST)
+═══════════════════════════════════════
+
+---
+Pour répondre, utilisez directement l'adresse : ${email}`;
+            
+            const fullMessage = `${emailSubject}
+
+${emailBody}
+
+---
+📧 Pour envoyer ce message :
+1. Copiez tout le texte ci-dessus
+2. Ouvrez votre application mail (Mail, Outlook, Thunderbird, etc.)
+3. Créez un nouveau message
+4. Collez le texte copié
+5. Envoyez à : contact@archiatech.com`;
+            
+            showResult('result', 'Copie du message dans le presse-papiers...', 'info');
+            
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(fullMessage);
+                    
+                    showResult('result', '✅ Message copié dans le presse-papiers ! Ouvrez maintenant votre application mail et collez le message.', 'success');
+                    
+                    setTimeout(() => {
+                        showResult('result', `📋 Message copié ! Voici le contenu :
+
+${fullMessage}
+
+---
+💡 Le message est déjà dans votre presse-papiers. Ouvrez votre application mail et collez-le (Ctrl+V ou Cmd+V).`, 'success');
+                    }, 2000);
+                } else {
+                    showResult('result', `❌ Votre navigateur ne supporte pas la copie automatique. Voici le message à copier manuellement :
+
+${fullMessage}`, 'error');
+                }
+            } catch (error) {
+                showResult('result', `❌ Erreur lors de la copie: ${error.message}
+
+Voici le message à copier manuellement :
+
+${fullMessage}`, 'error');
+            }
+        });
+    </script>
+</body>
+</html>

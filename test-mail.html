@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Mail - ArchiAtech</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(227, 64, 64, 0.12);
+            border: 2px solid #e34040;
+        }
+        
+        .test-title {
+            color: #e34040;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .test-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input {
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #e34040;
+            box-shadow: 0 0 0 3px rgba(227, 64, 64, 0.1);
+        }
+        
+        .test-button {
+            background: #e34040;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .test-button:hover {
+            background: #c73636;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(227, 64, 64, 0.4);
+        }
+        
+        .test-button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .status-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .status-success {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+        }
+        
+        .status-error {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+        }
+        
+        .test-info {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .test-info h3 {
+            color: #92400e;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .test-info p {
+            color: #92400e;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">🧪 Test Mail - ArchiAtech</h1>
+        
+        <div class="test-info">
+            <h3>📋 Instructions de Test</h3>
+            <p>1. Remplissez le formulaire ci-dessous<br>
+            2. Cliquez sur "Tester l'envoi de mail"<br>
+            3. Vérifiez que votre client email s'ouvre avec le message pré-rempli</p>
+        </div>
+        
+        <form class="test-form" id="testForm">
+            <div class="form-group">
+                <label class="form-label">Nom complet *</label>
+                <input type="text" class="form-input" id="fullName" placeholder="Jean Dupont" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input type="email" class="form-input" id="email" placeholder="jean@entreprise.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Société</label>
+                <input type="text" class="form-input" id="company" placeholder="Mon Entreprise">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Message *</label>
+                <textarea class="form-input" id="message" rows="4" placeholder="Je souhaite tester le système de contact..." required></textarea>
+            </div>
+            
+            <button type="submit" class="test-button" id="testButton">
+                📧 Tester l'envoi de mail
+            </button>
+        </form>
+        
+        <div id="statusMessage"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('testForm');
+        const testButton = document.getElementById('testButton');
+        const statusMessage = document.getElementById('statusMessage');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const message = document.getElementById('message').value;
+            
+            // Désactiver le bouton
+            testButton.disabled = true;
+            testButton.textContent = '📧 Ouverture...';
+            
+            // Préparer l'email
+            const emailSubject = `[TEST ArchiAtech] Demande de contact - ${fullName}`;
+            const emailBody = `
+Bonjour,
+
+🧪 TEST DU SYSTÈME DE CONTACT ArchiAtech
+
+═══════════════════════════════════════
+📋 INFORMATIONS DU CONTACT
+═══════════════════════════════════════
+
+👤 Nom complet : ${fullName}
+📧 Email : ${email}
+🏢 Société : ${company || 'Non renseignée'}
+
+═══════════════════════════════════════
+💬 MESSAGE DE TEST
+═══════════════════════════════════════
+
+${message}
+
+═══════════════════════════════════════
+📅 Date du test : ${new Date().toLocaleString('fr-FR', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit'
+})}
+🌐 Test effectué depuis : Page de test ArchiAtech
+═══════════════════════════════════════
+
+---
+Ceci est un test du système de contact ArchiAtech.
+Pour répondre, utilisez directement l'adresse : ${email}
+            `.trim();
+            
+            // Créer le lien mailto
+            const mailtoLink = `mailto:contact@archiatech.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            try {
+                // Méthode robuste pour ouvrir le client email
+                const tempLink = document.createElement('a');
+                tempLink.href = mailtoLink;
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+                
+                // Afficher le succès
+                setTimeout(() => {
+                    showStatus('success', '✅ Test réussi ! Votre client email a été ouvert avec le message de test. Si aucun client email ne s\'est ouvert, vérifiez votre configuration email.');
+                    
+                    // Réactiver le bouton
+                    testButton.disabled = false;
+                    testButton.textContent = '📧 Tester l\'envoi de mail';
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Erreur mailto:', error);
+                showStatus('error', '❌ Test échoué ! Impossible d\'ouvrir votre client email. Vérifiez votre configuration email ou contactez-nous directement.');
+                
+                // Réactiver le bouton
+                testButton.disabled = false;
+                testButton.textContent = '📧 Tester l\'envoi de mail';
+            }
+        });
+        
+        function showStatus(type, message) {
+            statusMessage.innerHTML = `<div class="status-${type}">${message}</div>`;
+            
+            // Effacer le message après 10 secondes
+            setTimeout(() => {
+                statusMessage.innerHTML = '';
+            }, 10000);
+        }
+        
+        // Remplir automatiquement avec des données de test
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('fullName').value = 'Jean Dupont';
+            document.getElementById('email').value = 'jean.dupont@test.com';
+            document.getElementById('company').value = 'Entreprise Test';
+            document.getElementById('message').value = 'Ceci est un test du système de contact ArchiAtech. Je vérifie que le bouton "Envoyer la demande" fonctionne correctement.';
+        });
+    </script>
+</body>
+</html>
