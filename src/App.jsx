@@ -1,6 +1,7 @@
 import React from 'react';
 import NavigationBar from './components/NavigationBar';
 import HeroSection from './components/HeroSection';
+import PilliersSection from './components/PilliersSection';
 import ServicesSection from './components/ServicesSection';
 import ApprocheSection from './components/ApprocheSection';
 import Avantages from './components/Avantages';
@@ -18,6 +19,9 @@ export default function App() {
       <main className="flex flex-col overflow-y-auto scroll-smooth bg-white text-gray-900">
         {/* Hero - Page d'accueil */}
         <HeroSection />
+
+        {/* 3 Piliers ArchiaTech - Souverain, Responsable, Green */}
+        <PilliersSection />
 
         {/* Services - Nos expertises */}
         <ServicesSection />
