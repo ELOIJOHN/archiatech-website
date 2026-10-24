@@ -1,23 +1,16 @@
-// 🔑 Configuration de votre clé API YouTube
-// Clé API configurée pour @ArchiatechMedia
+// Configuration de la clé API YouTube
+//
+// La clé n'est JAMAIS écrite dans le code. Elle est lue depuis la variable
+// d'environnement Vite VITE_YOUTUBE_API_KEY (voir .env.example).
+//
+// Sécurité : une variable VITE_* est embarquée dans le JavaScript public.
+// La clé doit donc être restreinte dans Google Cloud Console :
+//   - Restriction d'application : référents HTTP (https://www.archiatech.com/*)
+//   - Restriction d'API : YouTube Data API v3 uniquement
+//
+// Chaîne YouTube : https://www.youtube.com/@ArchiatechMedia
+// ID de chaîne   : UCtwJ6pMNI5QndQGeJWwkvYA
 
-const YOUTUBE_API_KEY = 'AIzaSyBca6tC9Vt4xD-M1Wu9SsdLfiMf4SSqIz8';
-
-// 📝 Instructions :
-// 1. Obtenez votre clé API sur Google Cloud Console
-// 2. Remplacez 'VOTRE_CLE_API_ICI' par votre clé
-// 3. Sauvegardez ce fichier
-// 4. Votre base de données se synchronisera automatiquement
-
-// 🎯 Votre chaîne YouTube :
-// - ID : UCtwJ6pMNI5QndQGeJWwkvYA
-// - URL : https://www.youtube.com/@ArchiatechMedia
-// - Nom : ArchiatechMedia
-
-// 📊 Une fois configuré, vous pourrez :
-// - Synchroniser automatiquement vos vidéos
-// - Récupérer les vraies statistiques
-// - Mettre à jour les métadonnées en temps réel
-// - Gérer vos vidéos depuis votre site web
+const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY || '';
 
 export default YOUTUBE_API_KEY;

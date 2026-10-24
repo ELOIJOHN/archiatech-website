@@ -154,6 +154,6 @@
     "syncInterval": 3600000,
     "maxVideos": 50,
     "defaultThumbnail": "https://via.placeholder.com/400x225/E60023/FFFFFF?text=ArchiaTech",
-    "apiKey": "AIzaSyBca6tC9Vt4xD-M1Wu9SsdLfiMf4SSqIz8"
+    "apiKey": ""
   }
 }

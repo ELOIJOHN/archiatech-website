@@ -308,6 +308,7 @@ class YouTubeAPIService {
 }
 
 // Instance singleton
-const youtubeAPI = new YouTubeAPIService('AIzaSyBca6tC9Vt4xD-M1Wu9SsdLfiMf4SSqIz8');
+// La clé vient de VITE_YOUTUBE_API_KEY (jamais en dur dans le code)
+const youtubeAPI = new YouTubeAPIService(import.meta.env.VITE_YOUTUBE_API_KEY || '');
 
 export default youtubeAPI;
