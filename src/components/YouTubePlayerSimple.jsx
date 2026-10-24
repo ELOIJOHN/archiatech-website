@@ -60,7 +60,7 @@ const YouTubePlayerSimple = () => {
   return (
     <div className="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
       {/* Lecteur YouTube principal */}
-      <div className="relative">
+      <div>
         <iframe
           width="100%"
           height="450"
@@ -69,28 +69,29 @@ const YouTubePlayerSimple = () => {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          className="rounded-t-xl"
+          className="block rounded-t-xl"
         />
-        
-        {/* Overlay avec contrôles personnalisés */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
-          <div className="flex items-center justify-between text-white">
-            <div className="flex items-center space-x-4">
+
+        {/* Contrôles de navigation : sous le lecteur (ne masquent plus la barre YouTube) */}
+        <div className="bg-gray-900 px-4 py-3">
+          <div className="flex items-center justify-between gap-3 text-white">
+            <div className="flex items-center gap-2 sm:gap-4">
               <button
                 onClick={handlePrevVideo}
-                className="bg-[#E60023] hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors"
+                className="bg-[#E60023] hover:bg-red-700 text-white px-2.5 sm:px-4 py-2 rounded-lg transition-colors text-xs sm:text-base whitespace-nowrap"
               >
                 ← Précédent
               </button>
               <button
                 onClick={handleNextVideo}
-                className="bg-[#E60023] hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors"
+                className="bg-[#E60023] hover:bg-red-700 text-white px-2.5 sm:px-4 py-2 rounded-lg transition-colors text-xs sm:text-base whitespace-nowrap"
               >
                 Suivant →
               </button>
             </div>
-            <div className="text-sm">
-              Vidéo {currentVideoIndex + 1} sur {videos.length}
+            <div className="text-xs sm:text-sm whitespace-nowrap" aria-live="polite">
+              <span className="hidden sm:inline">Vidéo {currentVideoIndex + 1} sur {videos.length}</span>
+              <span className="sm:hidden">{currentVideoIndex + 1}/{videos.length}</span>
             </div>
           </div>
         </div>
