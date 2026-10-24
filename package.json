@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "shot": "npm run build && node scripts/screenshot.mjs",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test:archiagent": "node --test backend/*.test.mjs",
+    "test:archiagent:e2e": "sh backend/staging/run-e2e.sh"
   },
   "dependencies": {
     "framer-motion": "^12.23.22",

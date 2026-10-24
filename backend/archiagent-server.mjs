@@ -1,5 +1,6 @@
 // Node.js 20+. Provider secrets stay server-side. No deployment on import.
 import http from 'node:http';
+import { isIP } from 'node:net';
 import { pathToFileURL } from 'node:url';
 
 const prompt = 'Tu es Archi, assistant du site ArchIAtech. Réponds en français, avec concision et précision. Présente les services IA, automatisation, infrastructure et support IT. Ne promets pas de résultats chiffrés non vérifiés. Pour les devis, oriente vers le formulaire de contact.';
@@ -16,10 +17,13 @@ export function createArchiAgentServer({
   rateWindowMs = 60000,
   maxClients = 10000,
   maxConcurrent = 8,
+  trustedProxies = (process.env.TRUSTED_PROXIES || '').split(',').map(s => s.trim()).filter(Boolean),
+  globalRateLimit = 120,
 } = {}) {
   const origins = new Set(allowedOrigins);
   const rate = new Map();
   let active = 0;
+  let globalBudget = { count: 0, reset: 0 };
   const server = http.createServer(async (req, res) => {
     const origin = req.headers.origin;
     function reply(status, data, extra = {}) {
@@ -43,8 +47,15 @@ export function createArchiAgentServer({
     });
     if (req.method !== 'POST') return reject(405, 'Method not allowed', { Allow: 'POST, OPTIONS' });
     if (!apiKey) return reject(503, 'Service not configured');
-    // Intentionally ignore Forwarded/X-Forwarded-For: only the socket peer is trusted.
-    const ip = req.socket.remoteAddress || 'unknown';
+    // Only an explicitly trusted peer may supply a single, overwritten client IP.
+    // Forwarded and X-Forwarded-For are never used.
+    const peer = req.socket.remoteAddress || 'unknown';
+    let ip = peer;
+    if (trustedProxies.includes(peer)) {
+      const client = req.headers['x-real-ip'];
+      if (typeof client !== 'string' || !isIP(client)) return reject(400, 'Invalid proxy client');
+      ip = client;
+    }
     const time = now();
     for (const [key, entry] of rate) if (time >= entry.reset) rate.delete(key);
     let entry = rate.get(ip);
@@ -55,6 +66,11 @@ export function createArchiAgentServer({
     }
     if (entry.count >= rateLimit) return reject(429, 'Rate limit', { 'Retry-After': String(Math.max(1, Math.ceil((entry.reset - time) / 1000))) });
     entry.count++;
+    if (time >= globalBudget.reset) globalBudget = { count: 0, reset: time + rateWindowMs };
+    if (globalBudget.count >= globalRateLimit) return reject(429, 'Rate limit', {
+      'Retry-After': String(Math.max(1, Math.ceil((globalBudget.reset - time) / 1000))),
+    });
+    globalBudget.count++;
     if (!/^application\/json(?:\s*;|\s*$)/i.test(req.headers['content-type'] || '') ||
         (req.headers['content-encoding'] && req.headers['content-encoding'] !== 'identity')) return reject(415, 'Expected uncompressed JSON');
     if (Number(req.headers['content-length']) > 16384) return reject(413, 'Request too large');

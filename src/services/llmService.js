@@ -1,44 +1,12 @@
 /**
  * Service de connexion au LLM (Large Language Model)
- * Supporte OpenAI GPT et Anthropic Claude
+ * Appelle le backend ArchiAgent ; aucun secret fournisseur dans le navigateur.
  */
 
 // Configuration - Lecture depuis les variables d'environnement
 // Endpoint HTTPS d'un backend contrôlé par ArchIAtech.
 // Ne jamais placer une clé fournisseur dans une variable VITE_* : elle serait publique.
-const ARCHIAGENT_API_URL = import.meta.env.VITE_ARCHIAGENT_API_URL || '';
-
-// Contexte système pour ArchiAgent
-const SYSTEM_PROMPT = `Tu es Archi, l'assistant IA expert d'ArchiAtech, une entreprise spécialisée dans l'intelligence artificielle et la transformation digitale.
-
-## Ton rôle :
-- Aider les visiteurs à comprendre les services d'ArchiAtech
-- Répondre aux questions sur l'IA, l'automatisation, le no-code
-- Qualifier les besoins des prospects
-- Orienter vers les bonnes solutions
-
-## Services d'ArchiAtech :
-1. **Support & Déploiement IT** : Support technique 24/7 et déploiement sécurisé
-2. **Conseil & Intégration IA** : Stratégie IA personnalisée et intégration
-3. **Automatisation des Workflows** : Automatisation intelligente (+40% d'efficacité)
-4. **Solutions No-Code/Low-Code** : Développement rapide sans code
-5. **Formation & Accompagnement** : Formation des équipes aux technologies IA
-6. **Transformation Digitale** : Accompagnement complet de la transformation
-
-## Méthodologie Archi :
-1. **Audit** : Analyse de l'écosystème actuel
-2. **Stratégie** : Définition d'une roadmap personnalisée
-3. **Déploiement** : Implémentation progressive
-4. **Support** : Accompagnement continu
-
-## Ton style de communication :
-- Professionnel mais accessible
-- Adapte ton langage au profil détecté (C-Level, Technique, Novice)
-- Concis et précis (max 3-4 phrases)
-- Pose des questions pour qualifier les besoins
-- Utilise des exemples concrets
-
-Réponds toujours en français.`;
+const ARCHIAGENT_API_URL = import.meta.env?.VITE_ARCHIAGENT_API_URL || '';
 
 /**
  * Appel à notre propre backend. Les secrets et les appels aux fournisseurs
@@ -49,17 +17,39 @@ async function callSecureBackend(messages) {
   if (url.origin !== window.location.origin && url.protocol !== 'https:') {
     throw new Error('ArchiAgent exige HTTPS pour un backend externe');
   }
-  const response = await fetch(url.toString(), {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages }),
-  });
-  if (!response.ok) throw new Error('Service ArchiAgent indisponible');
-  const data = await response.json();
-  if (typeof data.reply !== 'string' || !data.reply.trim()) {
-    throw new Error('Réponse ArchiAgent invalide');
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 20000);
+  try {
+    const response = await fetch(url.toString(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: prepareMessages(messages) }),
+      signal: controller.signal,
+      credentials: 'omit',
+      redirect: 'error',
+    });
+    if (!response.ok) throw new Error('Service ArchiAgent indisponible');
+    const data = await response.json();
+    if (typeof data?.reply !== 'string' || !data.reply.trim() || data.reply.length > 16000) {
+      throw new Error('Réponse ArchiAgent invalide');
+    }
+    return data.reply;
+  } finally {
+    clearTimeout(timer);
   }
-  return data.reply;
+}
+
+// Keep the newest contiguous context within the backend's count, character and byte limits.
+export function prepareMessages(history) {
+  const selected = [];
+  for (const message of history.slice(-20).reverse()) {
+    if (!['user', 'assistant'].includes(message.role) || typeof message.content !== 'string' || !message.content.trim()) break;
+    const item = { role: message.role, content: message.content.slice(0, 2000) };
+    const candidate = [item, ...selected];
+    if (new TextEncoder().encode(JSON.stringify({ messages: candidate })).length > 16384) break;
+    selected.unshift(item);
+  }
+  return selected;
 }
 
 /**
@@ -98,9 +88,8 @@ export async function generateLLMResponse(conversationHistory) {
   if (!ARCHIAGENT_API_URL) return localResponse(lastMessage.content);
   try {
     return await callSecureBackend(conversationHistory);
-  } catch (error) {
-    console.error('ArchiAgent : backend indisponible', error);
-    return localResponse(lastMessage.content);
+  } catch {
+    return "Le service est momentanément indisponible. Réessayez dans une minute ou utilisez le formulaire de contact.";
   }
 }
 

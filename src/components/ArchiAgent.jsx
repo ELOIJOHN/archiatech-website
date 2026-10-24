@@ -117,7 +117,7 @@ const ArchiAgent = () => {
 
   // Envoi de message
   const handleSendMessage = async () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() || isTyping) return;
 
     const messageText = inputValue;
     const userMessage = {
@@ -353,6 +353,7 @@ const ArchiAgent = () => {
                 <div className="flex items-center space-x-2">
                   <input
                     ref={inputRef}
+                    maxLength={2000}
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}

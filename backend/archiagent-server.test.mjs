@@ -113,3 +113,45 @@ test('split UTF-8 survives chunk boundaries; malformed UTF-8 rejected', async t 
 test('slow incomplete body times out without provider call', async t => {
   const f = await fixture(t, { bodyTimeoutMs: 30 }); assert.equal(await raw(f, ['{'], false), 408); assert.equal(f.calls.length, 0);
 });
+
+test('untrusted peers cannot spoof X-Real-IP', async t => {
+  const f = await fixture(t, { rateLimit: 1 });
+  assert.equal((await f.post(valid, { 'X-Real-IP': '192.0.2.1' })).status, 200);
+  assert.equal((await f.post(valid, { 'X-Real-IP': '192.0.2.2' })).status, 429);
+});
+test('explicit trusted proxy separates clients but validates single IP', async t => {
+  const f = await fixture(t, { trustedProxies: ['127.0.0.1'], rateLimit: 1 });
+  for (const ip of ['192.0.2.1', '2001:db8::1']) {
+    assert.equal((await f.post(valid, { 'X-Real-IP': ip })).status, 200);
+    assert.equal((await f.post(valid, { 'X-Real-IP': ip })).status, 429);
+  }
+  for (const ip of ['', 'unknown', '192.0.2.1, 192.0.2.2']) {
+    assert.equal((await f.post(valid, { 'X-Real-IP': ip })).status, 400);
+  }
+});
+test('global budget bounds distributed clients and resets', async t => {
+  let clock = 0;
+  const f = await fixture(t, { trustedProxies: ['127.0.0.1'], globalRateLimit: 2, now: () => clock });
+  for (let i = 1; i <= 2; i++) assert.equal((await f.post(valid, { 'X-Real-IP': `192.0.2.${i}` })).status, 200);
+  const blocked = await f.post(valid, { 'X-Real-IP': '192.0.2.3' });
+  assert.equal(blocked.status, 429); assert.equal(blocked.headers.get('retry-after'), '60');
+  clock = 60000;
+  assert.equal((await f.post(valid, { 'X-Real-IP': '192.0.2.3' })).status, 200);
+});
+
+test('client disconnect aborts provider work and releases concurrency', { timeout: 2000 }, async t => {
+  let started, aborted;
+  const ready = new Promise(resolve => { started = resolve; });
+  const cancelled = new Promise(resolve => { aborted = resolve; });
+  let calls = 0;
+  const f = await fixture(t, { maxConcurrent: 1, fetchImpl: (_, { signal }) => {
+    if (++calls > 1) return success();
+    started();
+    return new Promise((resolve, reject) => signal.addEventListener('abort', () => { aborted(); reject(signal.reason); }, { once: true }));
+  } });
+  const req = http.request(f.url, { method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json' } });
+  req.on('error', () => {});
+  req.end(JSON.stringify(valid));
+  await ready; req.destroy(); await cancelled;
+  assert.equal((await f.post()).status, 200);
+});

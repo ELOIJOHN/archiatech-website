@@ -1,0 +1,37 @@
+# Test only. No real provider, no production secrets, no externally reachable ports.
+name: archiagent-audit
+services:
+  proxy:
+    image: nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
+    user: "101:101"
+    ports:
+      - "127.0.0.1:18080:8080"
+      - "127.0.0.1:18443:8443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./.certs:/certs:ro
+      - ../../dist:/site:ro
+    read_only: true
+    tmpfs: [/tmp, /var/cache/nginx, /var/run]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 128m
+    pids_limit: 64
+    networks: [isolated]
+  backend:
+    image: node:22-alpine@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914
+    network_mode: service:proxy
+    depends_on: [proxy]
+    working_dir: /app
+    command: [node, backend/staging/mock-server.mjs]
+    volumes:
+      - ../../backend:/app/backend:ro
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    user: node
+    mem_limit: 128m
+    pids_limit: 64
+networks:
+  isolated:
+    driver: bridge

@@ -13,4 +13,18 @@ jobs:
         with:
           node-version: '22'
       - name: Run tests without provider credentials
-        run: node --test backend/archiagent-server.test.mjs
+        run: npm run test:archiagent
+
+      - name: Install locked build and browser-test dependencies
+        run: npm ci --ignore-scripts
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+      - name: Test isolated HTTPS stack and browser
+        run: CHROME_PATH="$(command -v google-chrome)" npm run test:archiagent:e2e
+      - name: Preserve local test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archiagent-test-evidence
+          path: backend/staging/results/
+          if-no-files-found: ignore
