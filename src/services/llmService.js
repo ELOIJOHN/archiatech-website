@@ -4,13 +4,9 @@
  */
 
 // Configuration - Lecture depuis les variables d'environnement
-const LLM_CONFIG = {
-  provider: import.meta.env.VITE_LLM_PROVIDER || 'local', // 'openai' ou 'anthropic' ou 'local'
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY || import.meta.env.VITE_ANTHROPIC_API_KEY || '',
-  model: import.meta.env.VITE_LLM_MODEL || 'gpt-3.5-turbo',
-  temperature: 0.7,
-  maxTokens: 500
-};
+// Endpoint HTTPS d'un backend contrôlé par ArchIAtech.
+// Ne jamais placer une clé fournisseur dans une variable VITE_* : elle serait publique.
+const ARCHIAGENT_API_URL = import.meta.env.VITE_ARCHIAGENT_API_URL || '';
 
 // Contexte système pour ArchiAgent
 const SYSTEM_PROMPT = `Tu es Archi, l'assistant IA expert d'ArchiAtech, une entreprise spécialisée dans l'intelligence artificielle et la transformation digitale.
@@ -45,63 +41,25 @@ const SYSTEM_PROMPT = `Tu es Archi, l'assistant IA expert d'ArchiAtech, une entr
 Réponds toujours en français.`;
 
 /**
- * Appel à l'API OpenAI
+ * Appel à notre propre backend. Les secrets et les appels aux fournisseurs
+ * doivent être gérés uniquement côté serveur.
  */
-async function callOpenAI(messages) {
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${LLM_CONFIG.apiKey}`
-    },
-    body: JSON.stringify({
-      model: LLM_CONFIG.model,
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        ...messages
-      ],
-      temperature: LLM_CONFIG.temperature,
-      max_tokens: LLM_CONFIG.maxTokens
-    })
-  });
-
-  if (!response.ok) {
-    throw new Error(`OpenAI API error: ${response.status}`);
+async function callSecureBackend(messages) {
+  const url = new URL(ARCHIAGENT_API_URL, window.location.origin);
+  if (url.origin !== window.location.origin && url.protocol !== 'https:') {
+    throw new Error('ArchiAgent exige HTTPS pour un backend externe');
   }
-
-  const data = await response.json();
-  return data.choices[0].message.content;
-}
-
-/**
- * Appel à l'API Anthropic Claude
- */
-async function callAnthropic(messages) {
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
+  const response = await fetch(url.toString(), {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': LLM_CONFIG.apiKey,
-      'anthropic-version': '2023-06-01'
-    },
-    body: JSON.stringify({
-      model: LLM_CONFIG.model,
-      system: SYSTEM_PROMPT,
-      messages: messages.map(msg => ({
-        role: msg.role === 'user' ? 'user' : 'assistant',
-        content: msg.content
-      })),
-      temperature: LLM_CONFIG.temperature,
-      max_tokens: LLM_CONFIG.maxTokens
-    })
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages }),
   });
-
-  if (!response.ok) {
-    throw new Error(`Anthropic API error: ${response.status}`);
-  }
-
+  if (!response.ok) throw new Error('Service ArchiAgent indisponible');
   const data = await response.json();
-  return data.content[0].text;
+  if (typeof data.reply !== 'string' || !data.reply.trim()) {
+    throw new Error('Réponse ArchiAgent invalide');
+  }
+  return data.reply;
 }
 
 /**
@@ -135,26 +93,13 @@ function localResponse(userMessage) {
  * @returns {Promise<string>} - Réponse générée par le LLM
  */
 export async function generateLLMResponse(conversationHistory) {
+  const lastMessage = conversationHistory[conversationHistory.length - 1];
+  if (!lastMessage || typeof lastMessage.content !== 'string') return '';
+  if (!ARCHIAGENT_API_URL) return localResponse(lastMessage.content);
   try {
-    // Si pas de clé API configurée, utiliser le fallback local
-    if (!LLM_CONFIG.apiKey || LLM_CONFIG.provider === 'local') {
-      const lastMessage = conversationHistory[conversationHistory.length - 1];
-      return localResponse(lastMessage.content);
-    }
-
-    // Appeler l'API appropriée
-    if (LLM_CONFIG.provider === 'openai') {
-      return await callOpenAI(conversationHistory);
-    } else if (LLM_CONFIG.provider === 'anthropic') {
-      return await callAnthropic(conversationHistory);
-    } else {
-      throw new Error('Provider non supporté');
-    }
+    return await callSecureBackend(conversationHistory);
   } catch (error) {
-    console.error('Erreur LLM:', error);
-
-    // En cas d'erreur, utiliser le fallback local
-    const lastMessage = conversationHistory[conversationHistory.length - 1];
+    console.error('ArchiAgent : backend indisponible', error);
     return localResponse(lastMessage.content);
   }
 }
