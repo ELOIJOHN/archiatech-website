@@ -180,7 +180,7 @@ const SEOOptimizer = () => {
       {/* Additional SEO */}
       <meta name="author" content="ArchiAtech" />
       <meta name="publisher" content="ArchiAtech" />
-      <meta name="copyright" content="© 2025 ArchiAtech. Tous droits réservés." />
+      <meta name="copyright" content="© 2026 ArchiAtech. Tous droits réservés." />
       <meta name="revisit-after" content="7 days" />
       <meta name="rating" content="general" />
       <meta name="distribution" content="global" />

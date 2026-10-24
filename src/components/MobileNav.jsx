@@ -241,7 +241,7 @@ export default function MobileNav() {
               {/* Footer du menu */}
               <div className="p-6 bg-gray-100 border-t border-gray-200">
                 <p className="text-xs text-center text-gray-500">
-                  © 2025 ArchiAtech. Tous droits réservés.
+                  © 2026 ArchiAtech. Tous droits réservés.
                 </p>
               </div>
             </motion.div>

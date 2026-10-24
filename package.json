@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://elojohn.github.io/archiatech-website",
+  "homepage": "https://www.archiatech.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

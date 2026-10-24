@@ -8,7 +8,7 @@ const pilliers = [
     emoji: "🔒",
     title: "Vos données restent chez vous",
     description:
-      "Déployement on-premise ou cloud privé. Aucune donnée ne quitte votre infrastructure. Vous restez maître de vos actifs numériques.",
+      "Déploiement on-premise ou cloud privé. Aucune donnée ne quitte votre infrastructure. Vous restez maître de vos actifs numériques.",
     color: "#00C896",
   },
   {
@@ -58,7 +58,7 @@ export default function PilliersSection() {
             <span style={{ color: "#00C896" }}>responsable</span> et durable.
           </h2>
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
-            ArchiaTech construit l&apos;IA de demain — Souverain, Responsable, Green.
+            ArchiAtech construit l&apos;IA de demain — Souverain, Responsable, Green.
           </p>
         </Motion.div>
 
@@ -123,7 +123,7 @@ export default function PilliersSection() {
               boxShadow: "0 4px 24px rgba(0,200,150,0.35)",
             }}
           >
-            Démarrer avec ArchiaTech →
+            Démarrer avec ArchiAtech →
           </a>
         </Motion.div>
       </div>
