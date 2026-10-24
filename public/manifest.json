@@ -5,11 +5,15 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#dc2626",
+  "theme_color": "#E60023",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "fr",
-  "categories": ["business", "productivity", "technology"],
+  "categories": [
+    "business",
+    "productivity",
+    "technology"
+  ],
   "icons": [
     {
       "src": "/images/icon-72x72.png",
@@ -58,22 +62,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/images/screenshot-desktop.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "ArchiAtech Desktop"
-    },
-    {
-      "src": "/images/screenshot-mobile.png",
-      "sizes": "375x667",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "ArchiAtech Mobile"
     }
   ],
   "shortcuts": [

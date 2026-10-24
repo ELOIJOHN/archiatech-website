@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Cpu, Menu, X, ChevronDown, Building2, Target, Zap, Briefcase } from 'lucide-react';
+import { Menu, X, ChevronDown, Building2, Target, Zap, Briefcase } from 'lucide-react';
 
 export default function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,19 +70,17 @@ export default function NavigationBar() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex justify-between items-center">
-          {/* Logo ArchiAtech - Optimisé responsive */}
-          <div className="flex items-center space-x-1.5 xs:space-x-2 sm:space-x-3">
-            <div className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
-                            bg-gradient-to-br from-[#E60023] to-red-800
-                            rounded-md xs:rounded-lg sm:rounded-xl
-                            flex items-center justify-center
-                            touch-target">
-              <Cpu className="text-white w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-            </div>
-            <span className="text-lg sm:text-xl md:text-2xl font-bold text-white whitespace-nowrap">
-              Archi<span className="text-white">Atech</span>
-            </span>
-          </div>
+          {/* Logo ArchIAtech Digital Solutions (version horizontale blanche) */}
+          <a href="#" aria-label="ArchIAtech Digital Solutions - retour en haut de page"
+             className="flex items-center touch-target">
+            <img
+              src="/images/logo-horizontal-white.png"
+              alt="ArchIAtech Digital Solutions"
+              width="889"
+              height="160"
+              className="h-8 sm:h-10 md:h-12 w-auto"
+            />
+          </a>
 
           {/* Navigation Desktop */}
           <div className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
