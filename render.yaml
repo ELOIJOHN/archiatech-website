@@ -1,0 +1,23 @@
+# PREPRODUCTION ONLY. Importing this Blueprint creates a public HTTPS URL with a protected API.
+# No custom domain, no production-site origin, no automatic redeployment.
+services:
+  - type: web
+    name: archiatech-archiagent-preprod
+    runtime: node
+    plan: free
+    region: frankfurt
+    repo: https://github.com/ELOIJOHN/archiatech-website
+    branch: audit/securisation-archiagent
+    autoDeployTrigger: "off"
+    buildCommand: node --check backend/render/preview-server.mjs
+    startCommand: node backend/render/preview-server.mjs
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: SKIP_INSTALL_DEPS
+        value: "true"
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: PREVIEW_ACCESS_TOKEN
+        generateValue: true

@@ -1,3 +1,5 @@
+> **Guide historique :** les anciennes instructions avec des clés `VITE_*` ne doivent plus être utilisées. Les secrets IA restent uniquement côté serveur. Pour la préproduction actuelle, suivre [le guide Render](backend/render/README.md).
+
 # Configuration de l'Agent IA ArchiAgent avec LLM
 
 ## 🤖 Présentation

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ArchiAgent — préproduction</title>
+  <script src="/preview.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>ArchiAgent — test privé</h1>
+    <p>Cette page de préproduction est indépendante du site public. Chaque réponse utilise le fournisseur IA réel.</p>
+    <form id="chat">
+      <p><label for="token">Code d’accès au test (PREVIEW_ACCESS_TOKEN dans Render)</label><br>
+      <input id="token" type="password" autocomplete="off" required minlength="32"></p>
+      <p>Ce code n’est pas votre clé OpenAI. Ne saisissez jamais la clé OpenAI sur cette page.</p>
+      <p><label for="message">Votre question</label><br>
+      <textarea id="message" required maxlength="2000" rows="5" cols="60">Bonjour, quels services propose ArchIAtech ?</textarea></p>
+      <button type="submit">Tester ArchiAgent</button>
+    </form>
+    <p id="status" role="status" aria-live="polite"></p>
+    <pre id="reply"></pre>
+    <p>Le code d’accès reste dans cette page et n’est pas enregistré. Limite globale : 12 requêtes par minute.</p>
+  </main>
+</body>
+</html>
