@@ -1,7 +1,7 @@
 // Génère, après `vite build`, un fichier HTML par page (balises <title>, description,
 // canonical, Open Graph propres à chaque URL + texte de repli pour les robots),
 // ainsi que sitemap.xml et 404.html. GitHub Pages sert alors chaque URL avec un vrai code 200.
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pages, SITE_URL } from '../src/data/site-pages.js';
@@ -14,7 +14,16 @@ const must = (html, regex, label) => {
   if (!regex.test(html)) throw new Error(`prerender : motif introuvable dans index.html (${label})`);
 };
 
-function render(page) {
+// Image de partage propre à la page (public/images/og/<slug>.jpg, voir generate-og.py),
+// sinon l'image par défaut déjà présente dans index.html.
+async function ogImage(page) {
+  const slug = page.path.split('/').filter(Boolean).pop();
+  if (!slug) return null;
+  const file = path.join(dist, 'images/og', `${slug}.jpg`);
+  try { await access(file); return `${SITE_URL}/images/og/${slug}.jpg`; } catch { return null; }
+}
+
+function render(page, image) {
   const url = `${SITE_URL}${page.path}`;
   let html = template;
   const swaps = [
@@ -28,6 +37,13 @@ function render(page) {
     [/<meta property="twitter:title" content="[^"]*" \/>/, `<meta property="twitter:title" content="${esc(page.title)}" />`, 'twitter:title'],
     [/<meta property="twitter:description" content="[^"]*" \/>/, `<meta property="twitter:description" content="${esc(page.description)}" />`, 'twitter:description'],
   ];
+  if (image) {
+    swaps.push(
+      [/<meta property="og:image" content="[^"]*" \/>/, `<meta property="og:image" content="${image}" />`, 'og:image'],
+      [/<meta property="og:image:alt" content="[^"]*" \/>/, `<meta property="og:image:alt" content="${esc(page.h1)} - ArchiAtech Digital Solutions" />`, 'og:image:alt'],
+      [/<meta property="twitter:image" content="[^"]*" \/>/, `<meta property="twitter:image" content="${image}" />`, 'twitter:image'],
+    );
+  }
   for (const [regex, replacement, label] of swaps) {
     must(html, regex, label);
     html = html.replace(regex, () => replacement);
@@ -44,7 +60,7 @@ function render(page) {
 for (const page of pages) {
   const dir = path.join(dist, page.path);
   await mkdir(dir, { recursive: true });
-  await writeFile(path.join(dir, 'index.html'), render(page));
+  await writeFile(path.join(dir, 'index.html'), render(page, await ogImage(page)));
 }
 
 // Page 404 (URL inconnue) : même application, marquée noindex.
