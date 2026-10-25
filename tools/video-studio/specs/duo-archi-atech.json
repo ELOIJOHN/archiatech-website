@@ -1,0 +1,74 @@
+{
+  "slug": "duo-archi-atech",
+  "title": "Archi et Atech vous présentent ArchiAtech",
+  "kicker": "Présentation",
+  "thumbnail_text": "Archi & Atech : gagnez du temps",
+  "description": "Archi et Atech présentent en une minute l'IA souveraine, l'automatisation et le support IT d'ArchiAtech.\n\nContact : https://www.archiatech.com/#contact",
+  "tags": [
+    "ArchiAtech",
+    "IA",
+    "automatisation",
+    "support IT",
+    "PME"
+  ],
+  "page_url": "https://www.archiatech.com",
+  "voice": "piper",
+  "speakers": {
+    "archi": {
+      "name": "Archi",
+      "role": "Intelligence artificielle",
+      "portrait": "assets/archi.png",
+      "piper_model": "fr_FR-siwis-medium",
+      "openai_voice": "nova"
+    },
+    "atech": {
+      "name": "Atech",
+      "role": "Technicien",
+      "portrait": "assets/atech.png",
+      "piper_model": "fr_FR-tom-medium",
+      "openai_voice": "onyx"
+    }
+  },
+  "slides": [
+    {
+      "speaker": "archi",
+      "text": "Bonjour et bienvenue chez ArchiAtech ! Moi, c'est Archi."
+    },
+    {
+      "speaker": "atech",
+      "text": "Et moi, c'est Atech. Aujourd'hui, on vous explique comment gagner du temps dans votre entreprise."
+    },
+    {
+      "speaker": "archi",
+      "text": "Première chose : l'intelligence artificielle. Mais attention, une IA souveraine, où vos données restent chez vous."
+    },
+    {
+      "speaker": "atech",
+      "text": "Ça rassure, non ? Pas de contrats ou de dossiers clients envoyés n'importe où."
+    },
+    {
+      "speaker": "archi",
+      "text": "Exactement. Deuxième chose : l'automatisation. Tous ces petits travaux répétitifs, comme trier des emails ou relancer des factures, un workflow s'en occupe à votre place."
+    },
+    {
+      "speaker": "atech",
+      "text": "Mon préféré, c'est le formulaire de contact : un message arrive sur votre site, et hop, il est archivé, vous êtes prévenu tout de suite."
+    },
+    {
+      "speaker": "archi",
+      "text": "Et troisième chose : le support informatique. Postes de travail, Microsoft 365, assistance au quotidien, à Monaco, à Nice et partout en France."
+    },
+    {
+      "speaker": "atech",
+      "text": "Bref, vous vous concentrez sur votre métier, on s'occupe du reste."
+    },
+    {
+      "speaker": "archi",
+      "text": "Envie d'en parler ? Rendez-vous sur archiatech point com, rubrique contact."
+    },
+    {
+      "speaker": "atech",
+      "text": "À très vite !"
+    }
+  ]
+}

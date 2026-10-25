@@ -20,6 +20,7 @@ W, H, FPS = 1920, 1080, 25
 PRONUNCIATION = [
     (r"archiatech\.com", "archi atèque point com"),
     (r"ArchiAtech", "Archi Atèque"),
+    (r"\bAtech\b", "Atèque"),
     (r"RGPD", "R G P D"),
     (r"\bIA\b", "I A"),
     (r"\bn8n\b", "n huit n"),
@@ -37,18 +38,19 @@ def speak_text(text):
     return text
 
 
-def tts_piper(text, out_wav):
-    if not PIPER_MODEL.exists():
-        sys.exit(f"Modèle Piper introuvable : {PIPER_MODEL}")
-    subprocess.run([sys.executable, "-m", "piper", "-m", str(PIPER_MODEL), "-f", str(out_wav)],
+def tts_piper(text, out_wav, model=None):
+    model = HERE / "models" / f"{model}.onnx" if model else PIPER_MODEL
+    if not model.exists():
+        sys.exit(f"Modèle Piper introuvable : {model}")
+    subprocess.run([sys.executable, "-m", "piper", "-m", str(model), "-f", str(out_wav)],
                    input=speak_text(text).encode(), check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
-def tts_openai(text, out_mp3):
+def tts_openai(text, out_mp3, voice=None):
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
         sys.exit("OPENAI_API_KEY absente : définissez-la dans l'environnement du worker.")
-    body = json.dumps({"model": OPENAI_MODEL, "voice": OPENAI_VOICE, "input": speak_text(text),
+    body = json.dumps({"model": OPENAI_MODEL, "voice": voice or OPENAI_VOICE, "input": speak_text(text),
                        "instructions": "Voix posée et chaleureuse, français de France, rythme naturel, ton professionnel."}).encode()
     req = urllib.request.Request("https://api.openai.com/v1/audio/speech", data=body,
                                  headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
@@ -91,6 +93,29 @@ def slide_html(s, logo_b64, n, total, title):
             f"<div class='foot'><span>www.archiatech.com</span><span>{n}/{total}</span></div></body></html>")
 
 
+DLG_CSS = """
+.cast{position:absolute;left:96px;right:96px;top:190px;height:560px;display:flex;justify-content:center;gap:120px}
+.p{width:440px;text-align:center;opacity:.35;transform:scale(.92);filter:grayscale(.6)}
+.p.on{opacity:1;transform:scale(1);filter:none}
+.p img{width:360px;height:360px;object-fit:cover;border-radius:50%;border:10px solid #e5e7eb}
+.p.on img{border-color:#E60023}
+.p b{display:block;margin-top:18px;font-size:44px;color:#111827}
+.p span{font-size:28px;color:#6b7280}
+.say{position:absolute;left:96px;right:96px;top:790px;height:190px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:48px;line-height:1.25;color:#111827;font-weight:600}
+"""
+
+
+def dialogue_html(s, spec, b64, n, total):
+    cast = ""
+    for key, sp in spec["speakers"].items():
+        on = " on" if key == s["speaker"] else ""
+        cast += (f"<div class='p{on}'><img src='data:image/jpeg;base64,{b64[key]}'><b>{sp['name']}</b><span>{sp.get('role','')}</span></div>")
+    return (f"<html><head><meta charset='utf-8'><style>{CSS}{DLG_CSS}</style></head><body>"
+            f"<div class='band'><img src='data:image/png;base64,{b64['_logo']}'></div>"
+            f"<div class='cast'>{cast}</div><div class='say'>{s['text']}</div>"
+            f"<div class='foot'><span>www.archiatech.com</span><span>{n}/{total}</span></div></body></html>")
+
+
 def thumb_html(spec, logo_b64):
     t = spec.get("thumbnail_text") or spec["title"]
     return (f"<html><head><meta charset='utf-8'><style>{CSS}"
@@ -126,6 +151,10 @@ def main():
     logo_b64 = base64.b64encode(LOGO.read_bytes()).decode()
     work = Path(tempfile.mkdtemp(prefix=f"vid-{slug}-"))
     slides = spec["slides"]
+    spk = spec.get("speakers", {})
+    b64 = {"_logo": logo_b64}
+    for k, v in spk.items():
+        b64[k] = base64.b64encode((HERE / v["portrait"]).read_bytes()).decode()
     clips, srt, cursor, idx = [], [], 0.0, 1
     from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
@@ -133,11 +162,19 @@ def main():
         page = browser.new_page(viewport={"width": W, "height": H})
         for i, s in enumerate(slides, 1):
             png = work / f"s{i}.png"
-            page.set_content(slide_html(s, logo_b64, i, len(slides), spec["title"]))
+            if s.get("speaker"):
+                s["narration"] = s["text"]
+                page.set_content(dialogue_html(s, spec, b64, i, len(slides)))
+            else:
+                page.set_content(slide_html(s, logo_b64, i, len(slides), spec["title"]))
             page.wait_for_timeout(150)
             page.screenshot(path=str(png))
             audio = work / (f"a{i}.wav" if voice == "piper" else f"a{i}.mp3")
-            (tts_piper if voice == "piper" else tts_openai)(s["narration"], audio)
+            sp = spk.get(s.get("speaker"), {})
+            if voice == "piper":
+                tts_piper(s["narration"], audio, sp.get("piper_model"))
+            else:
+                tts_openai(s["narration"], audio, sp.get("openai_voice"))
             dur = duration(audio) + 0.5
             clip = work / f"c{i}.mp4"
             sh(["nice", "-n", "10", "ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-framerate", str(FPS), "-i", str(png), "-i", str(audio),
