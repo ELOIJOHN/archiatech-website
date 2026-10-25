@@ -20,6 +20,7 @@ export function MentionsLegales() {
         {company.legalForm ? `, ${company.legalForm.toLowerCase()}` : ''}.
       </P>
       <ul className="text-gray-700 leading-relaxed space-y-1 mb-3">
+        {company.legalForm && <li>Forme juridique : {company.legalForm}</li>}
         <li>SIRET : {company.siret}</li>
         {company.address && <li>Adresse : {company.address}</li>}
         <li>Email : <Mail /></li>
