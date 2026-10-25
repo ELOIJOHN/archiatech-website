@@ -1,18 +1,43 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { VIDEOS_API_URL } from '../config/videos';
 
-const videos = [
-  { id: 1, title: "Support IT", file: "20251011_2138_SupportIT.mp4" },
-  { id: 2, title: "Conseil & Intégration IA", file: "20251011_2242_Conseil_Integration IA.mp4" },
-  { id: 3, title: "Automatisation Workflows", file: "20251011_2259_Automatisation Workflows.mp4" },
-  { id: 4, title: "No Code / Low Code", file: "20251011_2313_NoCode_LowCode.mp4" },
-  { id: 5, title: "Formation & Accompagnement", file: "20251011_2323_Formation_Accompagnement.mp4" },
-  { id: 6, title: "Transformation Digitale", file: "20251011_2325_Transformation Digital.mp4" },
-];
+// Liste de secours : affichée si l'API n'est pas joignable. La liste réelle se gère dans n8n
+// (table videos_site_archiatech) : voir le rapport dans Obsidian.
+const FALLBACK_VIDEOS = [
+  { type: "file", title: "Support IT", file: "20251011_2138_SupportIT.mp4" },
+  { type: "file", title: "Conseil & Intégration IA", file: "20251011_2242_Conseil_Integration IA.mp4" },
+  { type: "file", title: "Automatisation Workflows", file: "20251011_2259_Automatisation Workflows.mp4" },
+  { type: "file", title: "No Code / Low Code", file: "20251011_2313_NoCode_LowCode.mp4" },
+  { type: "file", title: "Formation & Accompagnement", file: "20251011_2323_Formation_Accompagnement.mp4" },
+  { type: "file", title: "Transformation Digitale", file: "20251011_2325_Transformation Digital.mp4" },
+].map((v, i) => ({ ...v, key: `demo-${i}` }));
+
+const videoKey = (v, i) => (v.type === "youtube" ? `yt-${v.id}` : `file-${v.file || i}`);
+const isValid = (v) =>
+  v && typeof v.title === "string" &&
+  ((v.type === "file" && /^[\w .()&-]+\.(mp4|webm)$/i.test(v.file || "")) ||
+    (v.type === "youtube" && /^[\w-]{11}$/.test(v.id || "")));
 
 export default function VideoShowcase() {
-  const [activeVideo, setActiveVideo] = useState(videos[0]);
+  const [videos, setVideos] = useState(FALLBACK_VIDEOS);
+  const [activeVideo, setActiveVideo] = useState(FALLBACK_VIDEOS[0]);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(VIDEOS_API_URL)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+      .then((data) => {
+        const list = (Array.isArray(data?.videos) ? data.videos : []).filter(isValid).map((v, i) => ({ ...v, key: videoKey(v, i) }));
+        if (!cancelled && list.length > 0) {
+          setVideos(list);
+          setActiveVideo(list[0]);
+        }
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -100,17 +125,28 @@ export default function VideoShowcase() {
 
       {/* 🎞️ Section principale - Cadre Lumineux Spectaculaire */}
       <div className="w-full max-w-7xl video-container-spectacular">
-        <video
-          ref={videoRef}
-          key={activeVideo.file}
-          src={`${import.meta.env.BASE_URL}videos/${activeVideo.file}`}
-          autoPlay
-          loop
-          muted={isMuted}
-          playsInline
-          className="w-full aspect-video object-contain bg-black transition-all duration-700 ease-in-out"
-        />
-        
+        {activeVideo.type === "youtube" ? (
+          <iframe
+            key={activeVideo.key}
+            src={`https://www.youtube-nocookie.com/embed/${activeVideo.id}?rel=0&autoplay=1`}
+            title={activeVideo.title}
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+            className="w-full aspect-video bg-black rounded-[12px]"
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            key={activeVideo.key}
+            src={`${import.meta.env.BASE_URL}videos/${activeVideo.file}`}
+            autoPlay
+            loop
+            muted={isMuted}
+            playsInline
+            className="w-full aspect-video object-contain bg-black transition-all duration-700 ease-in-out"
+          />
+        )}
+
         {/* Icône Rouge - Indicateur d'état */}
         <div style={{
           position: 'absolute',
@@ -125,8 +161,8 @@ export default function VideoShowcase() {
           animation: 'pulse 2s infinite'
         }} />
 
-        {/* Bouton Son - Coin inférieur droit */}
-        <button
+        {/* Bouton Son - Coin inférieur droit (vidéos hébergées) */}
+        {activeVideo.type !== "youtube" && <button
           onClick={toggleMute}
           style={{
             position: 'absolute',
@@ -159,32 +195,48 @@ export default function VideoShowcase() {
           }}
         >
           {isMuted ? '🔇' : '🔊'}
-        </button>
+        </button>}
 
-        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/40 to-transparent p-3 sm:p-4 md:p-6">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">{activeVideo.title}</h2>
+        <div className={`${activeVideo.type === "youtube" ? "hidden" : ""} pointer-events-none absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/40 to-transparent p-3 sm:p-4 md:p-6`}>
+          <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">{activeVideo.title}</h3>
         </div>
       </div>
+      {activeVideo.type === "youtube" && (
+        <h3 className="w-full max-w-7xl text-lg sm:text-xl font-semibold">{activeVideo.title}</h3>
+      )}
 
-      {/* 🔁 Miniatures en boucle */}
+      {/* Miniatures : une image par vidéo (pas de lecture simultanée, pour garder le site rapide) */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 w-full max-w-7xl">
         {videos.map((video) => (
-          <div
-            key={video.id}
+          <button
+            type="button"
+            key={video.key}
             onClick={() => setActiveVideo(video)}
-            className="relative overflow-hidden rounded-md sm:rounded-lg border-2 border-[#E60023] cursor-pointer hover:border-[#E60023] transition-all shadow-[0_0_10px_rgba(230,0,35,0.3)] hover:shadow-[0_0_15px_rgba(230,0,35,0.5)]"
+            aria-label={`Lire : ${video.title}`}
+            aria-current={activeVideo.key === video.key}
+            className={`relative overflow-hidden rounded-md sm:rounded-lg border-2 border-[#E60023] cursor-pointer transition-all shadow-[0_0_10px_rgba(230,0,35,0.3)] hover:shadow-[0_0_15px_rgba(230,0,35,0.5)] ${activeVideo.key === video.key ? "ring-2 sm:ring-4 ring-[#E60023]" : ""}`}
           >
-            <video
-              src={`${import.meta.env.BASE_URL}videos/${video.file}`}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className={`object-cover w-full aspect-video opacity-60 hover:opacity-100 transition-all duration-500
-                ${activeVideo.id === video.id ? "ring-2 sm:ring-4 ring-[#E60023] opacity-100" : ""}`}
-            />
-            <div className="absolute bottom-0.5 left-0.5 sm:bottom-1 sm:left-1 text-[10px] sm:text-xs bg-black/70 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">{video.title}</div>
-          </div>
+            {video.type === "youtube" ? (
+              <img
+                src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+                alt=""
+                loading="lazy"
+                className={`object-cover w-full aspect-video transition-opacity duration-300 ${activeVideo.key === video.key ? "opacity-100" : "opacity-70 hover:opacity-100"}`}
+              />
+            ) : (
+              <video
+                src={`${import.meta.env.BASE_URL}videos/${video.file}#t=0.5`}
+                preload="metadata"
+                muted
+                playsInline
+                className={`object-cover w-full aspect-video transition-opacity duration-300 ${activeVideo.key === video.key ? "opacity-100" : "opacity-70 hover:opacity-100"}`}
+              />
+            )}
+            {video.type === "youtube" && (
+              <span className="absolute top-1 right-1 text-[10px] bg-[#E60023] px-1.5 py-0.5 rounded">YouTube</span>
+            )}
+            <div className="absolute bottom-0.5 left-0.5 sm:bottom-1 sm:left-1 text-[10px] sm:text-xs bg-black/70 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded text-left">{video.title}</div>
+          </button>
         ))}
       </div>
     </div>

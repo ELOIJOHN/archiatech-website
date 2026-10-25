@@ -1,6 +1,5 @@
 import React from 'react';
 import VideoShowcase from './VideoShowcase';
-import YouTubeGrid from './YouTubeGrid';
 import NewsSectionSimple from './NewsSectionSimple';
 
 export default function VeilleSection() {
@@ -18,9 +17,6 @@ export default function VeilleSection() {
         </div>
         <VideoShowcase />
       </section>
-
-      {/* Section Grille YouTube */}
-      <YouTubeGrid />
 
       {/* Section Actualités avec données statiques */}
       <NewsSectionSimple />
