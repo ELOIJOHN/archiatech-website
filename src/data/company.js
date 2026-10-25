@@ -3,7 +3,7 @@
 export const company = {
   name: 'ArchiAtech Digital Solutions',
   siret: '522 374 198 00037',
-  legalForm: 'Entrepreneur individuel',
+  legalForm: '', // volontairement non affichée sur le site
   address: '213 avenue Aristide Briand, 06190 Roquebrune-Cap-Martin, France',
   email: 'contact@archiatech.com',
   phone: '+33 7 83 82 93 10',
