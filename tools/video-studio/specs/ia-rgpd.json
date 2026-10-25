@@ -1,0 +1,20 @@
+{
+  "slug": "ia-rgpd",
+  "title": "IA et RGPD : utiliser l'IA sans exposer vos données",
+  "kicker": "Conformité",
+  "thumbnail_text": "IA et RGPD : 4 règles simples",
+  "description": "Quatre règles simples pour utiliser l'IA générative en entreprise sans exposer vos données personnelles.\n\nPlus d'informations : https://www.archiatech.com",
+  "tags": ["IA", "RGPD", "PME", "ArchiAtech"],
+  "page_url": "https://www.archiatech.com/blog/utiliser-ia-generative-rgpd",
+  "voice": "piper",
+  "slides": [
+    {"layout": "title", "kicker": "Conformité", "title": "IA et RGPD : utiliser l'IA sans exposer vos données",
+     "narration": "Utiliser l'intelligence artificielle en entreprise, oui. Mais sans exposer les données de vos clients. Voici quatre règles simples."},
+    {"title": "Ce qu'il ne faut jamais envoyer", "bullets": ["Données de clients identifiables", "Contrats et documents confidentiels", "Informations de santé ou de paie"],
+     "narration": "Première règle : ne collez jamais de données personnelles identifiables dans un outil grand public. Contrats, dossiers clients, informations de paie : ils restent chez vous."},
+    {"title": "Ce qui protège vraiment", "style": "avoid", "bullets": ["Anonymiser avant d'envoyer", "Choisir un hébergement en Europe", "Former les équipes aux bons usages"],
+     "narration": "Ensuite, anonymisez avant d'envoyer, choisissez un hébergement en Europe, et formez vos équipes aux bons usages."},
+    {"layout": "cta", "title": "Un audit gratuit de vos usages IA", "button": "www.archiatech.com",
+     "narration": "ArchiAtech vous accompagne pour cadrer vos usages de l'IA. Rendez-vous sur archiatech point com."}
+  ]
+}
