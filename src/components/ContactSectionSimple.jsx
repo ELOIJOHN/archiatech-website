@@ -1,86 +1,44 @@
 import React, { useState } from 'react';
+import { prepareContactDraft } from '../services/contactDraft';
 
 export default function ContactSectionSimple() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
+  const [draft, setDraft] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setSubmitStatus(null);
-
-    // Créer le message formaté
-    const emailContent = `
-📧 NOUVELLE DEMANDE DE CONTACT - ArchiAtech
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-👤 Nom complet : ${fullName}
-📧 Email : ${email}
-🏢 Société : ${company || 'Non renseignée'}
-
-💬 MESSAGE :
-${message}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📅 Date : ${new Date().toLocaleString('fr-FR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    })}
-🌐 Source : Site web ArchiAtech
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Pour répondre : ${email}
-    `.trim();
-
     try {
-      // Copier dans le presse-papier
-      await navigator.clipboard.writeText(emailContent);
-
-      // Ouvrir Gmail dans un nouvel onglet avec le message pré-rempli
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=contact@archiatech.com&su=${encodeURIComponent(`[ArchiAtech] Nouveau contact - ${fullName}`)}&body=${encodeURIComponent(emailContent)}`;
-      window.open(gmailUrl, '_blank');
-
-      setSubmitStatus({
-        type: 'success',
-        message: '✅ Le message a été copié et Gmail s\'est ouvert ! Cliquez sur "Envoyer" dans Gmail pour finaliser.'
-      });
-
-      // Réinitialiser le formulaire après 5 secondes
-      setTimeout(() => {
-        setFullName('');
-        setEmail('');
-        setCompany('');
-        setMessage('');
-        setSubmitStatus(null);
-      }, 5000);
-
+      setDraft(prepareContactDraft({ fullName, email, company, message }));
     } catch (error) {
-      console.error('Erreur:', error);
+      setDraft(null);
+      setSubmitStatus({ type: 'error', message: error.message });
+    }
+  };
 
-      // Fallback : copie simple
-      try {
-        await navigator.clipboard.writeText(emailContent);
-        setSubmitStatus({
-          type: 'success',
-          message: '✅ Le message a été copié dans votre presse-papier ! Collez-le dans un email à contact@archiatech.com'
-        });
-      } catch (clipboardError) {
-        setSubmitStatus({
-          type: 'error',
-          message: '❌ Erreur. Veuillez utiliser le bouton "Ou nous écrire directement" ci-dessous.'
-        });
-      }
+  const copyDraft = async () => {
+    if (!draft || isSubmitting) return;
+    setIsSubmitting(true);
+    try {
+      await navigator.clipboard.writeText(draft.body);
+      setSubmitStatus({ type: 'success', message: 'Texte copié. Collez-le dans votre messagerie, puis envoyez-le à contact@archiatech.com.' });
+    } catch {
+      setSubmitStatus({ type: 'error', message: 'Copie indisponible. Sélectionnez et copiez le texte du message ci-dessous.' });
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const updateField = (setter) => (event) => {
+    setter(event.target.value);
+    setDraft(null);
+    setSubmitStatus(null);
   };
 
   const openModal = () => {
@@ -195,7 +153,7 @@ Pour répondre : ${email}
           }}>
             {/* Nom complet */}
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <label style={{
+              <label htmlFor="contact-fullName" style={{
                 fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 fontSize: '0.875rem',
                 fontWeight: 500,
@@ -208,9 +166,11 @@ Pour répondre : ${email}
               <input
                 type="text"
                 name="fullName"
+                id="contact-fullName"
+                maxLength={120}
                 required
                 value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                onChange={updateField(setFullName)}
                 placeholder="Jane Doe"
                 style={inputStyle}
                 onFocus={handleFocus}
@@ -222,7 +182,7 @@ Pour répondre : ${email}
 
             {/* Email */}
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <label style={{
+              <label htmlFor="contact-email" style={{
                 fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 fontSize: '0.875rem',
                 fontWeight: 500,
@@ -235,9 +195,11 @@ Pour répondre : ${email}
               <input
                 type="email"
                 name="email"
+                id="contact-email"
+                maxLength={254}
                 required
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={updateField(setEmail)}
                 placeholder="jane@entreprise.com"
                 style={inputStyle}
                 onFocus={handleFocus}
@@ -249,7 +211,7 @@ Pour répondre : ${email}
 
             {/* Société */}
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <label style={{
+              <label htmlFor="contact-company" style={{
                 fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 fontSize: '0.875rem',
                 fontWeight: 500,
@@ -262,8 +224,10 @@ Pour répondre : ${email}
               <input
                 type="text"
                 name="company"
+                id="contact-company"
+                maxLength={160}
                 value={company}
-                onChange={(e) => setCompany(e.target.value)}
+                onChange={updateField(setCompany)}
                 placeholder="ArchiAtech"
                 style={inputStyle}
                 onFocus={handleFocus}
@@ -275,7 +239,7 @@ Pour répondre : ${email}
 
             {/* Message */}
             <div style={{ display: 'flex', flexDirection: 'column', gridColumn: '1 / -1' }}>
-              <label style={{
+              <label htmlFor="contact-message" style={{
                 fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 fontSize: '0.875rem',
                 fontWeight: 500,
@@ -287,10 +251,12 @@ Pour répondre : ${email}
               </label>
               <textarea
                 name="message"
+                id="contact-message"
+                maxLength={4000}
                 required
                 rows="4"
                 value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                onChange={updateField(setMessage)}
                 placeholder="Décrivez brièvement vos besoins..."
                 style={{
                   ...inputStyle,
@@ -305,9 +271,28 @@ Pour répondre : ${email}
             </div>
           </div>
 
+          <p>Votre message sera préparé ici. Vous devrez ensuite l’envoyer depuis votre messagerie.</p>
+          {draft && (
+            <div role="region" aria-label="Message préparé" style={{ marginTop: '1rem' }}>
+              <p><strong>Votre message est prêt, mais il n’est pas encore envoyé.</strong></p>
+              <p>
+                <a href={draft.gmailUrl} target="_blank" rel="noopener noreferrer">Ouvrir le brouillon dans Gmail</a>
+                {' · '}
+                <a href={draft.mailtoUrl}>Ouvrir ma messagerie</a>
+              </p>
+              <p>Vérifiez le brouillon, puis cliquez sur Envoyer dans votre messagerie. Si rien ne s’ouvre, copiez le texte ci-dessous.</p>
+              <label htmlFor="contact-draft">Texte à copier pour contact@archiatech.com</label>
+              <textarea id="contact-draft" readOnly value={draft.body} rows={7} style={inputStyle} />
+              <button type="button" disabled={isSubmitting} onClick={copyDraft}>
+                {isSubmitting ? 'Copie en cours…' : 'Copier le texte'}
+              </button>
+              <p>Vos informations restent dans ce formulaire tant que vous ne rechargez pas la page.</p>
+            </div>
+          )}
+
           {/* Message de statut */}
           {submitStatus && (
-            <div style={{
+            <div role="status" aria-live="polite" style={{
               marginTop: '1rem',
               padding: '1rem',
               borderRadius: '8px',
@@ -360,7 +345,7 @@ Pour répondre : ${email}
                 }
               }}
             >
-              {isSubmitting ? '📧 Préparation...' : '📧 Envoyer via Gmail'}
+              Préparer mon message
             </button>
             <button
               type="button"

@@ -106,3 +106,41 @@ test('request burst is bounded despite forged forwarding headers; 429 remains CO
   assert.equal(r.headers['retry-after'], '60');
   assert.equal(r.headers['cache-control'], 'no-store');
 });
+
+test('contact prepares a draft without sending, preserves input and tolerates clipboard refusal', async t => {
+  const browser = await puppeteer.launch({
+    executablePath: process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    headless: true, acceptInsecureCerts: true,
+  });
+  t.after(() => browser.close());
+  const page = await browser.newPage();
+  let posts = 0;
+  await page.setRequestInterception(true);
+  page.on('request', r => {
+    if (r.method() === 'POST') posts++;
+    return r.resourceType() !== 'media' && r.url().startsWith(origin + '/') ? r.continue() : r.abort();
+  });
+  await page.evaluateOnNewDocument(() => {
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText: async () => { throw new Error('denied'); } } });
+  });
+  await page.goto(origin + '/#contact', { waitUntil: 'domcontentloaded' });
+  await page.waitForSelector('#contact-fullName');
+  await page.type('#contact-fullName', 'Test Audit');
+  await page.type('#contact-email', 'test@example.com');
+  await page.type('#contact-message', 'Test local : aucune demande à envoyer.');
+  await page.click('#contact button[type="submit"]');
+  await page.waitForSelector('[aria-label="Message préparé"]');
+  assert.equal(await page.$eval('#contact-fullName', el => el.value), 'Test Audit');
+  const link = await page.$eval('[aria-label="Message préparé"] a', el => el.href);
+  assert.equal(new URL(link).searchParams.get('to'), 'contact@archiatech.com');
+  assert.match(new URL(link).searchParams.get('body'), /aucune demande à envoyer/);
+  await page.click('[aria-label="Message préparé"] button');
+  await page.waitForFunction(() => document.querySelector('#contact [role="status"]')?.textContent.includes('Copie indisponible'));
+  await new Promise(resolve => setTimeout(resolve, 5500));
+  assert.equal(await page.$eval('#contact-message', el => el.value), 'Test local : aucune demande à envoyer.');
+  assert.equal(posts, 0);
+  assert.equal((await browser.pages()).length, 2); // Initial blank tab plus our page; no Gmail popup.
+  await page.screenshot({ path: new URL('./results/contact.png', import.meta.url).pathname });
+  await page.type('#contact-message', ' Modification');
+  assert.equal(await page.$('[aria-label="Message préparé"]'), null); // Stale drafts cannot be sent.
+});

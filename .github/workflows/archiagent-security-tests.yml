@@ -13,7 +13,9 @@ jobs:
         with:
           node-version: '22'
       - name: Run tests without provider credentials
-        run: npm run test:archiagent
+        run: |
+          npm run test:archiagent
+          node --test tests/contact-draft.test.mjs
 
       - name: Install locked build and browser-test dependencies
         run: npm ci --ignore-scripts
