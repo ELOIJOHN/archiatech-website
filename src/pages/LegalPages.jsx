@@ -15,8 +15,9 @@ export function MentionsLegales() {
 
       <H2>Éditeur du site</H2>
       <P>
-        Le site www.archiatech.com est édité par <strong>{company.name}</strong>
-        {company.legalForm ? ` (${company.legalForm})` : ''}.
+        Le site www.archiatech.com est édité par <strong>{company.name}</strong>, exploitée par{' '}
+        {company.publicationDirector}
+        {company.legalForm ? `, ${company.legalForm.toLowerCase()}` : ''}.
       </P>
       <ul className="text-gray-700 leading-relaxed space-y-1 mb-3">
         <li>SIRET : {company.siret}</li>
