@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <!-- Site monopage : seule l'URL canonique est indexable (les ancres #section ne le sont pas).
-       Ajouter ici les nouvelles pages (services, contact, blog) dès qu'elles existent. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.archiatech.com/</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-25</lastmod>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://www.archiatech.com/images/hero-desktop.png</image:loc>
-      <image:title>ArchiAtech - Solutions IA &amp; Automatisation</image:title>
-    </image:image>
+  </url>
+  <url>
+    <loc>https://www.archiatech.com/services/ia-souveraine/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.archiatech.com/services/automatisation-n8n/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.archiatech.com/services/support-it/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.archiatech.com/a-propos/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.archiatech.com/contact/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.archiatech.com/mentions-legales/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.archiatech.com/confidentialite/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <priority>0.2</priority>
   </url>
 </urlset>
