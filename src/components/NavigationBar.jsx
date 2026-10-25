@@ -59,6 +59,7 @@ export default function NavigationBar() {
   // Menu principal
   const mainNavItems = [
     { label: 'Actualités IA', href: '/#actualites' },
+    { label: 'Blog', href: '/blog/' },
     { label: 'À propos', href: '/a-propos/' },
     { label: 'Contact', href: '/#contact' }
   ];

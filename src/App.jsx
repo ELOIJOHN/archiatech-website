@@ -11,6 +11,7 @@ import ArchiAgent from './components/ArchiAgent';
 import SiteFooter from './components/SiteFooter';
 import ServicePage from './pages/ServicePage';
 import AboutPage from './pages/AboutPage';
+import { BlogIndex, BlogArticle } from './pages/BlogPages';
 import NotFoundPage from './pages/NotFoundPage';
 import { MentionsLegales, Confidentialite } from './pages/LegalPages';
 import { findPage } from './data/site-pages';
@@ -54,6 +55,10 @@ function renderPage(page) {
       return <HomePage />;
     case 'service':
       return <ServicePage slug={page.slug} />;
+    case 'blog':
+      return <BlogIndex />;
+    case 'article':
+      return <BlogArticle slug={page.slug} />;
     case 'about':
       return <AboutPage />;
     case 'contact':

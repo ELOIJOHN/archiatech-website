@@ -1,6 +1,8 @@
 // Définition de toutes les pages du site.
 // Fichier en JavaScript pur : il est lu à la fois par React (affichage) et par
 // scripts/prerender.mjs (génération du HTML de chaque page + sitemap).
+import { blogPosts } from './blog-posts.js';
+
 export const SITE_URL = 'https://www.archiatech.com';
 
 export const servicePages = [
@@ -99,6 +101,26 @@ export const pages = [
     h1: s.name,
     summary: `${s.tagline} ${s.intro}`,
     priority: '0.8',
+  })),
+  {
+    path: '/blog/',
+    type: 'blog',
+    title: 'Blog IA, automatisation et IT pour PME | ArchiAtech',
+    description:
+      "Conseils pratiques sur l'IA souveraine, l'automatisation (n8n) et la sécurité informatique pour les PME de Monaco, Nice et de France.",
+    h1: 'Le blog ArchiAtech',
+    summary: "Conseils pratiques sur l'IA souveraine, l'automatisation et le support IT pour les PME.",
+    priority: '0.7',
+  },
+  ...blogPosts.map((b) => ({
+    path: `/blog/${b.slug}/`,
+    type: 'article',
+    slug: b.slug,
+    title: b.metaTitle,
+    description: b.description,
+    h1: b.title,
+    summary: b.description,
+    priority: '0.6',
   })),
   {
     path: '/a-propos/',
