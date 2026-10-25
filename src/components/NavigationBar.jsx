@@ -71,12 +71,12 @@ export default function NavigationBar() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex justify-between items-center">
-          {/* Logo ArchIAtech Digital Solutions (version horizontale blanche) */}
-          <a href="/" aria-label="ArchIAtech Digital Solutions - retour en haut de page"
+          {/* Logo ArchiAtech Digital Solutions (version horizontale blanche) */}
+          <a href="/" aria-label="ArchiAtech Digital Solutions - retour en haut de page"
              className="flex items-center touch-target">
             <img
               src="/images/logo-horizontal-white.png"
-              alt="ArchIAtech Digital Solutions"
+              alt="ArchiAtech Digital Solutions"
               width="889"
               height="160"
               className="h-8 sm:h-10 md:h-12 w-auto"

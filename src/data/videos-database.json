@@ -153,7 +153,7 @@
     "autoSync": true,
     "syncInterval": 3600000,
     "maxVideos": 50,
-    "defaultThumbnail": "https://via.placeholder.com/400x225/E60023/FFFFFF?text=ArchiaTech",
+    "defaultThumbnail": "https://via.placeholder.com/400x225/E60023/FFFFFF?text=ArchiAtech",
     "apiKey": ""
   }
 }

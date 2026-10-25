@@ -13,10 +13,10 @@ export default function SiteFooter() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
-            <a href="/" aria-label="ArchIAtech Digital Solutions - accueil">
+            <a href="/" aria-label="ArchiAtech Digital Solutions - accueil">
               <img
                 src="/images/logo-horizontal-white.png"
-                alt="ArchIAtech Digital Solutions"
+                alt="ArchiAtech Digital Solutions"
                 width="889"
                 height="160"
                 loading="lazy"

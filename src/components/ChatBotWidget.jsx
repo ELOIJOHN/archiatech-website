@@ -41,7 +41,7 @@ export default function ChatBotWidget() {
       id: createId(),
       role: "assistant",
       content:
-        "Bonjour 👋 je suis ArchiBot, ton copilote IA connecté à ArchiaTech ! Pose-moi une question ou demande un audit IA 🚀",
+        "Bonjour 👋 je suis ArchiBot, ton copilote IA connecté à ArchiAtech ! Pose-moi une question ou demande un audit IA 🚀",
     },
   ]);
   const [isLoading, setIsLoading] = useState(false);

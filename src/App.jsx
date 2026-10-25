@@ -20,7 +20,7 @@ function HomePage() {
     <>
       {/* Hero - Page d'accueil */}
       <HeroSection />
-      {/* 3 Piliers ArchiaTech - Souverain, Responsable, Green */}
+      {/* 3 Piliers ArchiAtech - Souverain, Responsable, Green */}
       <PilliersSection />
       {/* Services - Nos expertises */}
       <ServicesSection />
