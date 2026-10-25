@@ -6,6 +6,7 @@ export default function ContactSectionSimple() {
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -482,7 +483,9 @@ Pour répondre : ${email}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               {/* Email */}
               <a
-                href="mailto:contact@archiatech.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@archiatech.com&su=Contact%20depuis%20archiatech.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -538,6 +541,35 @@ Pour répondre : ${email}
                   </div>
                 </div>
               </a>
+
+              {/* Secours : pas de Gmail ? copier l'adresse ou ouvrir l'application mail du poste */}
+              <div style={{
+                display: 'flex',
+                gap: '1rem',
+                flexWrap: 'wrap',
+                marginTop: '-0.5rem',
+                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                fontSize: '0.875rem'
+              }}>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText('contact@archiatech.com');
+                      setEmailCopied(true);
+                      setTimeout(() => setEmailCopied(false), 2500);
+                    } catch (err) {
+                      window.prompt('Copiez cette adresse :', 'contact@archiatech.com');
+                    }
+                  }}
+                  style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: '#e34040', fontWeight: 600, textDecoration: 'underline' }}
+                >
+                  {emailCopied ? '✓ Adresse copiée' : "Copier l'adresse"}
+                </button>
+                <a href="mailto:contact@archiatech.com" style={{ color: '#6b7280', textDecoration: 'underline' }}>
+                  Ouvrir mon application mail
+                </a>
+              </div>
 
               {/* Téléphone */}
               <a
