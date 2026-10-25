@@ -1,6 +1,5 @@
 import React from 'react';
 import { Rocket } from 'lucide-react';
-import YouTubePlayerSimple from './YouTubePlayerSimple';
 
 export default function HeroSection() {
   return (
@@ -107,20 +106,6 @@ export default function HeroSection() {
                           tracking-wide inline-block">
               Concentrez-vous sur votre cœur de métier pendant que l'IA automatise vos tâches chronophages.
             </p>
-          </div>
-        </div>
-
-        {/* Section playlist YouTube avec cadre lumineux */}
-        <div className="flex justify-center px-2 xs:px-0">
-          <div className="w-full max-w-6xl video-container-spectacular
-                          p-1.5 xs:p-2 sm:p-3 md:p-4
-                          flex flex-col justify-center mx-auto fade-in-up-delay-1
-                          rounded-lg xs:rounded-xl sm:rounded-2xl">
-            <div className="video-gradient video-red-glow
-                            rounded-md xs:rounded-lg sm:rounded-xl md:rounded-2xl
-                            overflow-hidden p-4 bg-white">
-              <YouTubePlayerSimple />
-            </div>
           </div>
         </div>
 

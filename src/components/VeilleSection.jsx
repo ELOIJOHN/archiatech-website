@@ -1,5 +1,6 @@
 import React from 'react';
 import VideoShowcase from './VideoShowcase';
+import VeilleVideos from './VeilleVideos';
 import NewsSectionSimple from './NewsSectionSimple';
 
 export default function VeilleSection() {
@@ -17,6 +18,9 @@ export default function VeilleSection() {
         </div>
         <VideoShowcase />
       </section>
+
+      {/* Veille vidéo : vidéos d'autres chaînes, avec crédit des sources */}
+      <VeilleVideos />
 
       {/* Section Actualités avec données statiques */}
       <NewsSectionSimple />
