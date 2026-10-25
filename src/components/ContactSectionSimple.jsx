@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { CONTACT_WEBHOOK_URL } from '../config/contact';
 
 export default function ContactSectionSimple() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState(""); // champ piège anti-spam (invisible)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,41 +44,44 @@ Pour répondre : ${email}
     `.trim();
 
     try {
-      // Copier dans le presse-papier
-      await navigator.clipboard.writeText(emailContent);
-
-      // Ouvrir Gmail dans un nouvel onglet avec le message pré-rempli
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=contact@archiatech.com&su=${encodeURIComponent(`[ArchiAtech] Nouveau contact - ${fullName}`)}&body=${encodeURIComponent(emailContent)}`;
-      window.open(gmailUrl, '_blank');
+      // Envoi automatique : le formulaire est reçu par n8n, archivé, puis envoyé à contact@archiatech.com
+      // (requête "simple" en x-www-form-urlencoded : pas de pré-vérification CORS)
+      const response = await fetch(CONTACT_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ fullName, email, company, message, website })
+      });
+      if (!response.ok) throw new Error(`Webhook ${response.status}`);
+      // Succès uniquement si n8n confirme explicitement l'envoi ({ ok: true }) :
+      // une réponse vide ou inattendue déclenche le secours (Gmail / copie).
+      const result = await response.json();
+      if (result?.ok !== true) throw new Error('Réponse inattendue du serveur');
 
       setSubmitStatus({
         type: 'success',
-        message: '✅ Le message a été copié et Gmail s\'est ouvert ! Cliquez sur "Envoyer" dans Gmail pour finaliser.'
+        message: '✅ Message envoyé ! Nous vous répondons généralement sous 24h ouvrées.'
       });
-
-      // Réinitialiser le formulaire après 5 secondes
-      setTimeout(() => {
-        setFullName('');
-        setEmail('');
-        setCompany('');
-        setMessage('');
-        setSubmitStatus(null);
-      }, 5000);
-
+      setFullName('');
+      setEmail('');
+      setCompany('');
+      setMessage('');
+      setTimeout(() => setSubmitStatus(null), 8000);
     } catch (error) {
-      console.error('Erreur:', error);
+      console.error('Envoi automatique impossible, repli sur Gmail :', error);
 
-      // Fallback : copie simple
+      // Repli : ouvrir Gmail avec le message pré-rempli (et le copier dans le presse-papier)
       try {
-        await navigator.clipboard.writeText(emailContent);
+        try { await navigator.clipboard.writeText(emailContent); } catch { /* non bloquant */ }
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=contact@archiatech.com&su=${encodeURIComponent(`[ArchiAtech] Nouveau contact - ${fullName}`)}&body=${encodeURIComponent(emailContent)}`;
+        window.open(gmailUrl, '_blank');
         setSubmitStatus({
           type: 'success',
-          message: '✅ Le message a été copié dans votre presse-papier ! Collez-le dans un email à contact@archiatech.com'
+          message: "⚠️ L'envoi automatique n'a pas abouti. Gmail s'est ouvert avec votre message : cliquez sur \"Envoyer\" pour finaliser."
         });
-      } catch (clipboardError) {
+      } catch {
         setSubmitStatus({
           type: 'error',
-          message: '❌ Erreur. Veuillez utiliser le bouton "Ou nous écrire directement" ci-dessous.'
+          message: '❌ Erreur. Écrivez-nous directement à contact@archiatech.com (bouton "Ou nous écrire directement" ci-dessous).'
         });
       }
     } finally {
@@ -188,6 +193,13 @@ Pour répondre : ${email}
           maxWidth: '550px',
           margin: '0 auto'
         }}>
+          {/* Champ piège anti-spam : invisible pour les humains, les robots le remplissent */}
+          <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+            <label>
+              Ne pas remplir
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
+            </label>
+          </div>
           <div style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
@@ -361,7 +373,7 @@ Pour répondre : ${email}
                 }
               }}
             >
-              {isSubmitting ? '📧 Préparation...' : '📧 Envoyer via Gmail'}
+              {isSubmitting ? '📧 Envoi en cours...' : '📧 Envoyer le message'}
             </button>
             <button
               type="button"
@@ -558,7 +570,7 @@ Pour répondre : ${email}
                       await navigator.clipboard.writeText('contact@archiatech.com');
                       setEmailCopied(true);
                       setTimeout(() => setEmailCopied(false), 2500);
-                    } catch (err) {
+                    } catch {
                       window.prompt('Copiez cette adresse :', 'contact@archiatech.com');
                     }
                   }}
