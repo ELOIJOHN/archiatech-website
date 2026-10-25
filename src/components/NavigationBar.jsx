@@ -32,25 +32,25 @@ export default function NavigationBar() {
   const archiSubmenu = [
     { 
       label: 'Nos expertises', 
-      href: '#services',
+      href: '/#services',
       icon: Building2,
       description: 'Découvrez nos domaines d\'expertise'
     },
     { 
       label: 'Méthodologie', 
-      href: '#approche',
+      href: '/#approche',
       icon: Target,
       description: 'Notre approche structurée'
     },
     { 
       label: 'Nos avantages', 
-      href: '#avantages',
+      href: '/#avantages',
       icon: Zap,
       description: 'Les bénéfices de nos solutions'
     },
     { 
       label: 'Nos Solutions', 
-      href: '#videos',
+      href: '/#videos',
       icon: Briefcase,
       description: 'Solutions clés en main'
     }
@@ -58,8 +58,9 @@ export default function NavigationBar() {
 
   // Menu principal
   const mainNavItems = [
-    { label: 'Actualités IA', href: '#actualites' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'Actualités IA', href: '/#actualites' },
+    { label: 'À propos', href: '/a-propos/' },
+    { label: 'Contact', href: '/#contact' }
   ];
 
   return (
@@ -71,7 +72,7 @@ export default function NavigationBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex justify-between items-center">
           {/* Logo ArchIAtech Digital Solutions (version horizontale blanche) */}
-          <a href="#" aria-label="ArchIAtech Digital Solutions - retour en haut de page"
+          <a href="/" aria-label="ArchIAtech Digital Solutions - retour en haut de page"
              className="flex items-center touch-target">
             <img
               src="/images/logo-horizontal-white.png"

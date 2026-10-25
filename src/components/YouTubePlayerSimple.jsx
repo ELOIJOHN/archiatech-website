@@ -131,7 +131,7 @@ const YouTubePlayerSimple = () => {
               }`}
             >
               <img
-                src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                 alt={video.title}
                 className="w-full h-32 object-cover"
               />
