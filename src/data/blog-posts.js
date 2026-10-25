@@ -3,6 +3,98 @@
 // Blocs de contenu : { h2 }, { p }, { ul: [ ... ] }.
 export const blogPosts = [
   {
+    slug: 'agent-ia-pme',
+    title: "Agent IA : à quoi cela sert dans une PME ?",
+    metaTitle: "Agent IA en PME : définition et cas d'usage | ArchiAtech",
+    description:
+      "Un agent IA ne se contente pas de répondre : il agit sur vos outils. Définition simple, cas d'usage concrets et précautions à prendre.",
+    date: '2026-10-25',
+    readingTime: '4 min',
+    blocks: [
+      { p: "Un assistant d'IA classique répond à une question. Un agent va plus loin : il enchaîne plusieurs étapes, consulte des outils (messagerie, agenda, base de documents, CRM) et peut effectuer des actions, avec un cadre que vous définissez." },
+      { h2: "Des cas d'usage réalistes" },
+      { ul: [
+        "Accueil des demandes : répondre aux questions fréquentes sur le site et transmettre les demandes complexes à la bonne personne.",
+        "Tri de la messagerie : classer les emails, préparer des brouillons de réponse à valider.",
+        "Recherche dans vos documents : retrouver une clause, une procédure ou un devis passé en quelques secondes.",
+        "Préparation de rendez-vous : rassembler l'historique d'un client avant un appel.",
+      ] },
+      { h2: "Ce qu'un agent ne doit pas faire seul" },
+      { p: "Plus un agent a de droits, plus ses erreurs coûtent cher. Il est sage de commencer en lecture seule ou en brouillon, puis d'élargir les droits quand la fiabilité est démontrée. Les actions sensibles (paiement, suppression, envoi à un client) devraient toujours passer par une validation humaine." },
+      { h2: "Les précautions à prendre" },
+      { ul: [
+        "Limiter l'accès aux seules données nécessaires.",
+        "Garder une trace de ce que l'agent a fait, pour pouvoir le vérifier.",
+        "Tester sur des cas réels avant de généraliser.",
+        "Prévoir une sortie de secours : un humain reprend la main à tout moment.",
+      ] },
+      { h2: "Pour démarrer" },
+      { p: "Choisissez une tâche précise, répétitive et peu risquée, mesurez le temps gagné, puis étendez. Un petit agent fiable apporte plus qu'un grand agent que personne n'ose utiliser." },
+    ],
+  },
+  {
+    slug: 'support-it-interne-ou-externalise',
+    title: "Support IT en PME : interne, externalisé ou mixte ?",
+    metaTitle: "Support IT en PME : interne ou externalisé ? | ArchiAtech",
+    description:
+      "Embaucher un informaticien ou faire appel à un prestataire ? Les critères pour choisir le bon modèle de support IT selon la taille de votre entreprise.",
+    date: '2026-10-25',
+    readingTime: '4 min',
+    blocks: [
+      { p: "Dès que l'équipe dépasse quelques personnes, la question se pose : qui s'occupe de l'informatique ? Il n'y a pas de bonne réponse universelle. Voici les critères qui comptent vraiment." },
+      { h2: "Les trois modèles" },
+      { ul: [
+        "Interne : une personne dédiée. Réactivité sur place et connaissance fine de l'entreprise, mais un coût fixe et une dépendance à un seul individu (absences, départ).",
+        "Externalisé : un prestataire intervient à la demande ou par contrat. Coût ajusté au besoin et compétences variées, mais une relation à bien cadrer.",
+        "Mixte : un référent interne pour le quotidien, un prestataire pour les projets, la sécurité et les remplacements.",
+      ] },
+      { h2: "Cinq questions pour décider" },
+      { ul: [
+        "Combien de postes et de sites devez-vous gérer ?",
+        "Quel est le coût d'une journée d'arrêt pour votre activité ?",
+        "Avez-vous besoin d'une présence quotidienne sur place ?",
+        "Qui assure le remplacement pendant les congés et les absences ?",
+        "Vos données sont-elles sensibles, et qui doit y avoir accès ?",
+      ] },
+      { h2: "Ce qu'il faut formaliser, quel que soit le modèle" },
+      { ul: [
+        "Un inventaire à jour du matériel, des licences et des accès.",
+        "Des délais d'intervention écrits, par niveau d'urgence.",
+        "Une procédure d'arrivée et de départ des collaborateurs.",
+        "Des sauvegardes testées régulièrement.",
+      ] },
+      { p: "Pour beaucoup de petites structures, le modèle mixte offre le meilleur équilibre. Le point essentiel est que la responsabilité de chaque sujet soit claire." },
+    ],
+  },
+  {
+    slug: 'utiliser-ia-generative-rgpd',
+    title: "IA générative et RGPD : 6 bonnes pratiques pour votre PME",
+    metaTitle: "IA générative et RGPD en PME : 6 bonnes pratiques | ArchiAtech",
+    description:
+      "Utiliser des outils d'IA sans exposer de données personnelles : six réflexes simples pour rester conforme au RGPD en entreprise.",
+    date: '2026-10-25',
+    readingTime: '4 min',
+    blocks: [
+      { p: "Vos équipes utilisent probablement déjà des outils d'IA générative. Dès qu'on y saisit des données qui concernent des personnes (clients, salariés, candidats), le RGPD s'applique. Voici six réflexes pour garder la main. Cet article donne des repères généraux et ne remplace pas un avis juridique." },
+      { ul: [
+        "Savoir ce qui est utilisé : listez les outils d'IA employés, officiellement ou non.",
+        "Ne pas saisir de données inutiles : anonymisez ou retirez les noms, adresses et numéros avant d'envoyer un texte à un outil.",
+        "Lire les conditions : vérifiez si vos contenus servent à entraîner le modèle, où ils sont hébergés et combien de temps ils sont conservés.",
+        "Privilégier les offres professionnelles : elles offrent en général de meilleures garanties que les versions grand public.",
+        "Écrire une charte courte : ce qui est permis, interdit, et à qui poser la question en cas de doute.",
+        "Garder un humain responsable : une décision qui concerne une personne ne doit pas reposer uniquement sur une réponse d'IA.",
+      ] },
+      { h2: "Les erreurs fréquentes" },
+      { ul: [
+        "Coller un contrat ou un CV complet dans un outil grand public.",
+        "Utiliser un compte personnel pour des tâches professionnelles.",
+        "Croire qu'une réponse est exacte parce qu'elle est bien rédigée.",
+      ] },
+      { h2: "Et si les données sont très sensibles ?" },
+      { p: "Pour les données les plus sensibles, une solution hébergée en Europe ou en interne est préférable. Pour les cas complexes, ou si vous avez un doute sur vos obligations, consultez un juriste ou le délégué à la protection des données de votre structure." },
+    ],
+  },
+  {
     slug: 'ia-souveraine-pme',
     title: "IA souveraine : ce que cela change concrètement pour une PME",
     metaTitle: "IA souveraine pour PME : définition et bénéfices | ArchiAtech",
