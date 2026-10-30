@@ -112,7 +112,7 @@ export default function NavigationBar() {
                             w-72 md:w-80 lg:w-[340px]
                             rounded-2xl overflow-hidden
                             z-dropdown
-                            bg-gradient-to-br from-[#E60023]/75 via-[#E60023]/70 to-[#C4001D]/75
+                            bg-gradient-to-br from-[#E60023] via-[#D4001F] to-[#C4001D]
                             backdrop-blur-2xl border border-white/20
                             shadow-[0_8px_32px_rgba(230,0,35,0.3),0_0_0_1px_rgba(255,255,255,0.1)]"
                   onMouseLeave={() => setIsDropdownOpen(false)}

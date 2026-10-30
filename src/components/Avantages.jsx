@@ -19,7 +19,7 @@ export default function Avantages() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-24 bg-white font-inter">
+    <section id="avantages" className="py-12 sm:py-16 md:py-24 bg-white font-inter scroll-mt-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8 sm:gap-12 md:gap-16 px-4 sm:px-6 lg:px-8">
         {/* Bloc gauche - Avantages */}
         <Motion.div
