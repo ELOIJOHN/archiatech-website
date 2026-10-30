@@ -33,7 +33,11 @@ export default function VideoButton({ serviceTitle, className = "" }) {
   return (
     <button
       onClick={scrollToVideoSection}
-      className={`btn-archiatech btn-archiatech-sm ${className}`}
+      type="button"
+      className={`inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg
+                  bg-[#E60023] hover:bg-red-700 text-white font-semibold
+                  transition-colors focus:outline-none focus:ring-2 focus:ring-[#E60023]/50
+                  w-full sm:w-auto sm:self-start ${className}`}
     >
       <Play className="w-4 h-4" />
       Voir la démo
