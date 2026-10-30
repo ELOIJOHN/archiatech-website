@@ -22,9 +22,9 @@ const SYSTEM_PROMPT = `Tu es Archi, l'assistant IA expert d'ArchiAtech, une entr
 - Orienter vers les bonnes solutions
 
 ## Services d'ArchiAtech :
-1. **Support & Déploiement IT** : Support technique 24/7 et déploiement sécurisé
+1. **Support & Déploiement IT** : Support technique et déploiement sécurisé
 2. **Conseil & Intégration IA** : Stratégie IA personnalisée et intégration
-3. **Automatisation des Workflows** : Automatisation intelligente (+40% d'efficacité)
+3. **Automatisation des Workflows** : Automatisation intelligente des tâches répétitives
 4. **Solutions No-Code/Low-Code** : Développement rapide sans code
 5. **Formation & Accompagnement** : Formation des équipes aux technologies IA
 6. **Transformation Digitale** : Accompagnement complet de la transformation
@@ -34,6 +34,11 @@ const SYSTEM_PROMPT = `Tu es Archi, l'assistant IA expert d'ArchiAtech, une entr
 2. **Stratégie** : Définition d'une roadmap personnalisée
 3. **Déploiement** : Implémentation progressive
 4. **Support** : Accompagnement continu
+
+## Règles de fiabilité :
+- N'avance jamais de chiffre de performance, de pourcentage de gain, de ROI garanti, de disponibilité ni de nombre de clients ou de projets
+- Les tarifs sont sur devis ; propose l'audit gratuit et un retour sous 24 h ouvrées
+- Sur les données : RGPD, hébergement au choix (local, privé ou cloud européen), aucune donnée sensible envoyée à un service d'IA sans accord du client
 
 ## Ton style de communication :
 - Professionnel mais accessible
@@ -113,9 +118,9 @@ function localResponse(userMessage) {
   // Détection de mots-clés pour générer une réponse pertinente
   const keywords = {
     'prix|tarif|coût': "Nos tarifs sont adaptés à chaque projet. Je vous propose d'échanger avec notre équipe commerciale pour un devis personnalisé. Pouvez-vous me préciser votre budget approximatif ?",
-    'automatisation|workflow': "L'automatisation des workflows peut vous faire gagner jusqu'à 40% de temps sur vos processus répétitifs. Quels sont les processus que vous souhaitez automatiser ?",
+    'automatisation|workflow': "L'automatisation des workflows peut faire gagner un temps précieux sur vos processus répétitifs ; nous l'estimons ensemble lors d'un audit gratuit. Quels sont les processus que vous souhaitez automatiser ?",
     'ia|intelligence artificielle': "Nos solutions IA s'adaptent à votre secteur d'activité. Recherchez-vous plutôt de l'analyse de données, de l'automatisation intelligente, ou du conseil stratégique ?",
-    'no-code|low-code': "Le no-code/low-code permet de créer des applications 10x plus rapidement. Avez-vous un projet d'application spécifique en tête ?",
+    'no-code|low-code': "Le no-code/low-code permet de créer des applications beaucoup plus rapidement qu'un développement classique. Avez-vous un projet d'application spécifique en tête ?",
     'formation': "Nous proposons des formations personnalisées pour vos équipes. Combien de personnes souhaitez-vous former et sur quelles technologies ?",
     'contact|rdv|démo': "Excellent ! Je peux vous mettre en relation avec notre équipe. Quelle est votre disponibilité pour un premier échange de 30 minutes ?",
   };

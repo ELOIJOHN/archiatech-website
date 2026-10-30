@@ -12,7 +12,7 @@ export default function ApprocheSection() {
     { 
       step: "02", 
       title: "Stratégie", 
-      desc: "Plan d'action personnalisé et ROI prévu", 
+      desc: "Plan d'action personnalisé et gains attendus estimés", 
       icon: <TrendingUp className="w-6 h-6" /> 
     },
     { 

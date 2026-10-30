@@ -1,32 +1,41 @@
 import { motion as Motion } from "framer-motion";
-import { Shield, Heart, Leaf } from "lucide-react";
+import { Shield, Heart, Leaf, Lock } from "lucide-react";
 
 const pilliers = [
   {
     icon: Shield,
     label: "Souverain",
-    emoji: "🔒",
-    title: "Vos données restent sous votre contrôle",
+    emoji: "🇪🇺",
+    title: "Vos données, votre choix d'hébergement",
     description:
-      "Serveur local, cloud privé ou cloud européen selon votre besoin. Vos données sensibles restent chez vous, et nous vous indiquons clairement quand un service externe intervient. Vous restez maître de vos actifs numériques.",
+      "Hébergement local, cloud privé ou cloud européen selon votre besoin. Nous privilégions des outils auto-hébergeables (n8n, modèles ouverts) et nous vous indiquons clairement quand un service externe intervient.",
     color: "#00C896",
+  },
+  {
+    icon: Lock,
+    label: "Sécurisé",
+    emoji: "🔒",
+    title: "Sécurité des données dès la conception",
+    description:
+      "Accès limités au strict nécessaire, clés et mots de passe jamais exposés, sauvegardes et journal des automatisations. Aucune donnée sensible n'est envoyée à un service d'IA sans votre accord.",
+    color: "#F59E0B",
   },
   {
     icon: Heart,
     label: "Responsable",
     emoji: "🤝",
-    title: "IA éthique et transparente",
+    title: "Une IA encadrée et transparente",
     description:
-      "Nos modèles sont auditables, explicables et conformes RGPD. Nous construisons une IA que vous pouvez expliquer à vos clients.",
+      "Conformité RGPD, validation humaine avant toute publication, règles d'usage et sensibilisation de vos équipes. Vous pouvez expliquer à vos clients comment l'IA est utilisée.",
     color: "#0EA5E9",
   },
   {
     icon: Leaf,
-    label: "Green",
+    label: "Durable",
     emoji: "🌱",
-    title: "Infrastructure à faible empreinte carbone",
+    title: "Une IA sobre",
     description:
-      "Optimisation énergétique des workloads, hébergement éco-responsable et architecture frugale. L'IA performante ne doit pas coûter la planète.",
+      "Un modèle adapté à chaque tâche plutôt que toujours le plus gros, des automatisations qui évitent les appels inutiles, un hébergement européen quand c'est possible.",
     color: "#22C55E",
   },
 ];
@@ -58,12 +67,12 @@ export default function PilliersSection() {
             <span style={{ color: "#00C896" }}>responsable</span> et durable.
           </h2>
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
-            ArchiAtech construit l&apos;IA de demain — Souverain, Responsable, Green.
+            Souverain, sécurisé, responsable, durable : quatre engagements concrets pour que l&apos;IA reste au service de votre entreprise.
           </p>
         </Motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {pilliers.map((p, i) => (
             <Motion.div
               key={p.label}
@@ -71,7 +80,7 @@ export default function PilliersSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
               viewport={{ once: true }}
-              className="relative rounded-2xl p-8 flex flex-col gap-4 group"
+              className="relative rounded-2xl p-6 sm:p-7 flex flex-col gap-4 group"
               style={{
                 background: "rgba(255,255,255,0.04)",
                 border: `1px solid ${p.color}33`,
@@ -115,16 +124,24 @@ export default function PilliersSection() {
           viewport={{ once: true }}
           className="text-center mt-12 sm:mt-16"
         >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base text-black transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            style={{
-              background: "linear-gradient(135deg, #00C896, #00A87A)",
-              boxShadow: "0 4px 24px rgba(0,200,150,0.35)",
-            }}
-          >
-            Démarrer avec ArchiAtech →
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="/contact/?objet=audit#formulaire"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base text-black transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              style={{
+                background: "linear-gradient(135deg, #00C896, #00A87A)",
+                boxShadow: "0 4px 24px rgba(0,200,150,0.35)",
+              }}
+            >
+              Réserver mon audit gratuit →
+            </a>
+            <a
+              href="/services/ia-souveraine/"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-base text-white border border-white/30 hover:bg-white/10 transition"
+            >
+              Notre approche de l&apos;IA souveraine
+            </a>
+          </div>
         </Motion.div>
       </div>
     </section>

@@ -19,6 +19,8 @@ export const servicePages = [
       'Choix de modèles et d’hébergement (cloud européen ou hébergement local)',
       'Intégration aux outils existants (Microsoft 365, messagerie, CRM, outils métiers)',
       'Règles d’usage, sensibilisation des équipes, points de vigilance RGPD',
+      'Sécurité des données : accès limités, secrets protégés, sauvegardes et journalisation des automatisations',
+      'Sobriété : un modèle adapté à chaque tâche plutôt que toujours le plus gros',
     ],
     audience:
       "PME, startups et indépendants qui veulent utiliser l'IA de façon concrète, sans exposer leurs données sensibles.",

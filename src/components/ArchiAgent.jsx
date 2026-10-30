@@ -14,7 +14,7 @@ const ArchiAgent = () => {
 
   // Messages d'accueil selon le profil utilisateur
   const welcomeMessages = {
-    'C-Level': "Bonjour ! Je suis Archi, votre expert en Intelligence Artificielle et transformation digitale. Je suis ici pour vous accompagner dans l'optimisation de votre ROI et l'accélération de votre croissance grâce à l'IA. Quel est votre principal défi opérationnel aujourd'hui ?",
+    'C-Level': "Bonjour ! Je suis Archi, votre expert en Intelligence Artificielle et transformation digitale. Je suis ici pour vous accompagner dans le choix des usages de l'IA qui font gagner du temps à votre entreprise. Quel est votre principal défi opérationnel aujourd'hui ?",
     'Technical': "Salut ! Je suis Archi, expert en IA et solutions techniques. Je peux vous aider avec l'intégration d'APIs, l'architecture de systèmes ML, ou l'automatisation de vos workflows. Sur quel aspect technique souhaitez-vous vous concentrer ?",
     'Novice': "Bonjour ! Je suis Archi, votre guide personnel pour découvrir l'IA et la transformation digitale. Pas de jargon technique ici - je vais vous expliquer tout simplement comment l'IA peut transformer votre entreprise. Quel est votre objectif principal aujourd'hui ?",
     'default': "Bonjour ! Je suis Archi, l'expert en Intelligence Artificielle et votre guide sur notre site. Je suis ici pour vous aider à trouver la solution la plus efficace pour votre transformation digitale. Quel est le principal objectif que vous cherchez à atteindre aujourd'hui ?"
@@ -23,18 +23,18 @@ const ArchiAgent = () => {
   // Base de connaissances des services ArchiAtech
   const servicesKnowledge = {
     'Support & Déploiement IT': {
-      description: "Support technique 24/7 et déploiement sécurisé de vos solutions IT",
-      benefits: ["Réduction des temps d'arrêt", "Support réactif", "Déploiement sans interruption"],
+      description: "Support technique et déploiement sécurisé de vos solutions IT",
+      benefits: ["Moins d'interruptions", "Support réactif", "Déploiement planifié"],
       useCases: ["Maintenance préventive", "Résolution rapide des incidents", "Migration sécurisée"]
     },
     'Conseil & Intégration IA': {
       description: "Stratégie IA personnalisée et intégration de solutions d'intelligence artificielle",
-      benefits: ["ROI optimisé", "Solutions sur mesure", "Accompagnement expert"],
+      benefits: ["Cas d'usage priorisés", "Solutions sur mesure", "Accompagnement expert"],
       useCases: ["Audit IA", "Roadmap technologique", "Intégration progressive"]
     },
     'Automatisation des Workflows': {
       description: "Automatisation intelligente de vos processus métier pour gagner en efficacité",
-      benefits: ["+40% d'efficacité", "Réduction des erreurs", "Gain de temps"],
+      benefits: ["Moins de saisies répétitives", "Réduction des erreurs", "Gain de temps"],
       useCases: ["Processus répétitifs", "Workflows complexes", "Intégration systèmes"]
     },
     'Solutions No-Code/Low-Code': {
@@ -49,7 +49,7 @@ const ArchiAgent = () => {
     },
     'Transformation Digitale': {
       description: "Accompagnement complet de votre transformation digitale et modernisation",
-      benefits: ["Vision stratégique", "Implémentation progressive", "ROI mesurable"],
+      benefits: ["Vision stratégique", "Implémentation progressive", "Gains suivis avec vous"],
       useCases: ["Stratégie digitale", "Modernisation IT", "Culture numérique"]
     }
   };
