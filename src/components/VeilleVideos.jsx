@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Play } from 'lucide-react';
-import { veilleVideos } from '../data/veille-videos';
+import { VEILLE_VIDEOS_API_URL } from '../config/videos';
 
 // Vidéos d'autres chaînes : le lecteur YouTube (mode sans cookies) ne se charge qu'au clic.
 export default function VeilleVideos() {
   const [activeId, setActiveId] = useState(null);
+  const [veilleVideos, setVeilleVideos] = useState([]);
+
+  // Vidéos récentes validées par ArchiAtech (agent de veille n8n) ; section masquée s'il n'y en a pas.
+  useEffect(() => {
+    let cancelled = false;
+    fetch(VEILLE_VIDEOS_API_URL)
+      .then((r) => (r.ok ? r.json() : { videos: [] }))
+      .then((data) => {
+        if (!cancelled && Array.isArray(data.videos)) setVeilleVideos(data.videos);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (veilleVideos.length === 0) return null;
 
   return (
     <section id="veille-videos" className="py-12 sm:py-16 md:py-20 bg-gray-50">
@@ -13,7 +30,7 @@ export default function VeilleVideos() {
           <span className="text-[#E60023] font-semibold text-xs sm:text-sm uppercase tracking-wider">Veille</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-3">Veille vidéo</h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Une sélection de vidéos d'autres chaînes qui nous ont semblé utiles sur l'IA, l'automatisation et le numérique.
+            Une sélection de vidéos récentes d'autres chaînes, choisies pour leur intérêt sur l'IA, l'automatisation et le numérique.
             Ces contenus appartiennent à leurs auteurs.
           </p>
         </div>
@@ -48,11 +65,16 @@ export default function VeilleVideos() {
               </div>
               <div className="p-4 flex-1 flex flex-col gap-2">
                 <h3 className="font-semibold text-gray-900 leading-snug">{v.title}</h3>
+                {v.summary && <p className="text-sm text-gray-600 leading-relaxed">{v.summary}</p>}
                 <p className="text-sm text-gray-500 mt-auto">
                   Source :{' '}
-                  <a href={v.authorUrl} target="_blank" rel="noopener noreferrer" className="text-[#E60023] hover:underline">
-                    {v.author}
-                  </a>{' '}
+                  {v.authorUrl ? (
+                    <a href={v.authorUrl} target="_blank" rel="noopener noreferrer" className="text-[#E60023] hover:underline">
+                      {v.author}
+                    </a>
+                  ) : (
+                    v.author
+                  )}{' '}
                   sur YouTube
                 </p>
               </div>
