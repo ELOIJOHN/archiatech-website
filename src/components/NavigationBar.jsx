@@ -66,14 +66,12 @@ export default function NavigationBar() {
   ];
 
   return (
-    <nav className={`nav-glow fixed top-0 w-full z-navigation transition-all duration-300 ${
-      isScrolled
-        ? 'bg-[#E60023]/95 backdrop-blur-xl border-b border-white/20'
-        : 'bg-[#E60023]'
+    <nav className={`nav-ferrari fixed top-0 w-full z-navigation transition-all duration-300 ${
+      isScrolled ? 'backdrop-blur-xl' : ''
     }`}>
-      {/* Effet lumineux : un reflet traverse la barre */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="nav-sweep absolute inset-y-0 w-1/3" />
+      {/* Liseré blanc lumineux qui court le long du bord bas */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] overflow-hidden bg-white/15" aria-hidden="true">
+        <div className="nav-trait absolute inset-y-0 w-1/4" />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex justify-between items-center">
@@ -116,7 +114,7 @@ export default function NavigationBar() {
                             w-72 md:w-80 lg:w-[340px]
                             rounded-2xl overflow-hidden
                             z-dropdown
-                            bg-gradient-to-br from-[#E60023] via-[#D4001F] to-[#C4001D]
+                            bg-gradient-to-br from-[#FF2800] via-[#D40000] to-[#B30000]
                             backdrop-blur-2xl border border-white/20
                             shadow-[0_8px_32px_rgba(230,0,35,0.3),0_0_0_1px_rgba(255,255,255,0.1)]"
                   onMouseLeave={() => setIsDropdownOpen(false)}
@@ -147,7 +145,7 @@ export default function NavigationBar() {
                                         bg-white shadow-lg shadow-black/10
                                         group-hover:scale-110 group-hover:rotate-3
                                         transition-all duration-300">
-                            <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-[#E60023]" />
+                            <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-[#D40000]" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="nav-dropdown-text text-white font-semibold
@@ -184,7 +182,7 @@ export default function NavigationBar() {
             ))}
             <a
               href="/contact/?objet=audit#formulaire"
-              className="bg-white text-[#E60023] hover:bg-gray-100 font-bold rounded-lg px-4 py-2
+              className="bg-white text-[#D40000] hover:bg-gray-100 font-bold rounded-lg px-4 py-2
                          text-base lg:text-lg whitespace-nowrap transition-colors"
             >
               Audit gratuit
@@ -209,7 +207,7 @@ export default function NavigationBar() {
         {/* Menu Mobile - Amélioré responsive */}
         {isMenuOpen && (
           <div className="md:hidden mt-2 xs:mt-3 sm:mt-4 pb-2 xs:pb-3 sm:pb-4
-                         border-t border-[#E60023]/20 mobile-menu-enter">
+                         border-t border-[#D40000]/20 mobile-menu-enter">
             <div className="flex flex-col space-y-1.5 xs:space-y-2 pt-2 xs:pt-3 sm:pt-4">
               {/* Section ArchiAtech dans le menu mobile */}
               <div className="mobile-nav-section border-b border-white/10
@@ -238,7 +236,7 @@ export default function NavigationBar() {
                                       w-7 h-7 xs:w-8 xs:h-8
                                       rounded-md xs:rounded-lg
                                       flex items-center justify-center">
-                          <IconComponent className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#E60023]" />
+                          <IconComponent className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#D40000]" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="text-white font-medium
@@ -275,7 +273,7 @@ export default function NavigationBar() {
               ))}
               <a
                 href="/contact/?objet=audit#formulaire"
-                className="bg-white text-[#E60023] font-bold rounded-lg py-3 px-3 text-center touch-target"
+                className="bg-white text-[#D40000] font-bold rounded-lg py-3 px-3 text-center touch-target"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Audit gratuit

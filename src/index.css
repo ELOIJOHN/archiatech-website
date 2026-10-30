@@ -422,22 +422,26 @@ body {
   .hero-shimmer-dark { animation: none; color: #ff3b55; background-image: none; }
 }
 
-/* Barre de menu : reflet lumineux + lueur rouge en dessous */
-.nav-glow { animation: nav-glow-pulse 4s ease-in-out infinite; }
-@keyframes nav-glow-pulse {
-  0%, 100% { box-shadow: 0 6px 24px -6px rgba(230, 0, 35, 0.45); }
-  50% { box-shadow: 0 8px 36px -2px rgba(255, 40, 70, 0.8); }
+/* Barre de menu rouge Ferrari : respiration + liseré lumineux */
+.nav-ferrari {
+  background-color: #D40000;
+  animation: nav-breathe 6s ease-in-out infinite;
 }
-.nav-sweep {
-  background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%);
-  transform: translateX(-120%) skewX(-18deg);
-  animation: nav-sweep 6s ease-in-out infinite;
+@keyframes nav-breathe {
+  0%, 100% { background-color: #B30000; box-shadow: 0 6px 22px -8px rgba(212, 0, 0, 0.45); }
+  50% { background-color: #FF2800; box-shadow: 0 8px 34px -4px rgba(255, 40, 0, 0.75); }
 }
-@keyframes nav-sweep {
-  0%, 15% { transform: translateX(-120%) skewX(-18deg); }
-  55%, 100% { transform: translateX(420%) skewX(-18deg); }
+.nav-trait {
+  background: linear-gradient(90deg, transparent, #ffffff 50%, transparent);
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.9);
+  transform: translateX(-100%);
+  animation: nav-trait 3.6s linear infinite;
+}
+@keyframes nav-trait {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(500%); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .nav-glow { animation: none; box-shadow: 0 6px 24px -6px rgba(230, 0, 35, 0.5); }
-  .nav-sweep { animation: none; display: none; }
+  .nav-ferrari { animation: none; background-color: #D40000; }
+  .nav-trait { animation: none; display: none; }
 }
