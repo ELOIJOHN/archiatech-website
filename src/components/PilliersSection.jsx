@@ -1,147 +1,110 @@
-import { motion as Motion } from "framer-motion";
-import { Shield, Heart, Leaf, Lock } from "lucide-react";
+import { motion as Motion, useReducedMotion } from "framer-motion";
+import { Shield, Heart, Leaf, Lock, ArrowRight } from "lucide-react";
 
+// Une idée, une phrase par engagement : le détail est sur la page « IA souveraine ».
 const pilliers = [
   {
     icon: Shield,
     label: "Souverain",
-    emoji: "🇪🇺",
-    title: "Vos données, votre choix d'hébergement",
-    description:
-      "Hébergement local, cloud privé ou cloud européen selon votre besoin. Nous privilégions des outils auto-hébergeables (n8n, modèles ouverts) et nous vous indiquons clairement quand un service externe intervient.",
+    title: "Vos données, votre hébergement.",
+    description: "Local, cloud privé ou européen : vous choisissez.",
     color: "#00C896",
   },
   {
     icon: Lock,
     label: "Sécurisé",
-    emoji: "🔒",
-    title: "Sécurité des données dès la conception",
-    description:
-      "Accès limités au strict nécessaire, clés et mots de passe jamais exposés, sauvegardes et journal des automatisations. Aucune donnée sensible n'est envoyée à un service d'IA sans votre accord.",
+    title: "Protégé dès la conception.",
+    description: "Accès limités, secrets jamais exposés, journal des automatisations.",
     color: "#F59E0B",
   },
   {
     icon: Heart,
     label: "Responsable",
-    emoji: "🤝",
-    title: "Une IA encadrée et transparente",
-    description:
-      "Conformité RGPD, validation humaine avant toute publication, règles d'usage et sensibilisation de vos équipes. Vous pouvez expliquer à vos clients comment l'IA est utilisée.",
-    color: "#0EA5E9",
+    title: "Une IA encadrée.",
+    description: "RGPD, validation humaine, usage expliqué à vos clients.",
+    color: "#38BDF8",
   },
   {
     icon: Leaf,
     label: "Durable",
-    emoji: "🌱",
-    title: "Une IA sobre",
-    description:
-      "Un modèle adapté à chaque tâche plutôt que toujours le plus gros, des automatisations qui évitent les appels inutiles, un hébergement européen quand c'est possible.",
-    color: "#22C55E",
+    title: "Une IA sobre.",
+    description: "Le bon modèle pour chaque tâche, jamais plus gros que nécessaire.",
+    color: "#4ADE80",
   },
 ];
 
 export default function PilliersSection() {
+  const reduce = useReducedMotion();
+
   return (
-    <section
-      id="pilliers"
-      className="py-16 sm:py-20 md:py-28"
-      style={{ background: "linear-gradient(135deg, #0A0A0A 0%, #111827 100%)" }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+    <section id="pilliers" className="bg-black py-20 sm:py-28 md:py-36">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        {/* En-tête */}
         <Motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-12 sm:mb-20"
         >
-          <span
-            className="inline-block text-xs sm:text-sm font-semibold uppercase tracking-widest mb-4 px-4 py-1 rounded-full"
-            style={{ color: "#00C896", background: "rgba(0,200,150,0.12)", border: "1px solid rgba(0,200,150,0.3)" }}
-          >
-            Notre ADN
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 mb-4">
-            L&apos;IA souveraine,{" "}
-            <span style={{ color: "#00C896" }}>responsable</span> et durable.
+          <p className="text-sm sm:text-base font-semibold tracking-wide text-[#ff5a6e]">Notre ADN</p>
+          <h2 className="mt-3 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.05] text-white">
+            L&apos;IA qui reste
+            <br />
+            <span className="text-gray-500">entre vos mains.</span>
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
-            Souverain, sécurisé, responsable, durable : quatre engagements concrets pour que l&apos;IA reste au service de votre entreprise.
-          </p>
         </Motion.div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        {/* Grille de cartes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
           {pilliers.map((p, i) => (
             <Motion.div
               key={p.label}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              viewport={{ once: true }}
-              className="relative rounded-2xl p-6 sm:p-7 flex flex-col gap-4 group"
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: `1px solid ${p.color}33`,
-                transition: "border-color 0.3s, box-shadow 0.3s",
-              }}
-              whileHover={{
-                borderColor: p.color,
-                boxShadow: `0 0 32px ${p.color}33`,
-              }}
+              transition={{ duration: 0.8, delay: (i % 2) * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: "-60px" }}
+              whileHover={reduce ? undefined : { scale: 1.015 }}
+              className="relative overflow-hidden rounded-[2rem] bg-[#111113] p-8 sm:p-10 min-h-[17rem] sm:min-h-[21rem] flex flex-col justify-between"
             >
-              {/* Icon */}
+              {/* Lueur de couleur dans le coin */}
               <div
-                className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-2"
-                style={{ background: `${p.color}1A`, color: p.color }}
-              >
-                <p.icon size={28} strokeWidth={1.8} />
+                className="absolute -top-24 -right-24 h-72 w-72 rounded-full blur-3xl opacity-30 pointer-events-none"
+                style={{ background: p.color }}
+                aria-hidden="true"
+              />
+              <p.icon className="relative h-12 w-12 sm:h-14 sm:w-14" style={{ color: p.color }} strokeWidth={1.4} aria-hidden="true" />
+              <div className="relative">
+                <p className="text-sm font-semibold uppercase tracking-widest" style={{ color: p.color }}>
+                  {p.label}
+                </p>
+                <h3 className="mt-2 text-2xl sm:text-4xl font-semibold tracking-tight leading-tight text-white">{p.title}</h3>
+                <p className="mt-3 text-base sm:text-lg text-gray-400 leading-snug max-w-md">{p.description}</p>
               </div>
-
-              {/* Badge */}
-              <span
-                className="text-xs font-bold uppercase tracking-widest"
-                style={{ color: p.color }}
-              >
-                {p.emoji} {p.label}
-              </span>
-
-              {/* Title */}
-              <h3 className="text-xl font-bold text-white leading-snug">{p.title}</h3>
-
-              {/* Description */}
-              <p className="text-gray-400 text-sm leading-relaxed">{p.description}</p>
             </Motion.div>
           ))}
         </div>
 
-        {/* CTA */}
+        {/* Appels à l'action */}
         <Motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-center mt-12 sm:mt-16"
+          className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8"
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="/contact/?objet=audit#formulaire"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base text-black transition-all duration-300 hover:scale-105 hover:shadow-lg"
-              style={{
-                background: "linear-gradient(135deg, #00C896, #00A87A)",
-                boxShadow: "0 4px 24px rgba(0,200,150,0.35)",
-              }}
-            >
-              Réserver mon audit gratuit →
-            </a>
-            <a
-              href="/services/ia-souveraine/"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-base text-white border border-white/30 hover:bg-white/10 transition"
-            >
-              Notre approche de l&apos;IA souveraine
-            </a>
-          </div>
+          <a
+            href="/contact/?objet=audit#formulaire"
+            className="inline-flex items-center gap-2 rounded-full bg-[#E60023] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-colors"
+          >
+            Audit gratuit <ArrowRight className="w-5 h-5" aria-hidden="true" />
+          </a>
+          <a
+            href="/services/ia-souveraine/"
+            className="inline-flex items-center gap-1 text-[#ff5a6e] hover:text-white font-medium text-base sm:text-lg transition-colors"
+          >
+            Notre approche de l&apos;IA souveraine <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </a>
         </Motion.div>
       </div>
     </section>
