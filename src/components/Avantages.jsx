@@ -1,20 +1,21 @@
 import { motion as Motion } from "framer-motion";
+import { Target, Workflow, ShieldCheck, Users, MapPin, FileText } from "lucide-react";
 
 export default function Avantages() {
   const avantages = [
-    "Expertise pointue en IA et No-Code",
-    "Accompagnement personnalisé de A à Z",
-    "ROI mesurable et rapide",
-    "Support technique continu 7j/7",
-    "Solutions adaptées aux PME/Startups",
-    "Innovation technologique permanente"
+    { icon: Target, titre: "Un besoin avant un outil", texte: "Nous partons de vos tâches répétitives réelles, pas d'une technologie imposée." },
+    { icon: Workflow, titre: "IA et no-code, sans jargon", texte: "Automatisations n8n, agents IA, tableaux de bord : simples à utiliser et à faire évoluer." },
+    { icon: ShieldCheck, titre: "Données maîtrisées", texte: "Le RGPD et l'hébergement des données sont pris en compte dès le départ." },
+    { icon: Users, titre: "Accompagnement de A à Z", texte: "Audit, mise en place, prise en main de vos équipes et suivi." },
+    { icon: MapPin, titre: "Proche de vous", texte: "Monaco et France : un interlocuteur unique qui connaît votre contexte." },
+    { icon: FileText, titre: "Un devis clair", texte: "Périmètre et livrables écrits avant de démarrer, sans engagement." }
   ];
 
-  const stats = [
-    { value: "95%", label: "Satisfaction client" },
-    { value: "150+", label: "Projets livrés" },
-    { value: "40%", label: "Gain de temps" },
-    { value: "24/7", label: "Support disponible" }
+  const engagements = [
+    { value: "Gratuit", label: "Audit de départ" },
+    { value: "24 h", label: "Retour ouvré à votre demande" },
+    { value: "Sur devis", label: "Sans engagement" },
+    { value: "Monaco & France", label: "Zone d'intervention" }
   ];
 
   return (
@@ -27,24 +28,27 @@ export default function Avantages() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h3 className="text-[#E60023] font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
+          <p className="text-[#E60023] font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
             Nos avantages
-          </h3>
+          </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8">Pourquoi ArchiAtech ?</h2>
-          <ul className="space-y-3 sm:space-y-5 text-gray-800 text-base sm:text-lg leading-relaxed">
+          <ul className="space-y-4 sm:space-y-6">
             {avantages.map((item, i) => (
               <Motion.li
-                key={i}
-                className="flex items-start space-x-4 group"
+                key={item.titre}
+                className="flex items-start gap-4"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="w-6 h-6 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
-                  <span className="text-white text-sm">✓</span>
+                <div className="w-11 h-11 rounded-xl bg-red-50 text-[#E60023] flex items-center justify-center flex-shrink-0">
+                  <item.icon className="w-5 h-5" aria-hidden="true" />
                 </div>
-                <span className="group-hover:text-red-600 transition">{item}</span>
+                <div>
+                  <h3 className="font-semibold text-gray-900 text-base sm:text-lg">{item.titre}</h3>
+                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{item.texte}</p>
+                </div>
               </Motion.li>
             ))}
           </ul>
@@ -60,23 +64,29 @@ export default function Avantages() {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl sm:rounded-3xl"></div>
           <div className="relative">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Gagnez jusqu'à 40% de temps</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Commencez par un audit gratuit</h3>
             <p className="text-white/90 mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">
-              Nos clients constatent en moyenne une réduction de 40% du temps consacré aux tâches répétitives.
+              Nous identifions avec vous les tâches à automatiser en priorité et vous repartez avec des pistes concrètes, sans engagement.
             </p>
             <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6">
-              {stats.map((stat, i) => (
+              {engagements.map((stat, i) => (
                 <Motion.div
                   key={i}
                   className="bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition group"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 200 }}
                 >
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2 text-white">{stat.value}</div>
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 text-white">{stat.value}</div>
                   <div className="text-white/80 text-xs sm:text-sm">{stat.label}</div>
                 </Motion.div>
               ))}
             </div>
+            <a
+              href="/contact/?objet=audit#formulaire"
+              className="mt-6 sm:mt-8 inline-flex w-full sm:w-auto justify-center items-center rounded-lg bg-white px-6 py-3 font-semibold text-[#E60023] shadow hover:bg-gray-50 transition"
+            >
+              Réserver mon audit gratuit
+            </a>
           </div>
         </Motion.div>
       </div>
