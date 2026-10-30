@@ -47,6 +47,15 @@ export default function PilliersSection() {
           viewport={{ once: true }}
           className="text-center mb-12 sm:mb-20"
         >
+          <img
+            src="/images/logo-archiatech-hero.webp"
+            alt="ArchiAtech Digital Solutions"
+            width="860"
+            height="600"
+            loading="lazy"
+            className="mx-auto w-44 sm:w-60 h-auto mb-6 select-none drop-shadow-[0_0_28px_rgba(230,0,35,0.45)]"
+            draggable="false"
+          />
           <p className="text-sm sm:text-base font-semibold tracking-wide text-[#ff5a6e]">Notre ADN</p>
           <h2 className="mt-3 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.05] text-white">
             L&apos;IA qui reste
