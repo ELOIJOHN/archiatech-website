@@ -408,3 +408,16 @@ body {
   .hero-shimmer { animation: none; color: #E60023; background-image: none; }
   .hero-btn-ring { animation: none; }
 }
+
+/* Version claire du dégradé animé, lisible sur fond noir */
+.hero-shimmer-dark {
+  background-image: linear-gradient(90deg, #ff3b55 0%, #ff8a99 30%, #ff3b55 55%, #ff6a7d 80%, #ff3b55 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hero-shimmer 6s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-shimmer-dark { animation: none; color: #ff3b55; background-image: none; }
+}
