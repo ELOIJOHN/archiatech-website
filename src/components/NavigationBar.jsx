@@ -68,8 +68,8 @@ export default function NavigationBar() {
   return (
     <nav className={`fixed top-0 w-full z-navigation transition-all duration-300 ${
       isScrolled
-        ? 'bg-[#E60023]/90 backdrop-blur-xl border-b border-white/20'
-        : 'bg-[#E60023]'
+        ? 'bg-black/80 backdrop-blur-xl border-b border-white/10'
+        : 'bg-black border-b border-white/10'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex justify-between items-center">
@@ -81,7 +81,7 @@ export default function NavigationBar() {
               alt="ArchiAtech Digital Solutions"
               width="889"
               height="160"
-              className="h-8 sm:h-10 md:h-12 w-auto"
+              className="h-9 sm:h-12 md:h-14 w-auto drop-shadow-[0_0_14px_rgba(230,0,35,0.55)]"
             />
           </a>
 
@@ -180,7 +180,7 @@ export default function NavigationBar() {
             ))}
             <a
               href="/contact/?objet=audit#formulaire"
-              className="bg-white text-[#E60023] hover:bg-gray-100 font-bold rounded-lg px-4 py-2
+              className="bg-[#E60023] text-white hover:bg-[#ff1f3f] font-bold rounded-lg px-4 py-2
                          text-base lg:text-lg whitespace-nowrap transition-colors"
             >
               Audit gratuit
@@ -271,7 +271,7 @@ export default function NavigationBar() {
               ))}
               <a
                 href="/contact/?objet=audit#formulaire"
-                className="bg-white text-[#E60023] font-bold rounded-lg py-3 px-3 text-center touch-target"
+                className="bg-[#E60023] text-white font-bold rounded-lg py-3 px-3 text-center touch-target"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Audit gratuit
