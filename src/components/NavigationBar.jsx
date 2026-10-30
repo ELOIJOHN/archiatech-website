@@ -68,9 +68,12 @@ export default function NavigationBar() {
   return (
     <nav className={`fixed top-0 w-full z-navigation transition-all duration-300 ${
       isScrolled
-        ? 'bg-black/80 backdrop-blur-xl border-b border-white/10'
-        : 'bg-black border-b border-white/10'
+        ? 'bg-black/80 backdrop-blur-xl'
+        : 'bg-black'
     }`}>
+      {/* Halo rouge sous la barre */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-[#ff1f3f] to-transparent shadow-[0_0_18px_4px_rgba(230,0,35,0.7)]" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-x-0 top-full h-16 bg-[radial-gradient(ellipse_at_top,rgba(230,0,35,0.6),transparent_70%)]" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex justify-between items-center">
           {/* Logo ArchiAtech Digital Solutions (version horizontale blanche) */}
