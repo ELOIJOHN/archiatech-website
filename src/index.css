@@ -378,3 +378,33 @@ body {
 .animate-scroll-level-3 {
   animation: scroll-level-3 30s ease-in-out infinite;
 }
+
+/* Accueil : effets visuels (désactivés si l'utilisateur réduit les animations) */
+@keyframes hero-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.hero-shimmer {
+  background-image: linear-gradient(90deg, #E60023 0%, #ff5a6e 25%, #E60023 50%, #b3001b 75%, #E60023 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hero-shimmer 5s linear infinite;
+}
+@keyframes hero-btn-ring {
+  0% { box-shadow: 0 0 0 0 rgba(230, 0, 35, 0.45); }
+  70% { box-shadow: 0 0 0 16px rgba(230, 0, 35, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(230, 0, 35, 0); }
+}
+.hero-btn-ring { animation: hero-btn-ring 2.4s ease-out infinite; }
+.hero-grid {
+  background-image: radial-gradient(rgba(17, 24, 39, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-shimmer { animation: none; color: #E60023; background-image: none; }
+  .hero-btn-ring { animation: none; }
+}
