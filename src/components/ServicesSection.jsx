@@ -7,36 +7,42 @@ export default function ServicesSection() {
     {
       icon: <Cog className="w-6 h-6 sm:w-7 sm:h-7" />,
       title: "Support & Déploiement IT",
+      href: "/services/support-it/", cta: "En savoir plus",
       description: "Installation, configuration et déploiement de postes de travail en toute sérénité",
       gradient: "from-[#E60023] to-red-600"
     },
     {
       icon: <Cpu className="w-6 h-6 sm:w-7 sm:h-7" />,
       title: "Conseil & Intégration IA",
+      href: "/services/ia-souveraine/", cta: "En savoir plus",
       description: "Solutions d'intelligence artificielle appliquées à vos processus métiers",
       gradient: "from-red-600 to-red-700"
     },
     {
       icon: <Zap className="w-6 h-6 sm:w-7 sm:h-7" />,
       title: "Automatisation Workflows",
+      href: "/services/automatisation-n8n/", cta: "En savoir plus",
       description: "RPA, connecteurs, API pour optimiser vos processus",
       gradient: "from-[#E60023] to-red-600"
     },
     {
       icon: <Code className="w-6 h-6 sm:w-7 sm:h-7" />,
       title: "Solutions No-Code/Low-Code",
+      href: "/services/automatisation-n8n/", cta: "En savoir plus",
       description: "Développement avec Zapier, Make, Airtable, Notion, Bubble...",
       gradient: "from-red-600 to-red-700"
     },
     {
       icon: <Users className="w-6 h-6 sm:w-7 sm:h-7" />,
       title: "Formation & Accompagnement",
+      href: "/contact/", cta: "Demander un devis",
       description: "Support continu et formation de vos équipes",
       gradient: "from-[#E60023] to-red-600"
     },
     {
       icon: <Rocket className="w-6 h-6 sm:w-7 sm:h-7" />,
       title: "Transformation Digitale",
+      href: "/contact/", cta: "Demander un devis",
       description: "Stratégie complète d'innovation et de digitalisation",
       gradient: "from-red-600 to-red-800"
     }
@@ -109,14 +115,14 @@ export default function ServicesSection() {
                   className="text-xs sm:text-sm touch-target"
                 />
                 <a
-                  href="#services"
+                  href={service.href}
                   className="relative text-[#E60023] font-semibold
                            flex items-center group-hover:gap-2
                            transition-all
                            text-xs xs:text-sm sm:text-base
                            touch-target"
                 >
-                  En savoir plus <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                  {service.cta} <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
                 </a>
               </div>
             </div>

@@ -6,9 +6,9 @@ const pilliers = [
     icon: Shield,
     label: "Souverain",
     emoji: "🔒",
-    title: "Vos données restent chez vous",
+    title: "Vos données restent sous votre contrôle",
     description:
-      "Déploiement on-premise ou cloud privé. Aucune donnée ne quitte votre infrastructure. Vous restez maître de vos actifs numériques.",
+      "Serveur local, cloud privé ou cloud européen selon votre besoin. Vos données sensibles restent chez vous, et nous vous indiquons clairement quand un service externe intervient. Vous restez maître de vos actifs numériques.",
     color: "#00C896",
   },
   {
