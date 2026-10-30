@@ -14,7 +14,7 @@ export default function OfferPage() {
       intro="AutoFlow connecte vos outils et exécute à votre place les tâches répétitives, pour que votre équipe se concentre sur son métier."
     >
       <div className="flex flex-col sm:flex-row gap-3 mb-12">
-        <CtaButton>Réserver mon audit gratuit</CtaButton>
+        <CtaButton href="/contact/?objet=audit#formulaire">Réserver mon audit gratuit</CtaButton>
         <span className="self-center text-sm text-gray-500">Sans engagement · projet sur devis</span>
       </div>
 
@@ -73,7 +73,7 @@ export default function OfferPage() {
         <p className="text-gray-600 mb-5">
           Décrivez-nous vos tâches répétitives : nous vous disons ce qui vaut la peine d&apos;être automatisé.
         </p>
-        <CtaButton>Réserver mon audit gratuit</CtaButton>
+        <CtaButton href="/contact/?objet=audit#formulaire">Réserver mon audit gratuit</CtaButton>
       </div>
 
       <h2 className="text-lg font-semibold text-gray-900 mb-3">Nos autres offres</h2>

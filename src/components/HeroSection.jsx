@@ -112,7 +112,7 @@ export default function HeroSection() {
         {/* Appel à l'action principal */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <a
-            href="/contact/"
+            href="/contact/?objet=audit#formulaire"
             className="inline-flex items-center gap-2 bg-[#E60023] hover:bg-red-700 text-white font-bold
                        px-8 py-4 rounded-xl text-base sm:text-lg shadow-lg transition-colors"
           >

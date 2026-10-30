@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CONTACT_WEBHOOK_URL } from '../config/contact';
 
 export default function ContactSectionSimple() {
@@ -11,6 +11,35 @@ export default function ContactSectionSimple() {
   const [emailCopied, setEmailCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [auditMode, setAuditMode] = useState(false);
+  const formRef = useRef(null);
+  const nameRef = useRef(null);
+
+  // Arrivée depuis un bouton « Audit gratuit » (/contact/?objet=audit#formulaire) :
+  // message pré-rempli, formulaire mis en avant et curseur dans le premier champ.
+  useEffect(() => {
+    const focusAudit = () => {
+      if (new URLSearchParams(window.location.search).get('objet') !== 'audit') return;
+      setAuditMode(true);
+      setMessage((m) => m || "Bonjour, je souhaite un audit gratuit.\nMes tâches ou outils concernés : ");
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        nameRef.current?.focus({ preventScroll: true });
+      }, 300);
+    };
+    focusAudit();
+    // Re-clic sur « Audit gratuit » alors qu'on est déjà sur la page : on remet le focus.
+    const onClick = (e) => {
+      const a = e.target.closest?.('a[href*="objet=audit"]');
+      if (a && window.location.pathname.startsWith('/contact')) { e.preventDefault(); focusAudit(); }
+    };
+    window.addEventListener('hashchange', focusAudit);
+    document.addEventListener('click', onClick);
+    return () => {
+      window.removeEventListener('hashchange', focusAudit);
+      document.removeEventListener('click', onClick);
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -183,7 +212,12 @@ Pour répondre : ${email}
         </div>
 
         {/* Formulaire */}
-        <form onSubmit={handleSubmit} style={{
+        {auditMode && (
+          <p role="status" style={{ textAlign: 'center', color: '#b91c1c', fontWeight: 600, marginBottom: '1rem' }}>
+            Audit gratuit : remplissez ce formulaire, nous revenons vers vous sous 24 h ouvrées.
+          </p>
+        )}
+        <form id="formulaire" ref={formRef} onSubmit={handleSubmit} style={{
           background: '#ffffff',
           borderRadius: '12px',
           padding: '1.75rem',
@@ -221,6 +255,7 @@ Pour répondre : ${email}
               <input
                 type="text"
                 name="fullName"
+                ref={nameRef}
                 required
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}

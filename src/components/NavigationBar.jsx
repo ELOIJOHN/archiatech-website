@@ -179,7 +179,7 @@ export default function NavigationBar() {
               </a>
             ))}
             <a
-              href="/contact/"
+              href="/contact/?objet=audit#formulaire"
               className="bg-white text-[#E60023] hover:bg-gray-100 font-bold rounded-lg px-4 py-2
                          text-base lg:text-lg whitespace-nowrap transition-colors"
             >
@@ -270,7 +270,7 @@ export default function NavigationBar() {
                 </a>
               ))}
               <a
-                href="/contact/"
+                href="/contact/?objet=audit#formulaire"
                 className="bg-white text-[#E60023] font-bold rounded-lg py-3 px-3 text-center touch-target"
                 onClick={() => setIsMenuOpen(false)}
               >

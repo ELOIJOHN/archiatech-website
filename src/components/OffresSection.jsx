@@ -49,7 +49,7 @@ export default function OffresSection() {
                   </a>
                 ) : (
                   <a
-                    href="/contact/"
+                    href="/contact/?objet=audit#formulaire"
                     className="inline-flex items-center gap-2 text-[#E60023] hover:text-red-700 font-semibold"
                   >
                     Demander un audit gratuit <ArrowRight className="w-4 h-4" />
@@ -62,7 +62,7 @@ export default function OffresSection() {
 
         <div className="text-center mt-10 sm:mt-14">
           <a
-            href="/contact/"
+            href="/contact/?objet=audit#formulaire"
             className="inline-flex items-center gap-2 bg-[#E60023] hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
           >
             Réserver mon audit gratuit <ArrowRight className="w-5 h-5" />
