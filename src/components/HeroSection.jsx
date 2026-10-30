@@ -1,128 +1,123 @@
 import React from 'react';
-import { Rocket, ArrowRight } from 'lucide-react';
+import { ArrowRight, Check, Mail, Workflow, FileText, BellRing, Cpu, ShieldCheck, LifeBuoy } from 'lucide-react';
+
+const repères = ['Audit gratuit', 'Retour sous 24 h ouvrées', 'Données et hébergement maîtrisés'];
+
+const metiers = [
+  {
+    icon: Workflow,
+    titre: 'Automatisation',
+    texte: 'Relances, saisies, rapports : vos outils travaillent ensemble.',
+    href: '/services/automatisation-n8n/',
+  },
+  {
+    icon: ShieldCheck,
+    titre: 'IA souveraine',
+    texte: "Des assistants IA qui respectent vos données et le RGPD.",
+    href: '/services/ia-souveraine/',
+  },
+  {
+    icon: LifeBuoy,
+    titre: 'Support IT',
+    texte: 'Postes, Microsoft 365, réseau : un interlocuteur unique.',
+    href: '/services/support-it/',
+  },
+];
+
+const etapes = [
+  { icon: Mail, label: 'Demande reçue par e-mail' },
+  { icon: Cpu, label: 'Automatisation n8n' },
+  { icon: FileText, label: 'Fiche créée dans votre outil' },
+  { icon: BellRing, label: 'Relance envoyée au bon moment' },
+];
 
 export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="min-h-[70vh] xs:min-h-[75vh] sm:min-h-[80vh] md:min-h-[85vh]
-                 relative overflow-hidden
-                 bg-gradient-to-br from-white via-gray-50 to-blue-50
-                 flex flex-col justify-center items-center
-                 px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20
-                 pt-20 pb-8 xs:pt-24 xs:pb-10 sm:pt-28 sm:pb-12 md:pt-32 md:pb-16 lg:pt-36 lg:pb-20"
+      className="relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-red-50/40
+                 px-4 sm:px-8 lg:px-16 pt-28 pb-14 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20"
     >
-      {/* Éléments décoratifs d'arrière-plan */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Cercles flottants */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-red-200 rounded-full opacity-20 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-blue-200 rounded-full opacity-30 animate-bounce"></div>
-        <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-green-200 rounded-full opacity-25 animate-pulse"></div>
-        
-        {/* Lignes géométriques */}
-        <div className="absolute top-1/3 right-1/4 w-32 h-1 bg-gradient-to-r from-transparent via-red-300 to-transparent opacity-30"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-24 h-1 bg-gradient-to-r from-transparent via-blue-300 to-transparent opacity-30"></div>
-      </div>
+      <div className="relative z-10 w-full max-w-6xl mx-auto">
+        <div className="text-center max-w-4xl mx-auto">
+          <p className="inline-flex items-center rounded-full border border-red-200 bg-white px-4 py-1.5 text-xs sm:text-sm font-semibold text-[#E60023] shadow-sm">
+            Conseil IA, automatisation et support IT · Monaco et France
+          </p>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto text-center">
-        {/* Slogan professionnel avec effet lumineux */}
-        <div className="mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-          <div className="slogan-professionnel
-                          inline-flex items-center space-x-2 xs:space-x-3 sm:space-x-4 md:space-x-5 lg:space-x-6
-                          px-6 xs:px-8 sm:px-10 md:px-12 lg:px-16
-                          py-4 xs:py-5 sm:py-6 md:py-7 lg:py-8
-                          text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl
-                          font-black text-white
-                          bg-gradient-to-r from-[#E60023] via-red-600 to-[#E60023]
-                          border-3 border-[#E60023]
-                          rounded-2xl
-                          shadow-[0_0_20px_rgba(230,0,35,0.6),0_0_40px_rgba(230,0,35,0.4),0_0_60px_rgba(230,0,35,0.2)]
-                          drop-shadow-lg
-                          mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16
-                          animate-slogan-glow">
-            <Rocket className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14" />
-            <span className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent drop-shadow-lg">
-              ArchiAtech – Bâtissez l'avenir de votre entreprise avec l'IA
-            </span>
-          </div>
-        </div>
-
-        {/* Titre principal */}
-        <div className="mb-4 xs:mb-6 sm:mb-8 md:mb-10 lg:mb-12">
-          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
-                         font-black text-gray-900
-                         leading-tight
-                         mb-3 xs:mb-4 sm:mb-5 md:mb-6 lg:mb-7">
-            <span className="block bg-gradient-to-r from-[#E60023] via-red-600 to-[#E60023] 
-                             bg-clip-text text-transparent
-                             drop-shadow-lg font-black text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">ARCHIATECH</span>
-            <span className="block text-gray-900 font-semibold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">accompagne</span>
-            <span className="block text-gray-900 font-semibold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">votre entreprise</span>
+          <h1 className="mt-6 text-3xl sm:text-5xl lg:text-6xl font-black leading-tight text-gray-900">
+            Automatisez vos tâches répétitives.{' '}
+            <span className="text-[#E60023]">Mettez l&apos;IA au travail</span>, sans perdre le contrôle de vos données.
           </h1>
+
+          <p className="mt-6 text-base sm:text-xl text-gray-600 leading-relaxed">
+            ArchiAtech accompagne les PME et les startups : audit, mise en place et suivi, sur devis.
+          </p>
+
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
+            <a
+              href="/contact/?objet=audit#formulaire"
+              className="inline-flex items-center gap-2 bg-[#E60023] hover:bg-red-700 text-white font-bold px-8 py-4 rounded-xl text-base sm:text-lg shadow-lg transition-colors"
+            >
+              Audit gratuit <ArrowRight className="w-5 h-5" aria-hidden="true" />
+            </a>
+            <a href="#offres" className="text-gray-700 hover:text-[#E60023] font-semibold underline underline-offset-4">
+              Voir nos offres
+            </a>
+          </div>
+
+          <ul className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-2 text-sm sm:text-base text-gray-700">
+            {repères.map((r) => (
+              <li key={r} className="inline-flex items-center gap-2">
+                <Check className="w-4 h-4 text-green-600" aria-hidden="true" />
+                {r}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Sous-titre avec style moderne */}
-        <div className="mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-          <div className="inline-block px-8 xs:px-10 sm:px-12 md:px-16 lg:px-20 py-4 xs:py-5 sm:py-6 md:py-7 lg:py-8
-                          bg-gradient-to-r from-[#E60023] via-red-600 to-[#E60023]
-                          rounded-2xl shadow-[0_0_30px_rgba(230,0,35,0.6),0_0_60px_rgba(230,0,35,0.4)]
-                          transform hover:scale-105 transition-all duration-300">
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl
-                           font-black text-white uppercase tracking-wider
-                           drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]
-                           animate-pulse">
-              INNOVEZ, ÉVOLUEZ, EXCELLEZ
-            </h2>
-          </div>
+        {/* Exemple d'automatisation : schéma illustratif */}
+        <div className="mt-12 sm:mt-16 rounded-2xl border border-gray-200 bg-white p-5 sm:p-8 shadow-sm">
+          <p className="text-center text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-500">
+            Exemple d&apos;automatisation : du message reçu à la relance
+          </p>
+          <ol className="mt-6 grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-2 items-stretch">
+            {etapes.map((e, i) => (
+              <li key={e.label} className="relative flex sm:flex-col items-center sm:text-center gap-3 sm:gap-2">
+                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-red-50 text-[#E60023]">
+                  <e.icon className="w-6 h-6" aria-hidden="true" />
+                </span>
+                <span className="text-sm sm:text-base font-medium text-gray-800">{e.label}</span>
+                {i < etapes.length - 1 && (
+                  <ArrowRight
+                    className="hidden sm:block absolute top-3 -right-3 w-5 h-5 text-gray-300"
+                    aria-hidden="true"
+                  />
+                )}
+              </li>
+            ))}
+          </ol>
+          <p className="mt-6 text-center text-xs sm:text-sm text-gray-500">
+            Schéma illustratif : chaque automatisation est conçue après un audit de vos propres outils.
+          </p>
         </div>
 
-        {/* Sous-titre élégant avec défilement sur 3 niveaux */}
-        <div className="mb-8 xs:mb-10 sm:mb-12 md:mb-16 lg:mb-20 overflow-hidden">
-          {/* Premier niveau */}
-          <div className="animate-scroll-level-1 whitespace-nowrap mb-4">
-            <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl
-                          font-light text-gray-600
-                          leading-relaxed px-3 xs:px-4 sm:px-6
-                          tracking-wide inline-block">
-              Votre avenir commence ici
-            </p>
-          </div>
-          
-          {/* Deuxième niveau */}
-          <div className="animate-scroll-level-2 whitespace-nowrap mb-4">
-            <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl
-                          font-light text-gray-600
-                          leading-relaxed px-3 xs:px-4 sm:px-6
-                          tracking-wide inline-block">
-              Accélérez votre transformation numérique et libérez du temps pour ce qui compte vraiment.
-            </p>
-          </div>
-          
-          {/* Troisième niveau */}
-          <div className="animate-scroll-level-3 whitespace-nowrap">
-            <p className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl
-                          font-light text-gray-600
-                          leading-relaxed px-3 xs:px-4 sm:px-6
-                          tracking-wide inline-block">
-              Concentrez-vous sur votre cœur de métier pendant que l'IA automatise vos tâches chronophages.
-            </p>
-          </div>
+        {/* Ce que nous faisons */}
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          {metiers.map((m) => (
+            <a
+              key={m.titre}
+              href={m.href}
+              className="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:border-[#E60023] hover:shadow-md transition"
+            >
+              <m.icon className="w-6 h-6 text-[#E60023]" aria-hidden="true" />
+              <h2 className="mt-3 text-lg font-bold text-gray-900">{m.titre}</h2>
+              <p className="mt-1 text-sm text-gray-600 leading-relaxed">{m.texte}</p>
+              <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#E60023]">
+                En savoir plus <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </span>
+            </a>
+          ))}
         </div>
-
-        {/* Appel à l'action principal */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-          <a
-            href="/contact/?objet=audit#formulaire"
-            className="inline-flex items-center gap-2 bg-[#E60023] hover:bg-red-700 text-white font-bold
-                       px-8 py-4 rounded-xl text-base sm:text-lg shadow-lg transition-colors"
-          >
-            Audit gratuit <ArrowRight className="w-5 h-5" />
-          </a>
-          <a href="#offres" className="text-gray-700 hover:text-[#E60023] font-semibold underline underline-offset-4">
-            Voir nos offres
-          </a>
-        </div>
-
       </div>
     </section>
   );
