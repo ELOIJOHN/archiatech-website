@@ -2,6 +2,7 @@
 // Fichier en JavaScript pur : il est lu à la fois par React (affichage) et par
 // scripts/prerender.mjs (génération du HTML de chaque page + sitemap).
 import { blogPosts } from './blog-posts.js';
+import { autoflowLanding } from './offers.js';
 
 export const SITE_URL = 'https://www.archiatech.com';
 
@@ -102,6 +103,16 @@ export const pages = [
     summary: `${s.tagline} ${s.intro}`,
     priority: '0.8',
   })),
+  {
+    path: `/offres/${autoflowLanding.slug}/`,
+    type: 'offer',
+    slug: autoflowLanding.slug,
+    title: autoflowLanding.metaTitle,
+    description: autoflowLanding.metaDescription,
+    h1: autoflowLanding.h1,
+    summary: autoflowLanding.summary,
+    priority: '0.8',
+  },
   {
     path: '/blog/',
     type: 'blog',

@@ -10,6 +10,8 @@ import ContactSection from './components/ContactSectionSimple';
 import ArchiAgent from './components/ArchiAgent';
 import SiteFooter from './components/SiteFooter';
 import ServicePage from './pages/ServicePage';
+import OfferPage from './pages/OfferPage';
+import OffresSection from './components/OffresSection';
 import AboutPage from './pages/AboutPage';
 import { BlogIndex, BlogArticle } from './pages/BlogPages';
 import NotFoundPage from './pages/NotFoundPage';
@@ -25,6 +27,8 @@ function HomePage() {
       <PilliersSection />
       {/* Services - Nos expertises */}
       <ServicesSection />
+      {/* Offres sans prix (sur devis) + Audit gratuit */}
+      <OffresSection />
       {/* Notre Approche - Méthodologie */}
       <ApprocheSection />
       {/* Nos Avantages */}
@@ -55,6 +59,8 @@ function renderPage(page) {
       return <HomePage />;
     case 'service':
       return <ServicePage slug={page.slug} />;
+    case 'offer':
+      return <OfferPage />;
     case 'blog':
       return <BlogIndex />;
     case 'article':

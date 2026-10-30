@@ -5,7 +5,7 @@ from playwright.sync_api import sync_playwright
 
 root = pathlib.Path(__file__).resolve().parent.parent
 data = json.loads(subprocess.check_output(['node', '-e', """
-import('./src/data/site-pages.js').then(m=>console.log(JSON.stringify(m.pages.filter(p=>['service','about','contact','blog','article'].includes(p.type)).map(p=>({path:p.path,h1:p.h1,summary:p.summary})))))
+import('./src/data/site-pages.js').then(m=>console.log(JSON.stringify(m.pages.filter(p=>['service','offer','about','contact','blog','article'].includes(p.type)).map(p=>({path:p.path,h1:p.h1,summary:p.summary})))))
 """], cwd=root))
 logo = base64.b64encode((root/'public/images/logo-horizontal-white.png').read_bytes()).decode()
 out = root/'public/images/og'; out.mkdir(parents=True, exist_ok=True)

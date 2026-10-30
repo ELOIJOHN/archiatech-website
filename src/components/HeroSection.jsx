@@ -1,5 +1,5 @@
 import React from 'react';
-import { Rocket } from 'lucide-react';
+import { Rocket, ArrowRight } from 'lucide-react';
 
 export default function HeroSection() {
   return (
@@ -107,6 +107,20 @@ export default function HeroSection() {
               Concentrez-vous sur votre cœur de métier pendant que l'IA automatise vos tâches chronophages.
             </p>
           </div>
+        </div>
+
+        {/* Appel à l'action principal */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/contact/"
+            className="inline-flex items-center gap-2 bg-[#E60023] hover:bg-red-700 text-white font-bold
+                       px-8 py-4 rounded-xl text-base sm:text-lg shadow-lg transition-colors"
+          >
+            Audit gratuit <ArrowRight className="w-5 h-5" />
+          </a>
+          <a href="#offres" className="text-gray-700 hover:text-[#E60023] font-semibold underline underline-offset-4">
+            Voir nos offres
+          </a>
         </div>
 
       </div>

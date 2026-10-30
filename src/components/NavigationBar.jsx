@@ -58,6 +58,7 @@ export default function NavigationBar() {
 
   // Menu principal
   const mainNavItems = [
+    { label: 'Offres', href: '/#offres' },
     { label: 'Actualités IA', href: '/#actualites' },
     { label: 'Blog', href: '/blog/' },
     { label: 'À propos', href: '/a-propos/' },
@@ -177,6 +178,13 @@ export default function NavigationBar() {
                 {item.label}
               </a>
             ))}
+            <a
+              href="/contact/"
+              className="bg-white text-[#E60023] hover:bg-gray-100 font-bold rounded-lg px-4 py-2
+                         text-base lg:text-lg whitespace-nowrap transition-colors"
+            >
+              Audit gratuit
+            </a>
           </div>
 
           {/* Menu Mobile Button - Touch optimisé */}
@@ -261,6 +269,13 @@ export default function NavigationBar() {
                   {item.label}
                 </a>
               ))}
+              <a
+                href="/contact/"
+                className="bg-white text-[#E60023] font-bold rounded-lg py-3 px-3 text-center touch-target"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Audit gratuit
+              </a>
             </div>
           </div>
         )}
