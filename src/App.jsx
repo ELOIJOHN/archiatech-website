@@ -1,4 +1,5 @@
 import React from 'react';
+import HomePreview from './components/HomePreview';
 import NavigationBar from './components/NavigationBar';
 import HeroSection from './components/HeroSection';
 import PilliersSection from './components/PilliersSection';
@@ -10,6 +11,10 @@ import ContactSection from './components/ContactSectionSimple';
 import ArchiAgent from './components/ArchiAgent';
 
 export default function App() {
+  if (new URLSearchParams(window.location.search).get('accueil') !== 'original') {
+    return <HomePreview />;
+  }
+
   return (
     <>
       {/* Navigation transparente fixe */}

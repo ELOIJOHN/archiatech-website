@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { prepareContactDraft } from '../services/contactDraft';
 
-export default function ContactSectionSimple() {
+export default function ContactSectionSimple({ heading = "Prêt à automatiser vos processus ?", introduction = null }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
@@ -120,7 +120,7 @@ export default function ContactSectionSimple() {
             textShadow: '0 2px 4px rgba(227, 64, 64, 0.2)',
             letterSpacing: '-0.02em'
           }}>
-            Prêt à automatiser vos processus ?
+            {heading}
           </h2>
           <p style={{
             fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -130,7 +130,7 @@ export default function ContactSectionSimple() {
             maxWidth: '500px',
             margin: '0 auto'
           }}>
-            Contactez-nous pour un <span style={{ color: '#e34040', fontWeight: 600 }}>audit gratuit</span> et découvrez comment gagner en efficacité
+            {introduction || <>Contactez-nous pour un <span style={{ color: '#e34040', fontWeight: 600 }}>audit gratuit</span> et découvrez comment gagner en efficacité</>}
           </p>
         </div>
 
@@ -669,3 +669,4 @@ export default function ContactSectionSimple() {
     </section>
   );
 }
+
