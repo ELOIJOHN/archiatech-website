@@ -66,14 +66,15 @@ export default function NavigationBar() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-navigation transition-all duration-300 ${
+    <nav className={`nav-glow fixed top-0 w-full z-navigation transition-all duration-300 ${
       isScrolled
-        ? 'bg-black/80 backdrop-blur-xl'
-        : 'bg-black'
+        ? 'bg-[#E60023]/95 backdrop-blur-xl border-b border-white/20'
+        : 'bg-[#E60023]'
     }`}>
-      {/* Halo rouge sous la barre */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-[#ff1f3f] to-transparent shadow-[0_0_18px_4px_rgba(230,0,35,0.7)]" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-x-0 top-full h-16 bg-[radial-gradient(ellipse_at_top,rgba(230,0,35,0.6),transparent_70%)]" aria-hidden="true" />
+      {/* Effet lumineux : un reflet traverse la barre */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="nav-sweep absolute inset-y-0 w-1/3" />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex justify-between items-center">
           {/* Logo ArchiAtech Digital Solutions (version horizontale blanche) */}
@@ -84,7 +85,7 @@ export default function NavigationBar() {
               alt="ArchiAtech Digital Solutions"
               width="889"
               height="160"
-              className="h-9 sm:h-12 md:h-14 w-auto drop-shadow-[0_0_14px_rgba(230,0,35,0.55)]"
+              className="h-8 sm:h-10 md:h-11 w-auto"
             />
           </a>
 
@@ -174,7 +175,7 @@ export default function NavigationBar() {
               <a
                 key={index}
                 href={item.href}
-                className="text-white/80 hover:text-[#E60023] transition-colors duration-200
+                className="text-white/80 hover:text-white transition-colors duration-200
                           font-medium touch-target text-base lg:text-lg xl:text-xl whitespace-nowrap
                           px-3 py-2 rounded-lg hover:bg-white/10"
               >
@@ -183,7 +184,7 @@ export default function NavigationBar() {
             ))}
             <a
               href="/contact/?objet=audit#formulaire"
-              className="bg-[#E60023] text-white hover:bg-[#ff1f3f] font-bold rounded-lg px-4 py-2
+              className="bg-white text-[#E60023] hover:bg-gray-100 font-bold rounded-lg px-4 py-2
                          text-base lg:text-lg whitespace-nowrap transition-colors"
             >
               Audit gratuit
@@ -193,7 +194,7 @@ export default function NavigationBar() {
           {/* Menu Mobile Button - Touch optimisé */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-white hover:text-[#E60023] transition-colors
+            className="md:hidden p-2 text-white hover:text-white transition-colors
                       touch-target rounded-lg active:bg-white/10"
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
@@ -261,7 +262,7 @@ export default function NavigationBar() {
                 <a
                   key={index}
                   href={item.href}
-                  className="text-white/80 hover:text-[#E60023]
+                  className="text-white/80 hover:text-white
                             transition-colors duration-200 font-medium
                             py-2.5 xs:py-3 px-1.5 xs:px-2
                             rounded-md xs:rounded-lg
@@ -274,7 +275,7 @@ export default function NavigationBar() {
               ))}
               <a
                 href="/contact/?objet=audit#formulaire"
-                className="bg-[#E60023] text-white font-bold rounded-lg py-3 px-3 text-center touch-target"
+                className="bg-white text-[#E60023] font-bold rounded-lg py-3 px-3 text-center touch-target"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Audit gratuit

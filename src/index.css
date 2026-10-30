@@ -421,3 +421,23 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .hero-shimmer-dark { animation: none; color: #ff3b55; background-image: none; }
 }
+
+/* Barre de menu : reflet lumineux + lueur rouge en dessous */
+.nav-glow { animation: nav-glow-pulse 4s ease-in-out infinite; }
+@keyframes nav-glow-pulse {
+  0%, 100% { box-shadow: 0 6px 24px -6px rgba(230, 0, 35, 0.45); }
+  50% { box-shadow: 0 8px 36px -2px rgba(255, 40, 70, 0.8); }
+}
+.nav-sweep {
+  background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%);
+  transform: translateX(-120%) skewX(-18deg);
+  animation: nav-sweep 6s ease-in-out infinite;
+}
+@keyframes nav-sweep {
+  0%, 15% { transform: translateX(-120%) skewX(-18deg); }
+  55%, 100% { transform: translateX(420%) skewX(-18deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-glow { animation: none; box-shadow: 0 6px 24px -6px rgba(230, 0, 35, 0.5); }
+  .nav-sweep { animation: none; display: none; }
+}
