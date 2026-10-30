@@ -424,12 +424,12 @@ body {
 
 /* Barre de menu rouge Ferrari : respiration + liseré lumineux */
 .nav-ferrari {
-  background-color: #D40000;
+  background-color: #F70D1A;
   animation: nav-breathe 6s ease-in-out infinite;
 }
 @keyframes nav-breathe {
-  0%, 100% { background-color: #B30000; box-shadow: 0 6px 22px -8px rgba(212, 0, 0, 0.45); }
-  50% { background-color: #FF2800; box-shadow: 0 8px 34px -4px rgba(255, 40, 0, 0.75); }
+  0%, 100% { background-color: #C20A15; box-shadow: 0 6px 22px -8px rgba(247, 13, 26, 0.4); }
+  50% { background-color: #F70D1A; box-shadow: 0 8px 34px -4px rgba(247, 13, 26, 0.8); }
 }
 .nav-trait {
   background: linear-gradient(90deg, transparent, #ffffff 50%, transparent);
@@ -442,6 +442,6 @@ body {
   to { transform: translateX(500%); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .nav-ferrari { animation: none; background-color: #D40000; }
+  .nav-ferrari { animation: none; background-color: #F70D1A; }
   .nav-trait { animation: none; display: none; }
 }

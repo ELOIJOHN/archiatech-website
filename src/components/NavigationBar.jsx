@@ -114,7 +114,7 @@ export default function NavigationBar() {
                             w-72 md:w-80 lg:w-[340px]
                             rounded-2xl overflow-hidden
                             z-dropdown
-                            bg-gradient-to-br from-[#FF2800] via-[#D40000] to-[#B30000]
+                            bg-gradient-to-br from-[#F70D1A] via-[#F70D1A] to-[#B3000D]
                             backdrop-blur-2xl border border-white/20
                             shadow-[0_8px_32px_rgba(230,0,35,0.3),0_0_0_1px_rgba(255,255,255,0.1)]"
                   onMouseLeave={() => setIsDropdownOpen(false)}
@@ -145,7 +145,7 @@ export default function NavigationBar() {
                                         bg-white shadow-lg shadow-black/10
                                         group-hover:scale-110 group-hover:rotate-3
                                         transition-all duration-300">
-                            <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-[#D40000]" />
+                            <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-[#F70D1A]" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="nav-dropdown-text text-white font-semibold
@@ -182,7 +182,7 @@ export default function NavigationBar() {
             ))}
             <a
               href="/contact/?objet=audit#formulaire"
-              className="bg-white text-[#D40000] hover:bg-gray-100 font-bold rounded-lg px-4 py-2
+              className="bg-white text-[#F70D1A] hover:bg-gray-100 font-bold rounded-lg px-4 py-2
                          text-base lg:text-lg whitespace-nowrap transition-colors"
             >
               Audit gratuit
@@ -207,7 +207,7 @@ export default function NavigationBar() {
         {/* Menu Mobile - Amélioré responsive */}
         {isMenuOpen && (
           <div className="md:hidden mt-2 xs:mt-3 sm:mt-4 pb-2 xs:pb-3 sm:pb-4
-                         border-t border-[#D40000]/20 mobile-menu-enter">
+                         border-t border-[#F70D1A]/20 mobile-menu-enter">
             <div className="flex flex-col space-y-1.5 xs:space-y-2 pt-2 xs:pt-3 sm:pt-4">
               {/* Section ArchiAtech dans le menu mobile */}
               <div className="mobile-nav-section border-b border-white/10
@@ -236,7 +236,7 @@ export default function NavigationBar() {
                                       w-7 h-7 xs:w-8 xs:h-8
                                       rounded-md xs:rounded-lg
                                       flex items-center justify-center">
-                          <IconComponent className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#D40000]" />
+                          <IconComponent className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#F70D1A]" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="text-white font-medium
@@ -273,7 +273,7 @@ export default function NavigationBar() {
               ))}
               <a
                 href="/contact/?objet=audit#formulaire"
-                className="bg-white text-[#D40000] font-bold rounded-lg py-3 px-3 text-center touch-target"
+                className="bg-white text-[#F70D1A] font-bold rounded-lg py-3 px-3 text-center touch-target"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Audit gratuit
