@@ -9,7 +9,7 @@ export default function ServicesSection() {
       title: "Support & Déploiement IT",
       href: "/services/support-it/", cta: "En savoir plus",
       description: "Installation, configuration et déploiement de postes de travail en toute sérénité",
-      gradient: "from-[#E60023] to-red-600"
+      gradient: "from-[#F70D1A] to-red-600"
     },
     {
       icon: <Cpu className="w-6 h-6 sm:w-7 sm:h-7" />,
@@ -23,7 +23,7 @@ export default function ServicesSection() {
       title: "Automatisation Workflows",
       href: "/services/automatisation-n8n/", cta: "En savoir plus",
       description: "RPA, connecteurs, API pour optimiser vos processus",
-      gradient: "from-[#E60023] to-red-600"
+      gradient: "from-[#F70D1A] to-red-600"
     },
     {
       icon: <Code className="w-6 h-6 sm:w-7 sm:h-7" />,
@@ -37,7 +37,7 @@ export default function ServicesSection() {
       title: "Formation & Accompagnement",
       href: "/contact/", cta: "Demander un devis",
       description: "Support continu et formation de vos équipes",
-      gradient: "from-[#E60023] to-red-600"
+      gradient: "from-[#F70D1A] to-red-600"
     },
     {
       icon: <Rocket className="w-6 h-6 sm:w-7 sm:h-7" />,
@@ -56,7 +56,7 @@ export default function ServicesSection() {
     >
       <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-          <span className="text-[#E60023] font-semibold
+          <span className="text-[#F70D1A] font-semibold
                          text-[0.65rem] xs:text-xs sm:text-sm
                          uppercase tracking-wider">
             Nos expertises
@@ -116,7 +116,7 @@ export default function ServicesSection() {
                 />
                 <a
                   href={service.href}
-                  className="relative text-[#E60023] font-semibold
+                  className="relative text-[#F70D1A] font-semibold
                            flex items-center group-hover:gap-2
                            transition-all
                            text-xs xs:text-sm sm:text-base

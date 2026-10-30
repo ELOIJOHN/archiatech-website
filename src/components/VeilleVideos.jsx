@@ -27,7 +27,7 @@ export default function VeilleVideos() {
     <section id="veille-videos" className="py-12 sm:py-16 md:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
-          <span className="text-[#E60023] font-semibold text-xs sm:text-sm uppercase tracking-wider">Veille</span>
+          <span className="text-[#F70D1A] font-semibold text-xs sm:text-sm uppercase tracking-wider">Veille</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-3">Veille vidéo</h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Une sélection de vidéos récentes d'autres chaînes, choisies pour leur intérêt sur l'IA, l'automatisation et le numérique.
@@ -56,7 +56,7 @@ export default function VeilleVideos() {
                   >
                     <img src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`} alt="" loading="lazy" className="w-full h-full object-cover" />
                     <span className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
-                      <span className="w-14 h-14 rounded-full bg-[#E60023] flex items-center justify-center shadow-lg">
+                      <span className="w-14 h-14 rounded-full bg-[#F70D1A] flex items-center justify-center shadow-lg">
                         <Play className="w-6 h-6 text-white ml-0.5" aria-hidden="true" />
                       </span>
                     </span>
@@ -69,7 +69,7 @@ export default function VeilleVideos() {
                 <p className="text-sm text-gray-500 mt-auto">
                   Source :{' '}
                   {v.authorUrl ? (
-                    <a href={v.authorUrl} target="_blank" rel="noopener noreferrer" className="text-[#E60023] hover:underline">
+                    <a href={v.authorUrl} target="_blank" rel="noopener noreferrer" className="text-[#F70D1A] hover:underline">
                       {v.author}
                     </a>
                   ) : (

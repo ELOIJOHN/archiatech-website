@@ -78,13 +78,13 @@ const YouTubePlayerSimple = () => {
             <div className="flex items-center gap-2 sm:gap-4">
               <button
                 onClick={handlePrevVideo}
-                className="bg-[#E60023] hover:bg-red-700 text-white px-2.5 sm:px-4 py-2 rounded-lg transition-colors text-xs sm:text-base whitespace-nowrap"
+                className="bg-[#F70D1A] hover:bg-red-700 text-white px-2.5 sm:px-4 py-2 rounded-lg transition-colors text-xs sm:text-base whitespace-nowrap"
               >
                 ← Précédent
               </button>
               <button
                 onClick={handleNextVideo}
-                className="bg-[#E60023] hover:bg-red-700 text-white px-2.5 sm:px-4 py-2 rounded-lg transition-colors text-xs sm:text-base whitespace-nowrap"
+                className="bg-[#F70D1A] hover:bg-red-700 text-white px-2.5 sm:px-4 py-2 rounded-lg transition-colors text-xs sm:text-base whitespace-nowrap"
               >
                 Suivant →
               </button>
@@ -126,7 +126,7 @@ const YouTubePlayerSimple = () => {
               onClick={() => handleThumbnailClick(index)}
               className={`relative cursor-pointer rounded-lg overflow-hidden transition-all duration-300 ${
                 index === currentVideoIndex
-                  ? 'ring-2 ring-[#E60023] scale-105'
+                  ? 'ring-2 ring-[#F70D1A] scale-105'
                   : 'hover:scale-105 hover:shadow-lg'
               }`}
             >
@@ -138,14 +138,14 @@ const YouTubePlayerSimple = () => {
               
               {/* Badge "En cours" */}
               {index === currentVideoIndex && (
-                <div className="absolute top-2 right-2 bg-[#E60023] text-white text-xs px-2 py-1 rounded-full font-semibold">
+                <div className="absolute top-2 right-2 bg-[#F70D1A] text-white text-xs px-2 py-1 rounded-full font-semibold">
                   En cours
                 </div>
               )}
               
               {/* Overlay avec icône play */}
               <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                <div className="w-12 h-12 bg-[#E60023] rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-[#F70D1A] rounded-full flex items-center justify-center">
                   <svg className="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z"/>
                   </svg>
@@ -162,7 +162,7 @@ const YouTubePlayerSimple = () => {
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-gray-400">{video.duration}</span>
-                  <span className="text-xs text-[#E60023] font-semibold">ArchiAtech</span>
+                  <span className="text-xs text-[#F70D1A] font-semibold">ArchiAtech</span>
                 </div>
               </div>
             </div>
@@ -171,7 +171,7 @@ const YouTubePlayerSimple = () => {
       </div>
 
       {/* Contrôles de navigation */}
-      <div className="bg-[#E60023] p-4">
+      <div className="bg-[#F70D1A] p-4">
         <div className="flex items-center justify-between text-white">
           <button
             onClick={handlePrevVideo}

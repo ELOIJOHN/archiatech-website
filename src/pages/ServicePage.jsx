@@ -16,7 +16,7 @@ export default function ServicePage({ slug }) {
       <ul className="space-y-3 mb-10">
         {service.offers.map((offer) => (
           <li key={offer} className="flex gap-3 text-gray-700">
-            <Check className="w-5 h-5 text-[#E60023] flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <Check className="w-5 h-5 text-[#F70D1A] flex-shrink-0 mt-0.5" aria-hidden="true" />
             <span>{offer}</span>
           </li>
         ))}
@@ -29,7 +29,7 @@ export default function ServicePage({ slug }) {
       <ol className="grid sm:grid-cols-3 gap-4 mb-12">
         {service.steps.map(([title, text], i) => (
           <li key={title} className="rounded-xl border border-gray-200 p-5">
-            <span className="text-[#E60023] font-bold text-sm">Étape {i + 1}</span>
+            <span className="text-[#F70D1A] font-bold text-sm">Étape {i + 1}</span>
             <h3 className="font-semibold text-gray-900 mt-1 mb-2">{title}</h3>
             <p className="text-sm text-gray-600 leading-relaxed">{text}</p>
           </li>
@@ -46,7 +46,7 @@ export default function ServicePage({ slug }) {
       <ul className="space-y-2">
         {others.map((s) => (
           <li key={s.slug}>
-            <a href={`/services/${s.slug}/`} className="text-[#E60023] hover:underline font-medium">
+            <a href={`/services/${s.slug}/`} className="text-[#F70D1A] hover:underline font-medium">
               {s.name}
             </a>
           </li>

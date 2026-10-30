@@ -57,7 +57,7 @@ src/
 ## 🎨 **Design et UX**
 
 ### **Palette de couleurs**
-- **Rouge principal** : #E60023 (ArchiAtech)
+- **Rouge principal** : #F70D1A (ArchiAtech)
 - **Fond sombre** : Gradients noir/gris
 - **Transparence** : Effets glassmorphism
 - **Accents** : Rouge avec effets de glow

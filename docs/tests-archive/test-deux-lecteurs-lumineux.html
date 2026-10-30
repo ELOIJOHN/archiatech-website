@@ -30,8 +30,8 @@
             background: #000;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
-            border: 3px solid #E60023;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(247,13,26, 0.8), 0 0 50px rgba(247,13,26, 0.4);
+            border: 3px solid #F70D1A;
             outline: 1px solid rgba(255, 0, 0, 0.3);
             outline-offset: 2px;
             animation: glow 3s ease-in-out infinite;
@@ -77,15 +77,15 @@
             padding: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid #E60023;
-            box-shadow: 0 0 10px rgba(230, 0, 35, 0.3);
+            border: 2px solid #F70D1A;
+            box-shadow: 0 0 10px rgba(247,13,26, 0.3);
             position: relative;
             overflow: hidden;
         }
         .thumbnail-container:hover {
             background: #2a2a2a;
             transform: translateY(-2px);
-            box-shadow: 0 0 15px rgba(230, 0, 35, 0.5);
+            box-shadow: 0 0 15px rgba(247,13,26, 0.5);
         }
         .thumbnail-container.selected {
             background: #e34040;
@@ -101,33 +101,33 @@
         .info {
             margin-top: 2rem;
             text-align: center;
-            background: rgba(230, 0, 35, 0.1);
+            background: rgba(247,13,26, 0.1);
             padding: 2rem;
             border-radius: 12px;
-            border: 2px solid #E60023;
+            border: 2px solid #F70D1A;
         }
         @keyframes glow {
             0% { 
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(247,13,26, 0.8), 0 0 50px rgba(247,13,26, 0.4);
             }
             50% { 
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(230, 0, 35, 1), 0 0 70px rgba(230, 0, 35, 0.6);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(247,13,26, 1), 0 0 70px rgba(247,13,26, 0.6);
             }
             100% { 
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(247,13,26, 0.8), 0 0 50px rgba(247,13,26, 0.4);
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 style="text-align: center; margin-bottom: 2rem; color: #E60023; font-size: 2.5rem;">
+        <h1 style="text-align: center; margin-bottom: 2rem; color: #F70D1A; font-size: 2.5rem;">
             🔴 DEUX LECTEURS VIDÉO AVEC CADRE ROUGE LUMINEUX 🔴
         </h1>
         
         <!-- Premier Lecteur Vidéo (VideoShowcase) -->
         <div class="section">
-            <h2 style="color: #E60023; margin-bottom: 1rem;">📺 PREMIER LECTEUR - VideoShowcase (VeilleSection)</h2>
+            <h2 style="color: #F70D1A; margin-bottom: 1rem;">📺 PREMIER LECTEUR - VideoShowcase (VeilleSection)</h2>
             <div class="video-container">
                 <div class="video-area">
                     <div class="video-text">
@@ -173,7 +173,7 @@
 
         <!-- Deuxième Lecteur Vidéo (SimpleVideoPlayer) -->
         <div class="section">
-            <h2 style="color: #E60023; margin-bottom: 1rem;">📺 DEUXIÈME LECTEUR - SimpleVideoPlayer (VideoSection)</h2>
+            <h2 style="color: #F70D1A; margin-bottom: 1rem;">📺 DEUXIÈME LECTEUR - SimpleVideoPlayer (VideoSection)</h2>
             <div class="video-container">
                 <div class="video-area">
                     <div class="video-text">
@@ -185,28 +185,28 @@
         </div>
 
         <div class="info">
-            <h2 style="color: #E60023; margin-bottom: 1rem;">✅ CADRE ROUGE LUMINEUX SUR LES DEUX LECTEURS :</h2>
+            <h2 style="color: #F70D1A; margin-bottom: 1rem;">✅ CADRE ROUGE LUMINEUX SUR LES DEUX LECTEURS :</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; text-align: left;">
                 <div>
-                    <h3 style="color: #E60023;">📺 Premier Lecteur (VideoShowcase) :</h3>
+                    <h3 style="color: #F70D1A;">📺 Premier Lecteur (VideoShowcase) :</h3>
                     <ul style="color: #ccc; line-height: 1.8;">
-                        <li>✅ <strong>Bordure</strong> - 3px solid #E60023</li>
+                        <li>✅ <strong>Bordure</strong> - 3px solid #F70D1A</li>
                         <li>✅ <strong>Outline</strong> - 1px solid rgba(255, 0, 0, 0.3)</li>
                         <li>✅ <strong>Animation</strong> - glow 3s ease-in-out infinite</li>
                         <li>✅ <strong>Ombre lumineuse</strong> - Multi-couches</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 style="color: #E60023;">📺 Deuxième Lecteur (SimpleVideoPlayer) :</h3>
+                    <h3 style="color: #F70D1A;">📺 Deuxième Lecteur (SimpleVideoPlayer) :</h3>
                     <ul style="color: #ccc; line-height: 1.8;">
-                        <li>✅ <strong>Bordure</strong> - 3px solid #E60023</li>
+                        <li>✅ <strong>Bordure</strong> - 3px solid #F70D1A</li>
                         <li>✅ <strong>Outline</strong> - 1px solid rgba(255, 0, 0, 0.3)</li>
                         <li>✅ <strong>Animation</strong> - glow 3s ease-in-out infinite</li>
                         <li>✅ <strong>Ombre lumineuse</strong> - Multi-couches</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 style="color: #E60023;">🎭 Effet Visuel :</h3>
+                    <h3 style="color: #F70D1A;">🎭 Effet Visuel :</h3>
                     <ul style="color: #ccc; line-height: 1.8;">
                         <li>✅ <strong>Pulsation</strong> - Lueur rouge dynamique</li>
                         <li>✅ <strong>Profondeur</strong> - Effet 3D avec double bordure</li>
@@ -215,7 +215,7 @@
                     </ul>
                 </div>
             </div>
-            <p style="margin-top: 1.5rem; font-size: 1.2rem; color: #E60023; font-weight: bold;">
+            <p style="margin-top: 1.5rem; font-size: 1.2rem; color: #F70D1A; font-weight: bold;">
                 🎉 DEUX LECTEURS VIDÉO AVEC CADRE ROUGE LUMINEUX ! 🎉
             </p>
         </div>

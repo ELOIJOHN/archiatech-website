@@ -7,7 +7,7 @@ export default function BlogSection() {
     <section id="blog" className="py-12 sm:py-16 md:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <span className="text-[#E60023] font-semibold text-xs sm:text-sm uppercase tracking-wider">Notre Blog</span>
+          <span className="text-[#F70D1A] font-semibold text-xs sm:text-sm uppercase tracking-wider">Notre Blog</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mt-2 sm:mt-3 mb-3 sm:mb-4">Actualités & Analyses</h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Suivez nos dernières publications sur l'IA, l'automatisation et la transformation digitale.
@@ -23,7 +23,7 @@ export default function BlogSection() {
                 <p className="text-gray-600 leading-relaxed mb-4">{post.description}</p>
               </div>
               <div className="p-6 bg-gray-50">
-                <a href={`/blog/${post.slug}`} className="font-semibold text-[#E60023] hover:text-red-700 flex items-center">
+                <a href={`/blog/${post.slug}`} className="font-semibold text-[#F70D1A] hover:text-red-700 flex items-center">
                   Lire la suite <ArrowRight className="w-4 h-4 ml-2" />
                 </a>
               </div>

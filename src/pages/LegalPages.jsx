@@ -5,7 +5,7 @@ import { company } from '../data/company';
 const H2 = ({ children }) => <h2 className="text-xl font-bold text-gray-900 mt-10 mb-3">{children}</h2>;
 const P = ({ children }) => <p className="text-gray-700 leading-relaxed mb-3">{children}</p>;
 const Mail = () => (
-  <a href={`mailto:${company.email}`} className="text-[#E60023] hover:underline">{company.email}</a>
+  <a href={`mailto:${company.email}`} className="text-[#F70D1A] hover:underline">{company.email}</a>
 );
 
 export function MentionsLegales() {
@@ -24,14 +24,14 @@ export function MentionsLegales() {
         <li>SIRET : {company.siret}</li>
         {company.address && <li>Adresse : {company.address}</li>}
         <li>Email : <Mail /></li>
-        <li>Téléphone : <a href={company.phoneHref} className="text-[#E60023] hover:underline">{company.phone}</a></li>
+        <li>Téléphone : <a href={company.phoneHref} className="text-[#F70D1A] hover:underline">{company.phone}</a></li>
         <li>Directeur de la publication : {company.publicationDirector}</li>
       </ul>
 
       <H2>Hébergement</H2>
       <P>
         Le site est hébergé par {company.host.name}, {company.host.address} (
-        <a href={company.host.url} target="_blank" rel="noopener noreferrer" className="text-[#E60023] hover:underline">
+        <a href={company.host.url} target="_blank" rel="noopener noreferrer" className="text-[#F70D1A] hover:underline">
           {company.host.url.replace('https://', '')}
         </a>
         ). Le nom de domaine et le réseau de distribution sont gérés par {company.cdn.name}, {company.cdn.address}.
@@ -54,7 +54,7 @@ export function MentionsLegales() {
       <H2>Données personnelles</H2>
       <P>
         Le traitement des données personnelles est détaillé dans notre{' '}
-        <a href="/confidentialite/" className="text-[#E60023] hover:underline">politique de confidentialité</a>.
+        <a href="/confidentialite/" className="text-[#F70D1A] hover:underline">politique de confidentialité</a>.
       </P>
     </PageShell>
   );

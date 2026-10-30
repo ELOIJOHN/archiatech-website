@@ -9,7 +9,7 @@ import('./src/data/site-pages.js').then(m=>console.log(JSON.stringify(m.pages.fi
 """], cwd=root))
 logo = base64.b64encode((root/'public/images/logo-horizontal-white.png').read_bytes()).decode()
 out = root/'public/images/og'; out.mkdir(parents=True, exist_ok=True)
-tpl = """<html><body style="margin:0;width:1200px;height:630px;background:linear-gradient(135deg,#E60023 0%,#B8001C 100%);font-family:Inter,'DejaVu Sans',sans-serif;color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:64px 72px;box-sizing:border-box">
+tpl = """<html><body style="margin:0;width:1200px;height:630px;background:linear-gradient(135deg,#F70D1A 0%,#B8001C 100%);font-family:Inter,'DejaVu Sans',sans-serif;color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:64px 72px;box-sizing:border-box">
 <img src="data:image/png;base64,@LOGO@" style="height:72px;width:auto;align-self:flex-start">
 <div><div style="font-size:@SIZE@px;font-weight:800;line-height:1.1;letter-spacing:-1px">@H1@</div>
 <div style="font-size:30px;line-height:1.4;margin-top:24px;opacity:.92;max-width:980px">@SUM@</div></div>

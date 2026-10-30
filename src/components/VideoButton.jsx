@@ -35,8 +35,8 @@ export default function VideoButton({ serviceTitle, className = "" }) {
       onClick={scrollToVideoSection}
       type="button"
       className={`inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg
-                  bg-[#E60023] hover:bg-red-700 text-white font-semibold
-                  transition-colors focus:outline-none focus:ring-2 focus:ring-[#E60023]/50
+                  bg-[#F70D1A] hover:bg-red-700 text-white font-semibold
+                  transition-colors focus:outline-none focus:ring-2 focus:ring-[#F70D1A]/50
                   w-full sm:w-auto sm:self-start ${className}`}
     >
       <Play className="w-4 h-4" />

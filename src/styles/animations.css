@@ -26,15 +26,15 @@
 @keyframes redGlowPulse {
   0% {
     box-shadow:
-      0 0 20px rgba(230, 0, 35, 0.8),
-      0 0 40px rgba(230, 0, 35, 0.4),
-      inset 0 0 20px rgba(230, 0, 35, 0.1);
+      0 0 20px rgba(247,13,26, 0.8),
+      0 0 40px rgba(247,13,26, 0.4),
+      inset 0 0 20px rgba(247,13,26, 0.1);
   }
   100% {
     box-shadow:
-      0 0 30px rgba(230, 0, 35, 1),
-      0 0 60px rgba(230, 0, 35, 0.6),
-      inset 0 0 30px rgba(230, 0, 35, 0.2);
+      0 0 30px rgba(247,13,26, 1),
+      0 0 60px rgba(247,13,26, 0.6),
+      inset 0 0 30px rgba(247,13,26, 0.2);
   }
 }
 
@@ -135,11 +135,11 @@
 @keyframes archiNotificationPulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 4px 15px rgba(230, 0, 35, 0.4);
+    box-shadow: 0 4px 15px rgba(247,13,26, 0.4);
   }
   50% {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(230, 0, 35, 0.6);
+    box-shadow: 0 6px 20px rgba(247,13,26, 0.6);
   }
 }
 

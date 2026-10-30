@@ -26,15 +26,15 @@ body, html {
 /* Boutons ArchiAtech - Classes utilitaires universelles */
 @layer components {
   .btn-archiatech {
-    @apply px-6 py-2 rounded-xl font-medium text-white border border-[#E60023]/60 bg-[#E60023]/20
-           backdrop-blur-md transition-all duration-300 hover:bg-[#E60023]/40 hover:border-[#E60023]
-           hover:shadow-[0_0_15px_rgba(230,0,35,0.5)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E60023]/50;
+    @apply px-6 py-2 rounded-xl font-medium text-white border border-[#F70D1A]/60 bg-[#F70D1A]/20
+           backdrop-blur-md transition-all duration-300 hover:bg-[#F70D1A]/40 hover:border-[#F70D1A]
+           hover:shadow-[0_0_15px_rgba(247,13,26,0.5)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#F70D1A]/50;
   }
 
   .btn-archiatech-outline {
-    @apply px-6 py-2 rounded-xl font-medium text-white border border-[#E60023]/40 bg-transparent
-           backdrop-blur-md transition-all duration-300 hover:bg-[#E60023]/20 hover:border-[#E60023]
-           hover:shadow-[0_0_10px_rgba(230,0,35,0.3)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E60023]/50;
+    @apply px-6 py-2 rounded-xl font-medium text-white border border-[#F70D1A]/40 bg-transparent
+           backdrop-blur-md transition-all duration-300 hover:bg-[#F70D1A]/20 hover:border-[#F70D1A]
+           hover:shadow-[0_0_10px_rgba(247,13,26,0.3)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#F70D1A]/50;
   }
 
   .btn-archiatech-ghost {
@@ -83,8 +83,8 @@ body, html {
 
   .glass-card:hover {
     background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(230, 0, 35, 0.4);
-    box-shadow: 0 12px 40px rgba(230, 0, 35, 0.2);
+    border: 1px solid rgba(247,13,26, 0.4);
+    box-shadow: 0 12px 40px rgba(247,13,26, 0.2);
   }
 
   /* Harmonisation Hero Section */
@@ -167,12 +167,12 @@ body, html {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(230, 0, 35, 0.6);
+    background: rgba(247,13,26, 0.6);
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(230, 0, 35, 0.8);
+    background: rgba(247,13,26, 0.8);
   }
 
   /* Animations Hero Section */
@@ -254,26 +254,26 @@ body, html {
 
 /* Bordure rouge lumineuse pour vidéo */
 .video-red-glow {
-  border: 2px solid #E60023;
+  border: 2px solid #F70D1A;
   box-shadow: 
-    0 0 20px rgba(230, 0, 35, 0.8),
-    0 0 40px rgba(230, 0, 35, 0.4),
-    inset 0 0 20px rgba(230, 0, 35, 0.1);
+    0 0 20px rgba(247,13,26, 0.8),
+    0 0 40px rgba(247,13,26, 0.4),
+    inset 0 0 20px rgba(247,13,26, 0.1);
   animation: redGlowPulse 2s ease-in-out infinite alternate;
 }
 
 @keyframes redGlowPulse {
   0% {
     box-shadow: 
-      0 0 20px rgba(230, 0, 35, 0.8),
-      0 0 40px rgba(230, 0, 35, 0.4),
-      inset 0 0 20px rgba(230, 0, 35, 0.1);
+      0 0 20px rgba(247,13,26, 0.8),
+      0 0 40px rgba(247,13,26, 0.4),
+      inset 0 0 20px rgba(247,13,26, 0.1);
   }
   100% {
     box-shadow: 
-      0 0 30px rgba(230, 0, 35, 1),
-      0 0 60px rgba(230, 0, 35, 0.6),
-      inset 0 0 30px rgba(230, 0, 35, 0.2);
+      0 0 30px rgba(247,13,26, 1),
+      0 0 60px rgba(247,13,26, 0.6),
+      inset 0 0 30px rgba(247,13,26, 0.2);
   }
 }
 
@@ -735,7 +735,7 @@ body, html {
 
 .archi-agent-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(230, 0, 35, 0.3);
+  box-shadow: 0 8px 25px rgba(247,13,26, 0.3);
 }
 
 .archi-agent-button:active {
@@ -750,18 +750,18 @@ body, html {
 @keyframes archiNotificationPulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 4px 15px rgba(230, 0, 35, 0.4);
+    box-shadow: 0 4px 15px rgba(247,13,26, 0.4);
   }
   50% {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(230, 0, 35, 0.6);
+    box-shadow: 0 6px 20px rgba(247,13,26, 0.6);
   }
 }
 
 /* Styles pour les bulles de chat */
 .archi-agent-bubble-user {
-  background: linear-gradient(135deg, #E60023 0%, #C62828 100%);
-  box-shadow: 0 2px 10px rgba(230, 0, 35, 0.3);
+  background: linear-gradient(135deg, #F70D1A 0%, #C62828 100%);
+  box-shadow: 0 2px 10px rgba(247,13,26, 0.3);
 }
 
 .archi-agent-bubble-bot {
@@ -821,11 +821,11 @@ body, html {
 
 .news-card:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(230, 0, 35, 0.3);
+  border-color: rgba(247,13,26, 0.3);
   transform: translateY(-4px);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(230, 0, 35, 0.1);
+    0 0 20px rgba(247,13,26, 0.1);
 }
 
 .news-image {
@@ -843,7 +843,7 @@ body, html {
   background: linear-gradient(
     45deg,
     transparent 0%,
-    rgba(230, 0, 35, 0.1) 50%,
+    rgba(247,13,26, 0.1) 50%,
     transparent 100%
   );
   opacity: 0;
@@ -870,8 +870,8 @@ body, html {
 }
 
 .news-category-badge {
-  background: linear-gradient(135deg, #E60023 0%, #C62828 100%);
-  box-shadow: 0 4px 15px rgba(230, 0, 35, 0.3);
+  background: linear-gradient(135deg, #F70D1A 0%, #C62828 100%);
+  box-shadow: 0 4px 15px rgba(247,13,26, 0.3);
 }
 
 .news-loading-skeleton {
@@ -903,8 +903,8 @@ body, html {
 
 .news-refresh-button:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(230, 0, 35, 0.3);
-  box-shadow: 0 0 20px rgba(230, 0, 35, 0.2);
+  border-color: rgba(247,13,26, 0.3);
+  box-shadow: 0 0 20px rgba(247,13,26, 0.2);
 }
 
 .news-filter-button {
@@ -920,10 +920,10 @@ body, html {
 }
 
 .news-filter-button.active {
-  background: linear-gradient(135deg, #E60023 0%, #C62828 100%);
-  border-color: #E60023;
+  background: linear-gradient(135deg, #F70D1A 0%, #C62828 100%);
+  border-color: #F70D1A;
   box-shadow: 
-    0 8px 25px rgba(230, 0, 35, 0.3),
+    0 8px 25px rgba(247,13,26, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
@@ -961,7 +961,7 @@ body, html {
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(230, 0, 35, 0.1);
+    0 0 20px rgba(247,13,26, 0.1);
   animation: navDropdownSlideIn 0.3s ease-out;
 }
 
@@ -984,18 +984,18 @@ body, html {
 
 .nav-dropdown-item:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(230, 0, 35, 0.2);
+  border-color: rgba(247,13,26, 0.2);
   transform: translateX(4px);
-  box-shadow: 0 4px 15px rgba(230, 0, 35, 0.1);
+  box-shadow: 0 4px 15px rgba(247,13,26, 0.1);
 }
 
 .nav-dropdown-icon {
-  background: linear-gradient(135deg, rgba(230, 0, 35, 0.15) 0%, rgba(230, 0, 35, 0.25) 100%);
+  background: linear-gradient(135deg, rgba(247,13,26, 0.15) 0%, rgba(247,13,26, 0.25) 100%);
   transition: all 0.3s ease;
 }
 
 .nav-dropdown-item:hover .nav-dropdown-icon {
-  background: linear-gradient(135deg, rgba(230, 0, 35, 0.25) 0%, rgba(230, 0, 35, 0.35) 100%);
+  background: linear-gradient(135deg, rgba(247,13,26, 0.25) 0%, rgba(247,13,26, 0.35) 100%);
   transform: scale(1.05);
 }
 
@@ -1004,7 +1004,7 @@ body, html {
 }
 
 .nav-dropdown-item:hover .nav-dropdown-text {
-  color: #E60023;
+  color: #F70D1A;
 }
 
 .nav-dropdown-description {
@@ -1012,7 +1012,7 @@ body, html {
 }
 
 .nav-dropdown-item:hover .nav-dropdown-description {
-  color: rgba(230, 0, 35, 0.8);
+  color: rgba(247,13,26, 0.8);
 }
 
 /* Animation pour la flèche du dropdown */
@@ -1040,17 +1040,17 @@ body, html {
 
 .mobile-nav-item:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(230, 0, 35, 0.2);
+  border-color: rgba(247,13,26, 0.2);
   transform: translateX(8px);
 }
 
 .mobile-nav-icon {
-  background: rgba(230, 0, 35, 0.15);
+  background: rgba(247,13,26, 0.15);
   transition: all 0.3s ease;
 }
 
 .mobile-nav-item:hover .mobile-nav-icon {
-  background: rgba(230, 0, 35, 0.25);
+  background: rgba(247,13,26, 0.25);
   transform: scale(1.1);
 }
 
@@ -1083,7 +1083,7 @@ body, html {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(230, 0, 35, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(247,13,26, 0.1), transparent);
   transition: left 0.5s ease;
 }
 
@@ -1109,11 +1109,11 @@ body, html {
 
 /* Amélioration de l'accessibilité */
 .nav-dropdown-button:focus {
-  outline: 2px solid rgba(230, 0, 35, 0.5);
+  outline: 2px solid rgba(247,13,26, 0.5);
   outline-offset: 2px;
 }
 
 .nav-dropdown-item:focus {
-  outline: 2px solid rgba(230, 0, 35, 0.3);
+  outline: 2px solid rgba(247,13,26, 0.3);
   outline-offset: 2px;
 }

@@ -35,21 +35,21 @@ const NewsSection = () => {
   return (
     <section id="actualites" className="py-24 bg-gradient-to-b from-gray-900 via-black to-gray-900 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#E60023]/5 via-transparent to-[#E60023]/10"></div>
-      <div className="absolute top-20 left-10 w-72 h-72 bg-[#E60023]/10 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-72 h-72 bg-[#E60023]/10 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#F70D1A]/5 via-transparent to-[#F70D1A]/10"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-[#F70D1A]/10 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-72 h-72 bg-[#F70D1A]/10 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-[#E60023]/20 border border-[#E60023]/40 text-[#E60023] rounded-full text-sm font-semibold mb-6 backdrop-blur-md">
+          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-[#F70D1A]/20 border border-[#F70D1A]/40 text-[#F70D1A] rounded-full text-sm font-semibold mb-6 backdrop-blur-md">
             <TrendingUp className="w-4 h-4" />
             <span>Veille Technologique</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-sans">
             Actualités{' '}
-            <span className="bg-gradient-to-r from-[#E60023] via-red-600 to-[#E60023] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#F70D1A] via-red-600 to-[#F70D1A] bg-clip-text text-transparent">
               IA & Digital
             </span>
           </h2>
@@ -67,7 +67,7 @@ const NewsSection = () => {
               onClick={() => setSelectedCategory(category.id)}
               className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                 selectedCategory === category.id
-                  ? 'bg-[#E60023] text-white shadow-lg shadow-[#E60023]/30'
+                  ? 'bg-[#F70D1A] text-white shadow-lg shadow-[#F70D1A]/30'
                   : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white backdrop-blur-md border border-white/20'
               }`}
             >
@@ -107,7 +107,7 @@ const NewsSection = () => {
             <div className="text-red-400 text-xl mb-4">❌ {error}</div>
             <button
               onClick={refreshNews}
-              className="px-6 py-3 bg-[#E60023] text-white rounded-full hover:bg-red-700 transition-colors"
+              className="px-6 py-3 bg-[#F70D1A] text-white rounded-full hover:bg-red-700 transition-colors"
             >
               Réessayer
             </button>
@@ -117,7 +117,7 @@ const NewsSection = () => {
             {articles.map((article) => (
               <article
                 key={article.id}
-                className="bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:border-[#E60023]/40 transition-all duration-300 hover:shadow-xl hover:shadow-[#E60023]/20 group cursor-pointer"
+                className="bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:border-[#F70D1A]/40 transition-all duration-300 hover:shadow-xl hover:shadow-[#F70D1A]/20 group cursor-pointer"
                 onClick={() => openArticle(article.url)}
               >
                 {/* Image */}
@@ -131,7 +131,7 @@ const NewsSection = () => {
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  <div className="absolute top-4 right-4 bg-[#E60023] text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  <div className="absolute top-4 right-4 bg-[#F70D1A] text-white px-3 py-1 rounded-full text-xs font-semibold">
                     {categories.find(cat => cat.id === article.category)?.emoji}
                   </div>
                 </div>
@@ -150,7 +150,7 @@ const NewsSection = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-white mb-3 line-clamp-2 group-hover:text-[#E60023] transition-colors">
+                  <h3 className="text-lg font-bold text-white mb-3 line-clamp-2 group-hover:text-[#F70D1A] transition-colors">
                     {article.title}
                   </h3>
 
@@ -161,10 +161,10 @@ const NewsSection = () => {
 
                   {/* Read More */}
                   <div className="flex items-center justify-between">
-                    <span className="text-[#E60023] text-sm font-medium group-hover:text-red-400 transition-colors">
+                    <span className="text-[#F70D1A] text-sm font-medium group-hover:text-red-400 transition-colors">
                       Lire l'article
                     </span>
-                    <ExternalLink className="w-4 h-4 text-[#E60023] group-hover:text-red-400 transition-colors" />
+                    <ExternalLink className="w-4 h-4 text-[#F70D1A] group-hover:text-red-400 transition-colors" />
                   </div>
                 </div>
               </article>

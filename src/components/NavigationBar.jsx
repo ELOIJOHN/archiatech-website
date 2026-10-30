@@ -116,7 +116,7 @@ export default function NavigationBar() {
                             z-dropdown
                             bg-gradient-to-br from-[#F70D1A] via-[#F70D1A] to-[#B3000D]
                             backdrop-blur-2xl border border-white/20
-                            shadow-[0_8px_32px_rgba(230,0,35,0.3),0_0_0_1px_rgba(255,255,255,0.1)]"
+                            shadow-[0_8px_32px_rgba(247,13,26,0.3),0_0_0_1px_rgba(255,255,255,0.1)]"
                   onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                   <div className="p-2.5 md:p-3">

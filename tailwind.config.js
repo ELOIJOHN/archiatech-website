@@ -71,7 +71,7 @@ export default {
       // Couleurs personnalisées ArchiAtech
       colors: {
         'archiatech': {
-          red: '#E60023',
+          red: '#F70D1A',
           'red-dark': '#C62828',
           'red-light': '#E53935',
         },

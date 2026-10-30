@@ -127,7 +127,7 @@ const YouTubeGridReal = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#E60023]"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#F70D1A]"></div>
         <span className="ml-3 text-gray-600">Chargement des vidéos de @ArchiatechMedia...</span>
       </div>
     );
@@ -153,7 +153,7 @@ const YouTubeGridReal = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête de la section */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center space-x-2 bg-[#E60023] text-white px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center space-x-2 bg-[#F70D1A] text-white px-4 py-2 rounded-full mb-4">
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
@@ -161,7 +161,7 @@ const YouTubeGridReal = () => {
           </div>
           
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Nos <span className="text-[#E60023]">Vidéos</span>
+            Nos <span className="text-[#F70D1A]">Vidéos</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Découvrez nos solutions d'IA et d'automatisation à travers nos démonstrations vidéos
@@ -173,7 +173,7 @@ const YouTubeGridReal = () => {
           {videos.map((video, index) => (
             <div
               key={video.id}
-              className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-[#E60023]/30 cursor-pointer"
+              className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-[#F70D1A]/30 cursor-pointer"
               onClick={() => handleVideoClick(video.id)}
             >
               {/* Miniature de la vidéo */}
@@ -189,7 +189,7 @@ const YouTubeGridReal = () => {
                 
                 {/* Overlay avec icône play */}
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-[#E60023] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-[#F70D1A] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -198,7 +198,7 @@ const YouTubeGridReal = () => {
 
                 {/* Badge "Nouveau" pour les vidéos récentes */}
                 {new Date(video.publishedAt) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) && (
-                  <div className="absolute top-2 left-2 bg-[#E60023] text-white text-xs px-2 py-1 rounded-full font-semibold">
+                  <div className="absolute top-2 left-2 bg-[#F70D1A] text-white text-xs px-2 py-1 rounded-full font-semibold">
                     Nouveau
                   </div>
                 )}
@@ -206,7 +206,7 @@ const YouTubeGridReal = () => {
 
               {/* Informations de la vidéo */}
               <div className="p-4">
-                <h3 className="font-semibold text-gray-900 text-sm mb-2 line-clamp-2 group-hover:text-[#E60023] transition-colors">
+                <h3 className="font-semibold text-gray-900 text-sm mb-2 line-clamp-2 group-hover:text-[#F70D1A] transition-colors">
                   {video.title}
                 </h3>
                 
@@ -236,7 +236,7 @@ const YouTubeGridReal = () => {
             href="https://www.youtube.com/@ArchiatechMedia"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-3 bg-[#E60023] text-white font-semibold rounded-lg hover:bg-red-700 transition-colors duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center px-8 py-3 bg-[#F70D1A] text-white font-semibold rounded-lg hover:bg-red-700 transition-colors duration-300 shadow-lg hover:shadow-xl"
           >
             <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>

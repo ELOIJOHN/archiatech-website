@@ -44,13 +44,13 @@ body {
 /* Animation pour l'effet de lueur rouge */
 @keyframes glow {
   0% { 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(247,13,26, 0.8), 0 0 50px rgba(247,13,26, 0.4);
   }
   50% { 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(230, 0, 35, 1), 0 0 70px rgba(230, 0, 35, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(247,13,26, 1), 0 0 70px rgba(247,13,26, 0.6);
   }
   100% { 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 0, 35, 0.8), 0 0 50px rgba(230, 0, 35, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(247,13,26, 0.8), 0 0 50px rgba(247,13,26, 0.4);
   }
 }
 
@@ -58,25 +58,25 @@ body {
 @keyframes glow-pulse {
   0% { 
     box-shadow: 
-      0 0 20px rgba(230, 0, 35, 0.7),
-      0 0 40px rgba(230, 0, 35, 0.5),
-      0 0 80px rgba(230, 0, 35, 0.3),
+      0 0 20px rgba(247,13,26, 0.7),
+      0 0 40px rgba(247,13,26, 0.5),
+      0 0 80px rgba(247,13,26, 0.3),
       0 15px 50px rgba(0, 0, 0, 0.4);
     transform: scale(1);
   }
   50% { 
     box-shadow: 
-      0 0 30px rgba(230, 0, 35, 1.2),
-      0 0 60px rgba(230, 0, 35, 0.8),
-      0 0 120px rgba(230, 0, 35, 0.5),
+      0 0 30px rgba(247,13,26, 1.2),
+      0 0 60px rgba(247,13,26, 0.8),
+      0 0 120px rgba(247,13,26, 0.5),
       0 15px 50px rgba(0, 0, 0, 0.6);
     transform: scale(1.02);
   }
   100% { 
     box-shadow: 
-      0 0 20px rgba(230, 0, 35, 0.7),
-      0 0 40px rgba(230, 0, 35, 0.5),
-      0 0 80px rgba(230, 0, 35, 0.3),
+      0 0 20px rgba(247,13,26, 0.7),
+      0 0 40px rgba(247,13,26, 0.5),
+      0 0 80px rgba(247,13,26, 0.3),
       0 15px 50px rgba(0, 0, 0, 0.4);
     transform: scale(1);
   }
@@ -84,7 +84,7 @@ body {
 
 /* Classe pour le cadre lumineux spectaculaire */
 .video-container-spectacular {
-  border: 4px solid #E60023;
+  border: 4px solid #F70D1A;
   border-radius: 16px;
   position: relative;
   overflow: visible;
@@ -122,9 +122,9 @@ body {
 .video-container-spectacular:hover {
   transform: scale(1.02);
   box-shadow: 
-    0 0 30px rgba(230, 0, 35, 1.2),
-    0 0 60px rgba(230, 0, 35, 0.8),
-    0 0 120px rgba(230, 0, 35, 0.5),
+    0 0 30px rgba(247,13,26, 1.2),
+    0 0 60px rgba(247,13,26, 0.8),
+    0 0 120px rgba(247,13,26, 0.5),
     0 15px 50px rgba(0, 0, 0, 0.6);
 }
 
@@ -172,21 +172,21 @@ body {
 @keyframes slogan-glow {
   0% { 
     box-shadow: 
-      0 0 30px rgba(230, 0, 35, 0.6),
-      0 0 60px rgba(230, 0, 35, 0.4),
-      0 0 90px rgba(230, 0, 35, 0.2);
+      0 0 30px rgba(247,13,26, 0.6),
+      0 0 60px rgba(247,13,26, 0.4),
+      0 0 90px rgba(247,13,26, 0.2);
   }
   50% { 
     box-shadow: 
-      0 0 40px rgba(230, 0, 35, 0.8),
-      0 0 80px rgba(230, 0, 35, 0.6),
-      0 0 120px rgba(230, 0, 35, 0.4);
+      0 0 40px rgba(247,13,26, 0.8),
+      0 0 80px rgba(247,13,26, 0.6),
+      0 0 120px rgba(247,13,26, 0.4);
   }
   100% { 
     box-shadow: 
-      0 0 30px rgba(230, 0, 35, 0.6),
-      0 0 60px rgba(230, 0, 35, 0.4),
-      0 0 90px rgba(230, 0, 35, 0.2);
+      0 0 30px rgba(247,13,26, 0.6),
+      0 0 60px rgba(247,13,26, 0.4),
+      0 0 90px rgba(247,13,26, 0.2);
   }
 }
 
@@ -204,7 +204,7 @@ body {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, #E60023, #ff0000, #E60023, #ff0000);
+  background: linear-gradient(45deg, #F70D1A, #ff0000, #F70D1A, #ff0000);
   border-radius: inherit;
   z-index: -1;
   opacity: 0.7;
@@ -219,7 +219,7 @@ body {
   left: -4px;
   right: -4px;
   bottom: -4px;
-  background: linear-gradient(45deg, #E60023, #ff0000, #E60023, #ff0000);
+  background: linear-gradient(45deg, #F70D1A, #ff0000, #F70D1A, #ff0000);
   border-radius: inherit;
   z-index: -2;
   opacity: 0.3;
@@ -269,7 +269,7 @@ body {
   }
   23% {
     transform: translateX(0%);
-    color: #E60023; /* rouge clignotement */
+    color: #F70D1A; /* rouge clignotement */
   }
   26% {
     transform: translateX(0%);
@@ -277,7 +277,7 @@ body {
   }
   29% {
     transform: translateX(0%);
-    color: #E60023; /* rouge clignotement */
+    color: #F70D1A; /* rouge clignotement */
   }
   32% {
     transform: translateX(0%);
@@ -308,7 +308,7 @@ body {
   }
   56% {
     transform: translateX(0%);
-    color: #E60023; /* rouge clignotement */
+    color: #F70D1A; /* rouge clignotement */
   }
   59% {
     transform: translateX(0%);
@@ -316,7 +316,7 @@ body {
   }
   62% {
     transform: translateX(0%);
-    color: #E60023; /* rouge clignotement */
+    color: #F70D1A; /* rouge clignotement */
   }
   65% {
     transform: translateX(0%);
@@ -347,7 +347,7 @@ body {
   }
   89% {
     transform: translateX(0%);
-    color: #E60023; /* rouge clignotement */
+    color: #F70D1A; /* rouge clignotement */
   }
   92% {
     transform: translateX(0%);
@@ -355,7 +355,7 @@ body {
   }
   95% {
     transform: translateX(0%);
-    color: #E60023; /* rouge clignotement */
+    color: #F70D1A; /* rouge clignotement */
   }
   98% {
     transform: translateX(0%);
@@ -385,7 +385,7 @@ body {
   100% { background-position: 200% 50%; }
 }
 .hero-shimmer {
-  background-image: linear-gradient(90deg, #E60023 0%, #ff5a6e 25%, #E60023 50%, #b3001b 75%, #E60023 100%);
+  background-image: linear-gradient(90deg, #F70D1A 0%, #ff5a6e 25%, #F70D1A 50%, #b3001b 75%, #F70D1A 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -393,9 +393,9 @@ body {
   animation: hero-shimmer 5s linear infinite;
 }
 @keyframes hero-btn-ring {
-  0% { box-shadow: 0 0 0 0 rgba(230, 0, 35, 0.45); }
-  70% { box-shadow: 0 0 0 16px rgba(230, 0, 35, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(230, 0, 35, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(247,13,26, 0.45); }
+  70% { box-shadow: 0 0 0 16px rgba(247,13,26, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(247,13,26, 0); }
 }
 .hero-btn-ring { animation: hero-btn-ring 2.4s ease-out infinite; }
 .hero-grid {
@@ -405,7 +405,7 @@ body {
   -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-shimmer { animation: none; color: #E60023; background-image: none; }
+  .hero-shimmer { animation: none; color: #F70D1A; background-image: none; }
   .hero-btn-ring { animation: none; }
 }
 

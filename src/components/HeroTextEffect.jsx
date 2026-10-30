@@ -39,8 +39,8 @@ const HeroTextEffect = () => {
         }
 
         .ai-text {
-          color: #E60023;
-          background: linear-gradient(135deg, #E60023 0%, #FF1744 50%, #E60023 100%);
+          color: #F70D1A;
+          background: linear-gradient(135deg, #F70D1A 0%, #FF1744 50%, #F70D1A 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -56,7 +56,7 @@ const HeroTextEffect = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(135deg, #E60023 0%, #FF1744 50%, #E60023 100%);
+          background: linear-gradient(135deg, #F70D1A 0%, #FF1744 50%, #F70D1A 100%);
           filter: blur(20px);
           opacity: 0.6;
           z-index: -1;
@@ -70,7 +70,7 @@ const HeroTextEffect = () => {
           left: -2px;
           right: -2px;
           bottom: -2px;
-          background: radial-gradient(circle, rgba(230, 0, 35, 0.3) 0%, rgba(26, 26, 46, 0.2) 70%, transparent 100%);
+          background: radial-gradient(circle, rgba(247,13,26, 0.3) 0%, rgba(26, 26, 46, 0.2) 70%, transparent 100%);
           filter: blur(15px);
           z-index: -2;
           border-radius: 12px;

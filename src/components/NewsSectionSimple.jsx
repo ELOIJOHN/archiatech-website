@@ -48,18 +48,18 @@ const NewsSectionSimple = () => {
 
   return (
     <section id="actualites" className="py-12 sm:py-16 md:py-24 bg-gradient-to-b from-gray-900 via-black to-gray-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#E60023]/5 via-transparent to-[#E60023]/10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#F70D1A]/5 via-transparent to-[#F70D1A]/10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#E60023]/20 border border-[#E60023]/40 text-[#E60023] rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 backdrop-blur-md">
+          <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#F70D1A]/20 border border-[#F70D1A]/40 text-[#F70D1A] rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 backdrop-blur-md">
             <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>Veille Technologique</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
             Actualités{' '}
-            <span className="bg-gradient-to-r from-[#E60023] via-red-600 to-[#E60023] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#F70D1A] via-red-600 to-[#F70D1A] bg-clip-text text-transparent">
               IA & Digital
             </span>
           </h2>
@@ -75,7 +75,7 @@ const NewsSectionSimple = () => {
           {articles.map((article) => (
             <article
               key={article.url}
-              className="bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/10 hover:border-[#E60023]/40 transition-all duration-300 hover:shadow-xl hover:shadow-[#E60023]/20 group flex flex-col"
+              className="bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/10 hover:border-[#F70D1A]/40 transition-all duration-300 hover:shadow-xl hover:shadow-[#F70D1A]/20 group flex flex-col"
             >
               <div className="p-4 sm:p-6 flex flex-col flex-1">
                 <div className="flex items-center justify-between text-xs sm:text-sm text-white/60 mb-2 sm:mb-3 gap-2">
@@ -88,7 +88,7 @@ const NewsSectionSimple = () => {
                   )}
                 </div>
 
-                <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 line-clamp-3 group-hover:text-[#E60023] transition-colors">
+                <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 line-clamp-3 group-hover:text-[#F70D1A] transition-colors">
                   {article.title}
                 </h3>
 
@@ -101,7 +101,7 @@ const NewsSectionSimple = () => {
                 <a
                   href={article.url}
                   {...(article.internal ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
-                  className="mt-auto flex items-center justify-between text-[#E60023] text-xs sm:text-sm font-medium hover:text-red-400 transition-colors"
+                  className="mt-auto flex items-center justify-between text-[#F70D1A] text-xs sm:text-sm font-medium hover:text-red-400 transition-colors"
                 >
                   <span>Lire l'article</span>
                   {article.internal ? (
@@ -120,7 +120,7 @@ const NewsSectionSimple = () => {
             Un projet d'automatisation ou d'IA en tête ?
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <a href="/blog/" className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-[#E60023] hover:bg-red-700 text-white font-semibold transition-colors text-sm sm:text-base">
+            <a href="/blog/" className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-[#F70D1A] hover:bg-red-700 text-white font-semibold transition-colors text-sm sm:text-base">
               <span>Tous nos articles</span>
               <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
             </a>

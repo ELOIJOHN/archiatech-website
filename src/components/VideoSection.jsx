@@ -109,8 +109,8 @@ export default function VideoSection() {
                 padding: '1rem',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
-                border: selectedVideo === video.id ? '2px solid #e34040' : '2px solid #E60023',
-                boxShadow: selectedVideo === video.id ? '0 0 15px rgba(227, 64, 64, 0.6)' : '0 0 10px rgba(230, 0, 35, 0.3)',
+                border: selectedVideo === video.id ? '2px solid #e34040' : '2px solid #F70D1A',
+                boxShadow: selectedVideo === video.id ? '0 0 15px rgba(227, 64, 64, 0.6)' : '0 0 10px rgba(247,13,26, 0.3)',
                 position: 'relative',
                 overflow: 'hidden'
               }}

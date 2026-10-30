@@ -18,12 +18,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(230, 0, 35, 0.6);
+  background: rgba(247,13,26, 0.6);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(230, 0, 35, 0.8);
+  background: rgba(247,13,26, 0.8);
 }
 
 /* Curseur personnalisé - Désactivé sur mobile */

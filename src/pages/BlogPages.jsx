@@ -19,10 +19,10 @@ export function BlogIndex() {
               {formatDate(p.date)} · {p.readingTime} de lecture
             </p>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              <a href={`/blog/${p.slug}/`} className="hover:text-[#E60023]">{p.title}</a>
+              <a href={`/blog/${p.slug}/`} className="hover:text-[#F70D1A]">{p.title}</a>
             </h2>
             <p className="text-gray-700 leading-relaxed mb-3">{p.description}</p>
-            <a href={`/blog/${p.slug}/`} className="text-[#E60023] font-medium hover:underline">
+            <a href={`/blog/${p.slug}/`} className="text-[#F70D1A] font-medium hover:underline">
               Lire l'article
             </a>
           </li>
@@ -60,7 +60,7 @@ export function BlogArticle({ slug }) {
           <ul className="space-y-2">
             {others.map((p) => (
               <li key={p.slug}>
-                <a href={`/blog/${p.slug}/`} className="text-[#E60023] hover:underline font-medium">{p.title}</a>
+                <a href={`/blog/${p.slug}/`} className="text-[#F70D1A] hover:underline font-medium">{p.title}</a>
               </li>
             ))}
           </ul>

@@ -53,32 +53,32 @@ export default function VideoShowcase() {
           @keyframes glow-pulse {
             0% { 
               box-shadow: 
-                0 0 20px rgba(230, 0, 35, 0.7),
-                0 0 40px rgba(230, 0, 35, 0.5),
-                0 0 80px rgba(230, 0, 35, 0.3),
+                0 0 20px rgba(247,13,26, 0.7),
+                0 0 40px rgba(247,13,26, 0.5),
+                0 0 80px rgba(247,13,26, 0.3),
                 0 15px 50px rgba(0, 0, 0, 0.4);
               transform: scale(1);
             }
             50% { 
               box-shadow: 
-                0 0 30px rgba(230, 0, 35, 1.2),
-                0 0 60px rgba(230, 0, 35, 0.8),
-                0 0 120px rgba(230, 0, 35, 0.5),
+                0 0 30px rgba(247,13,26, 1.2),
+                0 0 60px rgba(247,13,26, 0.8),
+                0 0 120px rgba(247,13,26, 0.5),
                 0 15px 50px rgba(0, 0, 0, 0.6);
               transform: scale(1.02);
             }
             100% { 
               box-shadow: 
-                0 0 20px rgba(230, 0, 35, 0.7),
-                0 0 40px rgba(230, 0, 35, 0.5),
-                0 0 80px rgba(230, 0, 35, 0.3),
+                0 0 20px rgba(247,13,26, 0.7),
+                0 0 40px rgba(247,13,26, 0.5),
+                0 0 80px rgba(247,13,26, 0.3),
                 0 15px 50px rgba(0, 0, 0, 0.4);
               transform: scale(1);
             }
           }
           
           .video-container-spectacular {
-            border: 4px solid #E60023;
+            border: 4px solid #F70D1A;
             border-radius: 16px;
             position: relative;
             overflow: visible;
@@ -115,9 +115,9 @@ export default function VideoShowcase() {
           .video-container-spectacular:hover {
             transform: scale(1.02);
             box-shadow: 
-              0 0 30px rgba(230, 0, 35, 1.2),
-              0 0 60px rgba(230, 0, 35, 0.8),
-              0 0 120px rgba(230, 0, 35, 0.5),
+              0 0 30px rgba(247,13,26, 1.2),
+              0 0 60px rgba(247,13,26, 0.8),
+              0 0 120px rgba(247,13,26, 0.5),
               0 15px 50px rgba(0, 0, 0, 0.6);
           }
         `}
@@ -214,7 +214,7 @@ export default function VideoShowcase() {
             onClick={() => setActiveVideo(video)}
             aria-label={`Lire : ${video.title}`}
             aria-current={activeVideo.key === video.key}
-            className={`relative overflow-hidden rounded-md sm:rounded-lg border-2 border-[#E60023] cursor-pointer transition-all shadow-[0_0_10px_rgba(230,0,35,0.3)] hover:shadow-[0_0_15px_rgba(230,0,35,0.5)] ${activeVideo.key === video.key ? "ring-2 sm:ring-4 ring-[#E60023]" : ""}`}
+            className={`relative overflow-hidden rounded-md sm:rounded-lg border-2 border-[#F70D1A] cursor-pointer transition-all shadow-[0_0_10px_rgba(247,13,26,0.3)] hover:shadow-[0_0_15px_rgba(247,13,26,0.5)] ${activeVideo.key === video.key ? "ring-2 sm:ring-4 ring-[#F70D1A]" : ""}`}
           >
             {video.type === "youtube" ? (
               <img
@@ -233,7 +233,7 @@ export default function VideoShowcase() {
               />
             )}
             {video.type === "youtube" && (
-              <span className="absolute top-1 right-1 text-[10px] bg-[#E60023] px-1.5 py-0.5 rounded">YouTube</span>
+              <span className="absolute top-1 right-1 text-[10px] bg-[#F70D1A] px-1.5 py-0.5 rounded">YouTube</span>
             )}
             <div className="absolute bottom-0.5 left-0.5 sm:bottom-1 sm:left-1 text-[10px] sm:text-xs bg-black/70 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded text-left">{video.title}</div>
           </button>

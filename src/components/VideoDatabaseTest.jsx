@@ -110,12 +110,12 @@ const VideoDatabaseTest = () => {
             placeholder="Votre clé API YouTube (optionnel)"
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E60023]"
+            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F70D1A]"
           />
           <button
             onClick={runAllTests}
             disabled={isLoading}
-            className="px-6 py-2 bg-[#E60023] text-white rounded-lg hover:bg-red-700 disabled:opacity-50"
+            className="px-6 py-2 bg-[#F70D1A] text-white rounded-lg hover:bg-red-700 disabled:opacity-50"
           >
             {isLoading ? 'Tests en cours...' : 'Lancer tous les tests'}
           </button>

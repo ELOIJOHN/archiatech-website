@@ -32,7 +32,7 @@ export default function OfferPage() {
       <ul className="space-y-3 mb-10">
         {L.deliverables.map((d) => (
           <li key={d} className="flex gap-3 text-gray-700">
-            <Check className="w-5 h-5 text-[#E60023] flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <Check className="w-5 h-5 text-[#F70D1A] flex-shrink-0 mt-0.5" aria-hidden="true" />
             <span>{d}</span>
           </li>
         ))}
@@ -51,7 +51,7 @@ export default function OfferPage() {
       <ol className="grid sm:grid-cols-2 gap-4 mb-12">
         {L.steps.map(([title, text], i) => (
           <li key={title} className="rounded-xl border border-gray-200 p-5">
-            <span className="text-[#E60023] font-bold text-sm">Étape {i + 1}</span>
+            <span className="text-[#F70D1A] font-bold text-sm">Étape {i + 1}</span>
             <h3 className="font-semibold text-gray-900 mt-1 mb-2">{title}</h3>
             <p className="text-sm text-gray-600 leading-relaxed">{text}</p>
           </li>

@@ -9,7 +9,7 @@ export default function App() {
       minHeight: '100vh',
       fontFamily: 'Arial, sans-serif'
     }}>
-      <h1 style={{ color: '#E60023', marginBottom: '20px' }}>
+      <h1 style={{ color: '#F70D1A', marginBottom: '20px' }}>
         🎬 ArchiAtech - Base de Données Vidéos
       </h1>
       
@@ -57,7 +57,7 @@ export default function App() {
       }}>
         <h2>🚀 Prochaines étapes</h2>
         <ol>
-          <li>Accédez à l'administration : <a href="/admin" style={{color: '#E60023'}}>http://localhost:5175/admin</a></li>
+          <li>Accédez à l'administration : <a href="/admin" style={{color: '#F70D1A'}}>http://localhost:5175/admin</a></li>
           <li>Configurez votre clé API YouTube</li>
           <li>Synchronisez vos vidéos</li>
           <li>Gérez votre contenu</li>
@@ -65,7 +65,7 @@ export default function App() {
       </div>
 
       <div style={{ 
-        backgroundColor: '#E60023', 
+        backgroundColor: '#F70D1A', 
         color: 'white',
         padding: '20px', 
         borderRadius: '8px',
@@ -78,7 +78,7 @@ export default function App() {
           style={{ 
             display: 'inline-block',
             backgroundColor: 'white',
-            color: '#E60023',
+            color: '#F70D1A',
             padding: '10px 20px',
             textDecoration: 'none',
             borderRadius: '5px',

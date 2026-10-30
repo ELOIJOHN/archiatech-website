@@ -210,9 +210,9 @@ const ArchiAgent = () => {
           position: 'fixed',
           bottom: '1.5rem',
           right: '1.5rem',
-          background: 'linear-gradient(135deg, #E60023 0%, #ff0033 100%)',
+          background: 'linear-gradient(135deg, #F70D1A 0%, #ff0033 100%)',
           color: 'white',
-          boxShadow: '0 8px 32px rgba(230, 0, 35, 0.8), 0 0 0 3px rgba(255, 255, 255, 0.2)',
+          boxShadow: '0 8px 32px rgba(247,13,26, 0.8), 0 0 0 3px rgba(255, 255, 255, 0.2)',
           display: isOpen ? 'none' : 'flex',
           animation: 'pulse 2s infinite',
           zIndex: 2147483647
@@ -247,7 +247,7 @@ const ArchiAgent = () => {
         <div
           className="absolute inset-0 rounded-full opacity-30"
           style={{
-            background: 'radial-gradient(circle, rgba(230, 0, 35, 0.3) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(247,13,26, 0.3) 0%, transparent 70%)',
             animation: 'glow-pulse 2s ease-in-out infinite'
           }}
         />
@@ -269,7 +269,7 @@ const ArchiAgent = () => {
           }}
         >
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#E60023] to-red-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
+          <div className="bg-gradient-to-r from-[#F70D1A] to-red-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
                 <img
@@ -316,7 +316,7 @@ const ArchiAgent = () => {
                     <div
                       className={`max-w-[80%] p-3 rounded-2xl ${
                         message.sender === 'user'
-                          ? 'bg-[#E60023] text-white'
+                          ? 'bg-[#F70D1A] text-white'
                           : 'bg-gray-100 text-gray-800'
                       }`}
                     >
@@ -358,13 +358,13 @@ const ArchiAgent = () => {
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={handleKeyPress}
                     placeholder="Tapez votre message..."
-                    className="flex-1 border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#E60023] focus:border-transparent"
+                    className="flex-1 border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#F70D1A] focus:border-transparent"
                     disabled={isTyping}
                   />
                   <button
                     onClick={handleSendMessage}
                     disabled={!inputValue.trim() || isTyping}
-                    className="bg-[#E60023] text-white p-2 rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-[#F70D1A] text-white p-2 rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     aria-label="Envoyer le message"
                   >
                     <Send className="w-4 h-4" />

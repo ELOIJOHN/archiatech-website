@@ -66,17 +66,17 @@ def duration(path):
 CSS = """
 *{box-sizing:border-box;margin:0;padding:0}
 body{width:1920px;height:1080px;font-family:'Inter','DejaVu Sans',sans-serif;background:#fff;color:#111827;position:relative;overflow:hidden}
-.band{position:absolute;left:0;top:0;width:100%;height:150px;background:linear-gradient(135deg,#E60023,#B8001C);display:flex;align-items:center;padding:0 96px}
+.band{position:absolute;left:0;top:0;width:100%;height:150px;background:linear-gradient(135deg,#F70D1A,#B8001C);display:flex;align-items:center;padding:0 96px}
 .band img{height:78px}
-.kicker{color:#E60023;font-weight:700;font-size:34px;letter-spacing:3px;text-transform:uppercase}
+.kicker{color:#F70D1A;font-weight:700;font-size:34px;letter-spacing:3px;text-transform:uppercase}
 .main{position:absolute;left:96px;right:96px;top:230px;bottom:150px;display:flex;flex-direction:column;justify-content:center;gap:34px}
 h1{font-size:96px;line-height:1.08;font-weight:800;letter-spacing:-2px}
 h2{font-size:78px;line-height:1.12;font-weight:800;letter-spacing:-1px}
 ul{list-style:none;display:flex;flex-direction:column;gap:22px;margin-top:10px}
 li{font-size:52px;line-height:1.25;color:#374151;padding-left:56px;position:relative}
-li:before{content:'';position:absolute;left:0;top:20px;width:22px;height:22px;border-radius:50%;background:#E60023}
+li:before{content:'';position:absolute;left:0;top:20px;width:22px;height:22px;border-radius:50%;background:#F70D1A}
 .foot{position:absolute;left:0;bottom:0;width:100%;height:84px;background:#111827;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 96px;font-size:30px}
-.cta{background:#E60023;color:#fff;border-radius:24px;padding:28px 48px;font-size:56px;font-weight:800;display:inline-block;align-self:flex-start}
+.cta{background:#F70D1A;color:#fff;border-radius:24px;padding:28px 48px;font-size:56px;font-weight:800;display:inline-block;align-self:flex-start}
 .avoid li:before{background:#111827}
 """
 
@@ -98,7 +98,7 @@ DLG_CSS = """
 .p{width:440px;text-align:center;opacity:.35;transform:scale(.92);filter:grayscale(.6)}
 .p.on{opacity:1;transform:scale(1);filter:none}
 .p img{width:360px;height:360px;object-fit:cover;border-radius:50%;border:10px solid #e5e7eb}
-.p.on img{border-color:#E60023}
+.p.on img{border-color:#F70D1A}
 .p b{display:block;margin-top:18px;font-size:44px;color:#111827}
 .p span{font-size:28px;color:#6b7280}
 .say{position:absolute;left:96px;right:96px;top:790px;height:190px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:48px;line-height:1.25;color:#111827;font-weight:600}
@@ -119,7 +119,7 @@ def dialogue_html(s, spec, b64, n, total):
 def thumb_html(spec, logo_b64):
     t = spec.get("thumbnail_text") or spec["title"]
     return (f"<html><head><meta charset='utf-8'><style>{CSS}"
-            "body{width:1280px;height:720px;background:linear-gradient(135deg,#E60023,#B8001C);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:70px 80px;gap:30px}"
+            "body{width:1280px;height:720px;background:linear-gradient(135deg,#F70D1A,#B8001C);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:70px 80px;gap:30px}"
             "h1{font-size:120px;line-height:1.02;letter-spacing:-3px;max-width:1100px}"
             "img{height:70px;align-self:flex-start;margin-bottom:10px}.k{font-size:34px;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:.9}"
             f"</style></head><body><img src='data:image/png;base64,{logo_b64}'><div class='k'>{spec.get('kicker','')}</div><h1>{t}</h1></body></html>")

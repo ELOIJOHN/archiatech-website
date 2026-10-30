@@ -95,7 +95,7 @@ const VideoManager = () => {
     <div className="max-w-7xl mx-auto p-6 bg-white">
       {/* En-tête avec statistiques */}
       {stats && (
-        <div className="mb-8 bg-gradient-to-r from-[#E60023] to-red-600 rounded-xl p-6 text-white">
+        <div className="mb-8 bg-gradient-to-r from-[#F70D1A] to-red-600 rounded-xl p-6 text-white">
           <h1 className="text-3xl font-bold mb-4">Gestion des Vidéos @ArchiatechMedia</h1>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center">
@@ -128,7 +128,7 @@ const VideoManager = () => {
               placeholder="Rechercher une vidéo..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E60023] focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F70D1A] focus:border-transparent"
             />
           </div>
         </div>
@@ -137,7 +137,7 @@ const VideoManager = () => {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E60023]"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F70D1A]"
           >
             <option value="all">Toutes les catégories</option>
             {categories.map(category => (
@@ -150,7 +150,7 @@ const VideoManager = () => {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E60023]"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F70D1A]"
           >
             <option value="priority">Priorité</option>
             <option value="views">Vues</option>
@@ -165,7 +165,7 @@ const VideoManager = () => {
         {filteredVideos.map((video) => (
           <div
             key={video.id}
-            className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-[#E60023]/30 cursor-pointer"
+            className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-[#F70D1A]/30 cursor-pointer"
             onClick={() => handleVideoClick(video.id)}
           >
             {/* Miniature */}
@@ -181,13 +181,13 @@ const VideoManager = () => {
               
               {/* Overlay avec icône play */}
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                <div className="w-16 h-16 bg-[#E60023] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-[#F70D1A] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
                 </div>
               </div>
 
               {/* Badge catégorie */}
-              <div className="absolute top-2 left-2 bg-[#E60023] text-white text-xs px-2 py-1 rounded-full font-semibold">
+              <div className="absolute top-2 left-2 bg-[#F70D1A] text-white text-xs px-2 py-1 rounded-full font-semibold">
                 {video.category}
               </div>
 

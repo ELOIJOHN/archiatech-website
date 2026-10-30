@@ -15,18 +15,18 @@
 
   /* Cartes de services */
   .glass-card {
-    background: rgba(230, 0, 35, 0.05);
+    background: rgba(247,13,26, 0.05);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     border-radius: 16px;
-    border: 1px solid rgba(230, 0, 35, 0.15);
+    border: 1px solid rgba(247,13,26, 0.15);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   }
 
   .glass-card:hover {
-    background: rgba(230, 0, 35, 0.1);
-    border: 1px solid rgba(230, 0, 35, 0.4);
-    box-shadow: 0 8px 24px rgba(230, 0, 35, 0.15);
+    background: rgba(247,13,26, 0.1);
+    border: 1px solid rgba(247,13,26, 0.4);
+    box-shadow: 0 8px 24px rgba(247,13,26, 0.15);
   }
 
   /* Textes avec effet verre */

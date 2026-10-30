@@ -161,7 +161,7 @@ const YouTubePlaylist = () => {
               <div className="flex items-center space-x-3">
                 <button
                   onClick={handlePlayPause}
-                  className="bg-[#E60023] hover:bg-red-700 rounded-full p-2 transition-colors"
+                  className="bg-[#F70D1A] hover:bg-red-700 rounded-full p-2 transition-colors"
                 >
                   {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                 </button>
@@ -279,7 +279,7 @@ const YouTubePlaylist = () => {
               key={video.id}
               className={`video-item cursor-pointer rounded-xl overflow-hidden shadow-lg transition-all duration-300 transform ${
                 index === currentVideoIndex
-                  ? 'ring-2 ring-[#E60023] scale-105 shadow-xl'
+                  ? 'ring-2 ring-[#F70D1A] scale-105 shadow-xl'
                   : 'hover:shadow-xl hover:scale-102 hover:-translate-y-1'
               }`}
               onClick={() => setCurrentVideoIndex(index)}
@@ -295,8 +295,8 @@ const YouTubePlaylist = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 ${
                     index === currentVideoIndex 
-                      ? 'bg-[#E60023] scale-110' 
-                      : 'bg-[#E60023]/80 hover:bg-[#E60023] hover:scale-110'
+                      ? 'bg-[#F70D1A] scale-110' 
+                      : 'bg-[#F70D1A]/80 hover:bg-[#F70D1A] hover:scale-110'
                   }`}>
                     <Play className="w-6 h-6 text-white ml-1" />
                   </div>
@@ -304,7 +304,7 @@ const YouTubePlaylist = () => {
                 
                 {/* Badge de statut */}
                 {index === currentVideoIndex && (
-                  <div className="absolute top-3 right-3 bg-[#E60023] text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+                  <div className="absolute top-3 right-3 bg-[#F70D1A] text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
                     🔴 En cours
                   </div>
                 )}
@@ -329,7 +329,7 @@ const YouTubePlaylist = () => {
       </div>
 
       {/* Contrôles de la playlist améliorés */}
-      <div className="playlist-controls p-4 bg-gradient-to-r from-[#E60023] to-red-600">
+      <div className="playlist-controls p-4 bg-gradient-to-r from-[#F70D1A] to-red-600">
         <div className="flex items-center justify-between">
           {/* Contrôles de navigation */}
           <div className="flex items-center space-x-3">
@@ -345,7 +345,7 @@ const YouTubePlaylist = () => {
             
             <button
               onClick={handlePlayPause}
-              className="bg-white text-[#E60023] hover:bg-gray-100 px-6 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2 font-semibold shadow-lg"
+              className="bg-white text-[#F70D1A] hover:bg-gray-100 px-6 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2 font-semibold shadow-lg"
             >
               {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
               <span className="hidden sm:inline">{isPlaying ? 'Pause' : 'Lecture'}</span>

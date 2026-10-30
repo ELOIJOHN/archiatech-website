@@ -85,10 +85,10 @@
 }
 
 .video-red-glow {
-  border: 2px solid #E60023;
+  border: 2px solid #F70D1A;
   box-shadow:
-    0 0 20px rgba(230, 0, 35, 0.8),
-    0 0 40px rgba(230, 0, 35, 0.4),
-    inset 0 0 20px rgba(230, 0, 35, 0.1);
+    0 0 20px rgba(247,13,26, 0.8),
+    0 0 40px rgba(247,13,26, 0.4),
+    inset 0 0 20px rgba(247,13,26, 0.1);
   animation: redGlowPulse 2s ease-in-out infinite alternate;
 }

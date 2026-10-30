@@ -81,7 +81,7 @@ const YouTubeSync = () => {
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="Votre clé API YouTube..."
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E60023] focus:border-transparent"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F70D1A] focus:border-transparent"
             />
           </div>
 
@@ -97,7 +97,7 @@ const YouTubeSync = () => {
             <button
               onClick={handleSync}
               disabled={isSyncing || !apiKey}
-              className="px-6 py-2 bg-[#E60023] text-white rounded-lg hover:bg-red-700 disabled:opacity-50"
+              className="px-6 py-2 bg-[#F70D1A] text-white rounded-lg hover:bg-red-700 disabled:opacity-50"
             >
               {isSyncing ? 'Synchronisation...' : 'Synchroniser les vidéos'}
             </button>

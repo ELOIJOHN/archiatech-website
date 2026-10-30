@@ -29,7 +29,7 @@ export default function AboutPage() {
       <ul className="space-y-2 mb-10">
         {servicePages.map((s) => (
           <li key={s.slug}>
-            <a href={`/services/${s.slug}/`} className="text-[#E60023] hover:underline font-medium">
+            <a href={`/services/${s.slug}/`} className="text-[#F70D1A] hover:underline font-medium">
               {s.name}
             </a>
           </li>
@@ -38,7 +38,7 @@ export default function AboutPage() {
 
       <p className="text-gray-700 mb-6">
         Retrouvez aussi nos vidéos sur{' '}
-        <a href={company.youtube} target="_blank" rel="noopener noreferrer" className="text-[#E60023] hover:underline">
+        <a href={company.youtube} target="_blank" rel="noopener noreferrer" className="text-[#F70D1A] hover:underline">
           la chaîne YouTube ArchiAtech Media
         </a>
         .

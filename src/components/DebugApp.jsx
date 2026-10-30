@@ -17,7 +17,7 @@ const DebugApp = ({ onNavigate }) => {
       minHeight: '100vh',
       fontFamily: 'Arial, sans-serif'
     }}>
-      <h1 style={{ color: '#E60023', marginBottom: '20px' }}>
+      <h1 style={{ color: '#F70D1A', marginBottom: '20px' }}>
         🎬 ArchiAtech - Base de Données Vidéos
       </h1>
       
@@ -75,7 +75,7 @@ const DebugApp = ({ onNavigate }) => {
       </div>
 
       <div style={{ 
-        backgroundColor: '#E60023', 
+        backgroundColor: '#F70D1A', 
         padding: '20px', 
         borderRadius: '8px',
         textAlign: 'center',
@@ -87,7 +87,7 @@ const DebugApp = ({ onNavigate }) => {
           onClick={handleAdminClick}
           style={{ 
             backgroundColor: 'white',
-            color: '#E60023',
+            color: '#F70D1A',
             padding: '15px 30px',
             border: 'none',
             borderRadius: '5px',

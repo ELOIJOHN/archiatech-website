@@ -35,12 +35,12 @@
 }
 
 .ai-text-effect {
-  color: #E60023;
+  color: #F70D1A;
   position: relative;
   display: inline-block;
   
   /* Gradient rouge ArchiAtech */
-  background: linear-gradient(135deg, #E60023 0%, #FF1744 50%, #E60023 100%);
+  background: linear-gradient(135deg, #F70D1A 0%, #FF1744 50%, #F70D1A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -57,7 +57,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #E60023 0%, #FF1744 50%, #E60023 100%);
+  background: linear-gradient(135deg, #F70D1A 0%, #FF1744 50%, #F70D1A 100%);
   filter: blur(20px);
   opacity: 0.6;
   z-index: -1;

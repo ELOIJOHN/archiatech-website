@@ -28,7 +28,7 @@ export default function Avantages() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <p className="text-[#E60023] font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
+          <p className="text-[#F70D1A] font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
             Nos avantages
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8">Pourquoi ArchiAtech ?</h2>
@@ -42,7 +42,7 @@ export default function Avantages() {
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="w-11 h-11 rounded-xl bg-red-50 text-[#E60023] flex items-center justify-center flex-shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-red-50 text-[#F70D1A] flex items-center justify-center flex-shrink-0">
                   <item.icon className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
@@ -83,7 +83,7 @@ export default function Avantages() {
             </div>
             <a
               href="/contact/?objet=audit#formulaire"
-              className="mt-6 sm:mt-8 inline-flex w-full sm:w-auto justify-center items-center rounded-lg bg-white px-6 py-3 font-semibold text-[#E60023] shadow hover:bg-gray-50 transition"
+              className="mt-6 sm:mt-8 inline-flex w-full sm:w-auto justify-center items-center rounded-lg bg-white px-6 py-3 font-semibold text-[#F70D1A] shadow hover:bg-gray-50 transition"
             >
               Réserver mon audit gratuit
             </a>

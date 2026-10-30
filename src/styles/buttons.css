@@ -6,22 +6,22 @@
   .btn-archiatech {
     @apply px-4 py-2 sm:px-6 sm:py-2.5 md:px-6 md:py-3
            rounded-lg sm:rounded-xl font-medium text-sm sm:text-base
-           text-white border border-[#E60023]/60 bg-[#E60023]/20
+           text-white border border-[#F70D1A]/60 bg-[#F70D1A]/20
            backdrop-blur-md transition-all duration-300
-           hover:bg-[#E60023]/40 hover:border-[#E60023]
-           hover:shadow-[0_0_15px_rgba(230,0,35,0.5)]
-           active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E60023]/50
+           hover:bg-[#F70D1A]/40 hover:border-[#F70D1A]
+           hover:shadow-[0_0_15px_rgba(247,13,26,0.5)]
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#F70D1A]/50
            min-h-touch min-w-touch;
   }
 
   .btn-archiatech-outline {
     @apply px-4 py-2 sm:px-6 sm:py-2.5 md:px-6 md:py-3
            rounded-lg sm:rounded-xl font-medium text-sm sm:text-base
-           text-white border border-[#E60023]/40 bg-transparent
+           text-white border border-[#F70D1A]/40 bg-transparent
            backdrop-blur-md transition-all duration-300
-           hover:bg-[#E60023]/20 hover:border-[#E60023]
-           hover:shadow-[0_0_10px_rgba(230,0,35,0.3)]
-           active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#E60023]/50
+           hover:bg-[#F70D1A]/20 hover:border-[#F70D1A]
+           hover:shadow-[0_0_10px_rgba(247,13,26,0.3)]
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#F70D1A]/50
            min-h-touch min-w-touch;
   }
 

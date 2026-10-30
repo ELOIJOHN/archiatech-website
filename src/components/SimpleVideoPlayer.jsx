@@ -29,8 +29,8 @@ export default function SimpleVideoPlayer() {
       margin: '0 auto',
       zIndex: 10,
       // Styles inline pour garantir la visibilité
-      border: '4px solid #E60023',
-      boxShadow: '0 0 20px rgba(230, 0, 35, 0.7), 0 0 40px rgba(230, 0, 35, 0.5), 0 0 80px rgba(230, 0, 35, 0.3), 0 15px 50px rgba(0, 0, 0, 0.4)',
+      border: '4px solid #F70D1A',
+      boxShadow: '0 0 20px rgba(247,13,26, 0.7), 0 0 40px rgba(247,13,26, 0.5), 0 0 80px rgba(247,13,26, 0.3), 0 15px 50px rgba(0, 0, 0, 0.4)',
       animation: 'glow-pulse 2.5s ease-in-out infinite'
     }}>
       <style>
@@ -53,32 +53,32 @@ export default function SimpleVideoPlayer() {
           @keyframes glow-pulse {
             0% { 
               box-shadow: 
-                0 0 20px rgba(230, 0, 35, 0.7),
-                0 0 40px rgba(230, 0, 35, 0.5),
-                0 0 80px rgba(230, 0, 35, 0.3),
+                0 0 20px rgba(247,13,26, 0.7),
+                0 0 40px rgba(247,13,26, 0.5),
+                0 0 80px rgba(247,13,26, 0.3),
                 0 15px 50px rgba(0, 0, 0, 0.4);
               transform: scale(1);
             }
             50% { 
               box-shadow: 
-                0 0 30px rgba(230, 0, 35, 1.2),
-                0 0 60px rgba(230, 0, 35, 0.8),
-                0 0 120px rgba(230, 0, 35, 0.5),
+                0 0 30px rgba(247,13,26, 1.2),
+                0 0 60px rgba(247,13,26, 0.8),
+                0 0 120px rgba(247,13,26, 0.5),
                 0 15px 50px rgba(0, 0, 0, 0.6);
               transform: scale(1.02);
             }
             100% { 
               box-shadow: 
-                0 0 20px rgba(230, 0, 35, 0.7),
-                0 0 40px rgba(230, 0, 35, 0.5),
-                0 0 80px rgba(230, 0, 35, 0.3),
+                0 0 20px rgba(247,13,26, 0.7),
+                0 0 40px rgba(247,13,26, 0.5),
+                0 0 80px rgba(247,13,26, 0.3),
                 0 15px 50px rgba(0, 0, 0, 0.4);
               transform: scale(1);
             }
           }
           
           .video-container-spectacular {
-            border: 4px solid #E60023;
+            border: 4px solid #F70D1A;
             border-radius: 16px;
             position: relative;
             overflow: visible;
@@ -115,9 +115,9 @@ export default function SimpleVideoPlayer() {
           .video-container-spectacular:hover {
             transform: scale(1.02);
             box-shadow: 
-              0 0 30px rgba(230, 0, 35, 1.2),
-              0 0 60px rgba(230, 0, 35, 0.8),
-              0 0 120px rgba(230, 0, 35, 0.5),
+              0 0 30px rgba(247,13,26, 1.2),
+              0 0 60px rgba(247,13,26, 0.8),
+              0 0 120px rgba(247,13,26, 0.5),
               0 15px 50px rgba(0, 0, 0, 0.6);
           }
         `}

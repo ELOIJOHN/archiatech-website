@@ -69,7 +69,7 @@ Le menu "ArchiAtech" révèle 4 sous-sections principales :
 ## 🎨 Styles et Animations
 
 ### **Palette de Couleurs**
-- **Rouge principal** : #E60023 (ArchiAtech)
+- **Rouge principal** : #F70D1A (ArchiAtech)
 - **Fond glassmorphism** : rgba(255,255,255,0.08)
 - **Bordures** : rgba(255,255,255,0.15)
 - **Texte** : Blanc avec opacité variable

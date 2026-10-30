@@ -53,7 +53,7 @@ export default function PilliersSection() {
             width="860"
             height="600"
             loading="lazy"
-            className="mx-auto w-44 sm:w-60 h-auto mb-6 select-none drop-shadow-[0_0_28px_rgba(230,0,35,0.45)]"
+            className="mx-auto w-44 sm:w-60 h-auto mb-6 select-none drop-shadow-[0_0_28px_rgba(247,13,26,0.45)]"
             draggable="false"
           />
           <p className="text-sm sm:text-base font-semibold tracking-wide text-[#ff5a6e]">Notre ADN</p>
@@ -104,7 +104,7 @@ export default function PilliersSection() {
         >
           <a
             href="/contact/?objet=audit#formulaire"
-            className="inline-flex items-center gap-2 rounded-full bg-[#E60023] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-[#F70D1A] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-colors"
           >
             Audit gratuit <ArrowRight className="w-5 h-5" aria-hidden="true" />
           </a>

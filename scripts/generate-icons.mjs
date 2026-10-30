@@ -20,7 +20,7 @@ const sizes = [72, 96, 128, 144, 152, 180, 192, 384, 512];
 
 // Couleurs ArchiAtech
 const colors = {
-  primary: '#E60023',
+  primary: '#F70D1A',
   secondary: '#1a1a1a',
   white: '#ffffff',
 };

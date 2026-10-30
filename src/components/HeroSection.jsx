@@ -26,7 +26,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <Motion.div
           className="absolute left-1/2 top-[34%] h-[38rem] w-[38rem] sm:h-[52rem] sm:w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full
-                     bg-[radial-gradient(circle,rgba(230,0,35,0.32)_0%,rgba(230,0,35,0.08)_45%,transparent_70%)]"
+                     bg-[radial-gradient(circle,rgba(247,13,26,0.32)_0%,rgba(247,13,26,0.08)_45%,transparent_70%)]"
           animate={reduce ? undefined : { scale: [1, 1.08, 1], opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -68,7 +68,7 @@ export default function HeroSection() {
           <Motion.div variants={rise} className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
             <a
               href="/contact/?objet=audit#formulaire"
-              className="hero-btn-ring inline-flex items-center gap-2 rounded-full bg-[#E60023] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-colors"
+              className="hero-btn-ring inline-flex items-center gap-2 rounded-full bg-[#F70D1A] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-colors"
             >
               Audit gratuit <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </a>

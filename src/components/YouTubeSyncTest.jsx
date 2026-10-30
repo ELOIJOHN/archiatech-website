@@ -69,7 +69,7 @@ const YouTubeSyncTest = () => {
       borderRadius: '8px',
       margin: '20px 0'
     }}>
-      <h2 style={{ color: '#E60023', marginBottom: '20px' }}>
+      <h2 style={{ color: '#F70D1A', marginBottom: '20px' }}>
         🧪 Test de Synchronisation YouTube
       </h2>
 
@@ -79,7 +79,7 @@ const YouTubeSyncTest = () => {
           onClick={testYouTubeConnection}
           disabled={isLoading}
           style={{
-            backgroundColor: isLoading ? '#ccc' : '#E60023',
+            backgroundColor: isLoading ? '#ccc' : '#F70D1A',
             color: 'white',
             padding: '12px 24px',
             border: 'none',
