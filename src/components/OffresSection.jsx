@@ -67,9 +67,9 @@ export default function OffresSection() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[#ff5a6e] hover:text-white font-medium text-base transition-colors"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-[#F70D1A] bg-black text-white hover:bg-[#F70D1A] font-semibold px-8 py-3 text-base sm:text-lg whitespace-nowrap transition-colors shadow-[0_0_18px_rgba(247,13,26,0.3)]"
             >
-              Ou choisir directement un créneau <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              <BrandIcon className="h-5 w-auto" /> <span className="sm:hidden">Choisir un créneau</span><span className="hidden sm:inline">Choisir directement un créneau</span>
             </a>
           )}
           <p className="text-sm text-gray-500">Sans engagement. Réponse sous 24 h ouvrées.</p>
