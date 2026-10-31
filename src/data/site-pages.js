@@ -5,6 +5,7 @@ import { blogPosts } from './blog-posts.js';
 import { offerLandings } from './offers.js';
 import { homeFaq } from './faq.js';
 import { localPages } from './local-pages.js';
+import { enPages } from './en-pages.js';
 
 export const SITE_URL = 'https://www.archiatech.com';
 
@@ -139,6 +140,19 @@ export const pages = [
     summary: 'Une checklist gratuite pour repérer les tâches répétitives de votre entreprise qui se prêtent à l’automatisation.',
     priority: '0.6',
   },
+  ...enPages.map((e) => ({
+    path: `/en/${e.slug ? `${e.slug}/` : ''}`,
+    type: 'en',
+    slug: e.slug,
+    lang: 'en',
+    alternate: e.fr,
+    title: e.metaTitle,
+    description: e.metaDescription,
+    h1: e.h1,
+    summary: e.summary,
+    faq: e.faq,
+    priority: e.slug === '' ? '0.7' : '0.5',
+  })),
   {
     path: '/blog/',
     type: 'blog',

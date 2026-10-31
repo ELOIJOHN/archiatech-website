@@ -45,6 +45,7 @@ export default function SiteFooter() {
               <li><a href="/a-propos/" className={linkClass}>À propos</a></li>
               <li><a href="/blog/" className={linkClass}>Blog</a></li>
               <li><a href="/guide/" className={linkClass}>Guide gratuit</a></li>
+              <li><a href="/en/" className={linkClass} hrefLang="en" lang="en">English</a></li>
               <li><a href="/contact/" className={linkClass}>Contact</a></li>
               <li><a href="/#videos" className={linkClass}>Vidéos</a></li>
               <li>

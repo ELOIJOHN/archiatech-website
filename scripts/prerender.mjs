@@ -48,6 +48,17 @@ function render(page, image) {
     must(html, regex, label);
     html = html.replace(regex, () => replacement);
   }
+  // Langue et alternance FR/EN (hreflang) pour les pages anglaises et leur équivalent français.
+  if (page.lang === 'en') {
+    html = html.replace('<html lang="fr">', () => '<html lang="en">');
+    const fr = `${SITE_URL}${page.alternate}`;
+    html = html.replace('</head>', () => `  <link rel="alternate" hreflang="en" href="${url}" />\n  <link rel="alternate" hreflang="fr" href="${fr}" />\n  </head>`);
+  } else {
+    const en = pages.find((p) => p.lang === 'en' && p.alternate === page.path);
+    if (en) {
+      html = html.replace('</head>', () => `  <link rel="alternate" hreflang="fr" href="${url}" />\n  <link rel="alternate" hreflang="en" href="${SITE_URL}${en.path}" />\n  </head>`);
+    }
+  }
   // Balisage FAQPage (données structurées) pour les pages qui ont une FAQ.
   if (page.faq && page.faq.length) {
     const ld = {

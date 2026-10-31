@@ -12,6 +12,7 @@ import ArchiAgent from './components/ArchiAgent';
 import LogoNavigator from './components/LogoNavigator';
 import SiteFooter from './components/SiteFooter';
 import ServicePage from './pages/ServicePage';
+import EnglishPage from './pages/EnglishPage';
 import GuidePage from './pages/GuidePage';
 import LocalPage from './pages/LocalPage';
 import OfferPage from './pages/OfferPage';
@@ -67,6 +68,8 @@ function renderPage(page) {
       return <ServicePage slug={page.slug} />;
     case 'offer':
       return <OfferPage slug={page.slug} />;
+    case 'en':
+      return <EnglishPage slug={page.slug} />;
     case 'guide':
       return <GuidePage />;
     case 'local':
