@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { VIDEOS_API_URL } from '../config/videos';
 
 // Liste de secours : affichée si l'API n'est pas joignable. La liste réelle se gère dans n8n
@@ -12,6 +12,12 @@ const FALLBACK_VIDEOS = [
   { type: "file", title: "Transformation Digitale", file: "20251011_2325_Transformation Digital.mp4" },
 ].map((v, i) => ({ ...v, key: `demo-${i}` }));
 
+// Image d'aperçu : une photo par vidéo, pour ne rien télécharger avant le clic.
+const posterOf = (v) =>
+  v.type === "youtube"
+    ? `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`
+    : encodeURI(`${import.meta.env.BASE_URL}videos/posters/${String(v.file || "").replace(/\.(mp4|webm)$/i, ".jpg")}`);
+
 const videoKey = (v, i) => (v.type === "youtube" ? `yt-${v.id}` : `file-${v.file || i}`);
 const isValid = (v) =>
   v && typeof v.title === "string" &&
@@ -21,8 +27,7 @@ const isValid = (v) =>
 export default function VideoShowcase() {
   const [videos, setVideos] = useState(FALLBACK_VIDEOS);
   const [activeVideo, setActiveVideo] = useState(FALLBACK_VIDEOS[0]);
-  const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -38,13 +43,6 @@ export default function VideoShowcase() {
       .catch(() => {});
     return () => { cancelled = true; };
   }, []);
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(videoRef.current.muted);
-    }
-  };
 
   return (
     <div className="w-full bg-gray-950 text-white flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
@@ -125,7 +123,20 @@ export default function VideoShowcase() {
 
       {/* 🎞️ Section principale - Cadre Lumineux Spectaculaire */}
       <div className="w-full max-w-7xl video-container-spectacular">
-        {activeVideo.type === "youtube" ? (
+        {!playing ? (
+          <button
+            type="button"
+            onClick={() => setPlaying(true)}
+            aria-label={`Lire la vidéo : ${activeVideo.title}`}
+            className="group relative block w-full aspect-video overflow-hidden rounded-[12px] bg-black"
+          >
+            <img src={posterOf(activeVideo)} alt="" className="absolute inset-0 h-full w-full object-cover" />
+            <span className="absolute inset-0 bg-black/25 transition-colors group-hover:bg-black/10" aria-hidden="true" />
+            <span className="absolute left-1/2 top-1/2 flex h-16 w-16 sm:h-20 sm:w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#F70D1A] shadow-lg transition-transform group-hover:scale-110" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="h-8 w-8 sm:h-10 sm:w-10 fill-white ml-1"><path d="M8 5v14l11-7z" /></svg>
+            </span>
+          </button>
+        ) : activeVideo.type === "youtube" ? (
           <iframe
             key={activeVideo.key}
             src={`https://www.youtube-nocookie.com/embed/${activeVideo.id}?rel=0&autoplay=1`}
@@ -136,14 +147,13 @@ export default function VideoShowcase() {
           />
         ) : (
           <video
-            ref={videoRef}
             key={activeVideo.key}
             src={`${import.meta.env.BASE_URL}videos/${activeVideo.file}`}
             autoPlay
-            loop
-            muted={isMuted}
+            controls
             playsInline
-            className="w-full aspect-video object-contain bg-black transition-all duration-700 ease-in-out"
+            preload="auto"
+            className="w-full aspect-video object-contain bg-black rounded-[12px]"
           />
         )}
 
@@ -161,43 +171,7 @@ export default function VideoShowcase() {
           animation: 'pulse 2s infinite'
         }} />
 
-        {/* Bouton Son - Coin inférieur droit (vidéos hébergées) */}
-        {activeVideo.type !== "youtube" && <button
-          onClick={toggleMute}
-          style={{
-            position: 'absolute',
-            bottom: '20px',
-            right: '20px',
-            width: '50px',
-            height: '50px',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            border: '2px solid #ffffff',
-            borderRadius: '50%',
-            color: '#ffffff',
-            fontSize: '24px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.3s ease',
-            zIndex: 10,
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-            e.target.style.transform = 'scale(1.1)';
-            e.target.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.7)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-            e.target.style.transform = 'scale(1)';
-            e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.5)';
-          }}
-        >
-          {isMuted ? '🔇' : '🔊'}
-        </button>}
-
-        <div className={`${activeVideo.type === "youtube" ? "hidden" : ""} pointer-events-none absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/40 to-transparent p-3 sm:p-4 md:p-6`}>
+        <div className={`${playing || activeVideo.type === "youtube" ? "hidden" : ""} pointer-events-none absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/40 to-transparent p-3 sm:p-4 md:p-6`}>
           <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">{activeVideo.title}</h3>
         </div>
       </div>
@@ -205,33 +179,23 @@ export default function VideoShowcase() {
         <h3 className="w-full max-w-7xl text-lg sm:text-xl font-semibold">{activeVideo.title}</h3>
       )}
 
-      {/* Miniatures : une image par vidéo (pas de lecture simultanée, pour garder le site rapide) */}
+      {/* Miniatures : une image par vidéo, la vidéo ne se charge qu'au clic */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 w-full max-w-7xl">
         {videos.map((video) => (
           <button
             type="button"
             key={video.key}
-            onClick={() => setActiveVideo(video)}
+            onClick={() => { setActiveVideo(video); setPlaying(true); }}
             aria-label={`Lire : ${video.title}`}
             aria-current={activeVideo.key === video.key}
             className={`relative overflow-hidden rounded-md sm:rounded-lg border-2 border-[#F70D1A] cursor-pointer transition-all shadow-[0_0_10px_rgba(247,13,26,0.3)] hover:shadow-[0_0_15px_rgba(247,13,26,0.5)] ${activeVideo.key === video.key ? "ring-2 sm:ring-4 ring-[#F70D1A]" : ""}`}
           >
-            {video.type === "youtube" ? (
-              <img
-                src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
-                alt=""
-                loading="lazy"
-                className={`object-cover w-full aspect-video transition-opacity duration-300 ${activeVideo.key === video.key ? "opacity-100" : "opacity-70 hover:opacity-100"}`}
-              />
-            ) : (
-              <video
-                src={`${import.meta.env.BASE_URL}videos/${video.file}#t=0.5`}
-                preload="metadata"
-                muted
-                playsInline
-                className={`object-cover w-full aspect-video transition-opacity duration-300 ${activeVideo.key === video.key ? "opacity-100" : "opacity-70 hover:opacity-100"}`}
-              />
-            )}
+            <img
+              src={posterOf(video)}
+              alt=""
+              loading="lazy"
+              className={`object-cover w-full aspect-video transition-opacity duration-300 ${activeVideo.key === video.key ? "opacity-100" : "opacity-70 hover:opacity-100"}`}
+            />
             {video.type === "youtube" && (
               <span className="absolute top-1 right-1 text-[10px] bg-[#F70D1A] px-1.5 py-0.5 rounded">YouTube</span>
             )}
