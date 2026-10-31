@@ -48,6 +48,19 @@ function render(page, image) {
     must(html, regex, label);
     html = html.replace(regex, () => replacement);
   }
+  // Balisage FAQPage (données structurées) pour les pages qui ont une FAQ.
+  if (page.faq && page.faq.length) {
+    const ld = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: page.faq.map(([q, a]) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    };
+    html = html.replace('</head>', () => `  <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>\n  </head>`);
+  }
   // Texte de repli pour les robots : React le remplace dès que la page s'affiche.
   must(html, /<div id="root"><\/div>/, 'root');
   html = html.replace(

@@ -1,17 +1,18 @@
 import React from 'react';
 import { Check, X } from 'lucide-react';
 import PageShell, { CtaButton } from './PageShell';
-import { autoflowLanding as L, offers } from '../data/offers';
+import { offerLandings, offers } from '../data/offers';
 
 // Page dédiée à l'offre AutoFlow. Pas de prix : devis après audit gratuit.
-export default function OfferPage() {
+export default function OfferPage({ slug = 'autoflow' }) {
+  const L = offerLandings.find((o) => o.slug === slug) || offerLandings[0];
   const others = offers.filter((o) => o.slug !== L.slug);
 
   return (
     <PageShell
-      eyebrow="Offre AutoFlow"
+      eyebrow={L.eyebrow}
       title={L.h1}
-      intro="AutoFlow connecte vos outils et exécute à votre place les tâches répétitives, pour que votre équipe se concentre sur son métier."
+      intro={L.intro}
     >
       <div className="flex flex-col sm:flex-row gap-3 mb-12">
         <CtaButton href="/contact/?objet=audit#formulaire">Réserver mon audit gratuit</CtaButton>
@@ -38,7 +39,7 @@ export default function OfferPage() {
         ))}
       </ul>
 
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">Exemples d&apos;automatisations</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">Exemples concrets</h2>
       <ul className="grid sm:grid-cols-2 gap-4 mb-10">
         {L.examples.map((e) => (
           <li key={e} className="rounded-xl border border-gray-200 p-5 text-sm text-gray-700 leading-relaxed">
@@ -71,7 +72,7 @@ export default function OfferPage() {
       <div className="rounded-2xl bg-gray-50 border border-gray-200 p-6 sm:p-8 mb-12">
         <h2 className="text-xl font-bold text-gray-900 mb-2">Commençons par l&apos;audit gratuit</h2>
         <p className="text-gray-600 mb-5">
-          Décrivez-nous vos tâches répétitives : nous vous disons ce qui vaut la peine d&apos;être automatisé.
+          Décrivez-nous votre besoin : nous vous disons ce qui est réaliste, sans engagement.
         </p>
         <CtaButton href="/contact/?objet=audit#formulaire">Réserver mon audit gratuit</CtaButton>
       </div>
@@ -80,7 +81,12 @@ export default function OfferPage() {
       <ul className="space-y-2">
         {others.map((o) => (
           <li key={o.slug} className="text-gray-700">
-            <span className="font-medium">{o.name}</span> : {o.tagline}
+            {o.landing ? (
+              <a href={`/offres/${o.slug}/`} className="font-medium text-[#F70D1A] hover:underline">{o.name}</a>
+            ) : (
+              <span className="font-medium">{o.name}</span>
+            )}{' '}
+            : {o.tagline}
           </li>
         ))}
       </ul>

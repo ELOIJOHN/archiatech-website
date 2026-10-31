@@ -2,7 +2,9 @@
 // Fichier en JavaScript pur : il est lu à la fois par React (affichage) et par
 // scripts/prerender.mjs (génération du HTML de chaque page + sitemap).
 import { blogPosts } from './blog-posts.js';
-import { autoflowLanding } from './offers.js';
+import { offerLandings } from './offers.js';
+import { homeFaq } from './faq.js';
+import { localPages } from './local-pages.js';
 
 export const SITE_URL = 'https://www.archiatech.com';
 
@@ -91,6 +93,7 @@ export const pages = [
     description:
       "Transformez votre entreprise avec l'intelligence artificielle et l'automatisation. Solutions RPA, IA, et support IT professionnel.",
     h1: 'ArchiAtech Digital Solutions',
+    faq: homeFaq,
     summary:
       "Conseil et intégration d'IA souveraine, automatisation de workflows, solutions no-code et support IT pour PME et startups à Monaco, dans les Alpes-Maritimes et en France.",
     priority: '1.0',
@@ -105,16 +108,27 @@ export const pages = [
     summary: `${s.tagline} ${s.intro}`,
     priority: '0.8',
   })),
-  {
-    path: `/offres/${autoflowLanding.slug}/`,
+  ...offerLandings.map((o) => ({
+    path: `/offres/${o.slug}/`,
     type: 'offer',
-    slug: autoflowLanding.slug,
-    title: autoflowLanding.metaTitle,
-    description: autoflowLanding.metaDescription,
-    h1: autoflowLanding.h1,
-    summary: autoflowLanding.summary,
+    slug: o.slug,
+    title: o.metaTitle,
+    description: o.metaDescription,
+    h1: o.h1,
+    summary: o.summary,
+    faq: o.faq,
     priority: '0.8',
-  },
+  })),
+  ...localPages.map((l) => ({
+    path: `/${l.slug}/`,
+    type: 'local',
+    slug: l.slug,
+    title: l.metaTitle,
+    description: l.metaDescription,
+    h1: l.h1,
+    summary: l.summary,
+    priority: '0.7',
+  })),
   {
     path: '/blog/',
     type: 'blog',

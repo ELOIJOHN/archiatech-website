@@ -6,11 +6,13 @@ import ServicesSection from './components/ServicesSection';
 import ApprocheSection from './components/ApprocheSection';
 import Avantages from './components/Avantages';
 import VeilleSection from './components/VeilleSection';
+import FaqSection from './components/FaqSection';
 import ContactSection from './components/ContactSectionSimple';
 import ArchiAgent from './components/ArchiAgent';
 import LogoNavigator from './components/LogoNavigator';
 import SiteFooter from './components/SiteFooter';
 import ServicePage from './pages/ServicePage';
+import LocalPage from './pages/LocalPage';
 import OfferPage from './pages/OfferPage';
 import OffresSection from './components/OffresSection';
 import AboutPage from './pages/AboutPage';
@@ -36,6 +38,8 @@ function HomePage() {
       <Avantages />
       {/* Veille IA - Démonstrations vidéos */}
       <VeilleSection />
+      {/* FAQ */}
+      <FaqSection />
       {/* Contact - CTA Final */}
       <ContactSection />
     </>
@@ -61,7 +65,9 @@ function renderPage(page) {
     case 'service':
       return <ServicePage slug={page.slug} />;
     case 'offer':
-      return <OfferPage />;
+      return <OfferPage slug={page.slug} />;
+    case 'local':
+      return <LocalPage slug={page.slug} />;
     case 'blog':
       return <BlogIndex />;
     case 'article':
