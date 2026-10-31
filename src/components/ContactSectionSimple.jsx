@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import BrandIcon from './BrandIcon';
 import { CONTACT_WEBHOOK_URL } from '../config/contact';
 
 export default function ContactSectionSimple() {
@@ -408,7 +409,7 @@ Pour répondre : ${email}
                 }
               }}
             >
-              {isSubmitting ? '📧 Envoi en cours...' : '📧 Envoyer le message'}
+              {isSubmitting ? 'Envoi en cours...' : (<><BrandIcon className="h-5 w-auto inline-block mr-2 align-[-3px]" />Envoyer le message</>)}
             </button>
             <button
               type="button"

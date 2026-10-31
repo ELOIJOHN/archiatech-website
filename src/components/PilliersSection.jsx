@@ -1,4 +1,5 @@
 import { motion as Motion, useReducedMotion } from "framer-motion";
+import BrandIcon from './BrandIcon';
 import { Shield, Heart, Leaf, Lock, ArrowRight } from "lucide-react";
 
 // Une idée, une phrase par engagement : le détail est sur la page « IA souveraine ».
@@ -121,7 +122,7 @@ export default function PilliersSection() {
             href="/contact/?objet=audit#formulaire"
             className="inline-flex items-center gap-2 rounded-full bg-[#F70D1A] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-colors"
           >
-            Audit gratuit <ArrowRight className="w-5 h-5" aria-hidden="true" />
+            <BrandIcon className="h-5 w-auto" /> Audit gratuit <ArrowRight className="w-5 h-5" aria-hidden="true" />
           </a>
           <a
             href="/services/ia-souveraine/"

@@ -1,6 +1,7 @@
 import React from 'react';
+import BrandIcon from './BrandIcon';
 import { motion as Motion } from 'framer-motion';
-import { ArrowRight, CalendarCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { offers } from '../data/offers';
 
 // Section « Offres » de l'accueil. Aucun prix : chaque projet est chiffré sur devis après un audit gratuit.
@@ -58,7 +59,7 @@ export default function OffresSection() {
             href="/contact/?objet=audit#formulaire"
             className="inline-flex items-center gap-2 rounded-full bg-[#F70D1A] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-colors"
           >
-            <CalendarCheck className="w-5 h-5" aria-hidden="true" /> Réserver mon audit gratuit
+            <BrandIcon className="h-5 w-auto" /> Réserver mon audit gratuit
           </a>
           <p className="text-sm text-gray-500">Sans engagement. Réponse sous 24 h ouvrées.</p>
         </div>

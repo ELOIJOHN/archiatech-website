@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import BrandIcon from './BrandIcon';
 import { Menu, X, ChevronDown, Building2, Target, Zap, Briefcase } from 'lucide-react';
 
 export default function NavigationBar() {
@@ -183,8 +184,9 @@ export default function NavigationBar() {
             <a
               href="/contact/?objet=audit#formulaire"
               className="bg-white text-[#F70D1A] hover:bg-gray-100 font-bold rounded-lg px-4 py-2
-                         text-base lg:text-lg whitespace-nowrap transition-colors"
+                         text-base lg:text-lg whitespace-nowrap transition-colors inline-flex items-center gap-2"
             >
+              <BrandIcon className="h-4 w-auto" />
               Audit gratuit
             </a>
           </div>
@@ -273,9 +275,10 @@ export default function NavigationBar() {
               ))}
               <a
                 href="/contact/?objet=audit#formulaire"
-                className="bg-white text-[#F70D1A] font-bold rounded-lg py-3 px-3 text-center touch-target"
+                className="bg-white text-[#F70D1A] font-bold rounded-lg py-3 px-3 text-center touch-target inline-flex items-center justify-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
+                <BrandIcon className="h-4 w-auto" />
                 Audit gratuit
               </a>
             </div>

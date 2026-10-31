@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import BrandIcon from './BrandIcon';
 import { motion as Motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 
@@ -70,7 +71,7 @@ export default function HeroSection() {
               href="/contact/?objet=audit#formulaire"
               className="hero-btn-ring inline-flex items-center gap-2 rounded-full bg-[#F70D1A] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-colors"
             >
-              Audit gratuit <ArrowRight className="w-5 h-5" aria-hidden="true" />
+              <BrandIcon className="h-5 w-auto" /> Audit gratuit <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </a>
             <a href="#offres" className="inline-flex items-center gap-1 text-[#ff5a6e] hover:text-white font-medium text-base sm:text-lg transition-colors">
               Voir nos offres <ArrowRight className="w-4 h-4" aria-hidden="true" />
