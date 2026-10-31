@@ -47,19 +47,7 @@ export default function PilliersSection() {
           viewport={{ once: true }}
           className="text-center mb-12 sm:mb-20"
         >
-          <div className="flex items-center justify-center gap-4">
-            <img
-              src="/images/logo-archiatech-hero.webp"
-              alt="ArchiAtech Digital Solutions"
-              width="860"
-              height="600"
-              loading="lazy"
-              className="w-20 sm:w-28 h-auto select-none opacity-90 drop-shadow-[0_0_14px_rgba(247,13,26,0.4)]"
-              draggable="false"
-            />
-            <span className="h-8 w-px bg-white/20" aria-hidden="true" />
-            <p className="text-sm sm:text-base font-semibold tracking-wide text-[#ff5a6e]">Notre ADN</p>
-          </div>
+          <p className="text-sm sm:text-base font-semibold tracking-wide text-[#ff5a6e]">Notre ADN</p>
           <h2 className="mt-3 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.05] text-white">
             L&apos;IA qui reste
             <br />
@@ -97,13 +85,37 @@ export default function PilliersSection() {
           ))}
         </div>
 
+        {/* Signature de marque */}
+        <Motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mt-16 sm:mt-24 flex flex-col items-center"
+        >
+          <div className="flex items-center gap-5 w-full max-w-md">
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent to-white/25" aria-hidden="true" />
+            <img
+              src="/images/logo-horizontal-white.png"
+              alt="ArchiAtech Digital Solutions"
+              width="889"
+              height="160"
+              loading="lazy"
+              className="h-9 sm:h-11 w-auto select-none"
+              draggable="false"
+            />
+            <span className="h-px flex-1 bg-gradient-to-l from-transparent to-white/25" aria-hidden="true" />
+          </div>
+          <p className="mt-3 text-xs sm:text-sm tracking-[0.3em] uppercase text-gray-500">Monaco · France</p>
+        </Motion.div>
+
         {/* Appels à l'action */}
         <Motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8"
+          className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8"
         >
           <a
             href="/contact/?objet=audit#formulaire"
