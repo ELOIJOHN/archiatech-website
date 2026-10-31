@@ -1,131 +1,60 @@
 import React from 'react';
+import { motion as Motion } from 'framer-motion';
 import { Cog, Cpu, Zap, Code, Users, Rocket, ArrowRight } from 'lucide-react';
-import VideoButton from './VideoButton';
+
+// Une idée, une phrase par service. Le détail est sur chaque page de service.
+const services = [
+  { icon: Cog, title: 'Support & déploiement IT', text: 'Vos postes installés, configurés et suivis.', href: '/services/support-it/' },
+  { icon: Cpu, title: 'Conseil & intégration IA', text: "L'IA appliquée à vos processus, sans jargon.", href: '/services/ia-souveraine/' },
+  { icon: Zap, title: 'Automatisation', text: 'Vos outils reliés, vos tâches répétitives en moins.', href: '/services/automatisation-n8n/' },
+  { icon: Code, title: 'No-code / low-code', text: 'Des applications simples, livrées vite.', href: '/services/automatisation-n8n/' },
+  { icon: Users, title: 'Formation', text: 'Vos équipes autonomes sur leurs nouveaux outils.', href: '/contact/?objet=audit#formulaire' },
+  { icon: Rocket, title: 'Transformation digitale', text: 'Une feuille de route claire, étape par étape.', href: '/contact/?objet=audit#formulaire' },
+];
 
 export default function ServicesSection() {
-  const services = [
-    {
-      icon: <Cog className="w-6 h-6 sm:w-7 sm:h-7" />,
-      title: "Support & Déploiement IT",
-      href: "/services/support-it/", cta: "En savoir plus",
-      description: "Installation, configuration et déploiement de postes de travail en toute sérénité",
-      gradient: "from-[#F70D1A] to-red-600"
-    },
-    {
-      icon: <Cpu className="w-6 h-6 sm:w-7 sm:h-7" />,
-      title: "Conseil & Intégration IA",
-      href: "/services/ia-souveraine/", cta: "En savoir plus",
-      description: "Solutions d'intelligence artificielle appliquées à vos processus métiers",
-      gradient: "from-red-600 to-red-700"
-    },
-    {
-      icon: <Zap className="w-6 h-6 sm:w-7 sm:h-7" />,
-      title: "Automatisation Workflows",
-      href: "/services/automatisation-n8n/", cta: "En savoir plus",
-      description: "RPA, connecteurs, API pour optimiser vos processus",
-      gradient: "from-[#F70D1A] to-red-600"
-    },
-    {
-      icon: <Code className="w-6 h-6 sm:w-7 sm:h-7" />,
-      title: "Solutions No-Code/Low-Code",
-      href: "/services/automatisation-n8n/", cta: "En savoir plus",
-      description: "Développement avec Zapier, Make, Airtable, Notion, Bubble...",
-      gradient: "from-red-600 to-red-700"
-    },
-    {
-      icon: <Users className="w-6 h-6 sm:w-7 sm:h-7" />,
-      title: "Formation & Accompagnement",
-      href: "/contact/", cta: "Demander un devis",
-      description: "Support continu et formation de vos équipes",
-      gradient: "from-[#F70D1A] to-red-600"
-    },
-    {
-      icon: <Rocket className="w-6 h-6 sm:w-7 sm:h-7" />,
-      title: "Transformation Digitale",
-      href: "/contact/", cta: "Demander un devis",
-      description: "Stratégie complète d'innovation et de digitalisation",
-      gradient: "from-red-600 to-red-800"
-    }
-  ];
-
   return (
-    <section
-      id="services"
-      className="py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24 bg-white
-                landscape:py-8"
-    >
-      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-          <span className="text-[#F70D1A] font-semibold
-                         text-[0.65rem] xs:text-xs sm:text-sm
-                         uppercase tracking-wider">
-            Nos expertises
-          </span>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl
-                       font-bold text-gray-900
-                       mb-2 xs:mb-3 sm:mb-4
-                       mt-1.5 xs:mt-2 sm:mt-3">
-            Services Premium
+    <section id="services" className="bg-black py-20 sm:py-28 md:py-36 border-t border-white/5">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <Motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+          className="text-center mb-12 sm:mb-20"
+        >
+          <p className="text-sm sm:text-base font-semibold tracking-wide text-[#ff5a6e]">Nos services</p>
+          <h2 className="mt-3 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.05] text-white">
+            Six façons de
+            <br />
+            <span className="text-gray-500">gagner du temps.</span>
           </h2>
-          <p className="text-sm xs:text-base sm:text-lg md:text-xl
-                      text-gray-600 max-w-3xl mx-auto
-                      px-3 xs:px-4 leading-relaxed">
-            Des solutions complètes pour digitaliser et automatiser vos processus métiers
-          </p>
-        </div>
+        </Motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-                      gap-3 xs:gap-4 sm:gap-5 md:gap-6">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="group relative glass-card
-                        p-4 xs:p-5 sm:p-6 md:p-8
-                        transition-all duration-300
-                        hover:scale-[1.02] active:scale-[0.98]"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {services.map((s, i) => (
+            <Motion.a
+              key={s.title}
+              href={s.href}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: (i % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: '-40px' }}
+              className="group relative overflow-hidden rounded-[1.75rem] bg-[#111113] p-7 sm:p-8 min-h-[14rem] flex flex-col justify-between transition-colors hover:bg-[#17171a]"
             >
-
-              <div className={`relative
-                             w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 md:w-14 md:h-14
-                             bg-gradient-to-br ${service.gradient}
-                             rounded-md xs:rounded-lg sm:rounded-xl
-                             flex items-center justify-center text-white
-                             mb-3 xs:mb-4 sm:mb-5
-                             group-hover:scale-110 transition-transform
-                             touch-target`}>
-                {service.icon}
+              <div
+                className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-[#F70D1A] blur-3xl opacity-0 group-hover:opacity-25 transition-opacity duration-500 pointer-events-none"
+                aria-hidden="true"
+              />
+              <s.icon className="relative h-10 w-10 text-[#F70D1A]" strokeWidth={1.5} aria-hidden="true" />
+              <div className="relative">
+                <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-white">{s.title}</h3>
+                <p className="mt-2 text-base text-gray-400 leading-snug">{s.text}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#ff5a6e] group-hover:text-white transition-colors">
+                  En savoir plus <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </span>
               </div>
-
-              <h3 className="relative
-                           text-base xs:text-lg sm:text-xl
-                           font-bold glass-text
-                           mb-1.5 xs:mb-2 sm:mb-3
-                           leading-tight">
-                {service.title}
-              </h3>
-              <p className="relative glass-text-light
-                          mb-3 xs:mb-4 leading-relaxed
-                          text-xs xs:text-sm sm:text-base">
-                {service.description}
-              </p>
-
-              <div className="relative flex flex-col gap-1.5 xs:gap-2 sm:gap-3">
-                <VideoButton
-                  serviceTitle={service.title}
-                  className="text-xs sm:text-sm touch-target"
-                />
-                <a
-                  href={service.href}
-                  className="relative text-[#F70D1A] font-semibold
-                           flex items-center group-hover:gap-2
-                           transition-all
-                           text-xs xs:text-sm sm:text-base
-                           touch-target"
-                >
-                  {service.cta} <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
-                </a>
-              </div>
-            </div>
+            </Motion.a>
           ))}
         </div>
       </div>

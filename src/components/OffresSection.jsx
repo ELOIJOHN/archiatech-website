@@ -1,73 +1,66 @@
 import React from 'react';
-import { ArrowRight, Check } from 'lucide-react';
+import { motion as Motion } from 'framer-motion';
+import { ArrowRight, CalendarCheck } from 'lucide-react';
 import { offers } from '../data/offers';
 
 // Section « Offres » de l'accueil. Aucun prix : chaque projet est chiffré sur devis après un audit gratuit.
 export default function OffresSection() {
   return (
-    <section id="offres" className="py-16 sm:py-20 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="text-[#F70D1A] font-semibold text-xs sm:text-sm uppercase tracking-wider">
-            Nos offres
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-4">
-            Quatre offres, un point de départ : l&apos;audit gratuit
+    <section id="offres" className="bg-black py-20 sm:py-28 md:py-36 border-t border-white/5">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <Motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+          className="text-center mb-12 sm:mb-20"
+        >
+          <p className="text-sm sm:text-base font-semibold tracking-wide text-[#ff5a6e]">Nos offres</p>
+          <h2 className="mt-3 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.05] text-white">
+            Quatre offres.
+            <br />
+            <span className="text-gray-500">Un point de départ.</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-            Chaque projet est chiffré sur devis, après un échange gratuit pour comprendre votre besoin.
+          <p className="mt-6 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto">
+            Tout commence par un audit gratuit. Chaque projet est ensuite chiffré sur devis.
           </p>
-        </div>
+        </Motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6">
-          {offers.map((o) => (
-            <article
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+          {offers.map((o, i) => (
+            <Motion.a
               key={o.slug}
-              className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-[#F70D1A]/40 transition-all"
+              href={o.landing ? `/offres/${o.slug}/` : '/contact/?objet=audit#formulaire'}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: (i % 2) * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: '-40px' }}
+              className="group relative overflow-hidden rounded-[2rem] bg-[#111113] p-8 sm:p-10 min-h-[16rem] sm:min-h-[19rem] flex flex-col justify-between transition-colors hover:bg-[#17171a]"
             >
-              <span className="self-start text-xs font-semibold uppercase tracking-wider text-[#F70D1A] bg-red-50 rounded-full px-3 py-1 mb-4">
-                {o.label}
-              </span>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">{o.name}</h3>
-              <p className="text-gray-600 mb-5 leading-relaxed">{o.tagline}</p>
-              <ul className="space-y-2 mb-6 text-sm text-gray-700">
-                {o.points.map((pt) => (
-                  <li key={pt} className="flex gap-2">
-                    <Check className="w-4 h-4 text-[#F70D1A] flex-shrink-0 mt-0.5" aria-hidden="true" />
-                    <span>{pt}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-4 border-t border-gray-100">
-                <p className="text-sm font-semibold text-gray-900 mb-3">Sur devis</p>
-                {o.landing ? (
-                  <a
-                    href={`/offres/${o.slug}/`}
-                    className="inline-flex items-center gap-2 text-[#F70D1A] hover:text-red-700 font-semibold"
-                  >
-                    Découvrir {o.name} <ArrowRight className="w-4 h-4" />
-                  </a>
-                ) : (
-                  <a
-                    href="/contact/?objet=audit#formulaire"
-                    className="inline-flex items-center gap-2 text-[#F70D1A] hover:text-red-700 font-semibold"
-                  >
-                    Demander un audit gratuit <ArrowRight className="w-4 h-4" />
-                  </a>
-                )}
+              <div
+                className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#F70D1A] blur-3xl opacity-15 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none"
+                aria-hidden="true"
+              />
+              <p className="relative text-sm font-semibold uppercase tracking-widest text-[#ff5a6e]">{o.label}</p>
+              <div className="relative">
+                <h3 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white">{o.name}</h3>
+                <p className="mt-3 text-base sm:text-lg text-gray-400 leading-snug max-w-sm">{o.tagline}</p>
+                <span className="mt-5 inline-flex items-center gap-1 text-base font-medium text-[#ff5a6e] group-hover:text-white transition-colors">
+                  {o.landing ? `Découvrir ${o.name}` : 'Demander un audit'} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </span>
               </div>
-            </article>
+            </Motion.a>
           ))}
         </div>
 
-        <div className="text-center mt-10 sm:mt-14">
+        <div className="text-center mt-12 sm:mt-16 flex flex-col items-center gap-4">
           <a
             href="/contact/?objet=audit#formulaire"
-            className="inline-flex items-center gap-2 bg-[#F70D1A] hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-[#F70D1A] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-colors"
           >
-            Réserver mon audit gratuit <ArrowRight className="w-5 h-5" />
+            <CalendarCheck className="w-5 h-5" aria-hidden="true" /> Réserver mon audit gratuit
           </a>
-          <p className="text-sm text-gray-500 mt-3">Sans engagement. Réponse sous 24 h ouvrées.</p>
+          <p className="text-sm text-gray-500">Sans engagement. Réponse sous 24 h ouvrées.</p>
         </div>
       </div>
     </section>
