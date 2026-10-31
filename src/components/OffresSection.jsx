@@ -3,6 +3,7 @@ import BrandIcon from './BrandIcon';
 import { motion as Motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { offers } from '../data/offers';
+import { BOOKING_URL } from '../config/booking';
 
 // Section « Offres » de l'accueil. Aucun prix : chaque projet est chiffré sur devis après un audit gratuit.
 export default function OffresSection() {
@@ -61,6 +62,16 @@ export default function OffresSection() {
           >
             <BrandIcon className="h-5 w-auto" /> Réserver mon audit gratuit
           </a>
+          {BOOKING_URL && (
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[#ff5a6e] hover:text-white font-medium text-base transition-colors"
+            >
+              Ou choisir directement un créneau <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </a>
+          )}
           <p className="text-sm text-gray-500">Sans engagement. Réponse sous 24 h ouvrées.</p>
         </div>
       </div>
