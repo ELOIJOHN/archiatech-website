@@ -31,7 +31,7 @@ export const servicePages = [
     ],
     metaTitle: 'Conseil et intégration IA souveraine | ArchiAtech',
     metaDescription:
-      "Conseil et intégration d'IA souveraine pour PME et startups à Monaco, Nice et en France : cas d'usage, assistants internes, hébergement maîtrisé des données.",
+      "Conseil et intégration d'IA souveraine pour PME à Monaco, Nice et en France : cas d'usage, assistants internes, hébergement maîtrisé des données.",
   },
   {
     slug: 'automatisation-n8n',

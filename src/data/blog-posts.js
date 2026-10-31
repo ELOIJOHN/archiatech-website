@@ -69,7 +69,7 @@ export const blogPosts = [
   {
     slug: 'utiliser-ia-generative-rgpd',
     title: "IA générative et RGPD : 6 bonnes pratiques pour votre PME",
-    metaTitle: "IA générative et RGPD en PME : 6 bonnes pratiques | ArchiAtech",
+    metaTitle: "IA générative et RGPD en PME : 6 bonnes pratiques",
     description:
       "Utiliser des outils d'IA sans exposer de données personnelles : six réflexes simples pour rester conforme au RGPD en entreprise.",
     date: '2026-10-25',
@@ -97,7 +97,7 @@ export const blogPosts = [
   {
     slug: 'ia-souveraine-pme',
     title: "IA souveraine : ce que cela change concrètement pour une PME",
-    metaTitle: "IA souveraine pour PME : définition et bénéfices | ArchiAtech",
+    metaTitle: "IA souveraine en PME : définition et bénéfices",
     description:
       "Qu'est-ce qu'une IA souveraine, pourquoi les PME s'y intéressent et comment démarrer sans exposer ses données ? Les repères essentiels.",
     date: '2026-10-25',
@@ -132,7 +132,7 @@ export const blogPosts = [
   {
     slug: 'automatiser-avec-n8n',
     title: "5 tâches de PME à automatiser avec n8n",
-    metaTitle: "Automatiser sa PME avec n8n : 5 idées concrètes | ArchiAtech",
+    metaTitle: "Automatiser sa PME avec n8n : 5 idées concrètes",
     description:
       "Formulaires, factures, relances, comptes rendus : cinq automatisations simples avec n8n qui font gagner du temps à une petite entreprise.",
     date: '2026-10-25',
@@ -161,7 +161,7 @@ export const blogPosts = [
   {
     slug: 'securite-microsoft-365-pme',
     title: "Microsoft 365 : 7 réglages de sécurité à vérifier dans votre PME",
-    metaTitle: "Sécurité Microsoft 365 en PME : 7 points à vérifier | ArchiAtech",
+    metaTitle: "Sécurité Microsoft 365 en PME : 7 points clés",
     description:
       "Authentification multifacteur, comptes administrateurs, partage externe, sauvegarde : sept vérifications simples pour sécuriser Microsoft 365.",
     date: '2026-10-25',

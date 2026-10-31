@@ -52,7 +52,7 @@ export const offers = [
 // Contenu de la page dédiée AutoFlow (/offres/autoflow/).
 export const autoflowLanding = {
   slug: 'autoflow',
-  metaTitle: 'AutoFlow : automatisation de vos tâches répétitives | ArchiAtech',
+  metaTitle: 'AutoFlow : automatiser vos tâches répétitives | ArchiAtech',
   metaDescription:
     "AutoFlow : ArchiAtech automatise vos tâches répétitives avec n8n (relances, saisies, synchronisations, rapports). Audit gratuit, projet sur devis.",
   h1: 'AutoFlow : automatisez les tâches qui vous font perdre du temps',
