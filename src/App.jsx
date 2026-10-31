@@ -8,6 +8,7 @@ import Avantages from './components/Avantages';
 import VeilleSection from './components/VeilleSection';
 import ContactSection from './components/ContactSectionSimple';
 import ArchiAgent from './components/ArchiAgent';
+import LogoNavigator from './components/LogoNavigator';
 import SiteFooter from './components/SiteFooter';
 import ServicePage from './pages/ServicePage';
 import OfferPage from './pages/OfferPage';
@@ -91,6 +92,9 @@ export default function App() {
       </main>
 
       <SiteFooter />
+
+      {/* Logo flottant : retour en haut et section précédente / suivante */}
+      <LogoNavigator />
 
       {/* Agent IA Archi - Widget flottant */}
       <ArchiAgent />
