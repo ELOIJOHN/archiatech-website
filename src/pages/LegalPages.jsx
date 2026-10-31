@@ -77,6 +77,11 @@ export function Confidentialite() {
           uniquement pour répondre à votre demande.
         </li>
         <li>
+          <strong>Guide gratuit et newsletter</strong> : votre adresse e-mail, utilisée pour vous envoyer le guide
+          demandé et, uniquement si vous avez coché la case dédiée, notre newsletter mensuelle. Vous pouvez vous
+          désinscrire à tout moment en répondant « STOP » à un e-mail ou en écrivant à <Mail />.
+        </li>
+        <li>
           <strong>Assistant Archi Agent</strong> : les messages que vous saisissez servent à vous répondre sur la page.
         </li>
         <li>
@@ -90,7 +95,8 @@ export function Confidentialite() {
       <P>
         Le traitement de votre demande de contact repose sur notre intérêt légitime à répondre aux sollicitations
         professionnelles. Les échanges sont conservés le temps nécessaire au traitement de la demande, puis au maximum
-        3 ans après le dernier contact.
+        3 ans après le dernier contact. L’envoi du guide gratuit et de la newsletter repose sur votre consentement ; votre
+        adresse est conservée jusqu’à votre désinscription, et au plus 3 ans après votre dernière interaction.
       </P>
 
       <H2>Destinataires et hébergement</H2>

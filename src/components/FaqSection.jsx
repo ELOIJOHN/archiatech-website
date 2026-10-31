@@ -43,6 +43,12 @@ export default function FaqSection() {
           >
             <BrandIcon className="h-5 w-auto" /> Une autre question ? Écrivez-nous
           </a>
+          <p className="mt-6 text-base text-gray-400">
+            Pas encore prêt ?{' '}
+            <a href="/guide/" className="text-[#ff5a6e] hover:text-white font-medium underline-offset-4 hover:underline">
+              Recevez gratuitement notre guide : 10 tâches à automatiser
+            </a>
+          </p>
         </div>
       </div>
     </section>

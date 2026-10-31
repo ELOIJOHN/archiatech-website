@@ -21,5 +21,5 @@ export const company = {
     url: 'https://www.cloudflare.com',
   },
   youtube: 'https://www.youtube.com/@ArchiatechMedia',
-  lastLegalUpdate: '25 octobre 2026',
+  lastLegalUpdate: '31 octobre 2026',
 };

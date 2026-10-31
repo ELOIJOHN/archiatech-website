@@ -130,6 +130,16 @@ export const pages = [
     priority: '0.7',
   })),
   {
+    path: '/guide/',
+    type: 'guide',
+    title: 'Guide gratuit : 10 tâches à automatiser | ArchiAtech',
+    description:
+      "Checklist gratuite : 10 tâches à automatiser dans votre entreprise (relances, saisies, rapports, rendez-vous). Envoyée par e-mail, sans engagement.",
+    h1: '10 tâches à automatiser dans votre entreprise',
+    summary: 'Une checklist gratuite pour repérer les tâches répétitives de votre entreprise qui se prêtent à l’automatisation.',
+    priority: '0.6',
+  },
+  {
     path: '/blog/',
     type: 'blog',
     title: 'Blog IA, automatisation et IT pour PME | ArchiAtech',

@@ -44,6 +44,7 @@ export default function SiteFooter() {
             <ul className="space-y-2.5 text-sm">
               <li><a href="/a-propos/" className={linkClass}>À propos</a></li>
               <li><a href="/blog/" className={linkClass}>Blog</a></li>
+              <li><a href="/guide/" className={linkClass}>Guide gratuit</a></li>
               <li><a href="/contact/" className={linkClass}>Contact</a></li>
               <li><a href="/#videos" className={linkClass}>Vidéos</a></li>
               <li>
