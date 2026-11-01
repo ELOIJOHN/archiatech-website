@@ -3,7 +3,7 @@
   "title": "Archi et Atech vous présentent ArchiAtech",
   "kicker": "Présentation",
   "thumbnail_text": "Archi & Atech : gagnez du temps",
-  "description": "Archi et Atech présentent en une minute l'IA souveraine, l'automatisation et le support IT d'ArchiAtech.\n\nContact : https://www.archiatech.com/#contact",
+  "description": "Archi et Atech présentent en une minute l'IA, l'automatisation et le support IT d'ArchiAtech.\n\nContact : https://www.archiatech.com/#contact",
   "tags": [
     "ArchiAtech",
     "IA",
@@ -40,11 +40,11 @@
     },
     {
       "speaker": "archi",
-      "text": "Première chose : l'intelligence artificielle. Mais attention, une IA souveraine, où vos données restent chez vous."
+      "text": "Première chose : l'intelligence artificielle. Mais attention, une IA utilisée avec soin, où vous gardez le contrôle de vos données."
     },
     {
       "speaker": "atech",
-      "text": "Ça rassure, non ? Pas de contrats ou de dossiers clients envoyés n'importe où."
+      "text": "Ça rassure, non ? Vous décidez de ce qui est partagé, et de ce qui ne l'est pas."
     },
     {
       "speaker": "archi",
