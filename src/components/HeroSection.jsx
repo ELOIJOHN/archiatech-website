@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import BrandIcon from './BrandIcon';
+import './LogoLight.css';
 import { motion as Motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 
@@ -41,15 +42,29 @@ export default function HeroSection() {
         animate="show"
       >
         <Motion.div variants={rise} style={reduce ? undefined : { scale: logoScale, opacity: logoOpacity }}>
-          <img
-            src="/images/logo-archiatech-hero.webp"
-            alt="ArchiAtech Digital Solutions"
-            width="860"
-            height="600"
-            fetchpriority="high"
-            className="mx-auto w-[78vw] max-w-[420px] sm:max-w-[520px] lg:max-w-[580px] h-auto select-none"
-            draggable="false"
-          />
+          <div className="logo-light mx-auto w-[78vw] max-w-[420px] sm:max-w-[520px] lg:max-w-[580px]">
+            <img
+              src="/images/logo-archiatech-hero.webp"
+              alt="ArchiAtech Digital Solutions"
+              width="860"
+              height="600"
+              fetchpriority="high"
+              className="logo-light__base select-none"
+              draggable="false"
+            />
+            {['red', 'silver', 'gold'].map((tone) => (
+              <img
+                key={tone}
+                src="/images/logo-archiatech-hero.webp"
+                alt=""
+                aria-hidden="true"
+                width="860"
+                height="600"
+                className={`logo-light__pass logo-light__pass--${tone}`}
+                draggable="false"
+              />
+            ))}
+          </div>
         </Motion.div>
 
         <Motion.div style={reduce ? undefined : { y: textY }}>
