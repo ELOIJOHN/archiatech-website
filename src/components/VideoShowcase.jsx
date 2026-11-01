@@ -4,6 +4,7 @@ import { VIDEOS_API_URL } from '../config/videos';
 // Liste de secours : affichée si l'API n'est pas joignable. La liste réelle se gère dans n8n
 // (table videos_site_archiatech) : voir le rapport dans Obsidian.
 const FALLBACK_VIDEOS = [
+  { type: "file", title: "Présentation ArchiAtech", file: "archiatech-presentation.mp4" },
   { type: "file", title: "Support IT", file: "20251011_2138_SupportIT.mp4" },
   { type: "file", title: "Conseil & Intégration IA", file: "20251011_2242_Conseil_Integration IA.mp4" },
   { type: "file", title: "Automatisation Workflows", file: "20251011_2259_Automatisation Workflows.mp4" },
