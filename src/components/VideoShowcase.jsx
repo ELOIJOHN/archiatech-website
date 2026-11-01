@@ -10,6 +10,7 @@ const FALLBACK_VIDEOS = [
   { type: "file", title: "No Code / Low Code", file: "20251011_2313_NoCode_LowCode.mp4" },
   { type: "file", title: "Formation & Accompagnement", file: "20251011_2323_Formation_Accompagnement.mp4" },
   { type: "file", title: "Transformation Digitale", file: "20251011_2325_Transformation Digital.mp4" },
+  { type: "file", title: "Circuits ArchiAtech", file: "archiatech-circuits.mp4" },
 ].map((v, i) => ({ ...v, key: `demo-${i}` }));
 
 // Image d'aperçu : une photo par vidéo, pour ne rien télécharger avant le clic.
