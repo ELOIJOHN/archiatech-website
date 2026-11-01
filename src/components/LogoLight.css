@@ -1,0 +1,37 @@
+/* The filtered copies preserve the logo silhouette and its black background. */
+.logo-light {
+  position: relative;
+  isolation: isolate;
+}
+.logo-light__base { display: block; width: 100%; height: auto; }
+.logo-light__pass {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: logo-light-sweep 9s linear infinite;
+}
+.logo-light__pass--red {
+  filter: grayscale(1) sepia(1) saturate(9) hue-rotate(315deg) brightness(1.15);
+}
+.logo-light__pass--silver {
+  filter: grayscale(1) brightness(1.6);
+  animation-delay: 0.7s;
+}
+.logo-light__pass--gold {
+  filter: grayscale(1) sepia(1) saturate(2.8) brightness(1.3);
+  animation-delay: 1.4s;
+}
+@keyframes logo-light-sweep {
+  0% { opacity: 0; clip-path: polygon(-45% 0, -25% 0, -45% 100%, -65% 100%); }
+  5% { opacity: 0.8; }
+  40% { opacity: 0.8; }
+  45%, 100% { opacity: 0; clip-path: polygon(145% 0, 165% 0, 145% 100%, 125% 100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-light__pass { display: none; animation: none; }
+}
