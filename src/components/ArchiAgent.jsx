@@ -245,7 +245,7 @@ const ArchiAgent = () => {
         
         {/* Effet de lueur externe */}
         <div
-          className="absolute inset-0 rounded-full opacity-30"
+          className="chat-glow absolute inset-0 rounded-full opacity-30"
           style={{
             background: 'radial-gradient(circle, rgba(247,13,26, 0.3) 0%, transparent 70%)',
             animation: 'glow-pulse 2s ease-in-out infinite'
@@ -256,7 +256,7 @@ const ArchiAgent = () => {
       {/* Widget de chat - TOUJOURS AU-DESSUS */}
       {isOpen && (
         <div
-          className={`bg-white rounded-xl sm:rounded-2xl shadow-2xl transition-all duration-300 z-chatbot ${
+          className={`bg-white rounded-xl sm:rounded-2xl shadow-2xl transition-[width,height] duration-300 z-chatbot ${
             isMinimized ? 'w-[calc(100vw-2rem)] sm:w-80 h-16' : 'w-[calc(100vw-2rem)] sm:w-96 h-[70vh] sm:h-[500px]'
           }`}
           style={{
@@ -307,7 +307,7 @@ const ArchiAgent = () => {
           {/* Messages */}
           {!isMinimized && (
             <>
-              <div className="h-[350px] overflow-y-auto p-4 space-y-4">
+              <div className="h-[350px] overflow-y-auto p-4 space-y-4" role="log" aria-live="polite" aria-label="Conversation avec Archi">
                 {messages.map((message) => (
                   <div
                     key={message.id}
@@ -337,9 +337,9 @@ const ArchiAgent = () => {
                   <div className="flex justify-start">
                     <div className="bg-gray-100 text-gray-800 p-3 rounded-2xl">
                       <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce motion-reduce:animate-none"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce motion-reduce:animate-none" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce motion-reduce:animate-none" style={{ animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
                   </div>

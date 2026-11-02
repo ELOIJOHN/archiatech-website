@@ -67,7 +67,7 @@ export default function NavigationBar() {
   ];
 
   return (
-    <nav className={`nav-ferrari fixed top-0 w-full z-navigation transition-all duration-300 ${
+    <nav className={`nav-ferrari fixed top-0 w-full z-navigation transition-[backdrop-filter] duration-300 ${
       isScrolled ? 'backdrop-blur-xl' : ''
     }`}>
       {/* Liseré blanc lumineux qui court le long du bord bas */}
@@ -96,7 +96,7 @@ export default function NavigationBar() {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 onMouseEnter={() => setIsDropdownOpen(true)}
                 className="nav-dropdown-button flex items-center space-x-1.5 lg:space-x-2
-                          text-white hover:text-white transition-all duration-300
+                          text-white hover:text-white transition-colors duration-300
                           font-semibold group touch-target
                           text-base lg:text-lg xl:text-xl
                           px-4 py-3 rounded-lg
@@ -104,7 +104,7 @@ export default function NavigationBar() {
               >
                 <span>ArchiAtech</span>
                 <ChevronDown className={`nav-dropdown-arrow w-4 h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6
-                                        transition-all duration-300
+                                        transition-transform duration-300
                                         ${isDropdownOpen ? 'rotate-180' : 'group-hover:translate-y-0.5'}`} />
               </button>
 
@@ -131,11 +131,11 @@ export default function NavigationBar() {
                                     gap-3.5 md:gap-4
                                     p-3.5 md:p-4
                                     rounded-xl
-                                    transition-all duration-300 group
+                                    transition-[background-color,border-color,box-shadow,transform] duration-300 group
                                     touch-target
                                     hover:bg-white/20 bg-white/0
                                     hover:shadow-lg hover:shadow-black/10
-                                    hover:-translate-y-0.5
+                                    hover:-translate-y-0.5 motion-reduce:hover:translate-y-0
                                     border border-white/0 hover:border-white/20"
                           onClick={() => setIsDropdownOpen(false)}
                         >
@@ -144,8 +144,8 @@ export default function NavigationBar() {
                                         rounded-xl
                                         flex items-center justify-center
                                         bg-white shadow-lg shadow-black/10
-                                        group-hover:scale-110 group-hover:rotate-3
-                                        transition-all duration-300">
+                                        group-hover:scale-110 group-hover:rotate-3 motion-reduce:group-hover:scale-100 motion-reduce:group-hover:rotate-0
+                                        transition-transform duration-300">
                             <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-[#F70D1A]" />
                           </div>
                           <div className="flex-1 min-w-0">
@@ -196,7 +196,7 @@ export default function NavigationBar() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 text-white hover:text-white transition-colors
                       touch-target rounded-lg active:bg-white/10"
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={isMenuOpen}
           >
             {isMenuOpen ?
@@ -230,7 +230,7 @@ export default function NavigationBar() {
                                   space-x-2 xs:space-x-2.5 sm:space-x-3
                                   px-1.5 xs:px-2 py-2.5 xs:py-3
                                   rounded-md xs:rounded-lg
-                                  transition-all duration-200 group
+                                  transition-colors duration-200 group
                                   touch-target"
                         onClick={() => setIsMenuOpen(false)}
                       >

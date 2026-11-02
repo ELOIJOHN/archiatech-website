@@ -54,7 +54,7 @@ export default function ApprocheSection() {
           {steps.map((item, index) => (
             <div key={index} className="relative group">
               <div 
-                className="p-8 sm:p-10 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:shadow-[#F70D1A]/20 hover:scale-105"
+                className="p-8 sm:p-10 rounded-2xl border transition-[transform,box-shadow] duration-300 hover:shadow-xl hover:shadow-[#F70D1A]/20 hover:scale-[1.02] motion-reduce:hover:scale-100"
                 style={{
                   background: 'rgba(255, 255, 255, 0.08)',
                   backdropFilter: 'blur(15px)',

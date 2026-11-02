@@ -39,7 +39,7 @@ export default function FaqSection() {
         <div className="mt-12 text-center">
           <a
             href="/contact/?objet=audit#formulaire"
-            className="inline-flex items-center gap-2 rounded-full bg-[#F70D1A] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-[#F70D1A] hover:bg-[#ff1f3f] text-white font-semibold px-8 py-3.5 text-base sm:text-lg transition-[background-color,transform] active:scale-[0.97]"
           >
             <BrandIcon className="h-5 w-auto" /> Une autre question ? Écrivez-nous
           </a>
