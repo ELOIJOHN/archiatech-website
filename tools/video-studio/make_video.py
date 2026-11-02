@@ -113,7 +113,7 @@ def dialogue_html(s, spec, b64, n, total):
     return (f"<html><head><meta charset='utf-8'><style>{CSS}{DLG_CSS}</style></head><body>"
             f"<div class='band'><img src='data:image/png;base64,{b64['_logo']}'></div>"
             f"<div class='cast'>{cast}</div><div class='say'>{s['text']}</div>"
-            f"<div class='foot'><span>www.archiatech.com</span><span>{n}/{total}</span></div></body></html>")
+            f"<div class='foot'><span>www.archiatech.com</span><span>Personnages générés par IA &nbsp;·&nbsp; {n}/{total}</span></div></body></html>")
 
 
 def thumb_html(spec, logo_b64):
@@ -123,6 +123,57 @@ def thumb_html(spec, logo_b64):
             "h1{font-size:120px;line-height:1.02;letter-spacing:-3px;max-width:1100px}"
             "img{height:70px;align-self:flex-start;margin-bottom:10px}.k{font-size:34px;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:.9}"
             f"</style></head><body><img src='data:image/png;base64,{logo_b64}'><div class='k'>{spec.get('kicker','')}</div><h1>{t}</h1></body></html>")
+
+
+def envelope(audio, n_frames):
+    """Volume de la voix, image par image (0 à 1), pour animer le personnage qui parle."""
+    import numpy as np
+    raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", "-i", str(audio), "-ac", "1", "-ar", "16000", "-f", "s16le", "-"])
+    x = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0
+    hop = 16000 / FPS
+    env = np.array([np.sqrt(np.mean(x[int(i * hop):int((i + 1) * hop)] ** 2)) if int(i * hop) < len(x) else 0.0 for i in range(n_frames)])
+    ref = np.percentile(env, 95) or 1.0
+    env = np.clip(env / ref, 0, 1)
+    sm = np.zeros_like(env)
+    for i, v in enumerate(env):  # lissage : attaque rapide, retombée douce
+        sm[i] = v if i == 0 else max(v, sm[i - 1] * 0.8)
+    return sm
+
+
+def animated_clip(base_png, tile_png, center, audio, dur, out):
+    """Personnage qui parle : respiration, léger zoom et halo rouge qui suivent la voix."""
+    import numpy as np
+    from PIL import Image, ImageDraw, ImageFilter
+    import math
+    base = Image.open(base_png).convert("RGB")
+    tile = Image.open(tile_png).convert("RGBA")
+    n = int(round(dur * FPS))
+    env = envelope(audio, n)
+    cmd = ["nice", "-n", "10", "ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
+           "-i", str(audio), "-af", "apad=pad_dur=0.5", "-t", f"{dur:.3f}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "23",
+           "-pix_fmt", "yuv420p", "-r", str(FPS), "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2", str(out)]
+    pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    cx, cy = center
+    r0 = tile.width / 2
+    for i in range(n):
+        t = i / FPS
+        a = float(env[i])
+        frame = base.copy()
+        # halo : un anneau rouge dont l'épaisseur suit la voix
+        glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        g = ImageDraw.Draw(glow)
+        rad = r0 + 8 + 26 * a
+        g.ellipse([cx - rad, cy - rad, cx + rad, cy + rad], outline=(247, 13, 26, int(70 + 150 * a)), width=int(6 + 10 * a))
+        glow = glow.filter(ImageFilter.GaussianBlur(5 + 8 * a))
+        frame.paste(glow, (0, 0), glow)
+        # respiration + petit zoom quand la voix monte
+        sc = 1.0 + 0.012 * (1 + math.sin(2 * math.pi * 0.35 * t)) / 2 + 0.03 * a
+        size = int(round(tile.width * sc))
+        tl = tile.resize((size, size), Image.LANCZOS)
+        frame.paste(tl, (int(cx - size / 2), int(cy - size / 2 - 3 * a)), tl)
+        pr.stdin.write(frame.tobytes())
+    pr.stdin.close()
+    pr.wait()
 
 
 def split_sentences(text):
@@ -169,6 +220,13 @@ def main():
                 page.set_content(slide_html(s, logo_b64, i, len(slides), spec["title"]))
             page.wait_for_timeout(150)
             page.screenshot(path=str(png))
+            tile = center = None
+            if s.get("speaker") and spec.get("animate"):
+                el = page.locator(".p.on img")
+                bb = el.bounding_box()
+                tile = work / f"t{i}.png"
+                el.screenshot(path=str(tile), omit_background=True)
+                center = (bb["x"] + bb["width"] / 2, bb["y"] + bb["height"] / 2)
             audio = work / (f"a{i}.wav" if voice == "piper" else f"a{i}.mp3")
             sp = spk.get(s.get("speaker"), {})
             if voice == "piper":
@@ -177,6 +235,16 @@ def main():
                 tts_openai(s["narration"], audio, sp.get("openai_voice"))
             dur = duration(audio) + 0.5
             clip = work / f"c{i}.mp4"
+            if tile is not None:
+                animated_clip(png, tile, center, audio, dur, clip)
+                clips.append(clip)
+                sents = split_sentences(s["narration"]); total_chars = sum(len(x) for x in sents) or 1
+                speech = dur - 0.5; c = cursor
+                for x in sents:
+                    d = speech * len(x) / total_chars
+                    srt.append(f"{idx}\n{srt_ts(c)} --> {srt_ts(c + d)}\n{x}\n"); idx += 1; c += d
+                cursor += dur
+                continue
             sh(["nice", "-n", "10", "ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-framerate", str(FPS), "-i", str(png), "-i", str(audio),
                 "-af", "apad=pad_dur=0.5", "-t", f"{dur:.3f}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "23", "-tune", "stillimage",
                 "-pix_fmt", "yuv420p", "-r", str(FPS), "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2", str(clip)])
