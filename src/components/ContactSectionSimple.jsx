@@ -138,7 +138,7 @@ Pour répondre : ${email}
     color: '#374151',
     fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     fontSize: '1rem',
-    transition: 'all 0.3s ease',
+    transition: 'border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease',
     outline: 'none',
     width: '100%'
   };

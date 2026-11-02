@@ -72,7 +72,7 @@ export default function OffresSection() {
               <BrandIcon className="h-5 w-auto" /> <span className="sm:hidden">Choisir un créneau</span><span className="hidden sm:inline">Choisir directement un créneau</span>
             </a>
           )}
-          <p className="text-sm text-gray-500">Sans engagement. Réponse sous 24 h ouvrées.</p>
+          <p className="text-sm text-gray-400">Sans engagement. Réponse sous 24 h ouvrées.</p>
         </div>
       </div>
     </section>

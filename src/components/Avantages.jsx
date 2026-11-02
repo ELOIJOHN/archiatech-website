@@ -1,7 +1,8 @@
-import { motion as Motion } from "framer-motion";
+import { motion as Motion, useReducedMotion } from "framer-motion";
 import { Target, Workflow, ShieldCheck, Users, MapPin, FileText } from "lucide-react";
 
 export default function Avantages() {
+  const reduce = useReducedMotion();
   const avantages = [
     { icon: Target, titre: "Un besoin avant un outil", texte: "Nous partons de vos tâches répétitives réelles, pas d'une technologie imposée." },
     { icon: Workflow, titre: "IA et no-code, sans jargon", texte: "Automatisations n8n, agents IA, tableaux de bord : simples à utiliser et à faire évoluer." },
@@ -47,7 +48,7 @@ export default function Avantages() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 text-base sm:text-lg">{item.titre}</h3>
-                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{item.texte}</p>
+                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed">{item.texte}</p>
                 </div>
               </Motion.li>
             ))}
@@ -72,9 +73,9 @@ export default function Avantages() {
               {engagements.map((stat, i) => (
                 <Motion.div
                   key={i}
-                  className="bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition group"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 200 }}
+                  className="bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/20 hover:bg-white/20 transition-colors group"
+                  whileHover={reduce ? undefined : { scale: 1.02 }}
+                  transition={{ type: "spring", bounce: 0, duration: 0.4 }}
                 >
                   <div className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 text-white">{stat.value}</div>
                   <div className="text-white/80 text-xs sm:text-sm">{stat.label}</div>

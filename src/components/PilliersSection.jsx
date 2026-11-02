@@ -107,7 +107,7 @@ export default function PilliersSection() {
             />
             <span className="h-px flex-1 bg-gradient-to-l from-transparent to-white/25" aria-hidden="true" />
           </div>
-          <p className="mt-3 text-xs sm:text-sm tracking-[0.3em] uppercase text-gray-500">Monaco · France</p>
+          <p className="mt-3 text-xs sm:text-sm tracking-[0.3em] uppercase text-gray-400">Monaco · France</p>
         </Motion.div>
 
         {/* Appels à l'action */}
