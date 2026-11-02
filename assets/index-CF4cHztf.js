@@ -67,10 +67,10 @@ Error generating stack: `+l.message+`
                                   px-1.5 xs:px-2 py-2.5 xs:py-3
                                   rounded-md xs:rounded-lg
                                   transition-colors duration-200 group
-                                  touch-target`,onClick:()=>t(!1),children:[i.jsx("div",{className:`mobile-nav-icon flex-shrink-0
+                                  touch-target`,onClick:()=>t(!1),children:[i.jsx("div",{className:`mobile-nav-icon flex-shrink-0 bg-white/15
                                       w-7 h-7 xs:w-8 xs:h-8
                                       rounded-md xs:rounded-lg
-                                      flex items-center justify-center`,children:i.jsx(v,{className:"w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#F70D1A]"})}),i.jsxs("div",{className:"flex-1 min-w-0",children:[i.jsx("div",{className:`text-white font-medium
+                                      flex items-center justify-center`,children:i.jsx(v,{className:"w-3.5 h-3.5 xs:w-4 xs:h-4 text-white"})}),i.jsxs("div",{className:"flex-1 min-w-0",children:[i.jsx("div",{className:`text-white font-medium
                                         text-xs xs:text-sm`,children:f.label}),i.jsx("div",{className:`text-white/60
                                         text-[0.65rem] xs:text-xs
                                         leading-tight mt-0.5`,children:f.description})]})]},h)})})]}),g.map((f,h)=>i.jsx("a",{href:f.href,className:`text-white/80 hover:text-white
