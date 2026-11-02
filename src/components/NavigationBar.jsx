@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { AnimatePresence, motion as Motion, useReducedMotion } from 'framer-motion';
 import BrandIcon from './BrandIcon';
 import { Menu, X, ChevronDown, Building2, Target, Zap, Briefcase } from 'lucide-react';
 
@@ -7,6 +8,15 @@ export default function NavigationBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const reduceMotion = useReducedMotion();
+  // Le menu part du bouton (en haut à droite) et y retourne : même trajet à l'entrée et à la sortie.
+  const menuMotion = reduceMotion
+    ? { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, transition: { duration: 0.15 } }
+    : {
+        initial: { opacity: 0, scale: 0.96, y: -8 },
+        animate: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', bounce: 0, duration: 0.35 } },
+        exit: { opacity: 0, scale: 0.96, y: -8, transition: { type: 'spring', bounce: 0, duration: 0.25 } }
+      };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -207,9 +217,14 @@ export default function NavigationBar() {
             </div>
 
         {/* Menu Mobile - Amélioré responsive */}
+        <AnimatePresence>
         {isMenuOpen && (
-          <div className="md:hidden mt-2 xs:mt-3 sm:mt-4 pb-2 xs:pb-3 sm:pb-4
-                         border-t border-[#F70D1A]/20 mobile-menu-enter">
+          <Motion.div
+            key="mobile-menu"
+            {...menuMotion}
+            style={{ transformOrigin: 'top right' }}
+            className="md:hidden mt-2 xs:mt-3 sm:mt-4 pb-2 xs:pb-3 sm:pb-4
+                         border-t border-[#F70D1A]/20">
             <div className="flex flex-col space-y-1.5 xs:space-y-2 pt-2 xs:pt-3 sm:pt-4">
               {/* Section ArchiAtech dans le menu mobile */}
               <div className="mobile-nav-section border-b border-white/10
@@ -282,8 +297,9 @@ export default function NavigationBar() {
                 Audit gratuit
               </a>
             </div>
-          </div>
+          </Motion.div>
         )}
+        </AnimatePresence>
         </div>
     </nav>
   );
