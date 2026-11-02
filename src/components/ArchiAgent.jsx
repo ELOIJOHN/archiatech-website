@@ -1,9 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { AnimatePresence, motion as Motion, useReducedMotion } from 'framer-motion';
 import { Bot, Send, X, Minimize2, Maximize2 } from 'lucide-react';
 import { generateLLMResponse, detectUserProfile } from '../services/llmService';
 
 const ArchiAgent = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
+  // La fenêtre grandit depuis la bulle (en bas à droite) et s'y résorbe en se fermant.
+  const windowMotion = reduceMotion
+    ? { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, transition: { duration: 0.15 } }
+    : {
+        initial: { opacity: 0, scale: 0.9, y: 12 },
+        animate: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', bounce: 0, duration: 0.35 } },
+        exit: { opacity: 0, scale: 0.9, y: 12, transition: { type: 'spring', bounce: 0, duration: 0.25 } }
+      };
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -254,8 +264,11 @@ const ArchiAgent = () => {
       </button>
 
       {/* Widget de chat - TOUJOURS AU-DESSUS */}
+      <AnimatePresence>
       {isOpen && (
-        <div
+        <Motion.div
+          key="chat-window"
+          {...windowMotion}
           className={`bg-white rounded-xl sm:rounded-2xl shadow-2xl transition-[width,height] duration-300 z-chatbot ${
             isMinimized ? 'w-[calc(100vw-2rem)] sm:w-80 h-16' : 'w-[calc(100vw-2rem)] sm:w-96 h-[70vh] sm:h-[500px]'
           }`}
@@ -265,6 +278,7 @@ const ArchiAgent = () => {
             right: '1.5rem',
             boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.1)',
             maxWidth: isMinimized ? '320px' : '384px',
+            transformOrigin: 'bottom right',
             zIndex: 2147483647
           }}
         >
@@ -373,8 +387,9 @@ const ArchiAgent = () => {
               </div>
             </>
           )}
-        </div>
+        </Motion.div>
       )}
+      </AnimatePresence>
     </>
   );
 };
