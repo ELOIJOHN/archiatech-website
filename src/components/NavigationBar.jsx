@@ -249,11 +249,11 @@ export default function NavigationBar() {
                                   touch-target"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <div className="mobile-nav-icon flex-shrink-0
+                        <div className="mobile-nav-icon flex-shrink-0 bg-white/15
                                       w-7 h-7 xs:w-8 xs:h-8
                                       rounded-md xs:rounded-lg
                                       flex items-center justify-center">
-                          <IconComponent className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-[#F70D1A]" />
+                          <IconComponent className="w-3.5 h-3.5 xs:w-4 xs:h-4 text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="text-white font-medium
